@@ -1,0 +1,76 @@
+import { CyberTool } from '@/types';
+
+export const CYBER_TOOLS: CyberTool[] = [
+  {
+    id: 'password-analyzer',
+    name: 'Password Entropy & Security Engine',
+    category: 'Credential Defense',
+    iconName: 'Key',
+    description: 'An interactive client-side tool calculating cryptographic entropy (bits), character variance, crack-time estimations, and real-time structural guidance without data ever leaving your browser.',
+    status: 'Interactive Preview',
+    isInteractive: true,
+    capabilities: [
+      'Calculates Shannon bit entropy in real time',
+      'Detects common dictionary patterns and leetspeak substitution',
+      'Provides actionable character diversity recommendations',
+      '100% Client-Side: zero network requests, zero data logging',
+    ],
+  },
+  {
+    id: 'url-checker',
+    name: 'URL Safety & Threat Inspector',
+    category: 'Web Defense',
+    iconName: 'Link2',
+    description: 'Evaluates suspicious links for typosquatting, IDN Cyrillic homograph attacks, unusual TLD reputation, redirect chains, and deceptive subdomains.',
+    status: 'Phase 2 Utility',
+    isInteractive: true,
+    capabilities: [
+      'Homograph and Punycode conversion detection',
+      'Deep subdomain inspection (e.g. deceptive prefix spoofing)',
+      'Known high-risk TLD risk weighting',
+      'Safe sandbox preview simulation',
+    ],
+  },
+  {
+    id: 'email-header-analyzer',
+    name: 'Email Header & Authentication Inspector',
+    category: 'Anti-Phishing',
+    iconName: 'FileSearch',
+    description: 'Parses raw MIME headers to verify cryptographic signatures (SPF, DKIM, DMARC), uncover true sender IP origins, and detect email relay spoofing.',
+    status: 'In Development',
+    capabilities: [
+      'Visual breakdown of SPF, DKIM, and DMARC alignment status',
+      'Hop-by-hop relay latency and routing path mapping',
+      'Return-Path vs From-Header disparity flagging',
+      'Detailed educational explanations for each authentication flag',
+    ],
+  },
+  {
+    id: 'scam-message-analyzer',
+    name: 'Scam Message & Linguistic Pattern Analyzer',
+    category: 'Cognitive Defense',
+    iconName: 'MessageSquareCheck',
+    description: 'Analyzes suspicious SMS, emails, or chat messages for psychological manipulation tactics, urgency triggers, fake institutional signatures, and payment coercion.',
+    status: 'In Development',
+    capabilities: [
+      'Identifies artificial urgency and coercive timing cues',
+      'Flags high-risk financial transfer keywords (gift cards, wire, crypto)',
+      'Scans for spoofed enterprise formatting patterns',
+      'Provides a safe, non-judgmental risk breakdown',
+    ],
+  },
+  {
+    id: 'domain-ip-lookup',
+    name: 'Domain & IP Intelligence Explorer',
+    category: 'Threat Intelligence',
+    iconName: 'Globe2',
+    description: 'Queries domain age, registrar transparency, authoritative nameservers, ASN ownership, and SSL/TLS certificate transparency logs.',
+    status: 'In Development',
+    capabilities: [
+      'Domain registration date and registrar reputation analysis',
+      'SSL/TLS certificate issuer and validity timeline',
+      'Authoritative DNS and MX record configuration inspection',
+      'Autonomous System Number (ASN) and geographic routing data',
+    ],
+  },
+];

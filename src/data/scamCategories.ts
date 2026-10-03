@@ -1,0 +1,130 @@
+import { ScamCategory } from '@/types';
+
+export const SCAM_CATEGORIES: ScamCategory[] = [
+  {
+    id: 'online-scams',
+    title: 'Online Shopping & Merchant Fraud',
+    riskLevel: 'High',
+    iconName: 'ShoppingBag',
+    summary: 'Clone storefronts, deeply discounted phantom inventory, and fake escrow payment processors.',
+    commonTactics: [
+      'Advertised 80% discounts on high-ticket consumer electronics on social feeds',
+      'Checkout systems that only accept peer-to-peer crypto or direct wire transfers',
+      'Non-existent tracking numbers leading to fake courier websites',
+    ],
+    redFlags: [
+      'Prices suspiciously far below wholesale market value',
+      'Domain registered less than 30 days ago (verify via WHOIS)',
+      'No physical contact address or verifiable tax registration',
+    ],
+    protectionTip: 'Always research unfamiliar vendors on domain age checkers and pay using credit cards with chargeback rights—never Zelle, wire, or crypto.',
+  },
+  {
+    id: 'fake-websites',
+    title: 'Deceptive Domains & Typosquatting',
+    riskLevel: 'Critical',
+    iconName: 'Globe',
+    summary: 'Cyrillic homographs, hyphenated typos, and sponsored search ad poisoning designed to mimic banks and services.',
+    commonTactics: [
+      'Buying Google Search ads for bank names leading to credential harvester portals',
+      'Using lookalike Unicode characters (e.g., lowercase "l" vs number "1" or Cyrillic "а")',
+      'Exact visual clones of corporate login screens paired with reverse proxy token capture',
+    ],
+    redFlags: [
+      'Extra subdomains before the true domain name (e.g., bank.com-login-security.net)',
+      'Subtle spelling variations in the address bar',
+      'Browser warning banners regarding newly issued Let\'s Encrypt certificates for known brand targets',
+    ],
+    protectionTip: 'Bookmark genuine portals directly or type URLs manually; never trust top sponsored links in search engines without verifying the actual canonical domain.',
+  },
+  {
+    id: 'phishing-messages',
+    title: 'Smishing & Messaging Phishing',
+    riskLevel: 'Critical',
+    iconName: 'MessageSquareWarning',
+    summary: 'Urgent SMS, WhatsApp, and Telegram texts claiming unpaid customs tolls, parcel holds, or bank fraud alerts.',
+    commonTactics: [
+      '"USPS / DHL: Your delivery was held due to an incomplete address. Pay $1.85 here"',
+      'Impersonation of fraud prevention teams urging you to confirm an unauthorized wire',
+      'Multi-factor authentication push bypass requests',
+    ],
+    redFlags: [
+      'Sent from personal international mobile numbers or random email addresses via SMS gateway',
+      'Shortened obfuscated links (bit.ly, tinyurl, or random cloud storage URLs)',
+      'Demands immediate action under threat of penalty or forfeiture within 24 hours',
+    ],
+    protectionTip: 'Legitimate logistics and financial carriers will not demand payment via insecure text links. Open their official app or portal independently.',
+  },
+  {
+    id: 'fake-job-scams',
+    title: 'Remote Job & Recruiter Impersonation',
+    riskLevel: 'High',
+    iconName: 'Briefcase',
+    summary: 'Fake remote positions offering exorbitant hourly wages, interviewing strictly via encrypted text chats.',
+    commonTactics: [
+      'Job offers without voice or video interviews after a simple questionnaire',
+      'Mailing counterfeit checks to "purchase home office equipment from approved vendors"',
+      'Requesting sensitive tax IDs and bank details under the guise of onboarding',
+    ],
+    redFlags: [
+      'Interviews conducted exclusively through Telegram, WhatsApp, or Signal',
+      'Employer asks you to forward funds or deposit a check and wire the excess back',
+      'Recruiter email comes from @gmail.com or @outlook.com instead of corporate domain',
+    ],
+    protectionTip: 'Verify job openings directly on the target company’s official careers portal and never accept checks requiring equipment purchases from a designated supplier.',
+  },
+  {
+    id: 'investment-scams',
+    title: 'Crypto & High-Yield Investment Fraud',
+    riskLevel: 'Critical',
+    iconName: 'TrendingUp',
+    summary: 'Guaranteed return platforms, fraudulent trading dashboards, and romance-baiting ("pig butchering") schemes.',
+    commonTactics: [
+      'Grooming victims through weeks of friendly conversation before introducing an "exclusive trading platform"',
+      'Fictitious web dashboards showing massive artificial profits to entice larger deposits',
+      'Demanding "tax fees" or "liquidity penalties" when attempting to withdraw capital',
+    ],
+    redFlags: [
+      'Promises of guaranteed double-digit daily or weekly returns with "zero risk"',
+      'Pressure from online acquaintances or romantic interests to invest in unknown protocols',
+      'Platform refusal to process withdrawals without upfront fee payments',
+    ],
+    protectionTip: 'Guaranteed returns do not exist in legitimate financial markets. Any platform demanding fees to release your own funds is 100% fraudulent.',
+  },
+  {
+    id: 'social-media-scams',
+    title: 'Social Media Takeovers & Clones',
+    riskLevel: 'Moderate',
+    iconName: 'Share2',
+    summary: 'Cloned profiles messaging your friends for emergency cash, or automated lottery and giveaway lures.',
+    commonTactics: [
+      'Duplicating a friend’s profile photos and sending urgent messages claiming to be stranded abroad',
+      'Hacked verified accounts promoting fraudulent crypto giveaways or fake brand collabs',
+      '"Help me recover my account by sending me the code you just received on your phone"',
+    ],
+    redFlags: [
+      'A known friend suddenly creating a brand-new profile and requesting immediate funds via Venmo or gift cards',
+      'Requests for one-time verification codes sent to your phone or email',
+      'Giveaways requiring an upfront "processing deposit"',
+    ],
+    protectionTip: 'Call your friend directly on a verified phone number before ever sending emergency aid. Never share an OTP code sent to your device with anyone.',
+  },
+  {
+    id: 'payment-fraud',
+    title: 'Unauthorized Payment & Wire Diversion',
+    riskLevel: 'Critical',
+    iconName: 'CreditCard',
+    summary: 'Altered vendor invoices, urgent wire instructions, and peer-to-peer reversal exploitation.',
+    commonTactics: [
+      'Compromising an email thread between attorney and homebuyer to alter closing escrow account routing numbers',
+      '"Accidental" Zelle transfers followed by requests for refund, followed by a chargeback of the original payment',
+      'Gift card payment demands for tax or legal penalties',
+    ],
+    redFlags: [
+      'Last-minute changes to banking routing numbers received over plain email',
+      'Urgent instructions to bypass standard procurement approvals',
+      'Demands for payment using retail gift cards or Bitcoin ATMs',
+    ],
+    protectionTip: 'Establish verbal dual-authorization protocols: always voice-verify banking routing modifications with trusted contacts using known telephone numbers.',
+  },
+];

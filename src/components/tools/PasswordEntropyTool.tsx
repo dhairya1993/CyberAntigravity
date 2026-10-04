@@ -48,15 +48,12 @@ export const PasswordEntropyTool: React.FC = () => {
       scorePercent = 25;
     }
 
-    // Realistic estimated crack times based on brute-force hashes per second
-    let crackTime = '< 1 second';
-    if (entropy > 90) crackTime = 'Trillions of centuries';
-    else if (entropy > 80) crackTime = 'Millions of years';
-    else if (entropy > 70) crackTime = 'Thousands of years';
-    else if (entropy > 60) crackTime = 'Several centuries';
-    else if (entropy > 50) crackTime = 'A few months';
-    else if (entropy > 40) crackTime = 'Several days';
-    else if (entropy > 30) crackTime = 'Few minutes';
+    // Educational structural complexity estimation (non-guaranteed heuristic)
+    let complexityTier = 'Very Low';
+    if (entropy > 80) complexityTier = 'Exceptional';
+    else if (entropy > 65) complexityTier = 'High';
+    else if (entropy > 50) complexityTier = 'Moderate';
+    else if (entropy > 35) complexityTier = 'Basic';
 
     return {
       length,
@@ -69,7 +66,7 @@ export const PasswordEntropyTool: React.FC = () => {
       strengthLabel,
       strengthColor,
       scorePercent,
-      crackTime,
+      complexityTier,
     };
   }, [password]);
 
@@ -79,18 +76,22 @@ export const PasswordEntropyTool: React.FC = () => {
       'sentinel', 'beacon', 'aurora', 'matrix', 'summit', 'horizon',
       'cortex', 'vanguard', 'glacier', 'zenith', 'pulsar', 'bastion'
     ];
-    const words = [
-      wordList[Math.floor(Math.random() * wordList.length)],
-      wordList[Math.floor(Math.random() * wordList.length)],
-      wordList[Math.floor(Math.random() * wordList.length)],
-      wordList[Math.floor(Math.random() * wordList.length)],
-    ];
-    const num = Math.floor(Math.random() * 89 + 10);
     const specials = ['!', '@', '#', '$', '%', '&'];
-    const spec = specials[Math.floor(Math.random() * specials.length)];
-    // Capitalize each word
-    const formatted = words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('-') + '-' + num + spec;
-    setPassword(formatted);
+
+    if (typeof window !== 'undefined' && window.crypto) {
+      const buffer = new Uint32Array(6);
+      window.crypto.getRandomValues(buffer);
+      const words = [
+        wordList[buffer[0] % wordList.length],
+        wordList[buffer[1] % wordList.length],
+        wordList[buffer[2] % wordList.length],
+        wordList[buffer[3] % wordList.length],
+      ];
+      const num = (buffer[4] % 90) + 10;
+      const spec = specials[buffer[5] % specials.length];
+      const formatted = words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('-') + '-' + num + spec;
+      setPassword(formatted);
+    }
   };
 
   return (
@@ -185,9 +186,9 @@ export const PasswordEntropyTool: React.FC = () => {
           <span className="text-lg font-bold text-purple-400 font-mono">{analysis.poolSize} symbols</span>
         </div>
         <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80">
-          <span className="text-[11px] text-slate-400 uppercase tracking-wider block">Est. Offline Crack</span>
-          <span className="text-sm font-bold text-emerald-400 font-mono truncate block mt-0.5" title={analysis.crackTime}>
-            {analysis.crackTime}
+          <span className="text-[11px] text-slate-400 uppercase tracking-wider block">Educational Tier</span>
+          <span className="text-sm font-bold text-emerald-400 font-mono truncate block mt-0.5" title={analysis.complexityTier}>
+            {analysis.complexityTier}
           </span>
         </div>
       </div>

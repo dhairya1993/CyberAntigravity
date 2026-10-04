@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   KeyRound,
   MailWarning,
@@ -16,6 +17,8 @@ import {
 import { SAFETY_PILLARS } from '@/data/safetyTopics';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Badge } from '@/components/ui/Badge';
+import { DigitalDefenseSurface } from '@/components/visuals/DigitalDefenseSurface';
+import { VISUAL_SECURITY_TOPICS, VisualTopicCard } from '@/components/visuals/VisualTopicCard';
 
 export const CyberSafetySection: React.FC = () => {
   const [selectedPillarId, setSelectedPillarId] = useState(SAFETY_PILLARS[0].id);
@@ -57,6 +60,11 @@ export const CyberSafetySection: React.FC = () => {
           title="Master Essential Digital Self-Defense"
           description="Cyber threats evolve constantly, but 90% of successful attacks exploit fundamental lapses in daily digital hygiene. Learn the six foundational pillars of personal and institutional safety."
         />
+
+        {/* Interactive Digital Defense Surface */}
+        <div className="mb-14">
+          <DigitalDefenseSurface />
+        </div>
 
         {/* 6 Pillars Interactive Navigation Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -149,6 +157,27 @@ export const CyberSafetySection: React.FC = () => {
           </div>
         </div>
 
+        {/* Build Your Cyber Defense - Visual Topic Cards */}
+        <div className="mb-16 space-y-6 text-left">
+          <div className="space-y-1">
+            <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold block">
+              Curated Defense Pillars
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+              Build Your Personal Cyber Defense
+            </h3>
+            <p className="text-sm text-slate-300">
+              Interactive guides with difficulty ratings and completion tracking across all foundational threat domains.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {VISUAL_SECURITY_TOPICS.map((topic) => (
+              <VisualTopicCard key={topic.id} topic={topic} />
+            ))}
+          </div>
+        </div>
+
         {/* Educational Self-Assessment Checklist */}
         <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-6 sm:p-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-800">
@@ -198,6 +227,23 @@ export const CyberSafetySection: React.FC = () => {
                 <span className="text-xs text-slate-300 leading-snug">{check.label}</span>
               </label>
             ))}
+          </div>
+
+          {/* Full Pillar Portal Link */}
+          <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 border border-cyan-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="space-y-1 text-center sm:text-left">
+              <h4 className="text-base font-bold text-white">Looking for the Complete Cyber Safety Hub?</h4>
+              <p className="text-xs text-slate-300">
+                Explore all 10 domain breakdowns, 10 scam red flags, emergency response protocol, and interactive self-assessment.
+              </p>
+            </div>
+            <Link
+              href="/cyber-safety"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs tracking-wide transition-colors shrink-0 shadow-md shadow-cyan-500/20"
+            >
+              <span>Visit Cyber Safety Hub</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </div>

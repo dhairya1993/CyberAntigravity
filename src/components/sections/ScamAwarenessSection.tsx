@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   ShoppingBag,
   Globe,
@@ -11,11 +12,13 @@ import {
   CreditCard,
   AlertTriangle,
   ShieldAlert,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight,
 } from 'lucide-react';
 import { SCAM_CATEGORIES } from '@/data/scamCategories';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Badge } from '@/components/ui/Badge';
+import { ScamAnatomyDiagram } from '@/components/visuals/ScamAnatomyDiagram';
 
 export const ScamAwarenessSection: React.FC = () => {
   const [selectedScamId, setSelectedScamId] = useState(SCAM_CATEGORIES[0].id);
@@ -42,79 +45,9 @@ export const ScamAwarenessSection: React.FC = () => {
           description="Modern cyber criminals exploit behavioral psychology and artificial urgency rather than technical flaws. Master the hallmarks, deceptive tactics, and red flags of today's most prevalent scams."
         />
 
-        {/* Anatomy of a Phishing/Scam Message Interactive Breakdown */}
-        <div className="mb-16 rounded-2xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8 backdrop-blur-md">
-          <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
-            <div className="flex items-center gap-2">
-              <Badge variant="rose" dot size="sm">Deconstruction</Badge>
-              <h3 className="text-lg font-bold text-white">Anatomy of a Suspicious Delivery Scam</h3>
-            </div>
-            <span className="text-xs font-mono text-slate-400">Simulated Threat Vector</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Visual Message Display */}
-            <div className="lg:col-span-6 p-5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 space-y-3 relative overflow-hidden">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-[11px] text-slate-400">
-                <span>Sender: +1 (832) 592-0194</span>
-                <span className="text-rose-400 font-semibold">SMS Alert</span>
-              </div>
-              <p className="leading-relaxed">
-                <span className="bg-rose-950/60 text-rose-300 px-1 py-0.5 rounded border border-rose-800/80">
-                  [USPS Urgent Alert]
-                </span>{' '}
-                Your package #9400-1118-9844 could not be delivered due to an incomplete house number.
-              </p>
-              <p className="leading-relaxed">
-                Please update your address immediately within 12 hours or package will be returned to sender:{' '}
-                <span className="text-cyan-400 underline break-all bg-cyan-950/50 px-1 py-0.5 rounded border border-cyan-800/50">
-                  https://usps.package-redelivery-update89.com/confirm
-                </span>
-              </p>
-              <div className="pt-2 text-[10px] text-slate-500">
-                Note: Fee of $0.35 required for redelivery dispatch.
-              </div>
-            </div>
-
-            {/* Red Flag Callouts */}
-            <div className="lg:col-span-6 space-y-3">
-              <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-rose-950 text-rose-400 border border-rose-800 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                  1
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-white">Artificial Urgency Pressure</h4>
-                  <p className="text-xs text-slate-400 mt-0.5">
-                    Claims the parcel will be discarded or returned in &ldquo;12 hours&rdquo; to force panic and bypass logical scrutiny.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                  2
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-white">Deceptive Subdomain / Cloned Domain</h4>
-                  <p className="text-xs text-slate-400 mt-0.5">
-                    The actual domain is <code className="text-cyan-300">package-redelivery-update89.com</code>, NOT the canonical <code className="text-emerald-300">usps.com</code>.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                  3
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-white">Credit Card Harvesting Micro-Payment</h4>
-                  <p className="text-xs text-slate-400 mt-0.5">
-                    The &ldquo;$0.35 fee&rdquo; is a pretext to harvest full credit card details, CVV numbers, and phone verification codes.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Visual Scam Anatomy & Archetype Explorer */}
+        <div className="mb-16">
+          <ScamAnatomyDiagram />
         </div>
 
         {/* 7 Scam Categories Selector Grid */}
@@ -213,6 +146,31 @@ export const ScamAwarenessSection: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Hub Callout Banner */}
+        <div className="mt-12 p-6 sm:p-8 rounded-2xl border border-amber-900/50 bg-gradient-to-r from-amber-950/40 via-slate-900/80 to-slate-950 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-1.5 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-amber-700 bg-amber-950/60 text-amber-300 font-semibold uppercase">
+                Content Pillar 2
+              </span>
+              <span className="text-xs text-slate-400">Interactive Learning Hub</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Test Your Scam IQ in the Dedicated Hub
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Explore 16 in-depth scam breakdowns, practice on our interactive Red Flag SMS Simulator, test your judgment with the Scam IQ Quiz, and download the 8-point checklist.
+            </p>
+          </div>
+          <Link
+            href="/scam-awareness"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-950/40 shrink-0"
+          >
+            <span>Launch Scam Awareness Hub</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

@@ -1,28 +1,24 @@
 import React from 'react';
-import { Shield, ArrowUpRight, Heart, Mail, Lock, AlertCircle } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight, Heart, Mail, Lock, AlertCircle } from 'lucide-react';
 import { FOOTER_SECTIONS } from '@/data/navigation';
+import { CyberAntigravityLogo } from '@/components/ui/CyberAntigravityLogo';
 
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 border-t border-slate-800/80 pt-16 pb-12 text-slate-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-slate-800/60">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8 pb-12 border-b border-slate-800/60">
           {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-4">
-            <a href="#" className="flex items-center gap-3 group inline-flex">
-              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-slate-900 border border-cyan-500/40 shadow-sm shadow-cyan-500/20">
-                <Shield className="w-5 h-5 text-cyan-400" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-white">
-                  Cyber<span className="text-cyan-400">Antigravity</span>
-                </span>
-                <span className="text-xs text-slate-400 tracking-wider uppercase font-semibold">
-                  Rise Above Cyber Threats.
-                </span>
-              </div>
-            </a>
+          <div className="sm:col-span-2 lg:col-span-2 space-y-4">
+            <Link
+              href="/"
+              className="group inline-flex transition-opacity hover:opacity-95"
+              aria-label="CyberAntigravity Home"
+            >
+              <CyberAntigravityLogo variant="full" size="lg" showTagline={true} />
+            </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               CyberAntigravity is an independent global cybersecurity education and online safety platform dedicated to empowering individuals, families, and organizations with proactive digital defense and scam awareness.
@@ -54,9 +50,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.safety.map((item) => (
                 <li key={item.title}>
-                  <a href={item.href} className="hover:text-cyan-400 transition-colors">
+                  <Link href={item.href} className="hover:text-cyan-400 transition-colors">
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -70,9 +66,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.scams.map((item) => (
                 <li key={item.title}>
-                  <a href={item.href} className="hover:text-cyan-400 transition-colors">
+                  <Link href={item.href} className="hover:text-cyan-400 transition-colors">
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -86,15 +82,31 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.education.map((item) => (
                 <li key={item.title}>
-                  <a href={item.href} className="hover:text-cyan-400 transition-colors">
+                  <Link href={item.href} className="hover:text-cyan-400 transition-colors">
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Links Column: Tools & About */}
+          {/* Links Column: Blog & Knowledge */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
+              Blog & Guides
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {FOOTER_SECTIONS.blog.map((item) => (
+                <li key={item.title}>
+                  <Link href={item.href} className="hover:text-cyan-400 transition-colors">
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Links Column: Tools & Legal */}
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
               Tools & Legal
@@ -102,21 +114,21 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.tools.map((item) => (
                 <li key={item.title}>
-                  <a href={item.href} className="hover:text-cyan-400 transition-colors">
+                  <Link href={item.href} className="hover:text-cyan-400 transition-colors">
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li className="pt-2 border-t border-slate-800/80">
-                <a href="#about" className="text-slate-300 hover:text-cyan-400 transition-colors">
+                <Link href="/#about" className="text-slate-300 hover:text-cyan-400 transition-colors">
                   About Platform
-                </a>
+                </Link>
               </li>
               {FOOTER_SECTIONS.legal.map((item) => (
                 <li key={item.title}>
-                  <a href={item.href} className="text-slate-400 hover:text-cyan-400 transition-colors">
+                  <Link href={item.href} className="text-slate-400 hover:text-cyan-400 transition-colors">
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

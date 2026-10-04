@@ -19,6 +19,7 @@ import { LEARN_TRACKS } from '@/data/learnCourses';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { LearningRoadmapVisual } from '@/components/visuals/LearningRoadmapVisual';
 
 export const LearnSection: React.FC = () => {
   const [activeTrackId, setActiveTrackId] = useState(LEARN_TRACKS[0].id);
@@ -44,6 +45,11 @@ export const LearnSection: React.FC = () => {
           title="Defensive Cybersecurity & Ethical Hacking Curriculum"
           description="A structured, beginner-to-advanced learning roadmap designed to teach the foundations of defensive architecture, vulnerability research, and modern threat response."
         />
+
+        {/* Visual 9-Stage Learning Roadmap Journey */}
+        <div className="mb-14">
+          <LearningRoadmapVisual />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left: Tracks List */}
@@ -135,22 +141,22 @@ export const LearnSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Phase 1 Notice & Phase 2 Enlist */}
+            {/* Phase 1 Notice & Learning Hub Link */}
             <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
               <div className="text-slate-400">
-                <span className="font-semibold text-slate-300">Phase 1 Foundation:</span> Full interactive video lectures, safe browser labs, and CTF challenges will unlock in Phase 2.
+                <span className="font-semibold text-slate-300">Phase 1 Foundation:</span> Full 9-stage curriculum and first interactive topic are now live.
               </div>
 
               <Button
                 asLink
-                href="#about"
-                variant="outline"
+                href="/learn"
+                variant="primary"
                 size="sm"
                 icon={<ArrowRight className="w-4 h-4" />}
                 iconPosition="right"
-                className="shrink-0"
+                className="shrink-0 shadow-md shadow-cyan-500/20"
               >
-                Join Track Waitlist
+                Open Learning Hub
               </Button>
             </div>
           </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Search, X, Shield, AlertTriangle, BookOpen, Wrench, ArrowRight } from 'lucide-react';
 import { SAFETY_PILLARS } from '@/data/safetyTopics';
 import { SCAM_CATEGORIES } from '@/data/scamCategories';
@@ -134,9 +135,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
               </div>
               <div className="space-y-1.5">
                 {filteredSafety.map((item) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href="#cyber-safety"
+                    href="/cyber-safety"
                     onClick={onClose}
                     className="flex items-center justify-between p-2.5 rounded-lg hover:bg-slate-800/60 text-slate-200 hover:text-white transition-colors group"
                   >
@@ -145,7 +146,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <p className="text-xs text-slate-400 line-clamp-1">{item.shortDesc}</p>
                     </div>
                     <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -158,9 +159,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
               </div>
               <div className="space-y-1.5">
                 {filteredScams.map((item) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href="#scam-awareness"
+                    href="/scam-awareness"
                     onClick={onClose}
                     className="flex items-center justify-between p-2.5 rounded-lg hover:bg-slate-800/60 text-slate-200 hover:text-white transition-colors group"
                   >
@@ -169,7 +170,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <p className="text-xs text-slate-400 line-clamp-1">{item.summary}</p>
                     </div>
                     <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors shrink-0 ml-2" />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -182,9 +183,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
               </div>
               <div className="space-y-1.5">
                 {filteredLearn.map((item) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href="#learn"
+                    href="/#learn"
                     onClick={onClose}
                     className="flex items-center justify-between p-2.5 rounded-lg hover:bg-slate-800/60 text-slate-200 hover:text-white transition-colors group"
                   >
@@ -193,7 +194,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <p className="text-xs text-slate-400 line-clamp-1">{item.description}</p>
                     </div>
                     <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-purple-400 transition-colors shrink-0 ml-2" />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -206,9 +207,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
               </div>
               <div className="space-y-1.5">
                 {filteredTools.map((item) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href="#tools"
+                    href="/#tools"
                     onClick={onClose}
                     className="flex items-center justify-between p-2.5 rounded-lg hover:bg-slate-800/60 text-slate-200 hover:text-white transition-colors group"
                   >
@@ -217,7 +218,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <p className="text-xs text-slate-400 line-clamp-1">{item.description}</p>
                     </div>
                     <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors shrink-0 ml-2" />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

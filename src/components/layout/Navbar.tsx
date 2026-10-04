@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Shield, Search, Menu, X, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import { Search, Menu, X, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
 import { MAIN_NAV_ITEMS } from '@/data/navigation';
 import { Button } from '@/components/ui/Button';
+import { CyberAntigravityLogo } from '@/components/ui/CyberAntigravityLogo';
 import { SearchModal } from './SearchModal';
 
 export const Navbar: React.FC = () => {
@@ -45,7 +47,7 @@ export const Navbar: React.FC = () => {
             </span>
           </div>
           <a
-            href="#cyber-safety"
+            href="/cyber-safety"
             className="hidden sm:inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors shrink-0"
           >
             Explore Safety Guide <ChevronRight className="w-3.5 h-3.5" />
@@ -64,35 +66,24 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Brand Logo & Tagline */}
-            <a
-              href="#"
-              className="flex items-center gap-3 group cyber-focus-ring rounded-lg p-1"
+            <Link
+              href="/"
+              className="group cyber-focus-ring rounded-lg p-1 transition-opacity hover:opacity-95"
               aria-label="CyberAntigravity Home"
             >
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-slate-900 border border-cyan-500/40 group-hover:border-cyan-400 transition-colors shadow-sm shadow-cyan-500/20">
-                <Shield className="w-5 h-5 text-cyan-400 group-hover:scale-105 transition-transform" />
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-950" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-white">
-                  Cyber<span className="text-cyan-400">Antigravity</span>
-                </span>
-                <span className="text-[10px] text-slate-400 tracking-wider uppercase font-medium hidden sm:inline-block">
-                  Rise Above Cyber Threats.
-                </span>
-              </div>
-            </a>
+              <CyberAntigravityLogo variant="full" size="md" />
+            </Link>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-1" aria-label="Main Navigation">
               {MAIN_NAV_ITEMS.map((item) => (
-                <a
+                <Link
                   key={item.title}
                   href={item.href}
                   className="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors cyber-focus-ring"
                 >
                   {item.title}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -113,7 +104,7 @@ export const Navbar: React.FC = () => {
 
               <Button
                 asLink
-                href="#cyber-safety"
+                href="/cyber-safety"
                 variant="primary"
                 size="sm"
                 icon={<ArrowRight className="w-4 h-4" />}
@@ -152,7 +143,7 @@ export const Navbar: React.FC = () => {
           <div className="lg:hidden fixed inset-0 top-[105px] z-50 bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 p-6 overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-200">
             <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
               {MAIN_NAV_ITEMS.map((item) => (
-                <a
+                <Link
                   key={item.title}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -160,14 +151,14 @@ export const Navbar: React.FC = () => {
                 >
                   <span>{item.title}</span>
                   <ChevronRight className="w-4 h-4 text-slate-500" />
-                </a>
+                </Link>
               ))}
             </nav>
 
             <div className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col gap-3">
               <Button
                 asLink
-                href="#cyber-safety"
+                href="/cyber-safety"
                 variant="primary"
                 size="lg"
                 className="w-full"

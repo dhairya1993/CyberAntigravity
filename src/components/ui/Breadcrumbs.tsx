@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
 
 export interface BreadcrumbItem {
@@ -16,13 +17,13 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' 
     <nav aria-label="Breadcrumb" className={`flex items-center text-xs text-slate-400 ${className}`}>
       <ol className="flex items-center space-x-2">
         <li className="flex items-center">
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center text-slate-400 hover:text-cyan-400 transition-colors"
             aria-label="Home"
           >
             <Home className="w-3.5 h-3.5" />
-          </a>
+          </Link>
         </li>
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -34,12 +35,12 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' 
                   {item.label}
                 </span>
               ) : (
-                <a
+                <Link
                   href={item.href}
                   className="hover:text-cyan-400 transition-colors"
                 >
                   {item.label}
-                </a>
+                </Link>
               )}
             </li>
           );

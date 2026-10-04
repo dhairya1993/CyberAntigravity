@@ -1,16 +1,83 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <defs>
-    <linearGradient id="shieldGrad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#00f0ff"/>
-      <stop offset="1" stop-color="#0284c7"/>
-    </linearGradient>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0f172a"/>
+    <!-- Background Gradient -->
+    <linearGradient id="caIco_bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
       <stop offset="1" stop-color="#020617"/>
     </linearGradient>
+
+    <!-- Cyan to Deep Blue Tech Gradient -->
+    <linearGradient id="caIco_cyan" x1="4" y1="4" x2="20" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="60%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+
+    <!-- Secondary Cyan/Blue Tech Gradient -->
+    <linearGradient id="caIco_blue" x1="16" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
   </defs>
-  <rect width="32" height="32" rx="8" fill="url(#bgGrad)"/>
-  <rect width="32" height="32" rx="8" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1.5"/>
-  <path d="M16 6L7 10V16C7 21.5 10.8 26.6 16 28C21.2 26.6 25 21.5 25 16V10L16 6Z" stroke="url(#shieldGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(0, 240, 255, 0.08)"/>
-  <path d="M12 16L15 19L20 13" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Dark Rounded Square Favicon Canvas -->
+  <rect width="32" height="32" rx="8" fill="url(#caIco_bg)"/>
+  <rect width="32" height="32" rx="8" stroke="#00F0FF" stroke-opacity="0.35" stroke-width="1.2"/>
+
+  <!-- Scaled Cyber Shield C + A Monogram Symbol (fit to 32x32) -->
+  <g transform="translate(1.6, 1.6) scale(0.6)">
+    <!-- Ambient Shield Glow -->
+    <path d="M24 4 L40 10 L40 25 C40 34.5 24 44 24 44 C24 44 8 34.5 8 25 L8 10 Z" 
+          fill="#00F0FF" opacity="0.18"/>
+
+    <!-- Subtle Shield Telemetry Outline -->
+    <path d="M24 5 L39 10.5 L39 24.5 C39 33.5 24 42.5 24 42.5 C24 42.5 9 33.5 9 24.5 L9 10.5 Z" 
+          stroke="#00F0FF" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="2 1.5" fill="none"/>
+
+    <!-- The "C" Element (Left Flank) -->
+    <path d="M 22 8
+             L 11 12
+             L 11 25.5
+             C 11 33.5, 17.5 38.5, 22.5 41
+             L 22.5 35.5
+             C 19 33.5, 15.5 29.5, 15.5 24
+             L 15.5 15.5
+             L 22 13
+             Z" 
+          fill="url(#caIco_cyan)"/>
+
+    <!-- The "A" Element (Right Flank & Apex) -->
+    <path d="M 25.5 7
+             L 29.5 7
+             L 37 25.5
+             C 37 33.5, 30.5 38.5, 25.5 41
+             L 25.5 35.5
+             C 29 33.5, 32.5 29.5, 32.5 24
+             L 28 13.5
+             L 25.5 13.5
+             Z" 
+          fill="url(#caIco_blue)"/>
+
+    <!-- Ascending Chevron Arrow (A Apex - "Rise") -->
+    <path d="M 24 7.5
+             L 30 20
+             L 26.5 20
+             L 24 14.5
+             L 21.5 20
+             L 18 20
+             Z" 
+          fill="url(#caIco_cyan)"/>
+
+    <!-- Horizontal Security Crossbar of A -->
+    <path d="M 19.5 22.5
+             L 28.5 22.5
+             L 27.5 25.5
+             L 20.5 25.5
+             Z" 
+          fill="#00F0FF"/>
+
+    <!-- Central Verified Node (Emerald Accent) -->
+    <circle cx="24" cy="18" r="1.8" fill="#10B981"/>
+  </g>
 </svg>

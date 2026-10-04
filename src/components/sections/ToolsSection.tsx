@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Key,
   Link2,
@@ -9,7 +10,8 @@ import {
   Globe2,
   CheckCircle2,
   ArrowRight,
-  Info
+  Info,
+  Wrench,
 } from 'lucide-react';
 import { CYBER_TOOLS } from '@/data/toolsData';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -82,6 +84,13 @@ export const ToolsSection: React.FC = () => {
           >
             Future Tool Architecture Roadmaps
           </button>
+          <Link
+            href="/tools"
+            className="px-4 py-2 text-xs font-semibold rounded-lg bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-900/50 transition-all flex items-center gap-1.5"
+          >
+            <Wrench className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Full Tools Hub (6 Available) →</span>
+          </Link>
         </div>
 
         {/* Tab Content */}

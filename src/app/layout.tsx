@@ -42,7 +42,14 @@ export const metadata: Metadata = {
     url: "https://cyberantigravity.com",
     siteName: "CyberAntigravity",
     locale: "en_US",
-    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CyberAntigravity — Rise Above Cyber Threats",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -50,6 +57,7 @@ export const metadata: Metadata = {
     description:
       "Global cybersecurity education and online safety platform. Actionable defense guides and scam awareness.",
     creator: "@cyberantigravity",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -64,10 +72,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/brand/cyberantigravity-symbol.png', type: 'image/png' },
       { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/brand/cyberantigravity-symbol.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
     ],
-    apple: '/icon.svg',
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
 };
 
@@ -84,7 +97,7 @@ export default function RootLayout({
         "@id": "https://cyberantigravity.com/#organization",
         name: "CyberAntigravity",
         url: "https://cyberantigravity.com",
-        logo: "https://cyberantigravity.com/icon.svg",
+        logo: "https://cyberantigravity.com/brand/cyberantigravity-logo.png",
         slogan: "Rise Above Cyber Threats.",
         description:
           "Global cybersecurity education and online safety platform providing actionable digital defense, scam awareness, and ethical security training.",

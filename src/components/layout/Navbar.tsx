@@ -141,6 +141,9 @@ export const Navbar: React.FC = () => {
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
           <div className="lg:hidden fixed inset-0 top-[105px] z-50 bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 p-6 overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-200">
+            <div className="pb-4 mb-4 border-b border-slate-800/80">
+              <CyberAntigravityLogo variant="full" size="sm" />
+            </div>
             <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
               {MAIN_NAV_ITEMS.map((item) => (
                 <Link

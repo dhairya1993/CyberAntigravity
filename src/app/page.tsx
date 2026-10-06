@@ -1,13 +1,21 @@
 import React from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { CyberSafetySection } from '@/components/sections/CyberSafetySection';
-import { ScamAwarenessSection } from '@/components/sections/ScamAwarenessSection';
-import { LearnSection } from '@/components/sections/LearnSection';
-import { ToolsSection } from '@/components/sections/ToolsSection';
-import { BlogSection } from '@/components/sections/BlogSection';
-import { MissionSection } from '@/components/sections/MissionSection';
-import { CyberScoreCard } from '@/components/visuals/CyberScoreCard';
+import { ThreatLandscapeSection } from '@/components/sections/ThreatLandscapeSection';
+import { VisualStorytellingTransitions } from '@/components/visuals/VisualStorytellingTransitions';
+import { AttackPathSection } from '@/components/sections/AttackPathSection';
+import { CyberIQPreviewSection } from '@/components/sections/CyberIQPreviewSection';
+import { DigitalDefenseSection } from '@/components/sections/DigitalDefenseSection';
+import { CyberLabPreviewSection } from '@/components/sections/CyberLabPreviewSection';
+import { LearningRoadmapPreviewSection } from '@/components/sections/LearningRoadmapPreviewSection';
+import { ScamSpotterPreviewSection } from '@/components/sections/ScamSpotterPreviewSection';
+import { StudentExperienceSection } from '@/components/sections/StudentExperienceSection';
+import { SecurityToolsPreviewSection } from '@/components/sections/SecurityToolsPreviewSection';
+import { WhyCyberAntigravitySection } from '@/components/sections/WhyCyberAntigravitySection';
+import { LatestGuidesSection } from '@/components/sections/LatestGuidesSection';
+import { AiCyberFutureSection } from '@/components/sections/AiCyberFutureSection';
+import { TrustNoticeSection } from '@/components/sections/TrustNoticeSection';
+import { FinalCtaSection } from '@/components/sections/FinalCtaSection';
 import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
@@ -16,49 +24,57 @@ export default function Home() {
       {/* Global Navigation */}
       <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections:
+          SEE A THREAT → UNDERSTAND THE ATTACK → MAKE A DECISION → LEARN THE DEFENSE → BUILD SECURITY SKILLS
+      */}
       <main className="flex-1">
-        {/* 1. Hero Section */}
+        {/* 1. Hero Section & Cyber Defense Command Center */}
         <HeroSection />
 
-        {/* 2. Cyber Safety Section */}
-        <CyberSafetySection />
+        {/* 2. SEE A THREAT — Section 1: Cyber Threat Gallery (6 Custom Interactive Vector Cards) */}
+        <ThreatLandscapeSection />
 
-        {/* 3. Scam Awareness Section */}
-        <ScamAwarenessSection />
+        {/* 3. VISUAL STORYTELLING — Section 8: Graphical Transitions (Threat -> Decision -> Defense) */}
+        <VisualStorytellingTransitions />
 
-        {/* 4. Learn Section */}
-        <LearnSection />
+        {/* 4. UNDERSTAND THE ATTACK — Section 2: Attack → Defense Simulator (Path A vs Path B) */}
+        <AttackPathSection />
 
-        {/* 4.5. Practice Your Cyber IQ - Visual Score Card */}
-        <section className="py-16 md:py-24 border-y border-slate-800/80 bg-slate-950/60 relative">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold block">
-                Interactive Skill Verification
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Practice Your Cyber IQ
-              </h2>
-              <p className="text-sm text-slate-300">
-                Measure your defensive judgment across simulated phishing, credential hygiene, and fraud detection scenarios.
-              </p>
-            </div>
+        {/* 5. MAKE A DECISION — Section 6: Cyber IQ Challenge & Section 7: Security Skill Meter */}
+        <CyberIQPreviewSection />
 
-            <div className="max-w-4xl mx-auto">
-              <CyberScoreCard />
-            </div>
-          </div>
-        </section>
+        {/* 6. LEARN THE DEFENSE — Section 3: Cyber Defense Shield (Central Shield & 8 Layers) */}
+        <DigitalDefenseSection />
 
-        {/* 5. Tools Section */}
-        <ToolsSection />
+        {/* 7. PRACTICE IN SANDBOX — Section 5: Cyber Lab Preview (Laptop + Terminal + Nodes) */}
+        <CyberLabPreviewSection />
 
-        {/* 6. Latest Cyber Knowledge / Blog Section */}
-        <BlogSection />
+        {/* 8. BUILD SECURITY SKILLS — Section 4: Student Cybersecurity Roadmap (8 Progressive Stages) */}
+        <LearningRoadmapPreviewSection />
 
-        {/* 7. Trust / Mission Section */}
-        <MissionSection />
+        {/* 9. Scam Spotter Interactive Sandbox */}
+        <ScamSpotterPreviewSection />
+
+        {/* 10. Student Interactive Experience Pillars */}
+        <StudentExperienceSection />
+
+        {/* 11. Practical Security Tools Preview */}
+        <SecurityToolsPreviewSection />
+
+        {/* 12. Why Learn With CyberAntigravity */}
+        <WhyCyberAntigravitySection />
+
+        {/* 13. Latest Cybersecurity Guides */}
+        <LatestGuidesSection />
+
+        {/* 14. Where Cybersecurity Is Going (AI + Defense Future) */}
+        <AiCyberFutureSection />
+
+        {/* 15. Trust & Educational Disclaimer Notice */}
+        <TrustNoticeSection />
+
+        {/* 16. Final Call to Action */}
+        <FinalCtaSection />
       </main>
 
       {/* Global Footer */}

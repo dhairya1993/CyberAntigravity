@@ -60,5 +60,6 @@ export const FOOTER_SECTIONS = {
     { title: 'Terms of Service', href: '/terms' },
     { title: 'Security Disclaimer', href: '/disclaimer' },
     { title: 'Responsible Disclosure', href: '/disclosure' },
+    { title: 'Brand Assets & Logo', href: '/brand' },
   ],
 };

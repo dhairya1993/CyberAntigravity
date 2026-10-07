@@ -4,8 +4,12 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { CyberSafetyHero } from '@/components/cyber-safety/CyberSafetyHero';
 import { SafetyChecklist } from '@/components/cyber-safety/SafetyChecklist';
+import { DigitalSafetyMap } from '@/components/cyber-safety/DigitalSafetyMap';
+import { SecurityHabitsComparison } from '@/components/cyber-safety/SecurityHabitsComparison';
 import { SafetyTopicsSection } from '@/components/cyber-safety/SafetyTopicsSection';
 import { RedFlagsSection } from '@/components/cyber-safety/RedFlagsSection';
+import { SafetyScenarios } from '@/components/cyber-safety/SafetyScenarios';
+import { AudienceSafetyCards } from '@/components/cyber-safety/AudienceSafetyCards';
 import { EmergencySteps } from '@/components/cyber-safety/EmergencySteps';
 import { SecurityScorecard } from '@/components/cyber-safety/SecurityScorecard';
 import { CyberMythsSection } from '@/components/cyber-safety/CyberMythsSection';
@@ -19,16 +23,18 @@ import { CYBER_SAFETY_FAQS } from '@/data/cyberSafetyHubData';
 import { CyberSafetyCrossLinks } from '@/components/cyber-safety/CyberSafetyCrossLinks';
 
 export const metadata: Metadata = {
-  title: 'Cyber Safety Guide: Protect Your Accounts, Devices & Privacy',
+  title: {
+    absolute: 'Cyber Safety Guide — Learn Safer Digital Habits | CyberAntigravity',
+  },
   description:
-    'Learn practical cyber safety habits, recognize phishing and scams, protect your accounts and devices, and improve your online privacy with CyberAntigravity.',
+    'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
   alternates: {
     canonical: 'https://cyberantigravity.com/cyber-safety',
   },
   openGraph: {
-    title: 'Cyber Safety Guide: Protect Your Accounts, Devices & Privacy | CyberAntigravity',
+    title: 'Cyber Safety Guide — Learn Safer Digital Habits | CyberAntigravity',
     description:
-      'Learn practical cyber safety habits, recognize phishing and scams, protect your accounts and devices, and improve your online privacy with CyberAntigravity.',
+      'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
     url: 'https://cyberantigravity.com/cyber-safety',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
@@ -36,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cyber Safety Guide: Protect Your Accounts, Devices & Privacy | CyberAntigravity',
+    title: 'Cyber Safety Guide — Learn Safer Digital Habits | CyberAntigravity',
     description:
-      'Learn practical cyber safety habits, recognize phishing and scams, protect your accounts and devices, and improve your online privacy with CyberAntigravity.',
+      'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
     creator: '@cyberantigravity',
   },
 };
@@ -70,9 +76,9 @@ export default function CyberSafetyPage() {
     '@type': 'WebPage',
     '@id': 'https://cyberantigravity.com/cyber-safety#webpage',
     url: 'https://cyberantigravity.com/cyber-safety',
-    name: 'Cyber Safety Guide: Protect Your Accounts, Devices & Privacy',
+    name: 'Cyber Safety Guide — Learn Safer Digital Habits | CyberAntigravity',
     description:
-      'Learn practical cyber safety habits, recognize phishing and scams, protect your accounts and devices, and improve your online privacy with CyberAntigravity.',
+      'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
     publisher: {
       '@type': 'Organization',
       name: 'CyberAntigravity',
@@ -116,7 +122,7 @@ export default function CyberSafetyPage() {
 
       {/* Main Pillar Content */}
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section */}
+        {/* 1. Hero Section (Includes Graphical Ecosystem Illustration USER -> DEVICE -> NETWORK -> ACCOUNT -> DATA + Shield) */}
         <CyberSafetyHero />
 
         {/* 1.5. Visual Digital Defense Surface Ecosystem */}
@@ -126,16 +132,28 @@ export default function CyberSafetyPage() {
           </div>
         </section>
 
-        {/* 2. Quick Safety Checklist */}
+        {/* 2. Quick Safety Checklist: "Your Everyday Cyber Safety Checklist" */}
         <SafetyChecklist />
+
+        {/* 2.5. Digital Safety Map (Interactive Cross/Stacked Topology Diagram) */}
+        <DigitalSafetyMap />
+
+        {/* 2.75. Security Habits Visual ("Good Habits vs Risky Habits") */}
+        <SecurityHabitsComparison />
 
         {/* 3. Cyber Safety Topics (10 Core Categories A - J) */}
         <SafetyTopicsSection />
 
-        {/* 4. "Red Flags" Section (10 Scam Warning Signs) */}
+        {/* 4. Threat Red Flags: "10 Red Flags You Should Never Ignore" */}
         <RedFlagsSection />
 
-        {/* 5. What to Do If You Think You Are Being Scammed */}
+        {/* 4.5. "What Would You Do?" Interactive Scenarios: "Would You Spot the Risk?" */}
+        <SafetyScenarios />
+
+        {/* 4.75. Cyber Safety for Different Users (Students, Parents, Employees, Seniors, Small Businesses) */}
+        <AudienceSafetyCards />
+
+        {/* 5. Emergency Response Flow: "Think You May Have Been Scammed?" (7-step sequential flow) */}
         <EmergencySteps />
 
         {/* Dedicated Callout: Cyber Safety → Scam Awareness Hub */}
@@ -158,7 +176,7 @@ export default function CyberSafetyPage() {
               </div>
               <Link
                 href="/scam-awareness"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-lg shadow-amber-950/30 shrink-0"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-lg shadow-amber-950/30 shrink-0 cyber-focus-ring"
               >
                 <span>Open Scam Awareness Hub</span>
                 <ArrowRight className="w-4 h-4" />
@@ -167,7 +185,7 @@ export default function CyberSafetyPage() {
           </div>
         </section>
 
-        {/* 6. Security Habits Scorecard (Client-Side Self-Assessment) */}
+        {/* 6. Cyber Safety Score: "How Strong Is Your Cyber Hygiene?" (Educational Self-Assessment) */}
         <SecurityScorecard />
 
         {/* 7. Common Myths Section */}

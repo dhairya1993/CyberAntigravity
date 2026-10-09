@@ -12,6 +12,7 @@ import {
   FileText,
   ArrowRight,
   BrainCircuit,
+  Award,
 } from 'lucide-react';
 import { CYBER_SAFETY_TOPICS } from '@/data/cyberSafetyHubData';
 import { SCAM_EXPLORER_CATEGORIES } from '@/data/scamTypesExplorerData';
@@ -102,13 +103,20 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
       )
     : [];
 
+  const isProgressMatch =
+    trimmedQuery &&
+    ['progress', 'xp', 'level', 'streak', 'badge', 'achievement', 'gamification', 'rank'].some(
+      (term) => trimmedQuery.includes(term) || term.includes(trimmedQuery)
+    );
+
   const hasResults =
     filteredSafety.length > 0 ||
     filteredScams.length > 0 ||
     filteredArticles.length > 0 ||
     filteredTools.length > 0 ||
     filteredLearn.length > 0 ||
-    filteredCyberIq.length > 0;
+    filteredCyberIq.length > 0 ||
+    isProgressMatch;
 
   return (
     <div
@@ -170,6 +178,30 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
 
         {/* Results List */}
         <div className="p-4 overflow-y-auto space-y-6">
+          {/* Student Progress Match */}
+          {isProgressMatch && (
+            <div className="p-3.5 rounded-xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-500/30">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-2">
+                <Award className="w-3.5 h-3.5" /> Student Progress &amp; Achievements
+              </div>
+              <Link
+                href="/learn/progress"
+                onClick={onClose}
+                className="flex items-center justify-between p-2.5 rounded-lg hover:bg-slate-800/60 text-slate-200 hover:text-white transition-colors group"
+              >
+                <div>
+                  <p className="text-sm font-medium group-hover:text-cyan-300 transition-colors">
+                    Student Progress Dashboard &amp; Streaks
+                  </p>
+                  <p className="text-xs text-slate-400">
+                    Track your total XP, 9-level roadmap progress, 7-day activity streaks, and unlocked badges.
+                  </p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
+              </Link>
+            </div>
+          )}
+
           {!hasResults && query && (
             <div className="py-12 text-center text-slate-400">
               <AlertTriangle className="w-10 h-10 text-amber-400/60 mx-auto mb-3" />

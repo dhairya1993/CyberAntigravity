@@ -35,6 +35,7 @@ export const FOOTER_SECTIONS = {
   education: [
     { title: 'Cyber IQ Quiz Arena', href: '/cyber-iq' },
     { title: 'Cybersecurity Learning Hub', href: '/learn' },
+    { title: 'Student Progress & Achievements', href: '/learn/progress' },
     { title: 'Cybersecurity Fundamentals', href: '/learn/cybersecurity-fundamentals' },
     { title: 'Learning Roadmap (9 Levels)', href: '/learn#roadmap' },
     { title: 'Defensive Security Methodology', href: '/learn#principles' },

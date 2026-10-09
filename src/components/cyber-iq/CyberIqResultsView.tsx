@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Trophy,
   Sparkles,
@@ -12,8 +10,13 @@ import {
   BookOpen,
   Layers,
   ShieldCheck,
+  Lock,
+  Cloud,
+  User,
 } from 'lucide-react';
 import { CyberIqBadge, UserQuizAttempt } from '@/types/cyberIq';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/Button';
 
 interface CyberIqResultsViewProps {
   attempt: UserQuizAttempt;
@@ -21,6 +24,9 @@ interface CyberIqResultsViewProps {
   onReviewAnswers: () => void;
   onRetake: () => void;
   onChooseNewCategory: () => void;
+  answersMap?: Record<string, string>;
+  isPersisted?: boolean;
+  onPersistedSuccess?: () => void;
 }
 
 export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
@@ -29,7 +35,46 @@ export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
   onReviewAnswers,
   onRetake,
   onChooseNewCategory,
+  answersMap,
+  isPersisted: initialPersisted = false,
+  onPersistedSuccess,
 }) => {
+  const { user, openAuthModal } = useAuth();
+  const [persisted, setPersisted] = useState(initialPersisted);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
+
+  // If user logs in while viewing results and answersMap is present, save immediately
+  React.useEffect(() => {
+    if (user && !persisted && answersMap && !isSaving) {
+      const persistScore = async () => {
+        setIsSaving(true);
+        try {
+          const res = await fetch('/api/gamification/complete-quiz', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              quizId: attempt.quizId,
+              category: attempt.categoryId,
+              answers: answersMap,
+              sessionToken: attempt.quizId,
+            }),
+          });
+          const data = await res.json();
+          if (res.ok) {
+            setPersisted(true);
+            setSaveMessage(data.message || 'Verified & saved to cloud database!');
+            if (onPersistedSuccess) onPersistedSuccess();
+          }
+        } catch {
+          // ignore
+        } finally {
+          setIsSaving(false);
+        }
+      };
+      persistScore();
+    }
+  }, [user, persisted, answersMap, attempt, isSaving, onPersistedSuccess]);
   const {
     categoryTitle,
     difficulty,
@@ -100,6 +145,40 @@ export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
           {performanceDesc}
         </p>
 
+        {/* Database Persistence Status Card */}
+        {persisted ? (
+          <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/50 max-w-2xl mx-auto flex items-center justify-between text-xs text-emerald-300">
+            <div className="flex items-center gap-2">
+              <Cloud className="w-4 h-4 text-emerald-400" />
+              <span className="font-semibold">{saveMessage || 'Verified & Persisted to Database (+XP Awarded)'}</span>
+            </div>
+            <span className="font-mono text-[11px] bg-emerald-900/60 text-emerald-200 px-2 py-0.5 rounded border border-emerald-700">
+              Account Synced
+            </span>
+          </div>
+        ) : (
+          <div className="p-4 rounded-xl bg-cyan-950/40 border border-cyan-800/80 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-300">
+            <div className="flex items-center gap-2.5 text-left">
+              <Lock className="w-4 h-4 text-cyan-400 shrink-0" />
+              <div>
+                <span className="font-bold text-white block">Unsaved Learning Activity</span>
+                <span className="text-slate-400">
+                  Sign in or create an account to permanently save this {scorePercentage}% score and claim your +{xpEarned} verified XP!
+                </span>
+              </div>
+            </div>
+            <Button
+              variant="primary"
+              size="sm"
+              className="shrink-0"
+              onClick={() => openAuthModal('login')}
+            >
+              <User className="w-3.5 h-3.5 mr-1" />
+              Save Progress
+            </Button>
+          </div>
+        )}
+
         {/* Key Metrics Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800/80 max-w-2xl mx-auto">
           {/* XP Earned */}
@@ -138,6 +217,18 @@ export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
             </div>
           </div>
         </div>
+
+        {/* XP Rules Breakdown Bar */}
+        <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-400">
+          <span className="text-slate-300 font-bold">XP Breakdown:</span>
+          <span className="text-amber-400">+50 Base Completion</span>
+          {scorePercentage >= 80 && (
+            <span className="text-teal-400">+25 High Score (80%+)</span>
+          )}
+          {scorePercentage === 100 && (
+            <span className="text-emerald-400">+20 Flawless Bonus (100%)</span>
+          )}
+        </div>
       </div>
 
       {/* =========================================================================
@@ -170,9 +261,9 @@ export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
       )}
 
       {/* =========================================================================
-          3. ACTION BUTTONS: REVIEW, RETAKE, NEW CATEGORY
+          3. ACTION BUTTONS: REVIEW, RETAKE, NEW CATEGORY, DASHBOARD
           ========================================================================= */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
         {/* Button 1: Review All Answers */}
         <button
           type="button"
@@ -180,7 +271,7 @@ export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
           className="p-4 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm shadow-xl shadow-cyan-500/10 transition-all hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer cyber-focus-ring"
         >
           <BookOpen className="w-4 h-4" />
-          <span>Review All Answers</span>
+          <span>Review Answers</span>
         </button>
 
         {/* Button 2: Retake Quiz */}
@@ -202,6 +293,15 @@ export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
           <Layers className="w-4 h-4 text-teal-400" />
           <span>Switch Category</span>
         </button>
+
+        {/* Button 4: Student Progress Dashboard */}
+        <a
+          href="/learn/progress"
+          className="p-4 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-amber-500/50 text-amber-300 font-bold text-sm transition-all hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer cyber-focus-ring text-center"
+        >
+          <Award className="w-4 h-4 text-amber-400" />
+          <span>My Progress</span>
+        </a>
       </div>
 
       {/* Defensive Tip Callout */}

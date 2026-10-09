@@ -11,6 +11,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { useGamification } from '@/hooks/useGamification';
 
 interface KnowledgeCheckQuizProps {
   questions: LearningQuizQuestion[];
@@ -21,8 +22,10 @@ export const KnowledgeCheckQuiz: React.FC<KnowledgeCheckQuizProps> = ({
   questions,
   topicTitle,
 }) => {
+  const { recordQuizCompletion } = useGamification();
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [revealed, setRevealed] = useState(false);
+  const [xpAwardedNote, setXpAwardedNote] = useState<string | null>(null);
 
   const totalQuestions = questions.length;
   const answeredCount = Object.keys(selectedAnswers).length;
@@ -196,11 +199,16 @@ export const KnowledgeCheckQuiz: React.FC<KnowledgeCheckQuizProps> = ({
               {answeredCount} of {totalQuestions} answered
             </span>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Award className="w-4 h-4 text-cyan-400" />
               <span className="text-white font-bold text-sm">
                 Score: {score}/{totalQuestions} ({percentage}%)
               </span>
+              {xpAwardedNote && (
+                <span className="px-2 py-0.5 rounded-full bg-amber-950 text-amber-300 border border-amber-800 font-bold text-xs font-mono">
+                  {xpAwardedNote}
+                </span>
+              )}
               <span className="text-slate-400">•</span>
               <span className="text-cyan-400">
                 {score === 5
@@ -220,7 +228,28 @@ export const KnowledgeCheckQuiz: React.FC<KnowledgeCheckQuizProps> = ({
               variant="primary"
               size="md"
               disabled={answeredCount < totalQuestions}
-              onClick={() => setRevealed(true)}
+              onClick={() => {
+                setRevealed(true);
+                const scoreVal = calculateScore();
+                const scorePct = Math.round((scoreVal / totalQuestions) * 100);
+                const sessionKey = `kc_${topicTitle ? topicTitle.toLowerCase().replace(/[^a-z0-9]/g, '_') : 'fundamentals'}_attempt`;
+                const res = recordQuizCompletion({
+                  categoryId: 'fundamentals',
+                  categoryTitle: topicTitle || 'Cybersecurity Fundamentals',
+                  difficulty: 'Beginner',
+                  totalQuestions,
+                  correctAnswers: scoreVal,
+                  scorePercentage: scorePct,
+                  xpEarned: 0,
+                  timeSpentSeconds: 90,
+                  sessionToken: sessionKey,
+                });
+                if (!res.isDuplicate) {
+                  setXpAwardedNote(`+${res.xpAwarded} XP Earned!`);
+                } else {
+                  setXpAwardedNote('Completed');
+                }
+              }}
               className="w-full sm:w-auto"
             >
               Check Answers ({answeredCount}/{totalQuestions})

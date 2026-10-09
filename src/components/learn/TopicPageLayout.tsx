@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { SafePracticeNotice } from './SafePracticeNotice';
 import { SampleLessonSection } from './SampleLessonSection';
 import { KnowledgeCheckQuiz } from './KnowledgeCheckQuiz';
+import { ModuleCompletionCard } from '@/components/gamification/ModuleCompletionCard';
 import {
   Clock,
   BookOpen,
@@ -248,6 +249,13 @@ export const TopicPageLayout: React.FC<TopicPageLayoutProps> = ({ topic }) => {
 
         {/* 9. Knowledge Check Quiz */}
         <KnowledgeCheckQuiz questions={topic.knowledgeCheck} topicTitle={topic.title} />
+
+        {/* 9.5 Module Gamification Completion Card */}
+        <ModuleCompletionCard
+          moduleId={topic.slug}
+          moduleTitle={topic.title}
+          topicSlug={topic.slug}
+        />
 
         {/* 10. Next Topic Navigation */}
         {topic.nextTopic && (

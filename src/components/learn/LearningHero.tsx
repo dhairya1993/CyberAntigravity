@@ -9,6 +9,7 @@ import {
   BookOpen,
   Lock,
   Layers,
+  Award,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
@@ -74,6 +75,18 @@ export const LearningHero: React.FC = () => {
               className="w-full sm:w-auto border-slate-700 hover:border-cyan-500/50 hover:bg-slate-800/60"
             >
               View Learning Roadmap
+            </Button>
+
+            <Button
+              asLink
+              href="/learn/progress"
+              variant="outline"
+              size="lg"
+              icon={<Award className="w-4 h-4 text-amber-400" />}
+              iconPosition="left"
+              className="w-full sm:w-auto border-amber-500/30 hover:border-amber-500/60 hover:bg-amber-950/20 text-amber-300"
+            >
+              My Progress &amp; Badges
             </Button>
           </div>
 

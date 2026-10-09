@@ -13,6 +13,7 @@ import {
   CYBER_IQ_QUESTIONS,
   CYBER_IQ_BADGES,
 } from '@/data/cyberIqQuestions';
+import { calculateQuizXp } from '@/data/gamification';
 import { useCyberIqStorage } from '@/hooks/useCyberIqStorage';
 import { CyberIqHeader } from './CyberIqHeader';
 import { CyberIqDashboard } from './CyberIqDashboard';
@@ -22,6 +23,7 @@ import { CyberIqResultsView } from './CyberIqResultsView';
 import { CyberIqAnswerReview, AnsweredQuestionState } from './CyberIqAnswerReview';
 import { CyberIqBadgesModal } from './CyberIqBadgesModal';
 import { Sliders, LayoutDashboard } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 export const CyberIqArenaView: React.FC = () => {
   const {
@@ -46,6 +48,9 @@ export const CyberIqArenaView: React.FC = () => {
   const [lastAttempt, setLastAttempt] = useState<UserQuizAttempt | null>(null);
   const [newlyUnlockedBadges, setNewlyUnlockedBadges] = useState<CyberIqBadge[]>([]);
   const [isBadgesModalOpen, setIsBadgesModalOpen] = useState<boolean>(false);
+  const { user } = useAuth();
+  const [answersMap, setAnswersMap] = useState<Record<string, string>>({});
+  const [isPersisted, setIsPersisted] = useState<boolean>(false);
 
   // Live Timer while in quiz
   useEffect(() => {
@@ -130,23 +135,58 @@ export const CyberIqArenaView: React.FC = () => {
       const categoryObj = CYBER_IQ_CATEGORIES.find((c) => c.id === activeCategoryId);
       const catTitle = activeCategoryId === 'all' ? 'Grand Arena (Mixed)' : categoryObj?.title || 'Cyber IQ Arena';
 
-      const attemptData: Omit<UserQuizAttempt, 'quizId' | 'timestamp'> = {
+      // Transparent XP calculation (50 Base + 25 if >=80% + 20 if 100%)
+      const xpCalc = calculateQuizXp(scorePercent);
+      const sessionKey = `quiz_${activeCategoryId}_${Date.now()}`;
+
+      const attemptData: Omit<UserQuizAttempt, 'quizId' | 'timestamp'> & { sessionToken?: string } = {
         categoryId: activeCategoryId === 'all' ? 'mixed' : activeCategoryId,
         categoryTitle: catTitle,
         difficulty: activeDifficulty === 'All' ? 'Mixed' : activeDifficulty,
         totalQuestions: totalCount,
         correctAnswers: correctCount,
         scorePercentage: scorePercent,
-        xpEarned: currentScore,
+        xpEarned: xpCalc.totalXp,
         timeSpentSeconds: elapsedSeconds,
+        sessionToken: sessionKey,
       };
 
+      // Record locally for immediate UI reactivity
       const result = recordQuizResult(attemptData);
       setNewlyUnlockedBadges(result.newlyUnlocked);
 
+      // Build answers map for server-side evaluation
+      const answers: Record<string, string> = {};
+      for (const a of answeredQuestions) {
+        answers[a.question.id] = a.selectedOptionId;
+      }
+      setAnswersMap(answers);
+
+      if (user) {
+        // Authenticated student: Send answers to trusted server endpoint
+        fetch('/api/gamification/complete-quiz', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            quizId: sessionKey,
+            category: activeCategoryId === 'all' ? 'fundamentals' : activeCategoryId,
+            answers,
+            sessionToken: sessionKey,
+          }),
+        })
+          .then((res) => {
+            if (res.ok) {
+              setIsPersisted(true);
+            }
+          })
+          .catch(() => {});
+      } else {
+        setIsPersisted(false);
+      }
+
       setLastAttempt({
         ...attemptData,
-        quizId: `att-${Date.now()}`,
+        quizId: sessionKey,
         timestamp: Date.now(),
       });
 
@@ -253,6 +293,9 @@ export const CyberIqArenaView: React.FC = () => {
           onReviewAnswers={() => setActiveView('review')}
           onRetake={() => handleStartQuiz(activeCategoryId, activeDifficulty, activeQuestions.length)}
           onChooseNewCategory={() => setActiveView('select')}
+          answersMap={answersMap}
+          isPersisted={isPersisted}
+          onPersistedSuccess={() => setIsPersisted(true)}
         />
       )}
 

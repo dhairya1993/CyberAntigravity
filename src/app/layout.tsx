@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { GamificationToast } from "@/components/gamification/GamificationToast";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthModal } from "@/components/auth/AuthModal";
 
 
 export const viewport: Viewport = {
@@ -133,7 +136,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#07090e] text-slate-100 antialiased">
-        {children}
+        <AuthProvider>
+          {children}
+          <GamificationToast />
+          <AuthModal />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Search, Menu, X, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Search, Menu, X, ArrowRight, ShieldCheck, ChevronRight, User, LogOut, Award, ChevronDown } from 'lucide-react';
 import { MAIN_NAV_ITEMS } from '@/data/navigation';
 import { Button } from '@/components/ui/Button';
 import { CyberAntigravityLogo } from '@/components/ui/CyberAntigravityLogo';
 import { SearchModal } from './SearchModal';
+import { useAuth } from '@/contexts/AuthContext';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,6 +33,21 @@ export const Navbar: React.FC = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  const { user, logout, openAuthModal } = useAuth();
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
+
+  // Close user dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -87,8 +103,8 @@ export const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            {/* Actions: Search & CTA */}
-            <div className="hidden sm:flex items-center gap-3">
+            {/* Actions: Search, Auth & CTA */}
+            <div className="hidden sm:flex items-center gap-2.5">
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(true)}
@@ -96,11 +112,67 @@ export const Navbar: React.FC = () => {
                 aria-label="Open search dialog"
               >
                 <Search className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Search safety topics...</span>
+                <span>Search...</span>
                 <kbd className="font-mono text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded border border-slate-700">
                   Ctrl K
                 </kbd>
               </button>
+
+              {/* Student Authentication Controls */}
+              {user ? (
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    type="button"
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-cyan-800/80 hover:border-cyan-500 text-xs text-white transition-all cyber-focus-ring"
+                    aria-expanded={isUserMenuOpen}
+                    aria-label="User account menu"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-cyan-950 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-semibold text-xs">
+                      {user.displayName.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="font-medium max-w-[120px] truncate">{user.displayName}</span>
+                    <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                  </button>
+
+                  {isUserMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-xl shadow-xl shadow-black/60 p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                      <div className="px-3 py-2 border-b border-slate-800 mb-1">
+                        <p className="text-xs font-semibold text-white truncate">{user.displayName}</p>
+                        <p className="text-[11px] text-slate-400 truncate">{user.email}</p>
+                      </div>
+                      <Link
+                        href="/learn/progress"
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-3 py-2 text-xs text-slate-200 hover:text-cyan-300 hover:bg-slate-800 rounded-lg transition-colors"
+                      >
+                        <Award className="w-4 h-4 text-cyan-400" />
+                        <span>My Progress & Badges</span>
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          logout();
+                        }}
+                        className="w-full flex items-center gap-2.5 px-3 py-2 text-xs text-rose-300 hover:bg-rose-950/40 rounded-lg transition-colors text-left"
+                      >
+                        <LogOut className="w-4 h-4 text-rose-400" />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => openAuthModal('login')}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-cyan-300 hover:text-white bg-cyan-950/60 hover:bg-cyan-900/80 border border-cyan-800/80 rounded-lg transition-colors cyber-focus-ring"
+                >
+                  <User className="w-3.5 h-3.5" />
+                  <span>Sign In</span>
+                </button>
+              )}
 
               <Button
                 asLink
@@ -110,7 +182,7 @@ export const Navbar: React.FC = () => {
                 icon={<ArrowRight className="w-4 h-4" />}
                 iconPosition="right"
               >
-                Explore Cyber Safety
+                Safety Guide
               </Button>
             </div>
 
@@ -159,6 +231,52 @@ export const Navbar: React.FC = () => {
             </nav>
 
             <div className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col gap-3">
+              {user ? (
+                <div className="p-3 bg-slate-900 border border-cyan-800/60 rounded-xl mb-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <div>
+                      <p className="text-xs font-bold text-white">{user.displayName}</p>
+                      <p className="text-[10px] text-slate-400">{user.email}</p>
+                    </div>
+                    <span className="text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-800 px-2 py-0.5 rounded font-mono">
+                      Student
+                    </span>
+                  </div>
+                  <div className="flex gap-2">
+                    <Link
+                      href="/learn/progress"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex-1 py-1.5 text-center text-xs font-semibold bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-800 rounded-lg"
+                    >
+                      My Dashboard
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        logout();
+                      }}
+                      className="px-3 py-1.5 text-xs font-medium text-rose-300 hover:bg-rose-950/40 rounded-lg"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <Button
+                  variant="outline"
+                  size="md"
+                  className="w-full justify-center text-cyan-300 border-cyan-800 hover:bg-cyan-950/60"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    openAuthModal('login');
+                  }}
+                >
+                  <User className="w-4 h-4 mr-2" />
+                  Sign In or Register
+                </Button>
+              )}
+
               <Button
                 asLink
                 href="/cyber-safety"

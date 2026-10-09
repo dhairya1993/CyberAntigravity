@@ -14,6 +14,7 @@ import {
   EyeOff,
   Wifi,
   Terminal,
+  ChevronRight,
 } from 'lucide-react';
 import { CYBER_IQ_BADGES } from '@/data/cyberIqQuestions';
 
@@ -160,7 +161,14 @@ export const CyberIqBadgesModal: React.FC<CyberIqBadgesModalProps> = ({
 
         {/* Modal Footer */}
         <div className="p-4 border-t border-slate-800/80 bg-slate-950/80 flex items-center justify-between text-xs font-mono text-slate-400">
-          <span>Stored locally in this browser</span>
+          <a
+            href="/learn/progress"
+            onClick={onClose}
+            className="text-cyan-400 hover:text-cyan-300 font-bold transition-colors flex items-center gap-1"
+          >
+            <span>Full Student Progress Dashboard</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </a>
           <button
             type="button"
             onClick={onClose}

@@ -116,6 +116,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/learn/progress`,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/learn/cybersecurity-fundamentals`,
       changeFrequency: 'monthly',
       priority: 0.9,

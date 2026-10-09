@@ -75,7 +75,7 @@ export default function LearnPage() {
 
         {/* 2.5. Interactive 9-Level Visual Journey */}
         <section className="py-12 bg-slate-950/60 border-t border-slate-800/80">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="cyber-container">
             <LearningRoadmapVisual />
           </div>
         </section>
@@ -84,7 +84,7 @@ export default function LearnPage() {
         <LearningRoadmap />
 
         {/* 4. Safe Practice Notice Trust Component */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="cyber-container py-12">
           <SafePracticeNotice />
         </div>
 

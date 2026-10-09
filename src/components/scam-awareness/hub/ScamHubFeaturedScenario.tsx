@@ -24,7 +24,7 @@ export const ScamHubFeaturedScenario: React.FC = () => {
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cyber-container relative">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-800/60 bg-amber-950/40 text-amber-300 text-xs font-mono uppercase tracking-wider mb-4">

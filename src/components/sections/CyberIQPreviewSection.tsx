@@ -13,7 +13,6 @@ import {
   HelpCircle,
   Gauge,
   ChevronRight,
-  Shield,
 } from 'lucide-react';
 
 interface ScenarioOption {
@@ -215,7 +214,7 @@ export const CyberIQPreviewSection: React.FC = () => {
       {/* Background radial accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-cyan-950/20 via-purple-950/15 to-transparent blur-3xl pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="cyber-container space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider">
@@ -413,21 +412,30 @@ export const CyberIQPreviewSection: React.FC = () => {
 
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                   {hasAnswered ? (
-                    <button
-                      type="button"
-                      onClick={handleNextScenario}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs sm:text-sm font-bold shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.02] cursor-pointer cyber-focus-ring"
-                    >
-                      <span>Next Scenario →</span>
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center gap-2 w-full sm:w-auto">
+                      <button
+                        type="button"
+                        onClick={handleNextScenario}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs sm:text-sm font-bold shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.02] cursor-pointer cyber-focus-ring"
+                      >
+                        <span>Next Scenario →</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                      <Link
+                        href="/cyber-iq"
+                        className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 text-xs font-mono border border-cyan-800 transition-colors"
+                      >
+                        <span>Full Arena</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   ) : (
                     <Link
-                      href="/scam-awareness#scam-quiz"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono transition-colors cyber-focus-ring"
+                      href="/cyber-iq"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-mono transition-colors cyber-focus-ring shadow-lg"
                     >
-                      <Shield className="w-3.5 h-3.5 text-cyan-400" />
-                      <span>Take Full Scam Quiz</span>
+                      <BrainCircuit className="w-3.5 h-3.5 text-cyan-400" />
+                      <span>Enter Full Cyber IQ Arena (70+ Qs)</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   )}

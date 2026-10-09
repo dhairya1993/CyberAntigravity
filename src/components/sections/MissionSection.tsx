@@ -44,7 +44,7 @@ export const MissionSection: React.FC = () => {
 
   return (
     <section id="about" className="py-20 md:py-28 relative scroll-mt-20 bg-slate-950/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cyber-container">
         <SectionHeader
           badgeText="Our Mission & Trust Mandate"
           badgeVariant="emerald"

@@ -103,7 +103,7 @@ const STAGES: LearningStage[] = [
 export const StudentExperienceSection: React.FC = () => {
   return (
     <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-900/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      <div className="cyber-container space-y-14">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-800/80 text-cyan-300 text-xs font-mono uppercase tracking-wider">

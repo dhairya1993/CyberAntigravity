@@ -12,6 +12,7 @@ import { ScamSpotterPreviewSection } from '@/components/sections/ScamSpotterPrev
 import { StudentExperienceSection } from '@/components/sections/StudentExperienceSection';
 import { SecurityToolsPreviewSection } from '@/components/sections/SecurityToolsPreviewSection';
 import { WhyCyberAntigravitySection } from '@/components/sections/WhyCyberAntigravitySection';
+import { MissionSection } from '@/components/sections/MissionSection';
 import { LatestGuidesSection } from '@/components/sections/LatestGuidesSection';
 import { AiCyberFutureSection } from '@/components/sections/AiCyberFutureSection';
 import { TrustNoticeSection } from '@/components/sections/TrustNoticeSection';
@@ -63,6 +64,9 @@ export default function Home() {
 
         {/* 12. Why Learn With CyberAntigravity */}
         <WhyCyberAntigravitySection />
+
+        {/* 12.5. Mission & Trust Mandate (About Anchor) */}
+        <MissionSection />
 
         {/* 13. Latest Cybersecurity Guides */}
         <LatestGuidesSection />

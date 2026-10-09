@@ -109,11 +109,32 @@ export const PasswordGeneratorTool: React.FC = () => {
   const handleCopy = async () => {
     if (!generatedResult) return;
     try {
-      await navigator.clipboard.writeText(generatedResult);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(generatedResult);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+        return;
+      }
     } catch {
-      // Fallback
+      // Fall through to fallback
+    }
+
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = generatedResult;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (successful) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      }
+    } catch {
+      // Graceful error handling
     }
   };
 

@@ -55,7 +55,7 @@ const INDICATORS: StatIndicator[] = [
 export const ScamHubStatsStrip: React.FC = () => {
   return (
     <section className="relative py-6 sm:py-8 border-b border-slate-800/60 bg-[#06080e]" aria-label="Key Platform Indicators">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cyber-container">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {INDICATORS.map((indicator) => (
             <div

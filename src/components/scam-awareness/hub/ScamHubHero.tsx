@@ -15,11 +15,11 @@ export const ScamHubHero: React.FC = () => {
         aria-hidden="true" 
       />
       <div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-80 bg-gradient-to-br from-cyan-500/10 via-teal-500/5 to-transparent blur-3xl pointer-events-none opacity-60" 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1720px] h-80 bg-gradient-to-br from-cyan-500/10 via-teal-500/5 to-transparent blur-3xl pointer-events-none opacity-60" 
         aria-hidden="true" 
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cyber-container relative">
         {/* 1. TOP BREADCRUMB */}
         <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6 sm:mb-8" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-cyan-400 transition-colors">

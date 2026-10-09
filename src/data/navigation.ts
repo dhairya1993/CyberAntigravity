@@ -4,10 +4,11 @@ export const MAIN_NAV_ITEMS: NavItem[] = [
   { title: 'Home', href: '/' },
   { title: 'Cyber Safety', href: '/cyber-safety' },
   { title: 'Scam Awareness', href: '/scam-awareness' },
+  { title: 'Cyber IQ', href: '/cyber-iq', badge: 'Arena' },
   { title: 'Learn', href: '/learn' },
   { title: 'Tools', href: '/tools' },
   { title: 'Blog', href: '/blog' },
-  { title: 'About', href: '/#about' },
+  { title: 'About', href: '/about' },
 ];
 
 export const FOOTER_SECTIONS = {
@@ -19,18 +20,20 @@ export const FOOTER_SECTIONS = {
     { title: 'Smartphone Protection', href: '/cyber-safety#smartphone-security' },
     { title: 'Computer Hardening', href: '/cyber-safety#computer-security' },
     { title: 'Scam Red Flags', href: '/cyber-safety#red-flags' },
-    { title: 'Emergency Response', href: '/cyber-safety#emergency-steps' },
+    { title: 'Emergency Response', href: '/cyber-safety#emergency-response' },
   ],
   scams: [
     { title: 'Scam Awareness Hub', href: '/scam-awareness' },
-    { title: 'Spot the Red Flags Simulator', href: '/scam-awareness#red-flag-analyzer' },
-    { title: 'Scam IQ Quiz Challenge', href: '/scam-awareness#scam-quiz' },
-    { title: 'Phishing & Smishing Scams', href: '/scam-awareness#phishing-scams' },
-    { title: 'Fake Job & Recruiter Scams', href: '/scam-awareness#fake-job-scams' },
-    { title: 'Investment & Crypto Scams', href: '/scam-awareness#investment-scams' },
-    { title: 'Bank & Wire Fraud', href: '/scam-awareness#bank-payment-scams' },
+    { title: 'Scam Types Directory', href: '/scam-awareness/types' },
+    { title: 'Phishing Interactive Lab', href: '/scam-awareness/types/phishing' },
+    { title: 'Spot Scam Red Flags', href: '/scam-awareness/red-flags' },
+    { title: 'Scam IQ Quiz Challenge', href: '/scam-awareness/challenge' },
+    { title: 'Threat Detection Sandbox', href: '/scam-awareness/simulator' },
+    { title: 'How Scams Work (Psychology)', href: '/scam-awareness/how-scams-work' },
+    { title: 'What To Do If Scammed', href: '/scam-awareness/response' },
   ],
   education: [
+    { title: 'Cyber IQ Quiz Arena', href: '/cyber-iq' },
     { title: 'Cybersecurity Learning Hub', href: '/learn' },
     { title: 'Cybersecurity Fundamentals', href: '/learn/cybersecurity-fundamentals' },
     { title: 'Learning Roadmap (9 Levels)', href: '/learn#roadmap' },
@@ -56,6 +59,7 @@ export const FOOTER_SECTIONS = {
     { title: 'Cyber Hygiene Checklist', href: '/tools/cyber-hygiene' },
   ],
   legal: [
+    { title: 'About CyberAntigravity', href: '/about' },
     { title: 'Privacy Policy', href: '/privacy' },
     { title: 'Terms of Service', href: '/terms' },
     { title: 'Security Disclaimer', href: '/disclaimer' },

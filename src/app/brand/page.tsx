@@ -1,10 +1,8 @@
 import React from 'react';
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { Download, Shield, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Download, Shield, Sparkles, CheckCircle2 } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { CyberAntigravityLogo } from '@/components/ui/CyberAntigravityLogo';
 
 export const metadata: Metadata = {
   title: 'Brand Assets & Logo Guidelines | CyberAntigravity',

@@ -127,7 +127,7 @@ export default function CyberSafetyPage() {
 
         {/* 1.5. Visual Digital Defense Surface Ecosystem */}
         <section className="py-12 bg-slate-950/40 border-b border-slate-800/80">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="cyber-container">
             <DigitalDefenseSurface />
           </div>
         </section>
@@ -158,7 +158,7 @@ export default function CyberSafetyPage() {
 
         {/* Dedicated Callout: Cyber Safety → Scam Awareness Hub */}
         <section className="py-8 bg-slate-950/60 border-y border-slate-800/80">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="cyber-container">
             <div className="rounded-2xl border border-amber-800/60 bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-950 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
               <div className="space-y-2 max-w-2xl">
                 <div className="flex items-center gap-2">

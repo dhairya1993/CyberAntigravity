@@ -103,7 +103,7 @@ const ROADMAP_STAGES: RoadmapStage[] = [
 export const LearningRoadmapPreviewSection: React.FC = () => {
   return (
     <section id="roadmap" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/60 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      <div className="cyber-container space-y-14">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl space-y-3">

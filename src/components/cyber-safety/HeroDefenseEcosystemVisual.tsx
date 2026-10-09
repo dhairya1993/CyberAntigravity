@@ -133,33 +133,30 @@ export const HeroDefenseEcosystemVisual: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveMode('protected')}
-            className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
-              activeMode === 'protected'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
+            className={`px-2.5 py-1 rounded-lg font-medium transition-all ${activeMode === 'protected'
+              ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+              : 'text-slate-400 hover:text-slate-200'
+              }`}
           >
             Protected
           </button>
           <button
             type="button"
             onClick={() => setActiveMode('warning')}
-            className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
-              activeMode === 'warning'
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
+            className={`px-2.5 py-1 rounded-lg font-medium transition-all ${activeMode === 'warning'
+              ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
+              : 'text-slate-400 hover:text-slate-200'
+              }`}
           >
             Warning
           </button>
           <button
             type="button"
             onClick={() => setActiveMode('threat')}
-            className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
-              activeMode === 'threat'
-                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
+            className={`px-2.5 py-1 rounded-lg font-medium transition-all ${activeMode === 'threat'
+              ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm'
+              : 'text-slate-400 hover:text-slate-200'
+              }`}
           >
             Threat
           </button>
@@ -256,11 +253,10 @@ export const HeroDefenseEcosystemVisual: React.FC = () => {
               key={node.id}
               type="button"
               onClick={() => setSelectedNodeId(node.id)}
-              className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-xl border transition-all duration-200 flex flex-col items-center gap-1 group cyber-focus-ring ${
-                isSelected
-                  ? `bg-slate-900/95 ${currentTheme.border} shadow-lg scale-110`
-                  : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 hover:bg-slate-900'
-              }`}
+              className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-xl border transition-all duration-200 flex flex-col items-center gap-1 group cyber-focus-ring ${isSelected
+                ? `bg-slate-900/95 ${currentTheme.border} shadow-lg scale-110`
+                : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 hover:bg-slate-900'
+                }`}
               style={{
                 left: `${node.x}%`,
                 top: `${node.y}%`,
@@ -269,9 +265,8 @@ export const HeroDefenseEcosystemVisual: React.FC = () => {
               aria-label={`Inspect ${node.label} node details`}
             >
               <div
-                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center ${
-                  isSelected ? currentTheme.text : 'text-slate-400 group-hover:text-slate-200'
-                }`}
+                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center ${isSelected ? currentTheme.text : 'text-slate-400 group-hover:text-slate-200'
+                  }`}
               >
                 <NodeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>

@@ -37,7 +37,7 @@ export const Navbar: React.FC = () => {
     <>
       {/* Top Security Educational Notice */}
       <div className="bg-slate-950 border-b border-cyan-950/80 px-4 py-2 text-xs text-slate-300">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div className="max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 xl:px-12 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 overflow-hidden whitespace-nowrap">
             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-cyan-950 text-cyan-300 border border-cyan-800/80">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" /> Educational Notice
@@ -63,7 +63,7 @@ export const Navbar: React.FC = () => {
             : 'bg-transparent border-b border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Brand Logo & Tagline */}
             <Link

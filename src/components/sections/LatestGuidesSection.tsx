@@ -139,7 +139,7 @@ export const LatestGuidesSection: React.FC = () => {
 
   return (
     <section id="guides" className="py-20 md:py-28 relative scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cyber-container">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl space-y-3">

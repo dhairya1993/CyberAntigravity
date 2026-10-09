@@ -50,7 +50,7 @@ export const ScamSpotterPreviewSection: React.FC = () => {
 
   return (
     <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-900/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="cyber-container space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-800/80 text-amber-300 text-xs font-mono uppercase tracking-wider">

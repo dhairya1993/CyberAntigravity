@@ -107,7 +107,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
   const currentDetail = NODE_DETAILS[activeId] || NODE_DETAILS.central;
 
   return (
-    <div className="relative w-full max-w-xl mx-auto rounded-3xl bg-slate-950/85 border border-slate-800/90 shadow-2xl shadow-cyan-950/30 overflow-hidden backdrop-blur-xl transition-all">
+    <div className="relative w-full max-w-xl xl:max-w-2xl 2xl:max-w-3xl mx-auto rounded-3xl bg-slate-950/85 border border-slate-800/90 shadow-2xl shadow-cyan-950/30 overflow-hidden backdrop-blur-xl transition-all">
       {/* Top Header Strip with Radar Status */}
       <div className="px-4 sm:px-5 py-3 border-b border-slate-800/80 bg-slate-900/70 flex items-center justify-between">
         <div className="flex items-center gap-2">

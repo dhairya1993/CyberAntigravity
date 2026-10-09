@@ -19,7 +19,7 @@ export const CyberLabPreviewSection: React.FC = () => {
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[400px] bg-gradient-to-r from-cyan-950/25 via-blue-950/20 to-transparent blur-3xl pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="cyber-container space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider">
@@ -35,7 +35,7 @@ export const CyberLabPreviewSection: React.FC = () => {
         </div>
 
         {/* Fictional Cyber Lab Graphical Workspace */}
-        <div className="max-w-6xl mx-auto rounded-3xl bg-slate-950 border border-slate-800 shadow-2xl shadow-cyan-950/30 overflow-hidden">
+        <div className="max-w-6xl 2xl:max-w-7xl mx-auto rounded-3xl bg-slate-950 border border-slate-800 shadow-2xl shadow-cyan-950/30 overflow-hidden">
           {/* Lab Top Control Bar with 3 Required Badges */}
           <div className="p-4 sm:px-6 bg-slate-900/90 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">

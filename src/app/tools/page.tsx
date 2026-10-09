@@ -74,7 +74,7 @@ export default function ToolsHubPage() {
 
         {/* 3. Featured Interactive Quick Tools Section */}
         <section className="py-16 md:py-24 border-b border-slate-800/80 bg-slate-950/40">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="cyber-container space-y-12">
             <div className="max-w-3xl">
               <span className="text-xs font-mono uppercase text-cyan-400 font-bold tracking-wider">
                 Instant Browser Utilities
@@ -128,7 +128,7 @@ export default function ToolsHubPage() {
         </section>
 
         {/* 4. Global Tool Disclaimer */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="cyber-container py-12">
           <ToolDisclaimer />
         </div>
       </main>

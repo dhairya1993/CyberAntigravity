@@ -4,7 +4,7 @@ import { Info } from 'lucide-react';
 export const TrustNoticeSection: React.FC = () => {
   return (
     <section className="py-8 relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="rounded-2xl bg-slate-900/60 border border-slate-800/80 p-5 sm:p-6 backdrop-blur-sm flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <div className="p-3 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 shrink-0">
             <Info className="w-5 h-5" />

@@ -9,7 +9,7 @@ export const FinalCtaSection: React.FC = () => {
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-cyan-600/15 via-blue-600/10 to-purple-600/10 blur-3xl rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative">
+      <div className="max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-8 relative">
         {/* Subtle Shield Symbol & Tagline */}
         <div className="flex flex-col items-center justify-center space-y-3">
           <div className="p-3 rounded-2xl bg-cyan-950/50 border border-cyan-500/30 shadow-lg shadow-cyan-950/30">

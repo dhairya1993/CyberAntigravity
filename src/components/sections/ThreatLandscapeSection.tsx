@@ -163,7 +163,7 @@ export const ThreatLandscapeSection: React.FC = () => {
 
   return (
     <section id="threat-landscape" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/50 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="cyber-container space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-950/60 border border-rose-800/80 text-rose-300 text-xs font-mono uppercase tracking-wider">

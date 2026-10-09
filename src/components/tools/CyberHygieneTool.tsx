@@ -135,14 +135,34 @@ export const CyberHygieneTool: React.FC = () => {
     const summary = CHECKLIST_ITEMS.map(
       (item) => `[${checkedItems[item.id] ? 'X' : ' '}] ${item.title}`
     ).join('\n');
+    const fullText = `Cyber Hygiene Checklist (${completedCount}/${totalCount} Complete):\n\n${summary}`;
     try {
-      await navigator.clipboard.writeText(
-        `Cyber Hygiene Checklist (${completedCount}/${totalCount} Complete):\n\n${summary}`
-      );
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(fullText);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        return;
+      }
     } catch {
-      // Clipboard fallback
+      // Fall through to fallback
+    }
+
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = fullText;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (successful) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch {
+      // Graceful error handling
     }
   };
 

@@ -128,6 +128,7 @@ export const EmergencySteps: React.FC = () => {
 
   return (
     <section id="emergency-response" className="py-16 md:py-24 relative scroll-mt-20 border-t border-slate-800/80">
+      <div id="emergency-steps" className="scroll-mt-24" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">

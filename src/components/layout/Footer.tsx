@@ -7,7 +7,7 @@ import { CyberAntigravityLogo } from '@/components/ui/CyberAntigravityLogo';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 border-t border-slate-800/80 pt-16 pb-12 text-slate-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8 pb-12 border-b border-slate-800/60">
           {/* Brand Column */}

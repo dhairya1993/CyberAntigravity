@@ -35,7 +35,7 @@ export const ToolsDirectory: React.FC = () => {
 
   return (
     <section id="tools-directory" className="py-16 md:py-24 border-b border-slate-800/80 relative scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cyber-container">
         <SectionHeader
           badgeText="Utility Directory"
           badgeVariant="cyan"

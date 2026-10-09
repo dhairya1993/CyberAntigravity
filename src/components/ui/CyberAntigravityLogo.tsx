@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 export interface CyberAntigravityLogoProps {
   variant?: 'full' | 'compact' | 'symbol' | 'monochrome';
@@ -17,7 +16,6 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
   variant = 'full',
   theme = 'dark',
   size = 'md',
-  showTagline = true,
   glow = true,
   priority = true,
   className = '',
@@ -27,16 +25,13 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
   // Determine which asset source to load based on variant and theme
   let src = '/brand/cyberantigravity-logo.png';
   let alt = 'CyberAntigravity — Rise Above Cyber Threats';
-  let aspectRatio = 'aspect-[886/168]';
 
   if (variant === 'symbol') {
     src = '/brand/cyberantigravity-symbol.png';
     alt = 'CyberAntigravity Shield Emblem';
-    aspectRatio = 'aspect-[224/168]';
   } else if (variant === 'compact') {
     src = '/brand/cyberantigravity-logo-compact.png';
     alt = 'CyberAntigravity Compact Logo';
-    aspectRatio = 'aspect-[148/96]';
   } else if (variant === 'monochrome') {
     if (isLight) {
       src = '/brand/cyberantigravity-logo-dark.png';
@@ -45,7 +40,6 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
       src = '/brand/cyberantigravity-logo-white.png';
       alt = 'CyberAntigravity Logo - White Monochrome';
     }
-    aspectRatio = 'aspect-[136/96]';
   }
 
   // Size styling tokens

@@ -56,7 +56,7 @@ export const VisualStorytellingTransitions: React.FC = () => {
   const current = stories[activeStory];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className="max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8">
       <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800/90 shadow-xl space-y-5">
         {/* Top Story Navigator */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">

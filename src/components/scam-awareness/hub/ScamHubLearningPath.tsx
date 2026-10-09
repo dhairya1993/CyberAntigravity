@@ -151,7 +151,7 @@ const LEARNING_CARDS: LearningCardItem[] = [
 export const ScamHubLearningPath: React.FC = () => {
   return (
     <section className="py-14 sm:py-20 bg-[#07090e]" aria-labelledby="learning-path-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cyber-container">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800 bg-slate-900/60 text-slate-300 text-xs font-mono uppercase tracking-wider mb-4">

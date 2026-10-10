@@ -106,7 +106,7 @@ export default function RootLayout({
           "Global cybersecurity education and online safety platform providing actionable digital defense, scam awareness, and ethical security training.",
         contactPoint: {
           "@type": "ContactPoint",
-          email: "contact@cyberantigravity.com",
+          email: "dhairyaparekhofficial@gmail.com",
           contactType: "Customer Support & Security Disclosure",
         },
       },

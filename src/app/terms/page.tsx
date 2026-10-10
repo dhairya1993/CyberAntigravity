@@ -50,8 +50,8 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-white pt-4">4. Inquiries</h2>
             <p>
               For legal or terms questions, email us at{' '}
-              <a href="mailto:contact@cyberantigravity.com" className="text-cyan-400 underline">
-                contact@cyberantigravity.com
+              <a href="mailto:dhairyaparekhofficial@gmail.com" className="text-cyan-400 underline">
+                dhairyaparekhofficial@gmail.com
               </a>.
             </p>
           </section>

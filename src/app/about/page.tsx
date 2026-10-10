@@ -374,10 +374,10 @@ export default function AboutPage() {
               <Mail className="w-4 h-4 text-cyan-400" />
               <span>Reach our editorial team at</span>
               <a
-                href="mailto:contact@cyberantigravity.com"
+                href="mailto:dhairyaparekhofficial@gmail.com"
                 className="text-cyan-400 hover:underline font-mono"
               >
-                contact@cyberantigravity.com
+                dhairyaparekhofficial@gmail.com
               </a>
             </div>
           </div>

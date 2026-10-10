@@ -39,8 +39,8 @@ export default function DisclosurePage() {
             <h2 className="text-xl font-bold text-white">1. Reporting a Finding</h2>
             <p>
               If you discover a security vulnerability or bug in our website infrastructure, please report it to our security team via email at{' '}
-              <a href="mailto:contact@cyberantigravity.com" className="text-cyan-400 underline">
-                contact@cyberantigravity.com
+              <a href="mailto:dhairyaparekhofficial@gmail.com" className="text-cyan-400 underline">
+                dhairyaparekhofficial@gmail.com
               </a>. Please include detailed steps to reproduce the issue.
             </p>
 

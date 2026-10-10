@@ -54,8 +54,8 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-white pt-4">4. Contact & Inquiries</h2>
             <p>
               If you have any questions or data privacy requests, contact us directly at{' '}
-              <a href="mailto:contact@cyberantigravity.com" className="text-cyan-400 underline">
-                contact@cyberantigravity.com
+              <a href="mailto:dhairyaparekhofficial@gmail.com" className="text-cyan-400 underline">
+                dhairyaparekhofficial@gmail.com
               </a>.
             </p>
           </section>

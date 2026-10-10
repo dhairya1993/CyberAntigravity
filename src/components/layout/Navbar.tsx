@@ -14,6 +14,18 @@ export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  // Global keyboard shortcut to open/close Search Modal (Ctrl+K or Cmd+K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -52,21 +64,21 @@ export const Navbar: React.FC = () => {
   return (
     <>
       {/* Top Security Educational Notice */}
-      <div className="bg-slate-950 border-b border-cyan-950/80 px-4 py-2 text-xs text-slate-300">
+      <div className="bg-slate-950 border-b border-cyan-950/80 px-4 py-2 text-xs sm:text-sm text-slate-200">
         <div className="max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 xl:px-12 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 overflow-hidden whitespace-nowrap">
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-cyan-950 text-cyan-300 border border-cyan-800/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" /> Educational Notice
+          <div className="flex items-center gap-2.5 overflow-hidden whitespace-nowrap">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] sm:text-xs font-bold tracking-wider uppercase bg-cyan-950 text-cyan-300 border border-cyan-800/80">
+              <span className="w-2 h-2 rounded-full bg-cyan-400" /> Educational Notice
             </span>
-            <span className="text-slate-300 font-medium truncate">
+            <span className="text-slate-200 font-medium truncate">
               Cyber Safety Guide: Learn how to recognize and avoid modern phishing attacks.
             </span>
           </div>
           <a
             href="/cyber-safety"
-            className="hidden sm:inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors shrink-0"
+            className="hidden sm:inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-bold transition-colors shrink-0 text-xs sm:text-sm"
           >
-            Explore Safety Guide <ChevronRight className="w-3.5 h-3.5" />
+            Explore Safety Guide <ChevronRight className="w-4 h-4" />
           </a>
         </div>
       </div>

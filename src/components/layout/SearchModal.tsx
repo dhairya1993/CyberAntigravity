@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Search,
@@ -28,14 +28,28 @@ interface SearchModalProps {
 
 export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
   const [query, setQuery] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  // Handle ESC key and Cmd+K / Ctrl+K
+  // Auto focus input when opened, reset query when closed
   useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    } else {
+      setQuery('');
+    }
+  }, [isOpen]);
+
+  // Handle ESC key
+  useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if (e.key === 'Escape') {
         e.preventDefault();
-        if (isOpen) onClose();
+        onClose();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -135,6 +149,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
         <div className="flex items-center px-4 py-3.5 border-b border-slate-800 bg-slate-950/50">
           <Search className="w-5 h-5 text-cyan-400 shrink-0" aria-hidden="true" />
           <input
+            ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}

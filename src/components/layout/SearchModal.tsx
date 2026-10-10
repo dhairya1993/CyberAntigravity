@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import {
   Search,
@@ -30,15 +30,18 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Auto focus input when opened, reset query when closed
+  const handleClose = useCallback(() => {
+    setQuery('');
+    onClose();
+  }, [onClose]);
+
+  // Auto focus input when opened
   useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(() => {
         inputRef.current?.focus();
       }, 50);
       return () => clearTimeout(timer);
-    } else {
-      setQuery('');
     }
   }, [isOpen]);
 
@@ -49,12 +52,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
-        onClose();
+        handleClose();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [isOpen, handleClose]);
 
   if (!isOpen) return null;
 
@@ -141,7 +144,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
     >
       <div
         className="fixed inset-0"
-        onClick={onClose}
+        onClick={handleClose}
         aria-hidden="true"
       />
       <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl shadow-cyan-950/40 overflow-hidden z-10 flex flex-col max-h-[82vh]">
@@ -169,7 +172,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
           )}
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             className="ml-2 px-2 py-1 text-xs font-mono text-slate-400 bg-slate-800 rounded border border-slate-700 hover:text-white"
           >
             ESC

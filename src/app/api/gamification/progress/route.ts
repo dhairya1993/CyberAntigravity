@@ -51,6 +51,8 @@ export async function GET(req: NextRequest) {
         totalQuizzes: data.quizCompletions.length,
         totalModulesCompleted: data.moduleCompletions.length,
         completedModuleIds: data.moduleCompletions.map((m) => m.module_id),
+        completedModules: data.moduleCompletions,
+        quizHistory: data.quizCompletions,
         unlockedBadges: data.badges.map((b) => b.badge_id),
         categoryStats,
         recentActivities: data.activities,

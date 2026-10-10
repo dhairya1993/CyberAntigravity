@@ -266,6 +266,106 @@ async function runTests() {
   });
   assert(postLogoutProgress.status === 401, 'Logged-out user rejected with 401 Unauthorized for progress');
 
+  // 11. Re-Login as Student A & Verify Data Persistence Across Sessions
+  console.log('\n--- Step 11: Re-Login as Student A & Verify Data Persistence Across Sessions ---');
+  const reloginRes = await fetch(`${BASE_URL}/api/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: testEmailA,
+      password: 'CyberPassword123!',
+    }),
+  });
+  assert(reloginRes.status === 200, 'Student A re-logged in successfully with email and password');
+  const reloginCookie = reloginRes.headers.get('set-cookie').split(';')[0];
+
+  const reloginProgressRes = await fetch(`${BASE_URL}/api/gamification/progress`, {
+    headers: { Cookie: reloginCookie },
+  });
+  const reloginProgressData = await reloginProgressRes.json();
+  assert(reloginProgressRes.status === 200, 'Re-authenticated session retrieved progress');
+  assert(reloginProgressData.profile?.totalXp === 125, `Progress retained after re-login: 125 XP (expected 125), got: ${reloginProgressData.profile?.totalXp}`);
+  assert(reloginProgressData.profile?.totalQuizzes === 1, 'Quiz completion count retained after re-login');
+  assert(reloginProgressData.profile?.totalModulesCompleted === 1, 'Module completion count retained after re-login');
+  assert(reloginProgressData.profile?.quizHistory?.length === 1, 'Quiz history list returned and persisted');
+  assert(reloginProgressData.profile?.completedModules?.length === 1, 'Completed modules list returned and persisted');
+  assert(reloginProgressData.profile?.unlockedBadges?.includes('badge-first-quiz'), 'First Steps badge retained after re-login');
+  assert(reloginProgressData.profile?.unlockedBadges?.includes('badge-flawless'), 'Perfect Score badge retained after re-login');
+
+  // 12. Score Bonus Tiers Verification
+  console.log('\n--- Step 12: Verify Bonus Reward Tiers ---');
+  // 8/10 answers (80% score) -> Base 50 + High Score 25 = 75 XP (no perfect bonus)
+  const answers80Pct = {
+    'fund-01': 'B',
+    'fund-02': 'B',
+    'fund-03': 'B',
+    'fund-04': 'A',
+    'fund-05': 'B',
+    'fund-06': 'B',
+    'fund-07': 'B',
+    'fund-08': 'B',
+    'fund-09': 'X', // wrong
+    'fund-10': 'X', // wrong
+  };
+  const token80 = `quiz_tier_80_${Date.now()}`;
+  const res80 = await fetch(`${BASE_URL}/api/gamification/complete-quiz`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Cookie: reloginCookie },
+    body: JSON.stringify({
+      quizId: 'quiz-fund-80',
+      category: 'fundamentals',
+      sessionToken: token80,
+      answers: answers80Pct,
+    }),
+  });
+  const data80 = await res80.json();
+  assert(res80.status === 200, '80% quiz submission processed');
+  assert(data80.score === 8 && data80.scorePercentage === 80, 'Calculated exactly 8/10 (80%)');
+  assert(data80.verifiedXp === 75, `Awarded exactly 75 XP (50 base + 25 bonus), got: ${data80.verifiedXp}`);
+
+  // 6/10 answers (60% score) -> Base 50 only = 50 XP
+  const answers60Pct = {
+    'fund-01': 'B',
+    'fund-02': 'B',
+    'fund-03': 'B',
+    'fund-04': 'A',
+    'fund-05': 'B',
+    'fund-06': 'B',
+    'fund-07': 'X', // wrong
+    'fund-08': 'X', // wrong
+    'fund-09': 'X', // wrong
+    'fund-10': 'X', // wrong
+  };
+  const token60 = `quiz_tier_60_${Date.now()}`;
+  const res60 = await fetch(`${BASE_URL}/api/gamification/complete-quiz`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Cookie: reloginCookie },
+    body: JSON.stringify({
+      quizId: 'quiz-fund-60',
+      category: 'fundamentals',
+      sessionToken: token60,
+      answers: answers60Pct,
+    }),
+  });
+  const data60 = await res60.json();
+  assert(res60.status === 200, '60% quiz submission processed');
+  assert(data60.score === 6 && data60.scorePercentage === 60, 'Calculated exactly 6/10 (60%)');
+  assert(data60.verifiedXp === 50, `Awarded exactly 50 XP (base only, no bonus), got: ${data60.verifiedXp}`);
+
+  // 13. Verify Dashboard & Public Learning Routes
+  console.log('\n--- Step 13: Verify Dashboard & Public Learning Routes ---');
+  const progressPageRes = await fetch(`${BASE_URL}/learn/progress`);
+  assert(progressPageRes.status === 200, 'Student progress dashboard page /learn/progress returns 200 OK');
+
+  const fundamentalsPageRes = await fetch(`${BASE_URL}/learn/cybersecurity-fundamentals`);
+  assert(fundamentalsPageRes.status === 200, 'Fundamentals curriculum guide returns 200 OK');
+
+  const toolsPageRes = await fetch(`${BASE_URL}/tools/password-strength`);
+  assert(toolsPageRes.status === 200, 'Interactive tools page returns 200 OK');
+
+  const scamPageRes = await fetch(`${BASE_URL}/scam-awareness`);
+  assert(scamPageRes.status === 200, 'Scam awareness hub returns 200 OK');
+
   console.log('\n====================================================');
   console.log(`TEST RESULTS: ${passed} PASSED, ${failed} FAILED`);
   console.log('====================================================');

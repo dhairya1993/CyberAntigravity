@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import os from 'node:os';
 import { isSupabaseServerConfigured, getSupabaseServerClient } from '../supabase/server';
 import { getLevelInfo, calculateStreak, getLocalDateString } from '../../data/gamification';
 
@@ -85,53 +86,144 @@ interface DatabaseSchema {
   password_reset_tokens: DbPasswordResetToken[];
 }
 
-const DATA_DIR = path.join(process.cwd(), '.data');
-const DB_PATH = path.join(DATA_DIR, 'db.json');
+let memoryDb: DatabaseSchema | null = null;
+
+function emptySchema(): DatabaseSchema {
+  return {
+    students: [],
+    student_profiles: [],
+    quiz_completions: [],
+    module_completions: [],
+    student_badges: [],
+    student_activities: [],
+    password_reset_tokens: [],
+  };
+}
+
+function getDatabasePaths(): { dataDir: string; dbPath: string } {
+  // If running in Vercel or other serverless environment where process.cwd() is read-only
+  const isServerless = Boolean(
+    process.env.VERCEL ||
+    process.env.AWS_LAMBDA_FUNCTION_NAME ||
+    process.env.LAMBDA_TASK_ROOT ||
+    (process.env.NODE_ENV === 'production' && !fs.existsSync(path.join(process.cwd(), '.git')))
+  );
+
+  if (isServerless) {
+    const tmpDataDir = path.join(os.tmpdir(), 'cyberantigravity-data');
+    return { dataDir: tmpDataDir, dbPath: path.join(tmpDataDir, 'db.json') };
+  }
+
+  const localDataDir = path.join(process.cwd(), '.data');
+  return { dataDir: localDataDir, dbPath: path.join(localDataDir, 'db.json') };
+}
 
 function initializeLocalDb(): DatabaseSchema {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  if (memoryDb) {
+    return memoryDb;
   }
 
-  if (!fs.existsSync(DB_PATH)) {
-    const initialData: DatabaseSchema = {
-      students: [],
-      student_profiles: [],
-      quiz_completions: [],
-      module_completions: [],
-      student_badges: [],
-      student_activities: [],
-      password_reset_tokens: [],
-    };
-    fs.writeFileSync(DB_PATH, JSON.stringify(initialData, null, 2), 'utf-8');
-    return initialData;
-  }
+  const { dataDir, dbPath } = getDatabasePaths();
 
   try {
-    const raw = fs.readFileSync(DB_PATH, 'utf-8');
-    return JSON.parse(raw) as DatabaseSchema;
-  } catch {
-    const fallback: DatabaseSchema = {
-      students: [],
-      student_profiles: [],
-      quiz_completions: [],
-      module_completions: [],
-      student_badges: [],
-      student_activities: [],
-      password_reset_tokens: [],
-    };
-    fs.writeFileSync(DB_PATH, JSON.stringify(fallback, null, 2), 'utf-8');
-    return fallback;
+    if (!fs.existsSync(/*turbopackIgnore: true*/ dataDir)) {
+      fs.mkdirSync(/*turbopackIgnore: true*/ dataDir, { recursive: true });
+    }
+
+    if (!fs.existsSync(/*turbopackIgnore: true*/ dbPath)) {
+      const initialData = emptySchema();
+      try {
+        fs.writeFileSync(/*turbopackIgnore: true*/ dbPath, JSON.stringify(initialData, null, 2), 'utf-8');
+      } catch (writeErr) {
+        console.warn('Could not write initial db file, using in-memory:', writeErr);
+      }
+      memoryDb = initialData;
+      return initialData;
+    }
+
+    const raw = fs.readFileSync(/*turbopackIgnore: true*/ dbPath, 'utf-8');
+    const parsed = JSON.parse(raw) as DatabaseSchema;
+    memoryDb = parsed;
+    return parsed;
+  } catch (fsErr) {
+    console.warn('Primary database directory access failed:', fsErr);
+
+    // Fallback: Try temporary directory (/tmp) if primary was not already in os.tmpdir()
+    if (!dataDir.startsWith(os.tmpdir())) {
+      try {
+        const tmpDir = path.join(os.tmpdir(), 'cyberantigravity-data');
+        const tmpDbPath = path.join(tmpDir, 'db.json');
+        if (!fs.existsSync(/*turbopackIgnore: true*/ tmpDir)) {
+          fs.mkdirSync(/*turbopackIgnore: true*/ tmpDir, { recursive: true });
+        }
+        if (fs.existsSync(/*turbopackIgnore: true*/ tmpDbPath)) {
+          const raw = fs.readFileSync(/*turbopackIgnore: true*/ tmpDbPath, 'utf-8');
+          memoryDb = JSON.parse(raw) as DatabaseSchema;
+          return memoryDb;
+        }
+        const initialData = emptySchema();
+        fs.writeFileSync(/*turbopackIgnore: true*/ tmpDbPath, JSON.stringify(initialData, null, 2), 'utf-8');
+        memoryDb = initialData;
+        return initialData;
+      } catch (tmpErr) {
+        console.warn('Fallback /tmp database directory access failed:', tmpErr);
+      }
+    }
+
+    // Final fallback: in-memory schema
+    memoryDb = emptySchema();
+    return memoryDb;
   }
 }
 
 function saveLocalDb(data: DatabaseSchema): void {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  memoryDb = data;
+
+  const { dataDir, dbPath } = getDatabasePaths();
+
+  try {
+    if (!fs.existsSync(/*turbopackIgnore: true*/ dataDir)) {
+      fs.mkdirSync(/*turbopackIgnore: true*/ dataDir, { recursive: true });
+    }
+    const tempPath = `${dbPath}.${Date.now()}.${Math.random().toString(36).slice(2, 6)}.tmp`;
+    fs.writeFileSync(/*turbopackIgnore: true*/ tempPath, JSON.stringify(data, null, 2), 'utf-8');
+    try {
+      fs.renameSync(/*turbopackIgnore: true*/ tempPath, dbPath);
+    } catch {
+      fs.copyFileSync(/*turbopackIgnore: true*/ tempPath, dbPath);
+      try {
+        fs.unlinkSync(/*turbopackIgnore: true*/ tempPath);
+      } catch {
+        // Ignore unlink error
+      }
+    }
+  } catch (err) {
+    console.warn('Failed to save database to disk, falling back to /tmp or memory:', err);
+
+    if (!dataDir.startsWith(os.tmpdir())) {
+      try {
+        const tmpDir = path.join(os.tmpdir(), 'cyberantigravity-data');
+        const tmpDbPath = path.join(tmpDir, 'db.json');
+        if (!fs.existsSync(/*turbopackIgnore: true*/ tmpDir)) {
+          fs.mkdirSync(/*turbopackIgnore: true*/ tmpDir, { recursive: true });
+        }
+        const tempPath = `${tmpDbPath}.${Date.now()}.${Math.random().toString(36).slice(2, 6)}.tmp`;
+        fs.writeFileSync(/*turbopackIgnore: true*/ tempPath, JSON.stringify(data, null, 2), 'utf-8');
+        try {
+          fs.renameSync(/*turbopackIgnore: true*/ tempPath, tmpDbPath);
+        } catch {
+          fs.copyFileSync(/*turbopackIgnore: true*/ tempPath, tmpDbPath);
+          try {
+            fs.unlinkSync(/*turbopackIgnore: true*/ tempPath);
+          } catch {
+            // Ignore unlink error
+          }
+        }
+      } catch (tmpSaveErr) {
+        console.warn('Secondary /tmp save failed, data safely preserved in memory:', tmpSaveErr);
+      }
+    }
   }
-  const tempPath = `${DB_PATH}.${Date.now()}.tmp`;
-  fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), 'utf-8');
-  fs.renameSync(tempPath, DB_PATH);
 }
 
 // ----------------------------------------------------------------------------
@@ -620,6 +712,7 @@ export async function recordModuleCompletionAtomic(params: {
 // Reset All Test Data (For Development Testing Only)
 // ----------------------------------------------------------------------------
 export function resetTestDatabase(): void {
+  memoryDb = null;
   const initialData: DatabaseSchema = {
     students: [],
     student_profiles: [],

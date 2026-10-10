@@ -9,10 +9,11 @@
 --   - Atomic transactions and activity tracking
 -- ==============================================================================
 
--- 1. Students Public Profile Table
+-- 1. Students Account & Profile Table
 CREATE TABLE IF NOT EXISTS public.students (
-    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-    email TEXT NOT NULL,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT,
     display_name TEXT NOT NULL,
     avatar_url TEXT,
     role TEXT NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'instructor', 'admin')),
@@ -80,6 +81,14 @@ CREATE TABLE IF NOT EXISTS public.student_activities (
     xp_earned INTEGER NOT NULL DEFAULT 0,
     details JSONB,
     timestamp TIMESTAMPTZ NOT NULL DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- 7. Password Reset Tokens
+CREATE TABLE IF NOT EXISTS public.password_reset_tokens (
+    token TEXT PRIMARY KEY,
+    email TEXT NOT NULL,
+    expires_at BIGINT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT TIMEZONE('utc', NOW())
 );
 
 -- ==============================================================================

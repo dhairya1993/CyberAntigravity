@@ -322,16 +322,23 @@ export async function createStudent(params: {
   };
 
   if (isSupabaseServerConfigured()) {
-    const supabase = getSupabaseServerClient();
-    if (supabase) {
-      // Create user in Supabase auth and profile tables
-      await supabase.from('students').insert({
-        id: newStudent.id,
-        email: newStudent.email,
-        display_name: newStudent.display_name,
-        role: newStudent.role,
-      });
-      await supabase.from('student_profiles').insert(initialProfile);
+    try {
+      const supabase = getSupabaseServerClient();
+      if (supabase) {
+        // Create user in Supabase auth and profile tables
+        await supabase.from('students').insert({
+          id: newStudent.id,
+          email: newStudent.email,
+          password_hash: newStudent.password_hash,
+          display_name: newStudent.display_name,
+          role: newStudent.role,
+          created_at: newStudent.created_at,
+          updated_at: newStudent.updated_at,
+        });
+        await supabase.from('student_profiles').insert(initialProfile);
+      }
+    } catch (sbErr) {
+      console.warn('Supabase insert failed, continuing with local store:', sbErr);
     }
   }
 
@@ -586,6 +593,55 @@ export async function recordQuizCompletionAtomic(params: {
 
   saveLocalDb(db);
 
+  if (isSupabaseServerConfigured()) {
+    try {
+      const supabase = getSupabaseServerClient();
+      if (supabase) {
+        await supabase.from('quiz_completions').insert(newCompletion);
+        await supabase
+          .from('student_profiles')
+          .update({
+            total_xp: profile.total_xp,
+            current_level: profile.current_level,
+            current_streak: profile.current_streak,
+            longest_streak: profile.longest_streak,
+            last_activity_date: profile.last_activity_date,
+            updated_at: profile.updated_at,
+          })
+          .eq('student_id', studentId);
+
+        if (newlyEarnedBadges.length > 0) {
+          await supabase.from('student_badges').insert(
+            newlyEarnedBadges.map((badgeId) => ({
+              id: crypto.randomUUID(),
+              student_id: studentId,
+              badge_id: badgeId,
+              unlocked_at: nowIso,
+            }))
+          );
+        }
+
+        await supabase.from('student_activities').insert({
+          id: crypto.randomUUID(),
+          student_id: studentId,
+          activity_type: 'quiz_completed',
+          title: `Completed ${params.category} Quiz (${params.score}/${params.totalQuestions})`,
+          xp_earned: params.xpEarned,
+          details: {
+            quizId: params.quizId,
+            scorePercentage: params.scorePercentage,
+            baseXp: params.baseXp,
+            highScoreBonus: params.highScoreBonus,
+            perfectScoreBonus: params.perfectScoreBonus,
+          },
+          timestamp: nowIso,
+        });
+      }
+    } catch (sbErr) {
+      console.warn('Supabase sync for quiz completion failed:', sbErr);
+    }
+  }
+
   return {
     isDuplicate: false,
     profile,
@@ -699,6 +755,56 @@ export async function recordModuleCompletionAtomic(params: {
   });
 
   saveLocalDb(db);
+
+  if (isSupabaseServerConfigured()) {
+    try {
+      const supabase = getSupabaseServerClient();
+      if (supabase) {
+        await supabase.from('module_completions').insert({
+          id: crypto.randomUUID(),
+          student_id: studentId,
+          session_token: params.sessionToken,
+          module_id: moduleId,
+          xp_earned: params.xpEarned,
+          completed_at: nowIso,
+        });
+        await supabase
+          .from('student_profiles')
+          .update({
+            total_xp: profile.total_xp,
+            current_level: profile.current_level,
+            current_streak: profile.current_streak,
+            longest_streak: profile.longest_streak,
+            last_activity_date: profile.last_activity_date,
+            updated_at: profile.updated_at,
+          })
+          .eq('student_id', studentId);
+
+        if (newlyEarnedBadges.length > 0) {
+          await supabase.from('student_badges').insert(
+            newlyEarnedBadges.map((badgeId) => ({
+              id: crypto.randomUUID(),
+              student_id: studentId,
+              badge_id: badgeId,
+              unlocked_at: nowIso,
+            }))
+          );
+        }
+
+        await supabase.from('student_activities').insert({
+          id: crypto.randomUUID(),
+          student_id: studentId,
+          activity_type: 'module_completed',
+          title: `Completed Module: ${moduleId}`,
+          xp_earned: params.xpEarned,
+          details: { moduleId },
+          timestamp: nowIso,
+        });
+      }
+    } catch (sbErr) {
+      console.warn('Supabase sync for module completion failed:', sbErr);
+    }
+  }
 
   return {
     isDuplicate: false,

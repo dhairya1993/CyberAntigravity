@@ -3,6 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import os from 'node:os';
 import { isSupabaseServerConfigured, getSupabaseServerClient } from '../supabase/server';
+import { isPostgresConfigured, getPostgresClient, ensurePostgresSchema } from '../postgres/client';
 import { getLevelInfo, calculateStreak, getLocalDateString } from '../../data/gamification';
 
 export interface DbStudent {
@@ -252,6 +253,20 @@ export function verifyPassword(password: string, storedHash: string): boolean {
 // ----------------------------------------------------------------------------
 export async function findStudentByEmail(email: string): Promise<DbStudent | null> {
   const normalized = email.trim().toLowerCase();
+
+  if (isPostgresConfigured()) {
+    try {
+      await ensurePostgresSchema();
+      const sql = getPostgresClient();
+      if (sql) {
+        const rows = await sql`SELECT * FROM students WHERE LOWER(email) = ${normalized} LIMIT 1`;
+        if (rows.length > 0) return rows[0] as DbStudent;
+      }
+    } catch (err) {
+      console.warn('Postgres findStudentByEmail failed, checking fallbacks:', err);
+    }
+  }
+
   if (isSupabaseServerConfigured()) {
     const supabase = getSupabaseServerClient();
     if (supabase) {
@@ -269,6 +284,19 @@ export async function findStudentByEmail(email: string): Promise<DbStudent | nul
 }
 
 export async function findStudentById(id: string): Promise<DbStudent | null> {
+  if (isPostgresConfigured()) {
+    try {
+      await ensurePostgresSchema();
+      const sql = getPostgresClient();
+      if (sql) {
+        const rows = await sql`SELECT * FROM students WHERE id = ${id} LIMIT 1`;
+        if (rows.length > 0) return rows[0] as DbStudent;
+      }
+    } catch (err) {
+      console.warn('Postgres findStudentById failed, checking fallbacks:', err);
+    }
+  }
+
   if (isSupabaseServerConfigured()) {
     const supabase = getSupabaseServerClient();
     if (supabase) {
@@ -320,6 +348,25 @@ export async function createStudent(params: {
     created_at: now,
     updated_at: now,
   };
+
+  if (isPostgresConfigured()) {
+    try {
+      await ensurePostgresSchema();
+      const sql = getPostgresClient();
+      if (sql) {
+        await sql`
+          INSERT INTO students (id, email, password_hash, display_name, role, created_at, updated_at)
+          VALUES (${newStudent.id}, ${newStudent.email}, ${newStudent.password_hash}, ${newStudent.display_name}, ${newStudent.role}, ${newStudent.created_at}, ${newStudent.updated_at})
+        `;
+        await sql`
+          INSERT INTO student_profiles (id, student_id, total_xp, current_level, current_streak, longest_streak, created_at, updated_at)
+          VALUES (${initialProfile.id}, ${initialProfile.student_id}, ${initialProfile.total_xp}, ${initialProfile.current_level}, ${initialProfile.current_streak}, ${initialProfile.longest_streak}, ${initialProfile.created_at}, ${initialProfile.updated_at})
+        `;
+      }
+    } catch (pgErr) {
+      console.warn('Postgres student insert failed, local fallback active:', pgErr);
+    }
+  }
 
   if (isSupabaseServerConfigured()) {
     try {
@@ -404,6 +451,52 @@ export async function getStudentGamificationData(studentId: string): Promise<{
   badges: DbStudentBadge[];
   activities: DbStudentActivity[];
 }> {
+  if (isPostgresConfigured()) {
+    try {
+      await ensurePostgresSchema();
+      const sql = getPostgresClient();
+      if (sql) {
+        const [profiles, quizzes, modules, badges, activities] = await Promise.all([
+          sql`SELECT * FROM student_profiles WHERE student_id = ${studentId} LIMIT 1`,
+          sql`SELECT * FROM quiz_completions WHERE student_id = ${studentId}`,
+          sql`SELECT * FROM module_completions WHERE student_id = ${studentId}`,
+          sql`SELECT * FROM student_badges WHERE student_id = ${studentId}`,
+          sql`SELECT * FROM student_activities WHERE student_id = ${studentId} ORDER BY timestamp DESC LIMIT 25`,
+        ]);
+
+        let profile = profiles[0] as DbStudentProfile;
+        if (!profile) {
+          const now = new Date().toISOString();
+          const newProfId = crypto.randomUUID();
+          await sql`
+            INSERT INTO student_profiles (id, student_id, total_xp, current_level, current_streak, longest_streak, created_at, updated_at)
+            VALUES (${newProfId}, ${studentId}, 0, 1, 0, 0, ${now}, ${now})
+          `;
+          profile = {
+            id: newProfId,
+            student_id: studentId,
+            total_xp: 0,
+            current_level: 1,
+            current_streak: 0,
+            longest_streak: 0,
+            created_at: now,
+            updated_at: now,
+          };
+        }
+
+        return {
+          profile,
+          quizCompletions: quizzes as DbQuizCompletion[],
+          moduleCompletions: modules as DbModuleCompletion[],
+          badges: badges as DbStudentBadge[],
+          activities: activities as DbStudentActivity[],
+        };
+      }
+    } catch (err) {
+      console.warn('Postgres gamification data fetch failed, checking fallbacks:', err);
+    }
+  }
+
   if (isSupabaseServerConfigured()) {
     const supabase = getSupabaseServerClient();
     if (supabase) {
@@ -593,6 +686,48 @@ export async function recordQuizCompletionAtomic(params: {
 
   saveLocalDb(db);
 
+  if (isPostgresConfigured()) {
+    try {
+      await ensurePostgresSchema();
+      const sql = getPostgresClient();
+      if (sql) {
+        await sql`
+          INSERT INTO quiz_completions (id, student_id, session_token, quiz_id, category, score, total_questions, score_percentage, base_xp, high_score_bonus, perfect_score_bonus, xp_earned, completed_at)
+          VALUES (${newCompletion.id}, ${newCompletion.student_id}, ${newCompletion.session_token}, ${newCompletion.quiz_id}, ${newCompletion.category}, ${newCompletion.score}, ${newCompletion.total_questions}, ${newCompletion.score_percentage}, ${newCompletion.base_xp}, ${newCompletion.high_score_bonus}, ${newCompletion.perfect_score_bonus}, ${newCompletion.xp_earned}, ${newCompletion.completed_at})
+        `;
+        await sql`
+          UPDATE student_profiles
+          SET total_xp = ${profile.total_xp},
+              current_level = ${profile.current_level},
+              current_streak = ${profile.current_streak},
+              longest_streak = ${profile.longest_streak},
+              last_activity_date = ${profile.last_activity_date},
+              updated_at = ${profile.updated_at}
+          WHERE student_id = ${studentId}
+        `;
+        for (const bId of newlyEarnedBadges) {
+          await sql`
+            INSERT INTO student_badges (id, student_id, badge_id, unlocked_at)
+            VALUES (${crypto.randomUUID()}, ${studentId}, ${bId}, ${nowIso})
+            ON CONFLICT DO NOTHING
+          `;
+        }
+        await sql`
+          INSERT INTO student_activities (id, student_id, activity_type, title, xp_earned, details, timestamp)
+          VALUES (${crypto.randomUUID()}, ${studentId}, 'quiz_completed', ${`Completed ${params.category} Quiz (${params.score}/${params.totalQuestions})`}, ${params.xpEarned}, ${JSON.stringify({
+            quizId: params.quizId,
+            scorePercentage: params.scorePercentage,
+            baseXp: params.baseXp,
+            highScoreBonus: params.highScoreBonus,
+            perfectScoreBonus: params.perfectScoreBonus,
+          })}, ${nowIso})
+        `;
+      }
+    } catch (pgErr) {
+      console.warn('Postgres quiz completion sync failed:', pgErr);
+    }
+  }
+
   if (isSupabaseServerConfigured()) {
     try {
       const supabase = getSupabaseServerClient();
@@ -755,6 +890,42 @@ export async function recordModuleCompletionAtomic(params: {
   });
 
   saveLocalDb(db);
+
+  if (isPostgresConfigured()) {
+    try {
+      await ensurePostgresSchema();
+      const sql = getPostgresClient();
+      if (sql) {
+        await sql`
+          INSERT INTO module_completions (id, student_id, session_token, module_id, xp_earned, completed_at)
+          VALUES (${crypto.randomUUID()}, ${studentId}, ${params.sessionToken}, ${moduleId}, ${params.xpEarned}, ${nowIso})
+        `;
+        await sql`
+          UPDATE student_profiles
+          SET total_xp = ${profile.total_xp},
+              current_level = ${profile.current_level},
+              current_streak = ${profile.current_streak},
+              longest_streak = ${profile.longest_streak},
+              last_activity_date = ${profile.last_activity_date},
+              updated_at = ${profile.updated_at}
+          WHERE student_id = ${studentId}
+        `;
+        for (const bId of newlyEarnedBadges) {
+          await sql`
+            INSERT INTO student_badges (id, student_id, badge_id, unlocked_at)
+            VALUES (${crypto.randomUUID()}, ${studentId}, ${bId}, ${nowIso})
+            ON CONFLICT DO NOTHING
+          `;
+        }
+        await sql`
+          INSERT INTO student_activities (id, student_id, activity_type, title, xp_earned, details, timestamp)
+          VALUES (${crypto.randomUUID()}, ${studentId}, 'module_completed', ${`Completed Module: ${moduleId}`}, ${params.xpEarned}, ${JSON.stringify({ moduleId })}, ${nowIso})
+        `;
+      }
+    } catch (pgErr) {
+      console.warn('Postgres module completion sync failed:', pgErr);
+    }
+  }
 
   if (isSupabaseServerConfigured()) {
     try {

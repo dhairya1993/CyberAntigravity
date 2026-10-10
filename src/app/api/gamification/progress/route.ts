@@ -16,10 +16,17 @@ export async function GET(req: NextRequest) {
     const data = await getStudentGamificationData(student.id);
 
     // Calculate live streak and level info
+    const toDateStr = (val: string | Date | undefined): string => {
+      if (!val) return '';
+      if (typeof val === 'string') return val.split('T')[0];
+      if (val instanceof Date) return val.toISOString().split('T')[0];
+      return String(val).split('T')[0];
+    };
+
     const levelInfo = getLevelInfo(data.profile.total_xp);
     const activityDates = [
-      ...data.quizCompletions.map((q) => q.completed_at.split('T')[0]),
-      ...data.moduleCompletions.map((m) => m.completed_at.split('T')[0]),
+      ...data.quizCompletions.map((q) => toDateStr(q.completed_at)),
+      ...data.moduleCompletions.map((m) => toDateStr(m.completed_at)),
     ];
     const streakInfo = calculateStreak(activityDates);
 
@@ -32,7 +39,7 @@ export async function GET(req: NextRequest) {
       categoryStats[q.category].quizzesTaken += 1;
       categoryStats[q.category].bestScorePercentage = Math.max(
         categoryStats[q.category].bestScorePercentage,
-        q.score_percentage
+        Number(q.score_percentage)
       );
     }
 

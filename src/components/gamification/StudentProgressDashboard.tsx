@@ -938,7 +938,7 @@ export const StudentProgressDashboard: React.FC = () => {
                       {m.module_id.replace(/-/g, ' ')}
                     </h4>
                     <p className="text-[10px] font-mono text-slate-400">
-                      Completed: {m.completed_at ? m.completed_at.split('T')[0] : 'Verified'}
+                      Completed: {m.completed_at ? String(m.completed_at).split('T')[0] : 'Verified'}
                     </p>
                   </div>
                 </div>
@@ -990,7 +990,7 @@ export const StudentProgressDashboard: React.FC = () => {
                     </div>
                     <div className="text-[11px] font-mono text-slate-400">
                       Score: {q.score}/{q.total_questions} ({q.score_percentage}%) • Date:{' '}
-                      {q.completed_at ? q.completed_at.split('T')[0] : 'Recent'}
+                      {q.completed_at ? String(q.completed_at).split('T')[0] : 'Recent'}
                     </div>
                   </div>
                 </div>

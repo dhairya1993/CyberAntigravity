@@ -239,22 +239,43 @@ export const ScamAnatomyDiagram: React.FC = () => {
       {/* Background radial highlight */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-rose-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
 
-      {/* Header Section */}
-      <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-xs font-mono uppercase tracking-wider text-rose-400 font-bold block">
-          Visual Threat Framework
-        </span>
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-          The Anatomy of an Online Scam
-        </h3>
-        <p className="text-sm text-slate-300">
-          Almost all modern social engineering schemes share an identical psychological progression. Learn to recognize the stages so you can disengage before manipulation occurs.
-        </p>
+      {/* Header Section with Live Telemetry */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <span className="text-xs font-mono uppercase tracking-wider text-rose-400 font-bold block">
+            Visual Threat Framework
+          </span>
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            The Anatomy of an Online Scam
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            Almost all modern social engineering schemes share an identical psychological progression. Learn to recognize the stages so you can disengage before manipulation occurs.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-700/60">
+            <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping" />
+            LIVE ATTACK CHAIN TELEMETRY
+          </span>
+        </div>
       </div>
 
-      {/* 6-Stage Visual Pipeline Bar */}
-      <div className="relative">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
+      {/* 6-Stage Visual Pipeline Bar with Live SVG Flow */}
+      <div className="relative space-y-4">
+        {/* Desktop Pipeline Flow SVG Stream */}
+        <div className="hidden md:block relative h-6 w-full -mb-3 z-0">
+          <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 600 24">
+            <line x1="50" y1="12" x2="550" y2="12" stroke="#f43f5e" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.6" />
+            <circle r="3.2" fill="#f43f5e" opacity="0.95">
+              <animateMotion dur="2.8s" repeatCount="indefinite" path="M 50 12 L 550 12" />
+            </circle>
+            <circle r="2.2" fill="#fb7185" opacity="0.8">
+              <animateMotion dur="2s" repeatCount="indefinite" path="M 50 12 L 550 12" />
+            </circle>
+          </svg>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-3 relative z-10">
           {STAGES.map((stage) => {
             const Icon = stage.icon;
             const isCurrent = activeStageStep === stage.step;
@@ -263,17 +284,23 @@ export const ScamAnatomyDiagram: React.FC = () => {
                 key={stage.step}
                 type="button"
                 onClick={() => setActiveStageStep(stage.step)}
-                className={`p-3.5 rounded-xl border flex flex-col items-center text-center transition-all duration-300 cursor-pointer ${
+                className={`p-3.5 rounded-xl border flex flex-col items-center text-center transition-all duration-300 cursor-pointer relative overflow-hidden ${
                   isCurrent
-                    ? 'bg-slate-800 border-rose-400 shadow-lg shadow-rose-500/20 scale-105 ring-1 ring-rose-400/50'
-                    : 'bg-slate-950/60 border-slate-800 hover:border-slate-700'
+                    ? 'bg-slate-800 border-rose-400 shadow-xl shadow-rose-500/25 scale-105 ring-2 ring-rose-400/60'
+                    : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
                 }`}
               >
-                <div className={`p-2.5 rounded-lg mb-2 ${stage.color}`}>
+                {isCurrent && (
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-rose-500 via-amber-400 to-rose-500" />
+                )}
+                <div className={`p-2.5 rounded-lg mb-2 relative ${stage.color}`}>
+                  {isCurrent && (
+                    <span className="absolute -inset-1 rounded-lg border border-rose-400 animate-ping opacity-50 pointer-events-none" />
+                  )}
                   <Icon className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-mono font-bold text-slate-500 uppercase">
-                  Stage {stage.step}
+                  Stage 0{stage.step}
                 </span>
                 <span className={`text-xs font-bold leading-tight mt-0.5 ${isCurrent ? 'text-white' : 'text-slate-300'}`}>
                   {stage.label}
@@ -283,18 +310,26 @@ export const ScamAnatomyDiagram: React.FC = () => {
           })}
         </div>
 
-        {/* Selected Stage Detail Callout */}
-        <div className="mt-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800/80 text-left flex items-start gap-3">
-          <div className="p-2 rounded-lg bg-rose-950 text-rose-400 border border-rose-800/50 shrink-0 mt-0.5">
-            <AlertOctagon className="w-4 h-4" />
+        {/* Selected Stage Detail Callout with Defense Interception Notice */}
+        <div className="p-4 rounded-xl bg-slate-950/90 border border-slate-800 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
+          <div className="flex items-start gap-3">
+            <div className="p-2 rounded-lg bg-rose-950 text-rose-400 border border-rose-800/50 shrink-0 mt-0.5">
+              <AlertOctagon className="w-4 h-4 animate-pulse" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-white block">
+                Stage 0{activeStageStep}: {STAGES[activeStageStep - 1].label}
+              </span>
+              <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
+                {STAGES[activeStageStep - 1].description}
+              </p>
+            </div>
           </div>
-          <div>
-            <span className="text-xs font-bold text-white">
-              Stage {activeStageStep}: {STAGES[activeStageStep - 1].label}
+          <div className="shrink-0 pl-11 sm:pl-0">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-cyan-950/80 border border-cyan-800 text-cyan-300 font-mono text-[11px] font-bold">
+              <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+              BREAKS CHAIN: PAUSE & VERIFY
             </span>
-            <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
-              {STAGES[activeStageStep - 1].description}
-            </p>
           </div>
         </div>
       </div>

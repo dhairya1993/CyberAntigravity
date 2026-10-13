@@ -136,17 +136,123 @@ export const DigitalDefenseSurface: React.FC = () => {
       {/* Background Ambience */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
 
-      {/* Header */}
-      <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-        <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold block">
-          Interactive Defense Ecosystem
-        </span>
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-          Your Digital Defense Surface
-        </h3>
-        <p className="text-sm text-slate-300">
-          Every device, account, and connection you use represents part of your total attack surface. Select an asset below to explore its specific threat vectors and defensive countermeasures.
-        </p>
+      {/* Header with Live Telemetry Pill */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+        <div>
+          <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold block">
+            Interactive Defense Topology
+          </span>
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Your Digital Defense Surface
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            Every device, account, and connection you use represents part of your total attack surface. Select an asset below to explore its specific threat vectors and defensive countermeasures.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            PERIMETER MONITORED (8/8 NODES LIVE)
+          </span>
+        </div>
+      </div>
+
+      {/* LIVE TOPOLOGY GRAPH CANVAS */}
+      <div className="relative w-full aspect-[640/220] sm:aspect-[640/200] rounded-2xl bg-slate-950/90 border border-slate-800/90 mb-6 overflow-hidden flex items-center justify-center shadow-inner">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 cyber-grid-bg opacity-20 pointer-events-none" />
+
+        {/* Dynamic SVG Live Flow Graph */}
+        <svg viewBox="0 0 640 220" className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-visible">
+          <defs>
+            <radialGradient id="surf_center_glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#00f0ff" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          {/* Central Protected Core Aura */}
+          <circle cx="320" cy="110" r="32" fill="url(#surf_center_glow)" />
+          <circle cx="320" cy="110" r="22" fill="none" stroke="#00f0ff" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" className="animate-spin" style={{ animationDuration: '24s' }} />
+
+          {/* Connection Lines from 8 perimeter nodes to Center Core (320, 110) */}
+          {DEFENSE_SURFACE_ITEMS.map((item, idx) => {
+            // Distribute across 8 coordinates:
+            // x from 50 to 590, curved above and below center
+            const xCoords = [60, 130, 210, 280, 360, 430, 510, 580];
+            const yCoords = [60, 160, 55, 165, 55, 165, 60, 160];
+            const x = xCoords[idx];
+            const y = yCoords[idx];
+            const isActive = activeItem.id === item.id;
+
+            return (
+              <g key={item.id}>
+                {/* Background base stream */}
+                <line
+                  x1={x}
+                  y1={y}
+                  x2="320"
+                  y2="110"
+                  stroke={isActive ? '#00f0ff' : '#334155'}
+                  strokeWidth={isActive ? 2.2 : 1}
+                  strokeOpacity={isActive ? 0.9 : 0.3}
+                  strokeDasharray={isActive ? '6 4' : '2 4'}
+                  className={isActive ? 'animate-cyber-flow' : ''}
+                />
+
+                {/* Traveling Packets */}
+                <circle r={isActive ? 3.2 : 1.8} fill={isActive ? '#00f0ff' : '#0891b2'} opacity={isActive ? 1 : 0.5}>
+                  <animateMotion
+                    dur={isActive ? '1.5s' : '3.6s'}
+                    repeatCount="indefinite"
+                    path={`M ${x} ${y} L 320 110`}
+                  />
+                </circle>
+                <circle r={isActive ? 2.5 : 1.2} fill={isActive ? '#10b981' : '#047857'} opacity={isActive ? 0.9 : 0.4}>
+                  <animateMotion
+                    dur={isActive ? '1.8s' : '4.2s'}
+                    repeatCount="indefinite"
+                    path={`M 320 110 L ${x} ${y}`}
+                  />
+                </circle>
+
+                {/* Small indicator node dot */}
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={isActive ? 6 : 4}
+                  fill={isActive ? '#00f0ff' : '#090d16'}
+                  stroke={isActive ? '#00f0ff' : '#475569'}
+                  strokeWidth={isActive ? 2 : 1}
+                />
+                {isActive && (
+                  <circle
+                    cx={x}
+                    cy={y}
+                    r={14}
+                    fill="none"
+                    stroke="#00f0ff"
+                    strokeWidth="1.2"
+                    strokeDasharray="2 3"
+                    className="animate-spin"
+                    style={{ animationDuration: '3s' }}
+                  />
+                )}
+              </g>
+            );
+          })}
+        </svg>
+
+        {/* Central Core Graphical Hub Node */}
+        <div className="relative z-10 flex flex-col items-center justify-center p-2 rounded-2xl bg-cyan-950/90 border border-cyan-400/80 shadow-lg shadow-cyan-400/40 text-center">
+          <ShieldCheck className="w-6 h-6 text-cyan-400 animate-pulse" />
+          <span className="text-[9px] font-mono font-black uppercase text-white tracking-wider block mt-0.5">
+            IDENTITY CORE
+          </span>
+          <span className="text-[8px] font-mono text-emerald-400 tracking-tight block">
+            PROTECTED
+          </span>
+        </div>
       </div>
 
       {/* Ecosystem Interactive Nodes Grid */}
@@ -159,12 +265,15 @@ export const DigitalDefenseSurface: React.FC = () => {
               key={item.id}
               type="button"
               onClick={() => setActiveItem(item)}
-              className={`p-3.5 rounded-xl border flex flex-col items-center text-center transition-all duration-300 group cursor-pointer ${
+              className={`p-3.5 rounded-xl border flex flex-col items-center text-center transition-all duration-300 group cursor-pointer relative overflow-hidden ${
                 isActive
                   ? 'bg-slate-800/90 border-cyan-400 shadow-lg shadow-cyan-500/20 scale-105 ring-1 ring-cyan-400/50'
                   : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
               }`}
             >
+              {isActive && (
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-cyan-400" />
+              )}
               <div
                 className={`p-2.5 rounded-lg mb-2 transition-transform group-hover:scale-110 ${
                   isActive ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/50' : 'bg-slate-900 text-slate-400'

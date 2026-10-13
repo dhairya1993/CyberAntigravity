@@ -103,31 +103,114 @@ export const DigitalDefenseMap: React.FC = () => {
       {/* Background Cyber Grid */}
       <div className="absolute inset-0 cyber-grid-bg opacity-25 pointer-events-none" />
 
-      {/* Top Advisory Pill */}
-      <div className="relative z-10 flex items-center justify-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-xs font-mono">
+      {/* Top Advisory Pill & Telemetry HUD */}
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 px-2">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-xs font-mono">
           <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
           <span>Interactive 8-Layer Defense Architecture • Hover or Tap Any Layer</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            LIVE DEFENSE MATRIX ACTIVE
+          </span>
         </div>
       </div>
 
       {/* CENTER SHIELD & CONNECTING LINES ARCHITECTURE */}
       <div className="relative z-10 flex flex-col items-center justify-center">
         {/* SVG Decorative Connecting Lines Diagram */}
-        <div className="relative w-full max-w-3xl flex items-center justify-center py-4">
-          {/* Subtle Outer Orbital Rings */}
-          <div
-            className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full border border-cyan-500/20 animate-spin pointer-events-none"
-            style={{ animationDuration: '45s' }}
-          />
-          <div className="absolute w-80 h-80 sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-emerald-500/20 pointer-events-none" />
+        <div className="relative w-full max-w-3xl flex items-center justify-center py-6">
+          {/* SVG Live Connection Streams & Radial Flow Lines */}
+          <svg
+            viewBox="0 0 500 500"
+            className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-visible"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="map_centerGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#00f0ff" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+
+            {/* Orbital Radar Sweeps */}
+            <circle cx="250" cy="250" r="210" fill="none" stroke="#00f0ff" strokeWidth="1" strokeDasharray="3 6" strokeOpacity="0.25" />
+            <circle cx="250" cy="250" r="160" fill="none" stroke="#10b981" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.3" />
+            <circle cx="250" cy="250" r="110" fill="none" stroke="#00f0ff" strokeWidth="1.2" strokeOpacity="0.4" />
+
+            {/* 8 Radial Connection Lines between Center (250, 250) and Perimeter Satellites (radius = 160) */}
+            {DEFENSE_LAYERS.map((layer, idx) => {
+              const angle = (idx * 45 - 90) * (Math.PI / 180);
+              const x2 = 250 + 160 * Math.cos(angle);
+              const y2 = 250 + 160 * Math.sin(angle);
+              const isActive = activeLayerId === layer.id;
+
+              return (
+                <g key={layer.id}>
+                  {/* Base Guideline */}
+                  <line
+                    x1="250"
+                    y1="250"
+                    x2={x2}
+                    y2={y2}
+                    stroke={isActive ? '#00f0ff' : '#0891b2'}
+                    strokeWidth={isActive ? 2.5 : 1}
+                    strokeOpacity={isActive ? 0.9 : 0.25}
+                    strokeDasharray={isActive ? '6 4' : '2 4'}
+                    className={isActive ? 'animate-cyber-flow' : ''}
+                  />
+
+                  {/* Traveling Flow Packets */}
+                  <circle r={isActive ? 3.5 : 2} fill={isActive ? '#00f0ff' : '#10b981'} opacity={isActive ? 1 : 0.6}>
+                    <animateMotion
+                      dur={isActive ? '1.4s' : '3.2s'}
+                      repeatCount="indefinite"
+                      path={`M 250 250 L ${x2} ${y2}`}
+                    />
+                  </circle>
+                  <circle r={isActive ? 2.5 : 1.5} fill="#10b981" opacity={isActive ? 0.9 : 0.5}>
+                    <animateMotion
+                      dur={isActive ? '1.8s' : '4s'}
+                      repeatCount="indefinite"
+                      path={`M ${x2} ${y2} L 250 250`}
+                    />
+                  </circle>
+
+                  {/* Satellite Perimeter Node */}
+                  <circle
+                    cx={x2}
+                    cy={y2}
+                    r={isActive ? 10 : 6}
+                    fill={isActive ? '#00f0ff' : '#090d16'}
+                    stroke={isActive ? '#00f0ff' : '#0891b2'}
+                    strokeWidth={isActive ? 2 : 1}
+                    className="transition-all duration-300"
+                  />
+                  {isActive && (
+                    <circle
+                      cx={x2}
+                      cy={y2}
+                      r={18}
+                      fill="none"
+                      stroke="#00f0ff"
+                      strokeWidth="1.5"
+                      strokeDasharray="2 3"
+                      className="animate-spin"
+                      style={{ animationDuration: '4s' }}
+                    />
+                  )}
+                </g>
+              );
+            })}
+          </svg>
 
           {/* LARGE CENTRAL GRAPHICAL SHIELD: CYBER DEFENSE */}
           <div className="relative z-20 w-48 h-56 sm:w-60 sm:h-72 flex flex-col items-center justify-center p-4">
             {/* Vector Shield Frame */}
             <svg
               viewBox="0 0 200 240"
-              className="absolute inset-0 w-full h-full drop-shadow-[0_0_35px_rgba(0,240,255,0.35)] select-none pointer-events-none"
+              className="absolute inset-0 w-full h-full drop-shadow-[0_0_35px_rgba(0,240,255,0.45)] select-none pointer-events-none"
               fill="none"
               aria-hidden="true"
             >
@@ -145,19 +228,20 @@ export const DigitalDefenseMap: React.FC = () => {
                 strokeWidth="2.8"
                 className="transition-all duration-300"
               />
-              {/* Inner Defensive Border */}
+              {/* Inner Defensive Border with Live Animated Dash */}
               <path
                 d="M 100 26 L 166 48 V 108 C 166 156 100 208 100 208 C 100 208 34 156 34 108 V 48 L 100 26 Z"
                 stroke="#10b981"
-                strokeWidth="1.5"
-                strokeOpacity="0.7"
-                strokeDasharray="4 4"
+                strokeWidth="1.8"
+                strokeOpacity="0.8"
+                strokeDasharray="6 4"
+                className="animate-cyber-flow"
               />
             </svg>
 
             {/* Shield Center Graphic with Brand Symbol & Labels */}
             <div className="relative z-10 flex flex-col items-center text-center space-y-2">
-              <div className="w-14 h-14 rounded-2xl bg-cyan-950/90 border border-cyan-400/60 p-1.5 flex items-center justify-center shadow-lg shadow-cyan-400/40">
+              <div className="w-14 h-14 rounded-2xl bg-cyan-950/90 border border-cyan-400/80 p-1.5 flex items-center justify-center shadow-lg shadow-cyan-400/50 animate-pulse">
                 <CyberAntigravityLogo variant="symbol" size="md" />
               </div>
 
@@ -189,7 +273,7 @@ export const DigitalDefenseMap: React.FC = () => {
                 type="button"
                 onClick={() => setActiveLayerId(layer.id)}
                 onMouseEnter={() => setActiveLayerId(layer.id)}
-                className={`p-4 rounded-2xl border text-left flex items-center gap-3 transition-all duration-200 cursor-pointer cyber-focus-ring ${
+                className={`p-4 rounded-2xl border text-left flex items-center gap-3 transition-all duration-200 cursor-pointer cyber-focus-ring relative overflow-hidden ${
                   isActive
                     ? 'bg-cyan-950 border-cyan-400 text-white shadow-xl shadow-cyan-950/80 scale-[1.03] ring-1 ring-cyan-400/50'
                     : 'bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-900'
@@ -197,6 +281,10 @@ export const DigitalDefenseMap: React.FC = () => {
                 aria-pressed={isActive}
                 aria-label={`Inspect ${layer.name} defense layer`}
               >
+                {/* Active Beam Glow strip */}
+                {isActive && (
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400" />
+                )}
                 <div
                   className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                     isActive

@@ -202,43 +202,61 @@ export const LearningRoadmapVisual: React.FC = () => {
           </div>
         </div>
 
-        {/* Visual Level Nodes Horizontal/Vertical Track */}
-        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 my-6">
-          {LEARNING_LEVELS.map((lvl) => {
-            const Icon = lvl.icon;
-            const isSelected = selectedLevel.level === lvl.level;
-            return (
-              <button
-                key={lvl.level}
-                type="button"
-                onClick={() => setSelectedLevel(lvl)}
-                className={`p-3 rounded-xl border flex flex-col items-center text-center transition-all duration-200 cursor-pointer relative group ${
-                  isSelected
-                    ? 'bg-slate-800 border-cyan-400 shadow-lg shadow-cyan-500/20 scale-105 ring-1 ring-cyan-400/50'
-                    : 'bg-slate-950/60 border-slate-800 hover:border-slate-700'
-                }`}
-              >
-                <div
-                  className={`p-2 rounded-lg mb-1.5 transition-transform group-hover:scale-110 ${
-                    isSelected ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/50' : 'bg-slate-900 text-slate-400'
+        {/* Visual Level Nodes Horizontal/Vertical Track with Live SVG Stream */}
+        <div className="relative my-6">
+          {/* Connecting SVG Circuit Flow on Desktop */}
+          <div className="hidden lg:block absolute top-[28px] left-[4%] right-[4%] h-4 pointer-events-none select-none z-0">
+            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 800 16">
+              <line x1="0" y1="8" x2="800" y2="8" stroke="#00f0ff" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.5" />
+              <circle r="3.2" fill="#00f0ff" opacity="0.95">
+                <animateMotion dur="3.5s" repeatCount="indefinite" path="M 0 8 L 800 8" />
+              </circle>
+              <circle r="2.2" fill="#10b981" opacity="0.9">
+                <animateMotion dur="2.8s" repeatCount="indefinite" path="M 0 8 L 800 8" />
+              </circle>
+            </svg>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 relative z-10">
+            {LEARNING_LEVELS.map((lvl) => {
+              const Icon = lvl.icon;
+              const isSelected = selectedLevel.level === lvl.level;
+              return (
+                <button
+                  key={lvl.level}
+                  type="button"
+                  onClick={() => setSelectedLevel(lvl)}
+                  className={`p-3 rounded-xl border flex flex-col items-center text-center transition-all duration-200 cursor-pointer relative group ${
+                    isSelected
+                      ? 'bg-slate-800 border-cyan-400 shadow-xl shadow-cyan-500/25 scale-105 ring-2 ring-cyan-400/60'
+                      : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
-                </div>
-                <span className="text-[10px] font-mono text-slate-500 font-bold uppercase">
-                  Lvl {lvl.level}
-                </span>
-                <span className={`text-[11px] font-bold leading-tight line-clamp-1 mt-0.5 ${isSelected ? 'text-white' : 'text-slate-300'}`}>
-                  {lvl.title.split(' ')[0]}
-                </span>
+                  <div
+                    className={`p-2 rounded-lg mb-1.5 transition-transform group-hover:scale-110 relative ${
+                      isSelected ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/50' : 'bg-slate-900 text-slate-400'
+                    }`}
+                  >
+                    {isSelected && (
+                      <span className="absolute -inset-1 rounded-lg border border-cyan-400 animate-ping opacity-60 pointer-events-none" />
+                    )}
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-500 font-bold uppercase">
+                    Lvl 0{lvl.level}
+                  </span>
+                  <span className={`text-[11px] font-bold leading-tight line-clamp-1 mt-0.5 ${isSelected ? 'text-white' : 'text-slate-300'}`}>
+                    {lvl.title.split(' ')[0]}
+                  </span>
 
-                {/* Progress dot */}
-                {lvl.progressPercent > 0 && (
-                  <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                )}
-              </button>
-            );
-          })}
+                  {/* Progress dot */}
+                  {lvl.progressPercent > 0 && (
+                    <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Selected Level Interactive Spotlight Card */}

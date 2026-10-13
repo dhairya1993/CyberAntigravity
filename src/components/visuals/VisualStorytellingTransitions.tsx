@@ -82,24 +82,32 @@ export const VisualStorytellingTransitions: React.FC = () => {
           </div>
         </div>
 
-        {/* Transition Sequence Graphic */}
-        <div className="space-y-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 relative">
+        {/* Transition Sequence Graphic with Live SVG Stream */}
+        <div className="space-y-4 relative">
+          {/* Connecting SVG Flow Stream on Desktop */}
+          <div className="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-4 pointer-events-none select-none z-0">
+            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 400 16">
+              <line x1="0" y1="8" x2="400" y2="8" stroke="#00f0ff" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.65" />
+              <circle r="3.2" fill="#00f0ff" opacity="0.95">
+                <animateMotion dur="2.4s" repeatCount="indefinite" path="M 0 8 L 400 8" />
+              </circle>
+              <circle r="2" fill="#10b981" opacity="0.9">
+                <animateMotion dur="1.7s" repeatCount="indefinite" path="M 0 8 L 400 8" />
+              </circle>
+            </svg>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 relative z-10">
             {current.steps.map((st, idx) => {
               const Icon = st.icon;
               return (
-                <div key={st.label} className="relative flex flex-col items-center text-center space-y-2 p-3 rounded-xl border border-slate-800/80 bg-slate-900/60">
+                <div key={st.label} className="relative flex flex-col items-center text-center space-y-2 p-3 rounded-xl border border-slate-800/80 bg-slate-900/80 backdrop-blur-sm shadow-md hover:border-slate-700 transition-all">
                   <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all ${st.color}`}>
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="text-xs font-mono font-bold text-white tracking-tight">
                     {st.label}
                   </div>
-                  {idx < current.steps.length - 1 && (
-                    <span className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-slate-500 font-mono text-xs z-10">
-                      →
-                    </span>
-                  )}
                 </div>
               );
             })}

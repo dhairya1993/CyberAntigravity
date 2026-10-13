@@ -204,8 +204,18 @@ export const AttackDefensePath: React.FC = () => {
 
           {/* Steps Sequence */}
           <div className="space-y-3 relative">
-            {/* Visual connecting flow line */}
-            <div className="absolute left-[21px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-rose-500 via-amber-500 to-rose-600 pointer-events-none opacity-40" />
+            {/* Live SVG Animated Connecting Flow Stream */}
+            <div className="absolute left-[19px] top-6 bottom-6 w-4 pointer-events-none z-0">
+              <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 16 300">
+                <line x1="8" y1="0" x2="8" y2="300" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" className="animate-cyber-flow" strokeLinecap="round" opacity="0.8" />
+                <circle r="3.2" fill="#f43f5e" opacity="0.95">
+                  <animateMotion dur="2.4s" repeatCount="indefinite" path="M 8 0 L 8 300" />
+                </circle>
+                <circle r="2" fill="#fb7185" opacity="0.8">
+                  <animateMotion dur="1.8s" repeatCount="indefinite" path="M 8 0 L 8 300" />
+                </circle>
+              </svg>
+            </div>
 
             {SIMULATION_STEPS.map((s, idx) => {
               const Icon = threatIcons[idx];
@@ -228,7 +238,7 @@ export const AttackDefensePath: React.FC = () => {
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 font-mono text-xs font-bold border transition-colors ${
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 font-mono text-xs font-bold border transition-colors relative ${
                         isActive
                           ? 'bg-rose-500 text-slate-950 border-rose-400 shadow-md shadow-rose-500/40'
                           : isPast
@@ -236,6 +246,9 @@ export const AttackDefensePath: React.FC = () => {
                           : 'bg-slate-950 text-slate-500 border-slate-800'
                       }`}
                     >
+                      {isActive && (
+                        <span className="absolute -inset-1 rounded-xl border border-rose-400 animate-ping opacity-60 pointer-events-none" />
+                      )}
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
@@ -277,8 +290,18 @@ export const AttackDefensePath: React.FC = () => {
 
           {/* Steps Sequence */}
           <div className="space-y-3 relative">
-            {/* Visual connecting flow line */}
-            <div className="absolute left-[21px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-cyan-400 via-emerald-400 to-emerald-500 pointer-events-none opacity-40" />
+            {/* Live SVG Animated Connecting Flow Stream */}
+            <div className="absolute left-[19px] top-6 bottom-6 w-4 pointer-events-none z-0">
+              <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 16 300">
+                <line x1="8" y1="0" x2="8" y2="300" stroke="#00f0ff" strokeWidth="2.5" strokeDasharray="6 4" className="animate-cyber-flow" strokeLinecap="round" opacity="0.85" />
+                <circle r="3.2" fill="#00f0ff" opacity="0.95">
+                  <animateMotion dur="2.2s" repeatCount="indefinite" path="M 8 0 L 8 300" />
+                </circle>
+                <circle r="2.2" fill="#10b981" opacity="0.9">
+                  <animateMotion dur="1.7s" repeatCount="indefinite" path="M 8 0 L 8 300" />
+                </circle>
+              </svg>
+            </div>
 
             {SIMULATION_STEPS.map((s, idx) => {
               const Icon = defenseIcons[idx];
@@ -301,7 +324,7 @@ export const AttackDefensePath: React.FC = () => {
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 font-mono text-xs font-bold border transition-colors ${
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 font-mono text-xs font-bold border transition-colors relative ${
                         isActive
                           ? 'bg-cyan-400 text-slate-950 border-cyan-300 shadow-md shadow-cyan-400/40'
                           : isPast
@@ -309,6 +332,9 @@ export const AttackDefensePath: React.FC = () => {
                           : 'bg-slate-950 text-slate-500 border-slate-800'
                       }`}
                     >
+                      {isActive && (
+                        <span className="absolute -inset-1 rounded-xl border border-cyan-400 animate-ping opacity-60 pointer-events-none" />
+                      )}
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>

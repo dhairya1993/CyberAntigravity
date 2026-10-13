@@ -268,35 +268,104 @@ export const CyberDefenseCenter: React.FC = () => {
           <div className="absolute inset-y-0 left-1/2 w-px bg-cyan-500/10" />
         </div>
 
-        {/* Dynamic Connection Lines (SVG) */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
+        {/* Dynamic Connection Lines (SVG) with Live Streams & Traveling Packets */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <defs>
-            <linearGradient id="cyber-line-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#10b981" stopOpacity="0.1" />
+            <linearGradient id="cdc-line-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#10b981" stopOpacity="0.3" />
             </linearGradient>
-            <linearGradient id="cyber-line-rose" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f43f5e" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#00f0ff" stopOpacity="0.1" />
+            <linearGradient id="cdc-line-rose" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f43f5e" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#00f0ff" stopOpacity="0.3" />
             </linearGradient>
           </defs>
 
-          {/* Infrastructure backbone */}
-          <line x1="50%" y1="12%" x2="18%" y2="28%" stroke="url(#cyber-line-cyan)" strokeWidth="1.5" strokeDasharray="3 3" />
-          <line x1="50%" y1="12%" x2="82%" y2="28%" stroke="url(#cyber-line-cyan)" strokeWidth="1.5" strokeDasharray="3 3" />
-          <line x1="18%" y1="28%" x2="18%" y2="68%" stroke="url(#cyber-line-cyan)" strokeWidth="1" strokeDasharray="2 2" />
-          <line x1="82%" y1="28%" x2="82%" y2="68%" stroke="url(#cyber-line-cyan)" strokeWidth="1" strokeDasharray="2 2" />
-          <line x1="18%" y1="68%" x2="50%" y2="84%" stroke="url(#cyber-line-cyan)" strokeWidth="1.5" />
-          <line x1="82%" y1="68%" x2="50%" y2="84%" stroke="url(#cyber-line-cyan)" strokeWidth="1.5" />
+          {/* Infrastructure backbone with live flow */}
+          <path id="cdc-p1" d="M 50 12 L 18 28" stroke="url(#cdc-line-cyan)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p2" d="M 50 12 L 82 28" stroke="url(#cdc-line-cyan)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p3" d="M 18 28 L 18 68" stroke="url(#cdc-line-cyan)" strokeWidth="0.6" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p4" d="M 82 28 L 82 68" stroke="url(#cdc-line-cyan)" strokeWidth="0.6" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p5" d="M 18 68 L 50 84" stroke="url(#cdc-line-cyan)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p6" d="M 82 68 L 50 84" stroke="url(#cdc-line-cyan)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
 
           {/* Defense Shielding to User Device */}
-          <line x1="36%" y1="50%" x2="50%" y2="84%" stroke="#10b981" strokeWidth="1.5" strokeOpacity="0.5" />
-          <line x1="64%" y1="50%" x2="50%" y2="84%" stroke="#10b981" strokeWidth="1.5" strokeOpacity="0.5" />
-          <line x1="50%" y1="66%" x2="50%" y2="84%" stroke="#00f0ff" strokeWidth="2" strokeOpacity="0.6" />
+          <path id="cdc-p7" d="M 36 50 L 50 84" stroke="#10b981" strokeWidth="0.9" strokeDasharray="2.5 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p8" d="M 64 50 L 50 84" stroke="#10b981" strokeWidth="0.9" strokeDasharray="2.5 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p9" d="M 50 66 L 50 84" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="2 1.5" className="animate-cyber-flow" />
 
           {/* Threat interception lines */}
-          <line x1="28%" y1="16%" x2="50%" y2="36%" stroke="url(#cyber-line-rose)" strokeWidth="1" strokeDasharray="2 2" />
-          <line x1="72%" y1="16%" x2="50%" y2="36%" stroke="url(#cyber-line-rose)" strokeWidth="1" strokeDasharray="2 2" />
+          <path id="cdc-p10" d="M 28 16 L 50 36" stroke="url(#cdc-line-rose)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p11" d="M 72 16 L 50 36" stroke="url(#cdc-line-rose)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p12" d="M 10 48 L 36 50" stroke="url(#cdc-line-rose)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+          <path id="cdc-p13" d="M 90 48 L 64 50" stroke="url(#cdc-line-rose)" strokeWidth="0.8" strokeDasharray="2 1.5" className="animate-cyber-flow" />
+
+          {/* Continuous Traveling Packets */}
+          <circle r="1.2" fill="#00f0ff">
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M 50 12 L 18 28" />
+          </circle>
+          <circle r="1.2" fill="#00f0ff">
+            <animateMotion dur="2.6s" repeatCount="indefinite" path="M 50 12 L 82 28" />
+          </circle>
+          <circle r="1" fill="#38bdf8">
+            <animateMotion dur="3.0s" repeatCount="indefinite" path="M 18 28 L 18 68" />
+          </circle>
+          <circle r="1" fill="#38bdf8">
+            <animateMotion dur="3.0s" repeatCount="indefinite" path="M 82 28 L 82 68" />
+          </circle>
+          <circle r="1.2" fill="#10b981">
+            <animateMotion dur="2.2s" repeatCount="indefinite" path="M 18 68 L 50 84" />
+          </circle>
+          <circle r="1.2" fill="#10b981">
+            <animateMotion dur="2.2s" repeatCount="indefinite" path="M 82 68 L 50 84" />
+          </circle>
+          <circle r="1.4" fill="#34d399">
+            <animateMotion dur="1.8s" repeatCount="indefinite" path="M 36 50 L 50 84" />
+          </circle>
+          <circle r="1.4" fill="#34d399">
+            <animateMotion dur="1.8s" repeatCount="indefinite" path="M 64 50 L 50 84" />
+          </circle>
+          <circle r="1.5" fill="#00f0ff">
+            <animateMotion dur="1.5s" repeatCount="indefinite" path="M 50 66 L 50 84" />
+          </circle>
+
+          {/* Threat packets */}
+          <circle r="1.2" fill="#f43f5e">
+            <animateMotion dur="1.7s" repeatCount="indefinite" path="M 28 16 L 50 36" />
+          </circle>
+          <circle r="1.2" fill="#f43f5e">
+            <animateMotion dur="1.9s" repeatCount="indefinite" path="M 72 16 L 50 36" />
+          </circle>
+          <circle r="1.2" fill="#f43f5e">
+            <animateMotion dur="2.1s" repeatCount="indefinite" path="M 10 48 L 36 50" />
+          </circle>
+          <circle r="1.2" fill="#f43f5e">
+            <animateMotion dur="2.0s" repeatCount="indefinite" path="M 90 48 L 64 50" />
+          </circle>
+
+          {/* Active selection beam from selected node to User Device (50, 84) */}
+          {selectedNode && selectedNode.id !== 'user-device' && (
+            <g>
+              <path
+                d={`M ${selectedNode.x} ${selectedNode.y} L 50 84`}
+                stroke={selectedNode.type === 'threat' ? '#f43f5e' : selectedNode.type === 'defense' ? '#10b981' : '#00f0ff'}
+                strokeWidth="1.2"
+                strokeDasharray="2 1"
+                className="animate-cyber-flow"
+                opacity="0.85"
+              />
+              <circle
+                r="1.6"
+                fill={selectedNode.type === 'threat' ? '#f43f5e' : selectedNode.type === 'defense' ? '#34d399' : '#00f0ff'}
+              >
+                <animateMotion
+                  dur="1.2s"
+                  repeatCount="indefinite"
+                  path={`M ${selectedNode.x} ${selectedNode.y} L 50 84`}
+                />
+              </circle>
+            </g>
+          )}
         </svg>
 
         {/* Nodes Layer */}

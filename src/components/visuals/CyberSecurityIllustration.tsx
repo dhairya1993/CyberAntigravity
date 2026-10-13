@@ -64,13 +64,22 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
               </text>
             </g>
 
-            {/* Hook / Attacker Line */}
+            {/* Hook / Attacker Line with Traveling Threat Packet */}
             <path
               d="M 175 14 C 175 52, 158 76, 138 77 C 126 77, 126 62, 134 62 C 139 62, 142 67, 139 71"
               stroke="url(#phish_grad)"
               strokeWidth="2.2"
               strokeLinecap="round"
+              strokeDasharray="4 3"
+              className="animate-cyber-flow"
             />
+            <circle r="2.5" fill="#f43f5e" opacity="0.95">
+              <animateMotion
+                dur="2.5s"
+                repeatCount="indefinite"
+                path="M 175 14 C 175 52, 158 76, 138 77 C 126 77, 126 62, 134 62 C 139 62, 142 67, 139 71"
+              />
+            </circle>
             <polygon points="139,71 133,65 143,64" fill="#f43f5e" />
 
             {/* Warning Symbol */}
@@ -80,15 +89,21 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
               <circle cx="16" cy="24" r="1.5" fill="#fca5a5" />
             </g>
 
-            {/* Defensive Shield (intercepting lure) */}
+            {/* Defensive Shield (intercepting lure with live defensive glow) */}
             <path
               d="M 195 44 L 218 52 V 76 C 218 94 195 106 195 106 C 195 106 172 94 172 76 V 52 L 195 44 Z"
               fill="rgba(6, 182, 212, 0.2)"
               stroke="#06b6d4"
               strokeWidth="2"
-              className={isHovered ? 'filter drop-shadow-[0_0_8px_#00f0ff]' : ''}
+              className={isHovered ? 'filter drop-shadow-[0_0_12px_#00f0ff]' : 'filter drop-shadow-[0_0_6px_#00f0ff]'}
             />
             <path d="M 187 72 L 193 78 L 204 66" stroke="#22d3ee" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+
+            {/* Live Connection Stream between Shield and Link */}
+            <line x1="172" y1="76" x2="134" y2="77" stroke="#00f0ff" strokeWidth="1.5" strokeDasharray="4 3" className="animate-cyber-flow" opacity="0.6" />
+            <circle r="2" fill="#00f0ff" opacity="0.9">
+              <animateMotion dur="1.8s" repeatCount="indefinite" path="M 172 76 L 134 77" />
+            </circle>
 
             {/* Concept Tag */}
             <g transform="translate(22, 112)">
@@ -116,13 +131,19 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
             <rect x="42" y="42" width="22" height="26" rx="3" fill="#450a0a" stroke="#f43f5e" strokeWidth="1.2" />
             <text x="46" y="58" fill="#fca5a5" fontSize="7" fontFamily="monospace" fontWeight="bold">.exe</text>
 
+            {/* Live Malicious Stream to Shield */}
+            <line x1="64" y1="54" x2="148" y2="54" stroke="#f43f5e" strokeWidth="1.8" strokeDasharray="5 3" className="animate-cyber-flow" />
+            <circle r="2.8" fill="#f43f5e" opacity="0.95">
+              <animateMotion dur="1.7s" repeatCount="indefinite" path="M 64 54 L 148 54" />
+            </circle>
+
             {/* Defensive Shield (Blocking Point) */}
             <path
               d="M 175 28 L 202 36 V 64 C 202 84 175 98 175 98 C 175 98 148 84 148 64 V 36 L 175 28 Z"
               fill="rgba(6, 182, 212, 0.2)"
               stroke="#06b6d4"
               strokeWidth="2.2"
-              className={isHovered ? 'filter drop-shadow-[0_0_10px_#00f0ff]' : ''}
+              className={isHovered ? 'filter drop-shadow-[0_0_12px_#00f0ff]' : 'filter drop-shadow-[0_0_6px_#00f0ff]'}
             />
             <path d="M 165 60 L 172 67 L 186 52" stroke="#22d3ee" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
 
@@ -146,7 +167,6 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
 
     /* -------------------------------------------------------------------------
        3. RANSOMWARE: locked files + digital lock + warning signal
-       Animation: lock briefly pulses.
        ------------------------------------------------------------------------- */
     case 'ransomware':
       return (
@@ -165,6 +185,12 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
               <line x1="58" y1="62" x2="90" y2="62" stroke="#475569" strokeWidth="1.5" strokeLinecap="round" />
               <text x="58" y="82" fill="#f87171" fontSize="7.5" fontFamily="monospace" fontWeight="bold">.LOCKED</text>
             </g>
+
+            {/* Connecting Stream from Files to Lock */}
+            <line x1="108" y1="50" x2="135" y2="50" stroke="#f59e0b" strokeWidth="1.8" strokeDasharray="4 3" className="animate-cyber-flow" />
+            <circle r="2.5" fill="#f59e0b" opacity="0.95">
+              <animateMotion dur="1.6s" repeatCount="indefinite" path="M 108 50 L 135 50" />
+            </circle>
 
             {/* Digital Lock with Pulse Animation */}
             <g transform="translate(125, 30)" className="animate-lock-pulse">
@@ -204,7 +230,6 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
 
     /* -------------------------------------------------------------------------
        4. SOCIAL ENGINEERING: message + human silhouette + urgency indicator + manipulation arrows
-       Highlight: Urgency, Authority, Emotion
        ------------------------------------------------------------------------- */
     case 'social-engineering':
       return (
@@ -221,21 +246,30 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
             <text x="132" y="40" fill="#fca5a5" fontSize="6.5">Immediate wire required</text>
             <text x="132" y="52" fill="#c084fc" fontSize="6">Under executive order</text>
 
-            {/* 3 Manipulation Arrows Highlighting: Urgency, Authority, Emotion */}
+            {/* 3 Manipulation Arrows with Traveling Packets */}
             <g>
               {/* Urgency Arrow */}
-              <path d="M 125 32 L 82 38" stroke="#f43f5e" strokeWidth="1.8" strokeDasharray="2 2" />
+              <path d="M 125 32 L 82 38" stroke="#f43f5e" strokeWidth="1.8" strokeDasharray="4 3" className="animate-cyber-flow" />
               <polygon points="82,38 90,34 89,42" fill="#f43f5e" />
+              <circle r="2" fill="#f43f5e" opacity="0.95">
+                <animateMotion dur="1.5s" repeatCount="indefinite" path="M 125 32 L 82 38" />
+              </circle>
               <text x="88" y="32" fill="#fca5a5" fontSize="6" fontFamily="monospace" fontWeight="bold">URGENCY</text>
 
               {/* Authority Arrow */}
-              <path d="M 125 46 L 80 50" stroke="#a855f7" strokeWidth="1.8" strokeDasharray="2 2" />
+              <path d="M 125 46 L 80 50" stroke="#a855f7" strokeWidth="1.8" strokeDasharray="4 3" className="animate-cyber-flow" />
               <polygon points="80,50 88,46 87,54" fill="#a855f7" />
+              <circle r="2" fill="#a855f7" opacity="0.95">
+                <animateMotion dur="1.7s" repeatCount="indefinite" path="M 125 46 L 80 50" />
+              </circle>
               <text x="86" y="46" fill="#d8b4fe" fontSize="6" fontFamily="monospace" fontWeight="bold">AUTHORITY</text>
 
               {/* Emotion Arrow */}
-              <path d="M 125 60 L 78 64" stroke="#f59e0b" strokeWidth="1.8" strokeDasharray="2 2" />
+              <path d="M 125 60 L 78 64" stroke="#f59e0b" strokeWidth="1.8" strokeDasharray="4 3" className="animate-cyber-flow" />
               <polygon points="78,64 86,60 85,68" fill="#f59e0b" />
+              <circle r="2" fill="#f59e0b" opacity="0.95">
+                <animateMotion dur="1.9s" repeatCount="indefinite" path="M 125 60 L 78 64" />
+              </circle>
               <text x="86" y="62" fill="#fde68a" fontSize="6" fontFamily="monospace" fontWeight="bold">EMOTION</text>
             </g>
 
@@ -276,22 +310,36 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
             {/* Warning indicator (Impersonation attempt) */}
             <g transform="translate(112, 16)">
               <circle cx="10" cy="10" r="10" fill="#450a0a" stroke="#f43f5e" strokeWidth="1.5" />
+              <circle cx="10" cy="10" r="14" stroke="#f43f5e" strokeWidth="0.8" opacity="0.4" className="animate-ping" />
               <line x1="10" y1="5" x2="10" y2="11" stroke="#fca5a5" strokeWidth="2" strokeLinecap="round" />
               <circle cx="10" cy="14" r="1.2" fill="#fca5a5" />
             </g>
 
-            {/* Defensive Shield Protecting Identity */}
-            <path
-              d="M 175 30 L 202 38 V 66 C 202 86 175 100 175 100 C 175 100 148 86 148 66 V 38 L 175 30 Z"
-              fill="rgba(16, 185, 129, 0.2)"
-              stroke="#10b981"
-              strokeWidth="2.2"
-              className={isHovered ? 'filter drop-shadow-[0_0_10px_#10b981]' : ''}
-            />
-            <path d="M 165 62 L 172 69 L 186 54" stroke="#34d399" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            {/* Impersonation attack attempt stream intercepted by defensive field */}
+            <path d="M 122 26 L 148 45" stroke="#f43f5e" strokeWidth="1.5" strokeDasharray="3 3" className="animate-cyber-flow" />
+            <circle r="2" fill="#f43f5e">
+              <animateMotion dur="1.3s" repeatCount="indefinite" path="M 122 26 L 148 45" />
+            </circle>
 
-            {/* Protection line connecting Shield to ID */}
-            <path d="M 148 64 L 130 64" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3 2" />
+            {/* Defensive Shield Protecting Identity */}
+            <g>
+              <path
+                d="M 175 30 L 202 38 V 66 C 202 86 175 100 175 100 C 175 100 148 86 148 66 V 38 L 175 30 Z"
+                fill="rgba(16, 185, 129, 0.2)"
+                stroke="#10b981"
+                strokeWidth="2.2"
+                className={isHovered ? 'filter drop-shadow-[0_0_12px_#10b981]' : ''}
+              />
+              <path d="M 165 62 L 172 69 L 186 54" stroke="#34d399" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Defense pulse aura */}
+              <circle cx="175" cy="62" r="28" stroke="#10b981" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.5" className="animate-spin" style={{ animationDuration: '10s' }} />
+            </g>
+
+            {/* Live Protection stream connecting Shield to ID Card with traveling security packet */}
+            <path d="M 148 64 L 130 64" stroke="#10b981" strokeWidth="2" strokeDasharray="4 3" className="animate-cyber-flow" />
+            <circle r="2.5" fill="#34d399">
+              <animateMotion dur="1.4s" repeatCount="indefinite" path="M 148 64 L 130 64" />
+            </circle>
 
             {/* Concept Tag */}
             <g transform="translate(25, 112)">
@@ -310,46 +358,67 @@ export const CyberSecurityIllustration: React.FC<CyberSecurityIllustrationProps>
         <div className={`relative flex items-center justify-center select-none ${className}`}>
           <svg viewBox="0 0 240 140" className="w-full h-full overflow-visible" fill="none">
             {/* Browser Window Frame */}
-            <rect x="24" y="18" width="130" height="84" rx="7" fill="#090d16" stroke="#334155" strokeWidth="1.5" />
+            <rect x="20" y="18" width="134" height="84" rx="7" fill="#090d16" stroke="#334155" strokeWidth="1.5" />
             {/* Window bar */}
-            <rect x="24" y="18" width="130" height="16" rx="7" fill="#1e293b" />
-            <circle cx="33" cy="26" r="2.5" fill="#f43f5e" />
-            <circle cx="41" cy="26" r="2.5" fill="#f59e0b" />
-            <circle cx="49" cy="26" r="2.5" fill="#10b981" />
+            <rect x="20" y="18" width="134" height="16" rx="7" fill="#1e293b" />
+            <circle cx="29" cy="26" r="2.5" fill="#f43f5e" />
+            <circle cx="37" cy="26" r="2.5" fill="#f59e0b" />
+            <circle cx="45" cy="26" r="2.5" fill="#10b981" />
 
             {/* Address Bar with Suspicious URL */}
-            <rect x="58" y="21" width="90" height="10" rx="3" fill="#020617" stroke="#f43f5e" strokeWidth="0.8" />
-            <text x="62" y="29" fill="#fca5a5" fontSize="5.5" fontFamily="monospace">
+            <rect x="54" y="21" width="94" height="10" rx="3" fill="#020617" stroke="#f43f5e" strokeWidth="0.8" />
+            <text x="58" y="29" fill="#fca5a5" fontSize="5.5" fontFamily="monospace">
               http://secure-bank-login.cc
             </text>
 
             {/* Cloned Login Page Interface */}
-            <rect x="42" y="42" width="94" height="14" rx="3" fill="#1e293b" />
-            <text x="48" y="52" fill="#94a3b8" fontSize="6.5" fontFamily="monospace">username / email</text>
-            <rect x="42" y="60" width="94" height="14" rx="3" fill="#020617" stroke="#475569" strokeWidth="0.8" />
+            <rect x="36" y="42" width="102" height="14" rx="3" fill="#1e293b" />
+            <text x="42" y="52" fill="#94a3b8" fontSize="6.5" fontFamily="monospace">username / email</text>
+            <rect x="36" y="60" width="102" height="14" rx="3" fill="#020617" stroke="#475569" strokeWidth="0.8" />
+            <circle cx="44" cy="67" r="1.5" fill="#64748b" />
             <circle cx="50" cy="67" r="1.5" fill="#64748b" />
             <circle cx="56" cy="67" r="1.5" fill="#64748b" />
             <circle cx="62" cy="67" r="1.5" fill="#64748b" />
-            <circle cx="68" cy="67" r="1.5" fill="#64748b" />
 
             {/* Sign in button */}
-            <rect x="42" y="78" width="40" height="12" rx="3" fill="#f43f5e" />
-            <text x="48" y="87" fill="#fff" fontSize="6" fontWeight="bold">Sign In</text>
+            <rect x="36" y="78" width="44" height="12" rx="3" fill="#f43f5e" />
+            <text x="42" y="87" fill="#fff" fontSize="6" fontWeight="bold">Sign In</text>
+
+            {/* Live Exfiltration stream from Sign-In button to Rogue C2 Server */}
+            <path d="M 80 84 L 175 84" stroke="#f43f5e" strokeWidth="1.5" strokeDasharray="4 3" className="animate-cyber-flow" />
+            <circle r="2" fill="#f43f5e">
+              <animateMotion dur="1.6s" repeatCount="indefinite" path="M 80 84 L 175 84" />
+            </circle>
+
+            {/* Rogue C2 receiver badge */}
+            <g transform="translate(175, 74)">
+              <rect width="52" height="18" rx="4" fill="#450a0a" stroke="#f43f5e" strokeWidth="1" />
+              <circle cx="8" cy="9" r="2.5" fill="#f43f5e" className="animate-pulse" />
+              <text x="14" y="12" fill="#fca5a5" fontSize="6" fontFamily="monospace" fontWeight="bold">ROGUE C2</text>
+            </g>
+
+            {/* Active inspection beam from Magnifying Glass to fake address bar */}
+            <path d="M 166 40 L 148 26" stroke="#00f0ff" strokeWidth="1.5" strokeDasharray="3 3" className="animate-cyber-flow" />
+            <circle r="2" fill="#00f0ff">
+              <animateMotion dur="1.2s" repeatCount="indefinite" path="M 166 40 L 148 26" />
+            </circle>
 
             {/* Magnifying Glass Inspecting URL Flaw */}
-            <g transform="translate(145, 20)">
+            <g transform="translate(150, 16)">
+              {/* Radar inspection pulse */}
+              <circle cx="26" cy="26" r="22" stroke="#00f0ff" strokeWidth="0.8" opacity="0.3" className="animate-ping" />
               {/* Glass Circle */}
-              <circle cx="28" cy="28" r="20" fill="rgba(6, 182, 212, 0.15)" stroke="#00f0ff" strokeWidth="2.5" />
+              <circle cx="26" cy="26" r="18" fill="rgba(6, 182, 212, 0.15)" stroke="#00f0ff" strokeWidth="2.2" />
               {/* Internal reticle */}
-              <circle cx="28" cy="28" r="12" stroke="#00f0ff" strokeWidth="1" strokeDasharray="3 3" />
+              <circle cx="26" cy="26" r="11" stroke="#00f0ff" strokeWidth="1" strokeDasharray="3 3" className="animate-spin" style={{ animationDuration: '8s' }} />
               {/* Handle */}
-              <line x1="42" y1="42" x2="60" y2="60" stroke="#00f0ff" strokeWidth="3.5" strokeLinecap="round" />
+              <line x1="39" y1="39" x2="56" y2="56" stroke="#00f0ff" strokeWidth="3.2" strokeLinecap="round" />
               {/* Warning inside inspector */}
-              <text x="18" y="31" fill="#f43f5e" fontSize="9" fontWeight="bold" fontFamily="monospace">! FAKE</text>
+              <text x="16" y="29" fill="#f43f5e" fontSize="8" fontWeight="bold" fontFamily="monospace">! FAKE</text>
             </g>
 
             {/* Concept Tag */}
-            <g transform="translate(24, 112)">
+            <g transform="translate(20, 112)">
               <rect x="0" y="0" width="124" height="18" rx="4" fill="#450a0a" stroke="#f43f5e" strokeWidth="1" />
               <text x="8" y="12" fill="#fca5a5" fontSize="8" fontFamily="monospace" fontWeight="bold">LOOKALIKE CLONE</text>
             </g>

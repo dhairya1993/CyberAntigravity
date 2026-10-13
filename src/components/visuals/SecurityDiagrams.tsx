@@ -51,35 +51,78 @@ export const CiaTriadDiagram: React.FC = () => {
 
   return (
     <div className="rounded-2xl bg-slate-900/90 border border-slate-800 p-5 sm:p-7 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-      <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
-        <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold block">
-          Foundational Security Model
-        </span>
-        <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-          The CIA Triad
-        </h3>
-        <p className="text-xs text-slate-300">
-          The international benchmark for designing, evaluating, and operating secure information systems.
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+        <div>
+          <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold block">
+            Foundational Security Model
+          </span>
+          <h3 className="text-xl sm:text-2xl font-extrabold text-white">
+            The CIA Triad
+          </h3>
+          <p className="text-xs text-slate-300 mt-0.5">
+            The international benchmark for designing, evaluating, and operating secure information systems.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-700/60">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            TRIAD CIRCUIT: BALANCED
+          </span>
+        </div>
       </div>
 
-      {/* Interactive Visual Triangular Layout */}
+      {/* Interactive Visual Triangular Layout with Live Flow Streams */}
       <div className="relative max-w-md mx-auto my-4 py-4">
-        {/* SVG Triangle connecting lines */}
-        <svg className="w-full h-44 sm:h-52" viewBox="0 0 300 200" fill="none" aria-hidden="true">
-          <polygon
-            points="150,25 40,175 260,175"
-            stroke="rgba(6, 182, 212, 0.25)"
-            strokeWidth="2"
-            strokeDasharray="4 4"
-            fill="rgba(6, 182, 212, 0.02)"
+        {/* SVG Triangle connecting lines with continuous circulating packets */}
+        <svg className="w-full h-48 sm:h-56 overflow-visible select-none pointer-events-none" viewBox="0 0 300 200" fill="none" aria-hidden="true">
+          <defs>
+            <radialGradient id="triad_glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#00f0ff" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          {/* Central Core Shield Aura */}
+          <circle cx="150" cy="125" r="32" fill="url(#triad_glow)" />
+
+          {/* Radial Lines from vertices to center (150, 125) */}
+          <line x1="150" y1="25" x2="150" y2="125" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.4" />
+          <line x1="40" y1="175" x2="150" y2="125" stroke="#10b981" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.4" />
+          <line x1="260" y1="175" x2="150" y2="125" stroke="#a855f7" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.4" />
+
+          {/* Main Triangle Circulating Flow Path */}
+          <path
+            d="M 150 25 L 40 175 L 260 175 Z"
+            stroke="#00f0ff"
+            strokeWidth="2.2"
+            strokeDasharray="6 4"
+            className="animate-cyber-flow"
+            strokeOpacity="0.75"
           />
+
+          {/* Circulating Flow Packets around the Triangle */}
+          <circle r="3.2" fill="#00f0ff" opacity="0.95">
+            <animateMotion
+              dur="4.5s"
+              repeatCount="indefinite"
+              path="M 150 25 L 40 175 L 260 175 Z"
+            />
+          </circle>
+          <circle r="2.2" fill="#10b981" opacity="0.9">
+            <animateMotion
+              dur="3.2s"
+              repeatCount="indefinite"
+              path="M 260 175 L 40 175 L 150 25 Z"
+            />
+          </circle>
+
           {/* Central Shield Icon Badge */}
-          <circle cx="150" cy="125" r="26" fill="#0b1120" stroke="rgba(6, 182, 212, 0.4)" strokeWidth="1.5" />
+          <circle cx="150" cy="125" r="24" fill="#0b1120" stroke="#00f0ff" strokeWidth="2" />
+          <circle cx="150" cy="125" r="14" fill="#0369a1" fillOpacity="0.3" stroke="#10b981" strokeWidth="1" strokeDasharray="2 2" className="animate-spin" style={{ animationDuration: '10s' }} />
         </svg>
 
         {/* Top: Confidentiality */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
           <button
             type="button"
             onClick={() => setActivePillar('confidentiality')}
@@ -95,7 +138,7 @@ export const CiaTriadDiagram: React.FC = () => {
         </div>
 
         {/* Bottom Left: Integrity */}
-        <div className="absolute bottom-0 left-0">
+        <div className="absolute bottom-0 left-0 z-10">
           <button
             type="button"
             onClick={() => setActivePillar('integrity')}
@@ -111,7 +154,7 @@ export const CiaTriadDiagram: React.FC = () => {
         </div>
 
         {/* Bottom Right: Availability */}
-        <div className="absolute bottom-0 right-0">
+        <div className="absolute bottom-0 right-0 z-10">
           <button
             type="button"
             onClick={() => setActivePillar('availability')}
@@ -172,65 +215,92 @@ export const CiaTriadDiagram: React.FC = () => {
 export const MfaAuthDiagram: React.FC = () => {
   return (
     <div className="rounded-2xl bg-slate-900/90 border border-slate-800 p-5 sm:p-7 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-      <div className="text-center max-w-xl mx-auto space-y-1">
-        <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold block">
-          Defense in Depth
-        </span>
-        <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-          How Multi-Factor Authentication Works
-        </h3>
-        <p className="text-xs text-slate-300">
-          MFA combines two or more independent factors so a stolen password alone is insufficient to compromise an account.
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold block">
+            Defense in Depth
+          </span>
+          <h3 className="text-xl sm:text-2xl font-extrabold text-white">
+            How Multi-Factor Authentication Works
+          </h3>
+          <p className="text-xs text-slate-300 mt-0.5">
+            MFA combines two or more independent factors so a stolen password alone is insufficient to compromise an account.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            AUTHENTICATION PIPELINE LIVE
+          </span>
+        </div>
       </div>
 
-      {/* Visual Formula: Factor 1 + Factor 2 + Factor 3 => Verified */}
-      <div className="grid grid-cols-1 md:grid-cols-7 gap-3 items-center text-center">
-        {/* Factor 1: Knowledge */}
-        <div className="md:col-span-2 p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-800/60 text-cyan-400 flex items-center justify-center mx-auto">
-            <Key className="w-5 h-5" />
+      {/* Visual Formula with Live Stream Connectors */}
+      <div className="relative">
+        {/* Desktop Connecting SVG Streams */}
+        <div className="hidden md:block absolute inset-0 pointer-events-none select-none z-0">
+          <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 600 120">
+            {/* Stream from Factor 1 to Center */}
+            <line x1="170" y1="60" x2="250" y2="60" stroke="#00f0ff" strokeWidth="2" strokeDasharray="5 3" className="animate-cyber-flow" />
+            <circle r="3" fill="#00f0ff" opacity="0.95">
+              <animateMotion dur="1.8s" repeatCount="indefinite" path="M 170 60 L 250 60" />
+            </circle>
+
+            {/* Stream from Factor 2 to Center */}
+            <line x1="430" y1="60" x2="510" y2="60" stroke="#10b981" strokeWidth="2.2" strokeDasharray="5 3" className="animate-cyber-flow" />
+            <circle r="3" fill="#10b981" opacity="0.95">
+              <animateMotion dur="1.8s" repeatCount="indefinite" path="M 430 60 L 510 60" />
+            </circle>
+          </svg>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-7 gap-3 items-center text-center relative z-10">
+          {/* Factor 1: Knowledge */}
+          <div className="md:col-span-2 p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-800/60 text-cyan-400 flex items-center justify-center mx-auto">
+              <Key className="w-5 h-5" />
+            </div>
+            <span className="text-[10px] font-mono text-cyan-400 font-bold uppercase block">
+              Factor 1: Knowledge
+            </span>
+            <h4 className="text-sm font-bold text-white">Something You Know</h4>
+            <p className="text-[11px] text-slate-400">
+              Password, passphrase, PIN code, or secret security question.
+            </p>
           </div>
-          <span className="text-[10px] font-mono text-cyan-400 font-bold uppercase block">
-            Factor 1: Knowledge
-          </span>
-          <h4 className="text-sm font-bold text-white">Something You Know</h4>
-          <p className="text-[11px] text-slate-400">
-            Password, passphrase, PIN code, or secret security question.
-          </p>
-        </div>
 
-        <div className="text-slate-500 font-bold text-xl md:col-span-1 hidden md:block">
-          +
-        </div>
-
-        {/* Factor 2: Possession */}
-        <div className="md:col-span-2 p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 flex items-center justify-center mx-auto">
-            <Smartphone className="w-5 h-5" />
+          <div className="text-cyan-400 font-bold text-xl md:col-span-1 hidden md:flex items-center justify-center">
+            <span className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 font-mono text-sm">+</span>
           </div>
-          <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase block">
-            Factor 2: Possession
-          </span>
-          <h4 className="text-sm font-bold text-white">Something You Have</h4>
-          <p className="text-[11px] text-slate-400">
-            Authenticator app (TOTP), hardware key (YubiKey), or trusted device.
-          </p>
-        </div>
 
-        <div className="text-slate-500 font-bold text-xl md:col-span-1 hidden md:block">
-          =
-        </div>
-
-        {/* Verified Shield Outcome */}
-        <div className="md:col-span-1 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/50 space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center mx-auto font-bold">
-            <ShieldCheck className="w-6 h-6" />
+          {/* Factor 2: Possession */}
+          <div className="md:col-span-2 p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 flex items-center justify-center mx-auto">
+              <Smartphone className="w-5 h-5" />
+            </div>
+            <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase block">
+              Factor 2: Possession
+            </span>
+            <h4 className="text-sm font-bold text-white">Something You Have</h4>
+            <p className="text-[11px] text-slate-400">
+              Authenticator app (TOTP), hardware key (YubiKey), or trusted device.
+            </p>
           </div>
-          <span className="text-[10px] font-mono text-emerald-300 font-bold uppercase block">
-            Result
-          </span>
-          <h4 className="text-xs font-bold text-white">Verified</h4>
+
+          <div className="text-emerald-400 font-bold text-xl md:col-span-1 hidden md:flex items-center justify-center">
+            <span className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 font-mono text-sm">=</span>
+          </div>
+
+          {/* Verified Shield Outcome */}
+          <div className="md:col-span-1 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/50 space-y-2 shadow-lg shadow-emerald-950/50">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center mx-auto font-bold animate-pulse">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <span className="text-[10px] font-mono text-emerald-300 font-bold uppercase block">
+              Result
+            </span>
+            <h4 className="text-xs font-bold text-white">Verified</h4>
+          </div>
         </div>
       </div>
 

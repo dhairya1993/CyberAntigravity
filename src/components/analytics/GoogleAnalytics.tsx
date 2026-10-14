@@ -1,58 +1,41 @@
 'use client';
 
-import React from 'react';
-import Script from 'next/script';
+import React, { useEffect, Suspense } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 /**
- * GoogleAnalytics & Marketing Conversion Component
+ * GoogleAnalytics SPA Navigation Tracker
  * 
- * Provides zero-friction integration for:
- * 1. Google Analytics 4 (GA4) via NEXT_PUBLIC_GA_MEASUREMENT_ID
- * 2. Google Tag Manager (GTM) via NEXT_PUBLIC_GTM_ID
+ * The primary Google tag (gtag.js) script is statically loaded in <head>
+ * inside RootLayout for 100% Google Tag Test Installation compliance.
  * 
- * Uses Next.js next/script with strategy="afterInteractive" to ensure
- * 100% Core Web Vitals (LCP, INP, CLS) performance without blocking rendering.
+ * This component listens for client-side route transitions and updates
+ * Google Analytics with real-time page views.
  */
+function AnalyticsNavigationTracker({ gaId }: { gaId: string }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (!pathname) return;
+    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+    if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
+      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('config', gaId, {
+        page_path: url,
+      });
+    }
+  }, [pathname, searchParams, gaId]);
+
+  return null;
+}
+
 export const GoogleAnalytics: React.FC = () => {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-C24569XYGB';
 
   return (
-    <>
-      {/* Google Analytics 4 (GA4) */}
-      {gaId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics-init" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaId}', {
-                page_path: window.location.pathname,
-                anonymize_ip: true,
-                cookie_flags: 'SameSite=None;Secure'
-              });
-            `}
-          </Script>
-        </>
-      )}
-
-      {/* Google Tag Manager (GTM) for Advanced SEM & Ad Conversions */}
-      {gtmId && (
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${gtmId}');
-          `}
-        </Script>
-      )}
-    </>
+    <Suspense fallback={null}>
+      <AnalyticsNavigationTracker gaId={gaId} />
+    </Suspense>
   );
 };
+

@@ -27,20 +27,31 @@ const PILLARS: Pillar[] = [
     accentColor: 'from-cyan-500/20 to-blue-500/5',
     icon: <ShieldCheck className="w-6 h-6 text-cyan-400" />,
     graphic: (
-      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16" aria-hidden="true">
+      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16 overflow-visible" aria-hidden="true">
         {/* Shield outline with defensive deflection waves */}
         <path
           d="M50 8L74 16V30C74 44 50 54 50 54C50 54 26 44 26 30V16L50 8Z"
-          fill="rgba(6, 182, 212, 0.1)"
+          fill="rgba(6, 182, 212, 0.15)"
           stroke="#06b6d4"
           strokeWidth="2"
         />
         <path d="M50 18V44" stroke="#06b6d4" strokeWidth="1.5" strokeDasharray="3 3" />
+        <circle cx="50" cy="30" r="14" stroke="#00f0ff" strokeWidth="0.8" strokeDasharray="2 3" opacity="0.6" className="animate-spin" style={{ animationDuration: '6s' }} />
+
+        {/* Incoming threat beam with cyber flow */}
+        <path d="M12 28L34 26" stroke="#f43f5e" strokeWidth="1.8" strokeDasharray="3 2" className="animate-cyber-flow" />
+        <circle r="2" fill="#f43f5e">
+          <animateMotion dur="1.5s" repeatCount="indefinite" path="M12 28 L 34 26" />
+        </circle>
+
         {/* Deflected threat beam */}
-        <path d="M12 28L34 26" stroke="#f43f5e" strokeWidth="1.5" strokeDasharray="2 2" />
-        <path d="M34 26L18 14" stroke="#06b6d4" strokeWidth="1.5" />
-        <circle cx="34" cy="26" r="2.5" fill="#38bdf8" />
-        {/* Protective glow point */}
+        <path d="M34 26L18 14" stroke="#00f0ff" strokeWidth="1.8" strokeDasharray="3 2" className="animate-cyber-flow" />
+        <circle r="2" fill="#00f0ff">
+          <animateMotion dur="1.5s" begin="0.75s" repeatCount="indefinite" path="M34 26 L 18 14" />
+        </circle>
+
+        {/* Impact flash point */}
+        <circle cx="34" cy="26" r="3" fill="#38bdf8" className="animate-ping" />
         <circle cx="50" cy="30" r="4" fill="#22d3ee" fillOpacity="0.4" />
       </svg>
     ),
@@ -54,14 +65,22 @@ const PILLARS: Pillar[] = [
     accentColor: 'from-emerald-500/20 to-cyan-500/5',
     icon: <Compass className="w-6 h-6 text-emerald-400" />,
     graphic: (
-      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16" aria-hidden="true">
+      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16 relative overflow-hidden" aria-hidden="true">
         {/* Practical checklist with active check */}
-        <rect x="18" y="10" width="64" height="40" rx="4" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" strokeWidth="1.5" />
+        <rect x="18" y="10" width="64" height="40" rx="4" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" strokeWidth="1.5" />
+        
+        {/* Scanning laser beam */}
+        <line x1="20" y1="12" x2="80" y2="12" stroke="#10b981" strokeWidth="1" opacity="0.8">
+          <animate attributeName="y1" values="12;46;12" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="12;46;12" dur="2.4s" repeatCount="indefinite" />
+        </line>
+
         <line x1="26" y1="20" x2="32" y2="20" stroke="#34d399" strokeWidth="2" strokeLinecap="round" />
         <line x1="38" y1="20" x2="74" y2="20" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="26" y1="30" x2="32" y2="30" stroke="#34d399" strokeWidth="2" strokeLinecap="round" />
         <line x1="38" y1="30" x2="68" y2="30" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M26 40L29 43L35 37" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M26 40L29 43L35 37" stroke="#10b981" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="35" cy="37" r="1.5" fill="#34d399" className="animate-ping" />
         <line x1="38" y1="40" x2="62" y2="40" stroke="#34d399" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
@@ -75,13 +94,16 @@ const PILLARS: Pillar[] = [
     accentColor: 'from-purple-500/20 to-pink-500/5',
     icon: <Lock className="w-6 h-6 text-purple-400" />,
     graphic: (
-      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16" aria-hidden="true">
+      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16 overflow-visible" aria-hidden="true">
         {/* Zero telemetry privacy vault */}
-        <circle cx="50" cy="30" r="22" fill="rgba(168, 85, 247, 0.08)" stroke="#a855f7" strokeWidth="1.5" />
-        <circle cx="50" cy="30" r="14" stroke="#c084fc" strokeWidth="1" strokeDasharray="3 3" />
+        <circle cx="50" cy="30" r="22" fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7" strokeWidth="1.5" />
+        <circle cx="50" cy="30" r="16" stroke="#c084fc" strokeWidth="1" strokeDasharray="3 3" className="animate-spin" style={{ animationDuration: '8s' }} />
+        <circle cx="50" cy="30" r="25" stroke="#a855f7" strokeWidth="0.6" strokeDasharray="2 4" opacity="0.5" className="animate-spin" style={{ animationDuration: '12s' }} />
+        
         <path d="M44 26V23C44 19.68 46.68 17 50 17C53.32 17 56 19.68 56 23V26" stroke="#c084fc" strokeWidth="1.5" strokeLinecap="round" />
         <rect x="42" y="26" width="16" height="13" rx="2.5" fill="#a855f7" />
         <circle cx="50" cy="32.5" r="1.5" fill="#07090e" />
+        <circle cx="50" cy="32.5" r="3" stroke="#e9d5ff" strokeWidth="0.8" className="animate-ping" />
       </svg>
     ),
   },
@@ -94,14 +116,24 @@ const PILLARS: Pillar[] = [
     accentColor: 'from-amber-500/20 to-orange-500/5',
     icon: <Users className="w-6 h-6 text-amber-400" />,
     graphic: (
-      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16" aria-hidden="true">
-        {/* Connected community nodes */}
+      <svg viewBox="0 0 100 60" fill="none" className="w-full h-16 overflow-visible" aria-hidden="true">
+        {/* Connected community nodes with animated flow streams */}
+        <path d="M35 32L43 26" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3 2" className="animate-cyber-flow" />
+        <circle r="1.8" fill="#f59e0b">
+          <animateMotion dur="1.4s" repeatCount="indefinite" path="M35 32 L 43 26" />
+        </circle>
+
+        <path d="M65 32L57 26" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3 2" className="animate-cyber-flow" />
+        <circle r="1.8" fill="#f59e0b">
+          <animateMotion dur="1.4s" repeatCount="indefinite" path="M65 32 L 57 26" />
+        </circle>
+
+        <path d="M35 36C40 38 60 38 65 36" stroke="#78350f" strokeWidth="1.5" />
+
         <circle cx="28" cy="34" r="7" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" strokeWidth="1.5" />
         <circle cx="50" cy="22" r="9" fill="rgba(245, 158, 11, 0.25)" stroke="#fbbf24" strokeWidth="2" />
+        <circle cx="50" cy="22" r="14" stroke="#fbbf24" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" className="animate-spin" style={{ animationDuration: '6s' }} />
         <circle cx="72" cy="34" r="7" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" strokeWidth="1.5" />
-        <path d="M35 32L43 26" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="2 2" />
-        <path d="M65 32L57 26" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="2 2" />
-        <path d="M35 36C40 38 60 38 65 36" stroke="#78350f" strokeWidth="1.5" />
       </svg>
     ),
   },

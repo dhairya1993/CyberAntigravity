@@ -32,11 +32,12 @@ const AUDIENCE_CARDS: AudienceCardData[] = [
     badge: 'Education',
     icon: GraduationCap,
     illustration: (
-      <svg viewBox="0 0 48 48" className="w-12 h-12" fill="none">
+      <svg viewBox="0 0 48 48" className="w-12 h-12 overflow-visible" fill="none">
         <path d="M24 8L6 18L24 28L42 18L24 8Z" stroke="#00f0ff" strokeWidth="2" strokeLinejoin="round" />
         <path d="M12 21.5V32C12 37 17 40 24 40C31 40 36 37 36 32V21.5" stroke="#00f0ff" strokeWidth="2" />
-        <path d="M42 18V30" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="24" cy="24" r="3" fill="#00f0ff" />
+        <path d="M42 18V30" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" className="animate-pulse" />
+        <circle cx="24" cy="24" r="3" fill="#00f0ff" className="animate-pulse" />
+        <circle cx="24" cy="24" r="8" stroke="#00f0ff" strokeWidth="0.8" strokeDasharray="2 2" className="animate-spin" style={{ animationDuration: '6s' }} />
       </svg>
     ),
     recommendations: [
@@ -61,8 +62,9 @@ const AUDIENCE_CARDS: AudienceCardData[] = [
     badge: 'Family',
     icon: Users,
     illustration: (
-      <svg viewBox="0 0 48 48" className="w-12 h-12" fill="none">
+      <svg viewBox="0 0 48 48" className="w-12 h-12 overflow-visible" fill="none">
         <path d="M24 6L38 12V22C38 31 32 38 24 42C16 38 10 31 10 22V12L24 6Z" stroke="#00f0ff" strokeWidth="2" />
+        <circle cx="24" cy="24" r="15" stroke="#00f0ff" strokeWidth="0.8" strokeDasharray="3 2" className="animate-spin" style={{ animationDuration: '8s' }} />
         <circle cx="20" cy="20" r="4" stroke="#10b981" strokeWidth="2" />
         <circle cx="28" cy="22" r="3" stroke="#10b981" strokeWidth="2" />
         <path d="M14 32C14 28 17 26 20 26C22 26 23.5 27 24.5 28.5" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
@@ -91,11 +93,15 @@ const AUDIENCE_CARDS: AudienceCardData[] = [
     badge: 'Workplace',
     icon: Briefcase,
     illustration: (
-      <svg viewBox="0 0 48 48" className="w-12 h-12" fill="none">
+      <svg viewBox="0 0 48 48" className="w-12 h-12 overflow-visible" fill="none">
         <rect x="8" y="14" width="32" height="26" rx="4" stroke="#00f0ff" strokeWidth="2" />
         <path d="M18 14V10C18 7.8 19.8 6 22 6H26C28.2 6 30 7.8 30 10V14" stroke="#00f0ff" strokeWidth="2" />
-        <line x1="8" y1="24" x2="40" y2="24" stroke="#00f0ff" strokeWidth="1.5" strokeDasharray="3 2" />
+        <line x1="8" y1="24" x2="40" y2="24" stroke="#00f0ff" strokeWidth="1.5" strokeDasharray="4 2" className="animate-cyber-flow" />
+        <circle r="1.8" fill="#00f0ff">
+          <animateMotion dur="1.8s" repeatCount="indefinite" path="M 8 24 L 40 24" />
+        </circle>
         <circle cx="24" cy="24" r="3.5" fill="#0f172a" stroke="#f59e0b" strokeWidth="2" />
+        <circle cx="24" cy="24" r="2" fill="#f59e0b" className="animate-pulse" />
       </svg>
     ),
     recommendations: [
@@ -120,10 +126,11 @@ const AUDIENCE_CARDS: AudienceCardData[] = [
     badge: 'Guidance',
     icon: HeartHandshake,
     illustration: (
-      <svg viewBox="0 0 48 48" className="w-12 h-12" fill="none">
+      <svg viewBox="0 0 48 48" className="w-12 h-12 overflow-visible" fill="none">
         <circle cx="24" cy="24" r="16" stroke="#00f0ff" strokeWidth="2" />
-        <circle cx="24" cy="24" r="8" stroke="#10b981" strokeWidth="2" strokeDasharray="2 2" />
+        <circle cx="24" cy="24" r="10" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3 2" className="animate-spin" style={{ animationDuration: '6s' }} />
         <path d="M24 16V24L28 28" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="24" cy="24" r="2.5" fill="#00f0ff" className="animate-ping" />
         <circle cx="24" cy="24" r="2" fill="#00f0ff" />
       </svg>
     ),
@@ -149,11 +156,17 @@ const AUDIENCE_CARDS: AudienceCardData[] = [
     badge: 'Commercial',
     icon: Store,
     illustration: (
-      <svg viewBox="0 0 48 48" className="w-12 h-12" fill="none">
+      <svg viewBox="0 0 48 48" className="w-12 h-12 overflow-visible" fill="none">
+        {/* Laser scan line across awning */}
+        <line x1="10" y1="6" x2="38" y2="6" stroke="#00f0ff" strokeWidth="1" opacity="0.8">
+          <animate attributeName="y1" values="6;18;6" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="6;18;6" dur="2s" repeatCount="indefinite" />
+        </line>
         <path d="M8 18L10 6H38L40 18" stroke="#00f0ff" strokeWidth="2" />
         <path d="M6 18H42L40 30C40 32.2 38.2 34 36 34H12C9.8 34 8 32.2 8 30L6 18Z" stroke="#00f0ff" strokeWidth="2" />
         <rect x="18" y="34" width="12" height="8" stroke="#10b981" strokeWidth="2" />
-        <circle cx="24" cy="26" r="3" fill="#f59e0b" />
+        <circle cx="24" cy="26" r="3" fill="#f59e0b" className="animate-pulse" />
+        <circle cx="24" cy="26" r="6" stroke="#f59e0b" strokeWidth="0.8" strokeDasharray="2 2" className="animate-spin" style={{ animationDuration: '4s' }} />
       </svg>
     ),
     recommendations: [

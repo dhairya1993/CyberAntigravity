@@ -132,8 +132,18 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
             DESKTOP: Horizontal Roadmap with Glowing Connecting Path
             ========================================================================= */}
         <div className="hidden lg:block relative pt-6 pb-2">
-          {/* Glowing connecting line behind stages */}
-          <div className="absolute top-[48px] left-10 right-10 h-1 bg-gradient-to-r from-cyan-400 via-emerald-400 via-50% to-slate-800 rounded-full pointer-events-none drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]" />
+          {/* Live SVG connecting circuit flow behind stages */}
+          <div className="absolute top-[40px] left-8 right-8 h-6 pointer-events-none select-none z-0">
+            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 800 20">
+              <line x1="0" y1="10" x2="800" y2="10" stroke="#00f0ff" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.6" />
+              <circle r="4" fill="#00f0ff">
+                <animateMotion dur="3.5s" repeatCount="indefinite" path="M 0 10 L 800 10" />
+              </circle>
+              <circle r="3" fill="#10b981">
+                <animateMotion dur="2.8s" repeatCount="indefinite" path="M 0 10 L 800 10" />
+              </circle>
+            </svg>
+          </div>
 
           {/* Horizontal Stages Grid */}
           <div className="grid grid-cols-4 gap-6">
@@ -228,8 +238,15 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
             MOBILE / TABLET: Vertical Timeline Flow
             ========================================================================= */}
         <div className="lg:hidden relative pl-6 space-y-6">
-          {/* Vertical connecting line */}
-          <div className="absolute left-[18px] top-4 bottom-4 w-1 bg-gradient-to-b from-cyan-400 via-emerald-400 to-slate-800 rounded-full pointer-events-none" />
+          {/* Vertical live animated SVG circuit stream on mobile */}
+          <div className="absolute left-[14px] top-4 bottom-4 w-4 pointer-events-none select-none z-0">
+            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 16 300">
+              <line x1="8" y1="0" x2="8" y2="300" stroke="#00f0ff" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.6" />
+              <circle r="3" fill="#00f0ff">
+                <animateMotion dur="2.8s" repeatCount="indefinite" path="M 8 0 L 8 300" />
+              </circle>
+            </svg>
+          </div>
 
           {ROADMAP_STAGES.map((stage) => {
             const Icon = stage.icon;

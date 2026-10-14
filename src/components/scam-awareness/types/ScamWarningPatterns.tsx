@@ -145,35 +145,49 @@ export const ScamWarningPatterns: React.FC = () => {
               </filter>
             </defs>
 
-            {/* Radar Rings */}
+            {/* Radar Rings & Animated Sonar Sweep */}
             <circle cx="200" cy="150" r="115" stroke="#1e293b" strokeWidth="1" strokeDasharray="4 4" opacity="0.6" />
             <circle cx="200" cy="150" r="75" stroke="#334155" strokeWidth="1" opacity="0.4" />
+            <circle cx="200" cy="150" r="48" stroke="#f43f5e" strokeWidth="1" strokeDasharray="3 3" opacity="0.3" className="animate-spin" style={{ animationDuration: '20s', transformOrigin: '200px 150px' }} />
 
-            {/* Animated Connecting Vector Lines (Center cx=200, cy=150 to 6 nodes) */}
+            {/* Live Animated Connecting Vector Streams (Center cx=200, cy=150 to 6 nodes) */}
             {/* 1. Urgency (200, 38) */}
-            <line x1="200" y1="150" x2="200" y2="40" stroke="#f59e0b" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
+            <line x1="200" y1="150" x2="200" y2="40" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
             {/* 2. Fear (305, 88) */}
-            <line x1="200" y1="150" x2="305" y2="88" stroke="#f43f5e" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
+            <line x1="200" y1="150" x2="305" y2="88" stroke="#f43f5e" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
             {/* 3. Authority (305, 212) */}
-            <line x1="200" y1="150" x2="305" y2="212" stroke="#3b82f6" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
+            <line x1="200" y1="150" x2="305" y2="212" stroke="#3b82f6" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
             {/* 4. Greed (200, 260) */}
-            <line x1="200" y1="150" x2="200" y2="260" stroke="#10b981" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
+            <line x1="200" y1="150" x2="200" y2="260" stroke="#10b981" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
             {/* 5. Curiosity (95, 212) */}
-            <line x1="200" y1="150" x2="95" y2="212" stroke="#a855f7" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
+            <line x1="200" y1="150" x2="95" y2="212" stroke="#a855f7" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
             {/* 6. Trust (95, 88) */}
-            <line x1="200" y1="150" x2="95" y2="88" stroke="#06b6d4" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
+            <line x1="200" y1="150" x2="95" y2="88" stroke="#06b6d4" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
 
-            {/* Moving Pulses on vectors */}
-            <circle cx="200" cy="88" r="2.5" fill="#f59e0b" />
-            <circle cx="258" cy="115" r="2.5" fill="#f43f5e" />
-            <circle cx="258" cy="185" r="2.5" fill="#3b82f6" />
-            <circle cx="200" cy="212" r="2.5" fill="#10b981" />
-            <circle cx="142" cy="185" r="2.5" fill="#a855f7" />
-            <circle cx="142" cy="115" r="2.5" fill="#06b6d4" />
+            {/* Traveling Packets along vectors (Center -> Nodes) */}
+            <circle r="3" fill="#f59e0b" opacity="0.95">
+              <animateMotion dur="2.1s" repeatCount="indefinite" path="M 200 150 L 200 40" />
+            </circle>
+            <circle r="3" fill="#f43f5e" opacity="0.95">
+              <animateMotion dur="2.4s" repeatCount="indefinite" path="M 200 150 L 305 88" />
+            </circle>
+            <circle r="3" fill="#3b82f6" opacity="0.95">
+              <animateMotion dur="2.2s" repeatCount="indefinite" path="M 200 150 L 305 212" />
+            </circle>
+            <circle r="3" fill="#10b981" opacity="0.95">
+              <animateMotion dur="2.5s" repeatCount="indefinite" path="M 200 150 L 200 260" />
+            </circle>
+            <circle r="3" fill="#a855f7" opacity="0.95">
+              <animateMotion dur="2.3s" repeatCount="indefinite" path="M 200 150 L 95 212" />
+            </circle>
+            <circle r="3" fill="#06b6d4" opacity="0.95">
+              <animateMotion dur="2.0s" repeatCount="indefinite" path="M 200 150 L 95 88" />
+            </circle>
 
-            {/* Central Node: "SCAMMER" */}
+            {/* Central Node: "SCAMMER" with Pulse Halo */}
             <g transform="translate(200, 150)">
-              <circle cx="0" cy="0" r="34" fill="#18070b" stroke="#f43f5e" strokeWidth="2.5" filter="url(#patCenterGlow)" />
+              <circle cx="0" cy="0" r="38" fill="none" stroke="#f43f5e" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" className="animate-spin" style={{ animationDuration: '12s' }} />
+              <circle cx="0" cy="0" r="34" fill="#18070b" stroke="#f43f5e" strokeWidth="2.5" filter="url(#patCenterGlow)" className="animate-pulse" />
               <text x="0" y="-3" fill="#ffffff" fontSize="11" fontWeight="900" textAnchor="middle" fontFamily="monospace" letterSpacing="1.5">
                 SCAMMER
               </text>
@@ -182,10 +196,11 @@ export const ScamWarningPatterns: React.FC = () => {
               </text>
             </g>
 
-            {/* Radiating Nodes */}
+            {/* Radiating Nodes with subtle hover-ready pulse rings */}
             {/* Node 1: URGENCY (200, 38) */}
             <g transform="translate(200, 38)">
-              <circle cx="0" cy="0" r="20" fill="#2d1604" stroke="#f59e0b" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="23" fill="none" stroke="#f59e0b" strokeWidth="1" opacity="0.3" strokeDasharray="2 2" />
+              <circle cx="0" cy="0" r="20" fill="#2d1604" stroke="#f59e0b" strokeWidth="1.8" />
               <text x="0" y="3" fill="#fef08a" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
                 URGENCY
               </text>
@@ -193,7 +208,8 @@ export const ScamWarningPatterns: React.FC = () => {
 
             {/* Node 2: FEAR (305, 88) */}
             <g transform="translate(305, 88)">
-              <circle cx="0" cy="0" r="20" fill="#310914" stroke="#f43f5e" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="23" fill="none" stroke="#f43f5e" strokeWidth="1" opacity="0.3" strokeDasharray="2 2" />
+              <circle cx="0" cy="0" r="20" fill="#310914" stroke="#f43f5e" strokeWidth="1.8" />
               <text x="0" y="3" fill="#fecdd3" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
                 FEAR
               </text>
@@ -201,7 +217,8 @@ export const ScamWarningPatterns: React.FC = () => {
 
             {/* Node 3: AUTHORITY (305, 212) */}
             <g transform="translate(305, 212)">
-              <circle cx="0" cy="0" r="20" fill="#071b3b" stroke="#3b82f6" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="23" fill="none" stroke="#3b82f6" strokeWidth="1" opacity="0.3" strokeDasharray="2 2" />
+              <circle cx="0" cy="0" r="20" fill="#071b3b" stroke="#3b82f6" strokeWidth="1.8" />
               <text x="0" y="3" fill="#bfdbfe" fontSize="6.5" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
                 AUTHORITY
               </text>
@@ -209,7 +226,8 @@ export const ScamWarningPatterns: React.FC = () => {
 
             {/* Node 4: GREED (200, 260) */}
             <g transform="translate(200, 260)">
-              <circle cx="0" cy="0" r="20" fill="#062e22" stroke="#10b981" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="23" fill="none" stroke="#10b981" strokeWidth="1" opacity="0.3" strokeDasharray="2 2" />
+              <circle cx="0" cy="0" r="20" fill="#062e22" stroke="#10b981" strokeWidth="1.8" />
               <text x="0" y="3" fill="#a7f3d0" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
                 GREED
               </text>
@@ -217,7 +235,8 @@ export const ScamWarningPatterns: React.FC = () => {
 
             {/* Node 5: CURIOSITY (95, 212) */}
             <g transform="translate(95, 212)">
-              <circle cx="0" cy="0" r="20" fill="#25093e" stroke="#a855f7" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="23" fill="none" stroke="#a855f7" strokeWidth="1" opacity="0.3" strokeDasharray="2 2" />
+              <circle cx="0" cy="0" r="20" fill="#25093e" stroke="#a855f7" strokeWidth="1.8" />
               <text x="0" y="3" fill="#e9d5ff" fontSize="6.5" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
                 CURIOSITY
               </text>
@@ -225,7 +244,8 @@ export const ScamWarningPatterns: React.FC = () => {
 
             {/* Node 6: TRUST (95, 88) */}
             <g transform="translate(95, 88)">
-              <circle cx="0" cy="0" r="20" fill="#052636" stroke="#06b6d4" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="23" fill="none" stroke="#06b6d4" strokeWidth="1" opacity="0.3" strokeDasharray="2 2" />
+              <circle cx="0" cy="0" r="20" fill="#052636" stroke="#06b6d4" strokeWidth="1.8" />
               <text x="0" y="3" fill="#a5f3fc" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
                 TRUST
               </text>

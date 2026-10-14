@@ -94,17 +94,30 @@ export const ScamAnalysisHeroIllustration: React.FC = () => {
             <line x1="6" y1="30" x2="88" y2="30" stroke="#cbd5e1" strokeWidth="2.5" strokeLinecap="round" />
             <line x1="6" y1="38" x2="68" y2="38" stroke="#cbd5e1" strokeWidth="2.5" strokeLinecap="round" />
 
-            {/* Suspicious Phishing Link Area */}
-            <rect x="6" y="46" width="90" height="16" rx="4" fill="#2d1522" stroke="#f43f5e" strokeWidth="1" />
-            <text x="12" y="56" fill="#f43f5e" fontSize="5.5" fontWeight="bold" fontFamily="monospace">
-              http://secure-verify.xyz/login
-            </text>
+            {/* Suspicious Phishing Link Area with Live Pulse */}
+            <g className="animate-link-pulse">
+              <rect x="6" y="46" width="90" height="16" rx="4" fill="#2d1522" stroke="#f43f5e" strokeWidth="1.2" />
+              <text x="12" y="56" fill="#f43f5e" fontSize="5.5" fontWeight="bold" fontFamily="monospace">
+                http://secure-verify.xyz/login
+              </text>
+            </g>
 
             {/* Action Threat Warning Tag */}
             <rect x="6" y="68" width="80" height="12" rx="3" fill="#3b111a" />
             <text x="10" y="76" fill="#fca5a5" fontSize="5" fontWeight="bold" fontFamily="sans-serif">
               * Immediate action required *
             </text>
+
+            {/* Live Sweeping Laser Scanner across the text */}
+            <line x1="0" y1="0" x2="102" y2="0" stroke="#00f0ff" strokeWidth="1.5" opacity="0.85" strokeDasharray="4 2">
+              <animateTransform
+                attributeName="transform"
+                type="translate"
+                values="0 18; 0 80; 0 18"
+                dur="2.8s"
+                repeatCount="indefinite"
+              />
+            </line>
           </g>
 
           {/* Home indicator bar */}
@@ -113,8 +126,8 @@ export const ScamAnalysisHeroIllustration: React.FC = () => {
 
         {/* 3. WARNING INDICATORS (Flashing Badges & Alert Nodes) */}
         {/* Warning Indicator 1 (Urgency Badge top-right of phone) */}
-        <g transform="translate(165, 36)">
-          <rect x="0" y="0" width="76" height="22" rx="6" fill="#18181b" stroke="#f59e0b" strokeWidth="1.5" />
+        <g transform="translate(165, 36)" className="animate-bounce" style={{ animationDuration: '3.6s' }}>
+          <rect x="0" y="0" width="76" height="22" rx="6" fill="#18181b" stroke="#f59e0b" strokeWidth="1.5" filter="drop-shadow(0 0 6px rgba(245,158,11,0.4))" />
           <polygon points="10,16 16,6 22,16" fill="#f59e0b" />
           <text x="16" y="14" fill="#000" fontSize="7" fontWeight="bold" textAnchor="middle">!</text>
           <text x="27" y="14" fill="#fef08a" fontSize="7.5" fontWeight="bold" fontFamily="sans-serif">
@@ -124,7 +137,8 @@ export const ScamAnalysisHeroIllustration: React.FC = () => {
 
         {/* Warning Indicator 2 (Spoofed Link Badge lower-left) */}
         <g transform="translate(18, 110)">
-          <rect x="0" y="0" width="74" height="22" rx="6" fill="#18181b" stroke="#f43f5e" strokeWidth="1.5" />
+          <rect x="0" y="0" width="74" height="22" rx="6" fill="#18181b" stroke="#f43f5e" strokeWidth="1.5" filter="drop-shadow(0 0 6px rgba(244,63,94,0.4))" />
+          <circle cx="12" cy="11" r="5" fill="#e11d48" className="animate-ping" style={{ transformOrigin: '12px 11px', animationDuration: '3s' }} />
           <circle cx="12" cy="11" r="5" fill="#e11d48" />
           <text x="12" y="14" fill="#fff" fontSize="8" fontWeight="bold" textAnchor="middle">✕</text>
           <text x="22" y="14" fill="#fecdd3" fontSize="7" fontWeight="bold" fontFamily="sans-serif">
@@ -132,8 +146,11 @@ export const ScamAnalysisHeroIllustration: React.FC = () => {
           </text>
         </g>
 
-        {/* Scanning Radar Wave Vector */}
-        <line x1="80" y1="95" x2="200" y2="135" stroke="#00f0ff" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.7" />
+        {/* Scanning Radar Wave Vector Stream into Magnifying Reticle */}
+        <line x1="80" y1="95" x2="171" y2="121" stroke="#00f0ff" strokeWidth="1.8" strokeDasharray="5 3" className="animate-cyber-flow" opacity="0.85" />
+        <circle r="3" fill="#00f0ff" opacity="0.95">
+          <animateMotion dur="1.8s" repeatCount="indefinite" path="M 80 95 L 171 121" />
+        </circle>
 
         {/* 4. MAGNIFYING GLASS INSPECTOR */}
         <g transform="translate(145, 95)">
@@ -165,19 +182,29 @@ export const ScamAnalysisHeroIllustration: React.FC = () => {
             fillOpacity="0.4"
             stroke="#00f0ff"
             strokeWidth="3.5"
+            filter="drop-shadow(0 0 8px rgba(0,240,255,0.4))"
           />
-          {/* Lens Interior Grid / Reticle */}
-          <circle cx="26" cy="26" r="22" fill="none" stroke="#38bdf8" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" />
+          {/* Lens Interior Grid / Reticle with Spin */}
+          <circle cx="26" cy="26" r="22" fill="none" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 3" opacity="0.7" className="animate-spin" style={{ animationDuration: '10s', transformOrigin: '26px 26px' }} />
           <line x1="26" y1="8" x2="26" y2="44" stroke="#00f0ff" strokeWidth="0.8" opacity="0.5" />
           <line x1="8" y1="26" x2="44" y2="26" stroke="#00f0ff" strokeWidth="0.8" opacity="0.5" />
 
           {/* Inspected Flag inside Lens */}
-          <polygon points="26,16 32,30 20,30" fill="#f43f5e" />
+          <polygon points="26,16 32,30 20,30" fill="#f43f5e" className="animate-pulse" />
           <text x="26" y="27" fill="#fff" fontSize="7" fontWeight="bold" textAnchor="middle">!</text>
         </g>
 
+        {/* Stream line from Reticle to Verified Shield */}
+        <line x1="195" y1="125" x2="245" y2="145" stroke="#10b981" strokeWidth="1.8" strokeDasharray="5 3" className="animate-cyber-flow" opacity="0.85" />
+        <circle r="3" fill="#10b981" opacity="0.95">
+          <animateMotion dur="1.6s" repeatCount="indefinite" path="M 195 125 L 245 145" />
+        </circle>
+
         {/* 5. PROTECTIVE SECURITY SHIELD */}
         <g transform="translate(225, 125)">
+          {/* Protective Pulse Halo */}
+          <circle cx="32" cy="35" r="28" fill="none" stroke="#00f0ff" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" className="animate-spin" style={{ animationDuration: '16s', transformOrigin: '32px 35px' }} />
+
           {/* Shield Outer Aura */}
           <path
             d="M32 6L54 14V34C54 48 44 58 32 64C20 58 10 48 10 34V14L32 6Z"
@@ -185,6 +212,7 @@ export const ScamAnalysisHeroIllustration: React.FC = () => {
             stroke="#38bdf8"
             strokeWidth="2.5"
             filter="url(#heroShieldGlow)"
+            className="animate-cyber-pulse"
           />
           {/* Shield Inner Inset */}
           <path

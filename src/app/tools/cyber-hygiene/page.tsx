@@ -58,11 +58,39 @@ export default function CyberHygienePage() {
     ],
   };
 
+  const webAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'CyberAntigravity Interactive Cyber Hygiene Assessment & Checklist',
+    url: 'https://cyberantigravity.com/tools/cyber-hygiene',
+    applicationCategory: 'SecurityApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    description:
+      'Audit your personal and organization digital posture across device hardening, network encryption, 2FA/MFA setup, data backups, and credential management.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    featureList: [
+      'Comprehensive multi-category security audit checklist',
+      'Real-time defensive hygiene percentage scoring',
+      'Actionable step-by-step remediation suggestions',
+      'Device, account, and network posture analysis',
+      '100% private, client-side browser evaluation',
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
       />
       <Navbar />
       <main className="flex-1">

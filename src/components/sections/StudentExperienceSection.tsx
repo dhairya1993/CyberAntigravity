@@ -28,6 +28,11 @@ const STAGES: LearningStage[] = [
       <svg viewBox="0 0 40 40" className="w-8 h-8" fill="none" aria-hidden="true">
         <rect x="6" y="8" width="28" height="24" rx="3" fill="#090d16" stroke="#00f0ff" strokeWidth="1.5" />
         <line x1="20" y1="8" x2="20" y2="32" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="2 2" />
+        {/* Reading laser scanner */}
+        <line x1="8" y1="12" x2="18" y2="12" stroke="#00f0ff" strokeWidth="1" opacity="0.8">
+          <animate attributeName="y1" values="11;28;11" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="11;28;11" dur="2s" repeatCount="indefinite" />
+        </line>
         <line x1="10" y1="14" x2="16" y2="14" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="10" y1="20" x2="16" y2="20" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="24" y1="14" x2="30" y2="14" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
@@ -42,13 +47,19 @@ const STAGES: LearningStage[] = [
     badge: 'Architecture',
     description: 'Understand the mechanics: how data packets travel, how attackers intercept logins, and how encryption protects transit.',
     icon: (
-      <svg viewBox="0 0 40 40" className="w-8 h-8" fill="none" aria-hidden="true">
+      <svg viewBox="0 0 40 40" className="w-8 h-8 overflow-visible" fill="none" aria-hidden="true">
+        {/* Animated triad network paths */}
+        <path d="M 20 12 L 10 28 L 30 28 Z" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="3 2" className="animate-cyber-flow" />
+        
+        {/* Circulating concept data packet */}
+        <circle r="1.8" fill="#00f0ff">
+          <animateMotion dur="2.4s" repeatCount="indefinite" path="M 20 12 L 10 28 L 30 28 Z" />
+        </circle>
+
         <circle cx="20" cy="12" r="4" fill="#090d16" stroke="#00f0ff" strokeWidth="1.5" />
         <circle cx="10" cy="28" r="4" fill="#090d16" stroke="#38bdf8" strokeWidth="1.5" />
         <circle cx="30" cy="28" r="4" fill="#090d16" stroke="#38bdf8" strokeWidth="1.5" />
-        <path d="M 18 15 L 12 25" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="2 2" />
-        <path d="M 22 15 L 28 25" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="2 2" />
-        <path d="M 14 28 L 26 28" stroke="#38bdf8" strokeWidth="1.2" />
+        <circle cx="20" cy="12" r="1.5" fill="#00f0ff" className="animate-pulse" />
       </svg>
     ),
   },
@@ -63,7 +74,8 @@ const STAGES: LearningStage[] = [
         <rect x="6" y="10" width="28" height="20" rx="4" fill="#090d16" stroke="#f59e0b" strokeWidth="1.5" />
         <line x1="11" y1="16" x2="17" y2="16" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" />
         <line x1="14" y1="13" x2="14" y2="19" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="27" cy="18" r="1.5" fill="#f59e0b" />
+        {/* Blinking interactive terminal cursor */}
+        <circle cx="27" cy="18" r="2" fill="#f59e0b" className="animate-ping" />
         <circle cx="23" cy="22" r="1.5" fill="#f59e0b" />
         <line x1="14" y1="30" x2="26" y2="30" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
@@ -80,8 +92,8 @@ const STAGES: LearningStage[] = [
         <rect x="8" y="8" width="24" height="24" rx="4" fill="#090d16" stroke="#a855f7" strokeWidth="1.5" />
         <circle cx="14" cy="15" r="2" fill="#c084fc" />
         <line x1="18" y1="15" x2="26" y2="15" stroke="#cbd5e1" strokeWidth="1.2" strokeLinecap="round" />
-        <circle cx="14" cy="21" r="2" fill="#10b981" />
-        <path d="M 18 21 L 21 24 L 27 18" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="14" cy="21" r="2.5" fill="#10b981" className="animate-pulse" />
+        <path d="M 18 21 L 21 24 L 27 18" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -92,9 +104,11 @@ const STAGES: LearningStage[] = [
     badge: 'Defense Habit',
     description: 'Walk away with verified digital defense habits: hardware passkeys configured, automated updates active, and private browsing enabled.',
     icon: (
-      <svg viewBox="0 0 40 40" className="w-8 h-8" fill="none" aria-hidden="true">
-        <path d="M 20 6 L 31 10 V 22 C 31 29 20 34 20 34 C 20 34 9 29 9 22 V 10 L 20 6 Z" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" strokeWidth="1.8" />
-        <path d="M 16 20 L 19 23 L 25 17" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 40 40" className="w-8 h-8 overflow-visible" fill="none" aria-hidden="true">
+        <path d="M 20 6 L 31 10 V 22 C 31 29 20 34 20 34 C 20 34 9 29 9 22 V 10 L 20 6 Z" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" strokeWidth="1.8" />
+        <circle cx="20" cy="20" r="13" stroke="#10b981" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" className="animate-spin" style={{ animationDuration: '6s' }} />
+        <path d="M 16 20 L 19 23 L 25 17" stroke="#34d399" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="20" cy="20" r="2" fill="#34d399" className="animate-ping" />
       </svg>
     ),
   },

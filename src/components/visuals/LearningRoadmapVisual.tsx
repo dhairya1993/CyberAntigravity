@@ -17,6 +17,7 @@ import {
   HelpCircle,
   Play
 } from 'lucide-react';
+import { LevelConceptVisualizer } from './LevelConceptVisualizer';
 
 interface LearningLevel {
   level: number;
@@ -290,6 +291,9 @@ export const LearningRoadmapVisual: React.FC = () => {
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
             {selectedLevel.description}
           </p>
+
+          {/* Interactive Concept Simulator for the Active Level */}
+          <LevelConceptVisualizer level={selectedLevel.level} />
 
           {/* Key Learning Concepts */}
           <div className="space-y-1.5">

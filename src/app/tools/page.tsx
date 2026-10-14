@@ -55,12 +55,64 @@ export default function ToolsHubPage() {
     ],
   };
 
+  const toolsCollectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'CyberAntigravity Free Browser-Based Cybersecurity Tools',
+    description:
+      'Collection of free, privacy-first cybersecurity tools including password generator, password crack-time calculator, URL inspector, security headers checker, and cyber hygiene assessment.',
+    numberOfItems: 6,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Password Generator & Passphrase Creator',
+        url: 'https://cyberantigravity.com/tools/password-generator',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Password Strength & Crack Time Calculator',
+        url: 'https://cyberantigravity.com/tools/password-strength',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'URL Structure Explainer & Phishing Link Inspector',
+        url: 'https://cyberantigravity.com/tools/url-explainer',
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: 'Password Reuse & Credential Stuffing Risk Simulator',
+        url: 'https://cyberantigravity.com/tools/password-reuse',
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
+        name: 'HTTP Security Headers Inspector & Educator',
+        url: 'https://cyberantigravity.com/tools/security-headers',
+      },
+      {
+        '@type': 'ListItem',
+        position: 6,
+        name: 'Interactive Cyber Hygiene Checklist & Posture Audit',
+        url: 'https://cyberantigravity.com/tools/cyber-hygiene',
+      },
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
       {/* Structured Breadcrumbs Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {/* Structured ItemList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolsCollectionJsonLd) }}
       />
 
       <Navbar />

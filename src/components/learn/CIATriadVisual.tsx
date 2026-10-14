@@ -91,6 +91,53 @@ export const CIATriadVisual: React.FC = () => {
         </div>
       </div>
 
+      {/* Live Interactive Triangular Vector Diagram */}
+      <div className="relative max-w-sm mx-auto my-2 py-2">
+        <svg className="w-full h-44 sm:h-52 overflow-visible select-none pointer-events-none" viewBox="0 0 300 200" fill="none" aria-hidden="true">
+          <defs>
+            <radialGradient id="learn_triad_glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#00f0ff" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          {/* Central Core Shield Aura */}
+          <circle cx="150" cy="125" r="32" fill="url(#learn_triad_glow)" />
+          <circle cx="150" cy="125" r="22" fill="none" stroke="#00f0ff" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" className="animate-spin" style={{ animationDuration: '18s', transformOrigin: '150px 125px' }} />
+
+          {/* Radial Lines from vertices to center (150, 125) */}
+          <line x1="150" y1="28" x2="150" y2="125" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.6" />
+          <line x1="45" y1="170" x2="150" y2="125" stroke="#10b981" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.6" />
+          <line x1="255" y1="170" x2="150" y2="125" stroke="#a855f7" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.6" />
+
+          {/* Main Triangle Circulating Flow Path */}
+          <path
+            d="M 150 28 L 45 170 L 255 170 Z"
+            stroke="#00f0ff"
+            strokeWidth="2.2"
+            strokeDasharray="6 4"
+            className="animate-cyber-flow"
+            strokeOpacity="0.8"
+          />
+
+          {/* Circulating Live Packets */}
+          <circle r="3.2" fill="#00f0ff" opacity="0.95">
+            <animateMotion dur="3.2s" repeatCount="indefinite" path="M 150 28 L 45 170 L 255 170 Z" />
+          </circle>
+          <circle r="2.2" fill="#10b981" opacity="0.9">
+            <animateMotion dur="2.6s" repeatCount="indefinite" path="M 255 170 L 45 170 L 150 28 Z" />
+          </circle>
+
+          {/* Vertex Indicators */}
+          <circle cx="150" cy="28" r="6" fill="#00f0ff" className={activePillar === 'C' ? 'animate-ping' : ''} style={{ transformOrigin: '150px 28px' }} />
+          <circle cx="150" cy="28" r="4" fill="#00f0ff" />
+          <circle cx="45" cy="170" r="6" fill="#10b981" className={activePillar === 'I' ? 'animate-ping' : ''} style={{ transformOrigin: '45px 170px' }} />
+          <circle cx="45" cy="170" r="4" fill="#10b981" />
+          <circle cx="255" cy="170" r="6" fill="#a855f7" className={activePillar === 'A' ? 'animate-ping' : ''} style={{ transformOrigin: '255px 170px' }} />
+          <circle cx="255" cy="170" r="4" fill="#a855f7" />
+        </svg>
+      </div>
+
       {/* Visual Triad Diagram / 3 Pillars */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {(['C', 'I', 'A'] as const).map((key) => {

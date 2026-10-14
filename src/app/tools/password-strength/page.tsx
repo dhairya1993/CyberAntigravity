@@ -58,11 +58,39 @@ export default function PasswordStrengthPage() {
     ],
   };
 
+  const webAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'CyberAntigravity Password Strength & Crack-Time Calculator',
+    url: 'https://cyberantigravity.com/tools/password-strength',
+    applicationCategory: 'SecurityApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    description:
+      'Real-time entropy and brute-force crack time calculator. Evaluates password resilience against modern GPU cluster hashing attacks with zero server transmission.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    featureList: [
+      'Real-time information entropy calculation in bits',
+      'Brute-force crack time estimation across CPU, GPU, and quantum scenarios',
+      'Common dictionary word & pattern matching warnings',
+      'Instant strength meter with actionable hardening suggestions',
+      '100% private, client-side browser evaluation',
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
       />
       <Navbar />
       <main className="flex-1">

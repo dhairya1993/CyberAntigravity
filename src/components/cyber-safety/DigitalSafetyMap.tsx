@@ -139,13 +139,34 @@ export const DigitalSafetyMap: React.FC = () => {
 
             {/* Desktop Cross Topology (Hidden on mobile) */}
             <div className="hidden sm:block relative w-full aspect-[4/3] max-w-md mx-auto">
-              {/* Connecting Vector Lines */}
+              {/* Connecting Vector Lines with Live Animated Streams */}
               <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
-                <line x1="50" y1="20" x2="50" y2="48" stroke="#00f0ff" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                <line x1="20" y1="48" x2="50" y2="48" stroke="#00f0ff" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                <line x1="80" y1="48" x2="50" y2="48" stroke="#00f0ff" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                <line x1="50" y1="48" x2="50" y2="72" stroke="#00f0ff" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                <line x1="50" y1="72" x2="50" y2="92" stroke="#00f0ff" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
+                {/* Cross Streams */}
+                <line x1="50" y1="20" x2="50" y2="48" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+                <line x1="20" y1="48" x2="50" y2="48" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+                <line x1="80" y1="48" x2="50" y2="48" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+                <line x1="50" y1="48" x2="50" y2="72" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+                <line x1="50" y1="72" x2="50" y2="92" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+
+                {/* Live Traveling Packets */}
+                <circle r="1.5" fill="#00f0ff" opacity="0.95">
+                  <animateMotion dur="1.8s" repeatCount="indefinite" path="M 50 20 L 50 48" />
+                </circle>
+                <circle r="1.5" fill="#00f0ff" opacity="0.95">
+                  <animateMotion dur="2.0s" repeatCount="indefinite" path="M 20 48 L 50 48" />
+                </circle>
+                <circle r="1.5" fill="#00f0ff" opacity="0.95">
+                  <animateMotion dur="2.1s" repeatCount="indefinite" path="M 80 48 L 50 48" />
+                </circle>
+                <circle r="1.5" fill="#10b981" opacity="0.95">
+                  <animateMotion dur="1.9s" repeatCount="indefinite" path="M 50 48 L 50 72" />
+                </circle>
+                <circle r="1.5" fill="#a855f7" opacity="0.95">
+                  <animateMotion dur="1.7s" repeatCount="indefinite" path="M 50 72 L 50 92" />
+                </circle>
+
+                {/* Central Data Core Aura */}
+                <circle cx="50" cy="48" r="12" fill="none" stroke="#00f0ff" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.5" className="animate-spin" style={{ animationDuration: '14s', transformOrigin: '50px 48px' }} />
               </svg>
 
               {/* Node 1: ACCOUNT (Top) */}

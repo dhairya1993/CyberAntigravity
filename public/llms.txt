@@ -1,0 +1,24 @@
+# CyberAntigravity
+
+> CyberAntigravity is a premier, 100% free cybersecurity education and digital safety platform empowering individuals, students, developers, and organizations with proactive defense literacy, threat visualization, and browser-based security utilities.
+
+## Mission & Principles
+- **Free & Open Access**: Cybersecurity education belongs to everyone. No paywalls, no required sign-ups.
+- **Privacy by Design**: All interactive tools run client-side via the browser Web Crypto API. Zero server transmission of sensitive inputs or credentials.
+- **Visual Storytelling**: Complex threat vectors (phishing, ransomware, credential stuffing, SQL injection, MITM) are demystified through interactive animated diagrams.
+
+## Key Sections & Interactive Modules
+- [Home (Interactive Cyber Defense Command Center)](https://cyberantigravity.com/): Threat gallery, attack simulator, Cyber IQ challenges, and student learning roadmaps.
+- [Cybersecurity Tools Hub](https://cyberantigravity.com/tools): Complete directory of free browser-based digital defense tools.
+  - [Password Generator](https://cyberantigravity.com/tools/password-generator): Cryptographically random password and multi-word passphrase generator using Web Crypto CSPRNG.
+  - [Password Strength Calculator](https://cyberantigravity.com/tools/password-strength): Real-time entropy bit-rating and GPU cluster crack time calculator.
+  - [URL Structure Explainer](https://cyberantigravity.com/tools/url-explainer): Dissects URLs into protocol, host, domain, and query parameters to detect phishing links.
+  - [Password Reuse Risk Checker](https://cyberantigravity.com/tools/password-reuse): Models credential stuffing blast radius across personal and work accounts.
+  - [Security Headers Inspector](https://cyberantigravity.com/tools/security-headers): Explains CSP, HSTS, X-Frame-Options, and web defense headers.
+  - [Cyber Hygiene Assessment](https://cyberantigravity.com/tools/cyber-hygiene): Multi-category digital posture audit with step-by-step hardening advice.
+- [Cybersecurity Guides & Research](https://cyberantigravity.com/blog): In-depth educational articles covering passkeys, phishing defense, zero trust, network security, and social engineering.
+
+## Target Audience
+- Students exploring cybersecurity careers.
+- Internet users wanting to protect their family and accounts against digital fraud and scams.
+- Web developers seeking best practices for security headers, authentication, and secure password storage.

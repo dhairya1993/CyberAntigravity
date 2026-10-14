@@ -161,10 +161,39 @@ export const CyberLabPreviewSection: React.FC = () => {
                     {/* Core to Target System (down) */}
                     <path d="M 210 90 L 280 140" stroke="#a855f7" strokeWidth="1.8" strokeDasharray="4 3" className="animate-cyber-flow" />
 
+                    {/* LIVE TRAVELING DATA PACKETS */}
+                    {/* 1. Laptop -> Shield (Command packet) */}
+                    <circle r="3" fill="#00f0ff">
+                      <animateMotion dur="1.6s" repeatCount="indefinite" path="M 50 90 L 115 90" />
+                    </circle>
+
+                    {/* 2. Shield -> Router (Verified sanitized packet) */}
+                    <circle r="3" fill="#10b981">
+                      <animateMotion dur="1.3s" repeatCount="indefinite" path="M 160 90 L 210 90" />
+                    </circle>
+
+                    {/* 3. Router -> Server (Simulated Ping Request) */}
+                    <circle r="2.8" fill="#38bdf8">
+                      <animateMotion dur="1.8s" repeatCount="indefinite" path="M 210 90 L 280 40" />
+                    </circle>
+                    {/* 4. Server -> Router (ICMP Echo Reply returning) */}
+                    <circle r="2.2" fill="#10b981">
+                      <animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M 280 40 L 210 90" />
+                    </circle>
+
+                    {/* 5. Router -> Target (Educational sandbox probe) */}
+                    <circle r="2.8" fill="#c084fc">
+                      <animateMotion dur="2.1s" repeatCount="indefinite" path="M 210 90 L 280 140" />
+                    </circle>
+
                     {/* NODE 1: Defender Laptop */}
                     <g transform="translate(15, 65)">
                       <rect x="0" y="0" width="48" height="42" rx="6" fill="#090d16" stroke="#38bdf8" strokeWidth="1.5" />
                       <circle cx="24" cy="18" r="8" fill="#0284c7" fillOpacity="0.2" />
+                      <line x1="6" y1="26" x2="42" y2="26" stroke="#00f0ff" strokeWidth="1" opacity="0.6">
+                        <animate attributeName="x1" values="6;38;6" dur="2s" repeatCount="indefinite" />
+                        <animate attributeName="x2" values="14;42;14" dur="2s" repeatCount="indefinite" />
+                      </line>
                       <text x="24" y="21" fill="#38bdf8" fontSize="10" textAnchor="middle">💻</text>
                       <text x="24" y="34" fill="#94a3b8" fontSize="5.5" textAnchor="middle" fontFamily="monospace">LAPTOP</text>
                     </g>
@@ -177,22 +206,24 @@ export const CyberLabPreviewSection: React.FC = () => {
                         stroke="#10b981"
                         strokeWidth="2"
                       />
+                      <circle cx="24" cy="26" r="18" stroke="#10b981" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.6" className="animate-spin" style={{ animationDuration: '6s' }} />
                       <path d="M 18 26 L 22 30 L 30 20" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       <text x="24" y="60" fill="#34d399" fontSize="6" textAnchor="middle" fontFamily="monospace" fontWeight="bold">SHIELD</text>
                     </g>
 
-                    {/* NODE 3: Network Core Switch */}
+                    {/* NODE 3: Network Core Switch / Router */}
                     <g transform="translate(195, 75)">
                       <circle cx="15" cy="15" r="14" fill="#090d16" stroke="#00f0ff" strokeWidth="1.5" />
-                      <circle cx="15" cy="15" r="4" fill="#00f0ff" />
-                      <text x="15" y="36" fill="#67e8f9" fontSize="5.5" textAnchor="middle" fontFamily="monospace">ROUTER</text>
+                      <circle cx="15" cy="15" r="19" stroke="#00f0ff" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.6" className="animate-spin" style={{ animationDuration: '5s' }} />
+                      <circle cx="15" cy="15" r="4" fill="#00f0ff" className="animate-pulse" />
+                      <text x="15" y="38" fill="#67e8f9" fontSize="5.5" textAnchor="middle" fontFamily="monospace">ROUTER</text>
                     </g>
 
                     {/* NODE 4: Simulated Server */}
                     <g transform="translate(265, 15)">
                       <rect x="0" y="0" width="56" height="38" rx="5" fill="#090d16" stroke="#38bdf8" strokeWidth="1.5" />
                       <line x1="8" y1="12" x2="30" y2="12" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
-                      <circle cx="46" cy="12" r="2.5" fill="#34d399" />
+                      <circle cx="46" cy="12" r="2.5" fill="#34d399" className="animate-ping" />
                       <line x1="8" y1="24" x2="30" y2="24" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
                       <circle cx="46" cy="24" r="2.5" fill="#38bdf8" />
                       <text x="28" y="46" fill="#93c5fd" fontSize="5.5" textAnchor="middle" fontFamily="monospace">SERVER</text>
@@ -202,6 +233,7 @@ export const CyberLabPreviewSection: React.FC = () => {
                     <g transform="translate(265, 115)">
                       <rect x="0" y="0" width="56" height="38" rx="5" fill="#090d16" stroke="#c084fc" strokeWidth="1.5" />
                       <circle cx="28" cy="16" r="8" fill="#581c87" fillOpacity="0.4" />
+                      <circle cx="28" cy="16" r="14" stroke="#c084fc" strokeWidth="0.8" strokeDasharray="2 3" opacity="0.6" className="animate-spin" style={{ animationDuration: '7s' }} />
                       <text x="28" y="19" fill="#c084fc" fontSize="9" textAnchor="middle">🎯</text>
                       <text x="28" y="30" fill="#e9d5ff" fontSize="5" textAnchor="middle" fontFamily="monospace">TARGET</text>
                       <text x="28" y="46" fill="#d8b4fe" fontSize="5.5" textAnchor="middle" fontFamily="monospace">SYSTEM</text>

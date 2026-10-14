@@ -148,6 +148,23 @@ export const UrlExplainerVisual: React.FC = () => {
         </span>
       </div>
 
+      {/* Laser Scanner Visual Strip */}
+      <div className="h-6 w-full rounded-lg bg-slate-900/80 border border-slate-800 overflow-hidden relative">
+        <svg viewBox="0 0 500 24" className="w-full h-full select-none" aria-hidden="true">
+          <line x1="0" y1="12" x2="500" y2="12" stroke="#00f0ff" strokeWidth="0.5" strokeDasharray="4 4" opacity="0.3" />
+          <line x1="180" y1="2" x2="180" y2="22" stroke="#38bdf8" strokeWidth="1.5" opacity="0.8">
+            <animate attributeName="x1" values="30;470;30" dur="4.5s" repeatCount="indefinite" />
+            <animate attributeName="x2" values="30;470;30" dur="4.5s" repeatCount="indefinite" />
+          </line>
+          <circle cx="180" cy="12" r="3" fill="#00f0ff" opacity="0.9">
+            <animate attributeName="cx" values="30;470;30" dur="4.5s" repeatCount="indefinite" />
+          </circle>
+          <text x="250" y="15" fill="#38bdf8" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace" opacity="0.75">
+            [PARSING HOST IDENTIFIER & TYPOSQUATTING CHECK]
+          </text>
+        </svg>
+      </div>
+
       {/* Interactive URL Address Bar with Pulse Beam */}
       <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs sm:text-sm flex flex-wrap items-center gap-1 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
@@ -227,6 +244,61 @@ export const SecurityHeadersVisual: React.FC = () => {
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
           ACTIVE TLS HANDSHAKE
         </span>
+      </div>
+
+      {/* Live Animated TLS Handshake Schematic */}
+      <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 overflow-hidden">
+        <svg viewBox="0 0 540 80" className="w-full h-20 text-slate-400 select-none" aria-hidden="true">
+          <defs>
+            <linearGradient id="handshakeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#00f0ff" />
+              <stop offset="50%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#a855f7" />
+            </linearGradient>
+          </defs>
+
+          {/* Client Node */}
+          <g transform="translate(10, 15)">
+            <rect width="80" height="50" rx="8" fill="#020617" stroke="#00f0ff" strokeWidth="1.2" opacity="0.9" />
+            <text x="40" y="24" fill="#00f0ff" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">CLIENT</text>
+            <text x="40" y="38" fill="#94a3b8" fontSize="8" textAnchor="middle" fontFamily="sans-serif">Browser</text>
+            <circle cx="16" cy="12" r="3" fill="#00f0ff" className="animate-pulse" />
+          </g>
+
+          {/* Handshake Streams */}
+          <path id="streamTop" d="M 90 28 L 450 28" fill="none" stroke="#00f0ff" strokeWidth="1.5" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.7" />
+          <path id="streamMid" d="M 450 40 L 90 40" fill="none" stroke="#10b981" strokeWidth="1.8" strokeDasharray="5 3" className="animate-cyber-flow" opacity="0.8" />
+          <path id="streamBot" d="M 450 52 L 90 52" fill="none" stroke="#c084fc" strokeWidth="1.5" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.7" />
+
+          {/* Traveling Packets */}
+          <circle r="3.5" fill="#00f0ff">
+            <animateMotion dur="2.2s" repeatCount="indefinite" path="M 90 28 L 450 28" />
+          </circle>
+          <circle r="4" fill="#10b981">
+            <animateMotion dur="2.8s" repeatCount="indefinite" path="M 450 40 L 90 40" />
+          </circle>
+          <circle r="3.5" fill="#c084fc">
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M 450 52 L 90 52" />
+          </circle>
+
+          {/* Center Protocol Badges */}
+          <g transform="translate(230, 20)">
+            <rect width="80" height="15" rx="3" fill="#0f172a" stroke="#00f0ff" strokeWidth="0.8" opacity="0.8" />
+            <text x="40" y="11" fill="#00f0ff" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="monospace">SYN [GET /]</text>
+          </g>
+          <g transform="translate(225, 45)">
+            <rect width="90" height="16" rx="3" fill="#064e3b" stroke="#10b981" strokeWidth="0.8" opacity="0.9" />
+            <text x="45" y="12" fill="#6ee7b7" fontSize="7.5" fontWeight="bold" textAnchor="middle" fontFamily="monospace">200 + SEC HEADERS</text>
+          </g>
+
+          {/* Server Node */}
+          <g transform="translate(450, 15)">
+            <rect width="80" height="50" rx="8" fill="#020617" stroke="#10b981" strokeWidth="1.2" opacity="0.9" />
+            <text x="40" y="24" fill="#10b981" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">SERVER</text>
+            <text x="40" y="38" fill="#94a3b8" fontSize="8" textAnchor="middle" fontFamily="sans-serif">HTTPS Port 443</text>
+            <circle cx="70" cy="12" r="3" fill="#10b981" className="animate-pulse" />
+          </g>
+        </svg>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">

@@ -85,6 +85,32 @@ export const CyberScoreCard: React.FC = () => {
           <div className="relative w-28 h-28 flex items-center justify-center">
             {/* SVG Radial Gauge */}
             <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100" aria-hidden="true">
+              <defs>
+                <linearGradient id="scoreGaugeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00f0ff" />
+                  <stop offset="100%" stopColor="#10b981" />
+                </linearGradient>
+                <filter id="scoreGaugeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="1.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              {/* Live rotating radar telemetry ring */}
+              <circle
+                cx="50"
+                cy="50"
+                r="46"
+                stroke="#00f0ff"
+                strokeWidth="0.8"
+                strokeDasharray="4 6"
+                fill="none"
+                opacity="0.3"
+                className="animate-spin origin-center"
+                style={{ animationDuration: '24s' }}
+              />
               <circle
                 cx="50"
                 cy="50"
@@ -97,14 +123,30 @@ export const CyberScoreCard: React.FC = () => {
                 cx="50"
                 cy="50"
                 r="40"
-                stroke="#00f0ff"
+                stroke="url(#scoreGaugeGrad)"
                 strokeWidth="8"
                 strokeDasharray={2 * Math.PI * 40}
                 strokeDashoffset={2 * Math.PI * 40 * (1 - overallScore / 100)}
                 strokeLinecap="round"
                 fill="none"
+                filter="url(#scoreGaugeGlow)"
                 className="transition-all duration-1000 ease-out"
               />
+              {/* Live telemetry ping beacon */}
+              <circle
+                cx="50"
+                cy="10"
+                r="3"
+                fill="#00f0ff"
+                className="animate-pulse"
+              >
+                <animate
+                  attributeName="opacity"
+                  values="0.4;1;0.4"
+                  dur="2s"
+                  repeatCount="indefinite"
+                />
+              </circle>
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-3xl font-extrabold text-white font-mono leading-none">

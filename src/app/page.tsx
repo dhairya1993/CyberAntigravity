@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ThreatLandscapeSection } from '@/components/sections/ThreatLandscapeSection';
@@ -19,9 +20,107 @@ import { TrustNoticeSection } from '@/components/sections/TrustNoticeSection';
 import { FinalCtaSection } from '@/components/sections/FinalCtaSection';
 import { Footer } from '@/components/layout/Footer';
 
+export const metadata: Metadata = {
+  title: 'CyberAntigravity — Free Cybersecurity Learning Platform & Scam Awareness Hub',
+  description:
+    'Master practical digital defense, recognize online scams, test password strength, and simulate real-world cyber attacks with CyberAntigravity. Free, interactive cybersecurity education for everyone.',
+  alternates: {
+    canonical: '/',
+  },
+  keywords: [
+    'free cybersecurity course',
+    'online scam awareness',
+    'phishing simulator',
+    'password generator online',
+    'digital hygiene guide',
+    'how to prevent cyber attacks',
+    'cybersecurity for students',
+    'interactive cyber lab',
+    'cyber security training',
+    'scam spotter tool',
+  ],
+  openGraph: {
+    title: 'CyberAntigravity — Learn Cybersecurity & Defend Against Online Scams',
+    description:
+      'Interactive cybersecurity learning platform. Visualize cyber attack chains, spot deceptive phishing scams, and master practical digital defense with zero friction.',
+    url: '/',
+    siteName: 'CyberAntigravity',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'CyberAntigravity Cybersecurity Education & Threat Defense Platform',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CyberAntigravity — Free Cybersecurity Learning & Scam Awareness',
+    description:
+      'Interactive visual cybersecurity learning platform. Explore live attack chains, spot phishing scams, and test digital hygiene.',
+    images: ['/og-image.png'],
+  },
+};
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is CyberAntigravity?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'CyberAntigravity is a 100% free, interactive cybersecurity education platform designed to help students, developers, and internet users learn digital safety, recognize online scams, and build defense skills through hands-on simulators.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I recognize an online scam or phishing email?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Look for urgent or coercive language, spoofed email domains, unexpected attachments, mismatched URLs, and requests for sensitive credentials or OTPs. Use CyberAntigravity’s interactive Scam Spotter and URL Explainer to inspect suspicious patterns safely.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are the security tools on CyberAntigravity free and private?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. All tools on CyberAntigravity—including the Password Generator, Password Strength Meter, Security Headers Inspector, and URL Explainer—are completely free and run client-side in your web browser. No sensitive user data is ever stored or transmitted to external servers.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I start learning cybersecurity as a beginner?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Start with foundational concepts such as password security, multi-factor authentication (MFA), and phishing detection on our Cyber Defense roadmap, then progress to network security, malware analysis, and cloud defense in our interactive Cyber Lab.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can CyberAntigravity help protect me from cyber attacks?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'CyberAntigravity equips you with practical threat visualization, real-world attack chain comprehension, and defensive habits so you can identify malicious tactics, secure your digital accounts, and prevent social engineering attacks.',
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+      {/* Homepage FAQ Rich Snippets for Google Search */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }}
+      />
+
       {/* Global Navigation */}
       <Navbar />
 

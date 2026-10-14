@@ -8,3 +8,4 @@ export * from './CyberToolVisuals';
 export * from './CyberScoreCard';
 export * from './ArticleHeroVisual';
 export * from './VisualTopicCard';
+export * from './LevelConceptVisualizer';

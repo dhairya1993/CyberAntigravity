@@ -58,11 +58,39 @@ export default function PasswordGeneratorPage() {
     ],
   };
 
+  const webAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'CyberAntigravity Secure Password & Passphrase Generator',
+    url: 'https://cyberantigravity.com/tools/password-generator',
+    applicationCategory: 'SecurityApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    description:
+      'Generate cryptographically random passwords and multi-word passphrases using the browser Web Crypto API. 100% client-side, zero server transmission.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    featureList: [
+      'Web Crypto API cryptographically secure pseudo-random number generator (CSPRNG)',
+      'Custom character sets: uppercase, lowercase, numbers, special symbols',
+      'Memorable Diceware-style multi-word passphrases',
+      'Calculated entropy bit-strength rating',
+      '100% private, client-side browser execution',
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
       />
       <Navbar />
       <main className="flex-1">

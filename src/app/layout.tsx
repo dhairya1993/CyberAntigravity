@@ -3,7 +3,7 @@ import "./globals.css";
 import { GamificationToast } from "@/components/gamification/GamificationToast";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { AuthModal } from "@/components/auth/AuthModal";
-
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 export const viewport: Viewport = {
   themeColor: "#07090e",
@@ -35,6 +35,8 @@ export const metadata: Metadata = {
   authors: [{ name: "CyberAntigravity Editorial & Security Research Team" }],
   creator: "CyberAntigravity",
   publisher: "CyberAntigravity",
+  category: "technology",
+  classification: "Cybersecurity Education, Digital Safety & Online Scam Awareness",
   alternates: {
     canonical: "https://cyberantigravity.com",
   },
@@ -73,6 +75,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google-site-verification",
+    yandex: "yandex-verification-token",
+  },
   icons: {
     icon: [
       { url: '/icon.png', sizes: '512x512', type: 'image/png' },
@@ -96,7 +102,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": "EducationalOrganization",
         "@id": "https://cyberantigravity.com/#organization",
         name: "CyberAntigravity",
         url: "https://cyberantigravity.com",
@@ -104,6 +110,20 @@ export default function RootLayout({
         slogan: "Rise Above Cyber Threats.",
         description:
           "Global cybersecurity education and online safety platform providing actionable digital defense, scam awareness, and ethical security training.",
+        sameAs: [
+          "https://twitter.com/cyberantigravity",
+          "https://github.com/dhairya1993/CyberAntigravity",
+          "https://linkedin.com/company/cyberantigravity"
+        ],
+        knowsAbout: [
+          "Cybersecurity",
+          "Phishing Scam Detection",
+          "Network Security",
+          "Cryptography",
+          "Authentication & MFA",
+          "Zero Trust Architecture",
+          "Privacy & Data Protection"
+        ],
         contactPoint: {
           "@type": "ContactPoint",
           email: "dhairyaparekhofficial@gmail.com",
@@ -115,11 +135,19 @@ export default function RootLayout({
         "@id": "https://cyberantigravity.com/#website",
         url: "https://cyberantigravity.com",
         name: "CyberAntigravity",
-        description: "Rise Above Cyber Threats.",
+        description: "Rise Above Cyber Threats — Global Cybersecurity Education Platform.",
         publisher: {
           "@id": "https://cyberantigravity.com/#organization",
         },
         inLanguage: "en-US",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: "https://cyberantigravity.com/blog?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
       },
     ],
   };
@@ -136,6 +164,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#07090e] text-slate-100 antialiased">
+        <GoogleAnalytics />
         <AuthProvider>
           {children}
           <GamificationToast />

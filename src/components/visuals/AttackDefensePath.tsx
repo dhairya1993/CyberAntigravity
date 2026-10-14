@@ -387,6 +387,173 @@ export const AttackDefensePath: React.FC = () => {
             )}
           </div>
 
+          {/* Live Animated Battle Arena SVG for the Active Step */}
+          <div className="h-44 sm:h-48 w-full rounded-xl bg-slate-950/80 border border-slate-800 p-2 relative flex items-center justify-center overflow-hidden">
+            <svg viewBox="0 0 600 130" className="w-full h-full select-none" aria-hidden="true">
+              {/* Step 1: Lure Dispatched vs Arrival */}
+              {activeStepData.step === 1 && (
+                <>
+                  <g transform="translate(40, 35)">
+                    <rect width="80" height="60" rx="8" fill="#1e1014" stroke="#f43f5e" strokeWidth="1.2" />
+                    <text x="40" y="24" fill="#f43f5e" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">ATTACKER</text>
+                    <text x="40" y="40" fill="#f87171" fontSize="7.5" textAnchor="middle" fontFamily="sans-serif">Phishing Bot</text>
+                    <circle cx="15" cy="15" r="3" fill="#f43f5e" className="animate-ping" />
+                  </g>
+
+                  {/* Wire Stream */}
+                  <line x1="120" y1="65" x2="480" y2="65" stroke="#f43f5e" strokeWidth="1.8" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.7" />
+                  <circle r="4.5" fill="#f43f5e">
+                    <animateMotion dur="2.2s" repeatCount="indefinite" path="M 120 65 L 480 65" />
+                  </circle>
+                  <circle r="3" fill="#fbbf24">
+                    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 120 65 L 480 65" />
+                  </circle>
+
+                  {/* Packet Payload Label */}
+                  <g transform="translate(250, 48)">
+                    <rect width="100" height="18" rx="4" fill="#0f172a" stroke="#f43f5e" strokeWidth="0.8" />
+                    <text x="50" y="12" fill="#fda4af" fontSize="7.5" fontWeight="bold" textAnchor="middle" fontFamily="monospace">
+                      ✉ FAKE URGENT SMS
+                    </text>
+                  </g>
+
+                  <g transform="translate(480, 35)">
+                    <rect width="80" height="60" rx="8" fill="#020617" stroke="#00f0ff" strokeWidth="1.2" />
+                    <text x="40" y="24" fill="#00f0ff" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">DEFENDER</text>
+                    <text x="40" y="40" fill="#94a3b8" fontSize="7.5" textAnchor="middle" fontFamily="sans-serif">Inbox Arrival</text>
+                    <circle cx="65" cy="15" r="3" fill="#00f0ff" className="animate-pulse" />
+                  </g>
+                </>
+              )}
+
+              {/* Step 2: Urgency Timer vs Cognitive Pause */}
+              {activeStepData.step === 2 && (
+                <>
+                  <g transform="translate(40, 35)">
+                    <rect width="90" height="60" rx="8" fill="#1e1014" stroke="#f43f5e" strokeWidth="1.2" />
+                    <text x="45" y="24" fill="#f43f5e" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">PRESSURE</text>
+                    <text x="45" y="40" fill="#f87171" fontSize="7" textAnchor="middle" fontFamily="sans-serif">&quot;ACT IN 30 MIN!&quot;</text>
+                    {/* Spinning timer hand */}
+                    <circle cx="45" cy="48" r="5" stroke="#f43f5e" strokeWidth="1" fill="none" />
+                    <line x1="45" y1="48" x2="45" y2="44" stroke="#f43f5e" strokeWidth="1">
+                      <animateTransform attributeName="transform" type="rotate" from="0 45 48" to="360 45 48" dur="2s" repeatCount="indefinite" />
+                    </line>
+                  </g>
+
+                  {/* Threat wave arrested by cognitive pause bubble */}
+                  <path d="M 130 65 L 250 65" stroke="#f43f5e" strokeWidth="2" strokeDasharray="5 3" className="animate-cyber-flow" />
+
+                  {/* Center Cognitive Pause Barrier */}
+                  <g transform="translate(300, 65)">
+                    <circle r="36" fill="#082f49" fillOpacity="0.4" stroke="#00f0ff" strokeWidth="2" className="animate-pulse" />
+                    <circle r="42" stroke="#38bdf8" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" className="animate-spin origin-center" style={{ animationDuration: '10s' }} />
+                    <text x="0" y="-8" fill="#38bdf8" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">COGNITIVE</text>
+                    <text x="0" y="4" fill="#00f0ff" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">PAUSE</text>
+                    <text x="0" y="16" fill="#94a3b8" fontSize="6.5" textAnchor="middle" fontFamily="sans-serif">10s Breath</text>
+                  </g>
+
+                  <g transform="translate(470, 35)">
+                    <rect width="90" height="60" rx="8" fill="#020617" stroke="#38bdf8" strokeWidth="1.2" />
+                    <text x="45" y="24" fill="#38bdf8" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">DEFENDER</text>
+                    <text x="45" y="40" fill="#94a3b8" fontSize="7" textAnchor="middle" fontFamily="sans-serif">Panic Neutralized</text>
+                    <text x="45" y="52" fill="#34d399" fontSize="6.5" fontWeight="bold" textAnchor="middle" fontFamily="monospace">CALM THINKING</text>
+                  </g>
+                </>
+              )}
+
+              {/* Step 3: Deceptive Link vs Independent Verification */}
+              {activeStepData.step === 3 && (
+                <>
+                  <g transform="translate(40, 35)">
+                    <rect width="90" height="60" rx="8" fill="#1e1014" stroke="#f43f5e" strokeWidth="1.2" />
+                    <text x="45" y="24" fill="#f43f5e" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">FAKE LINK</text>
+                    <text x="45" y="40" fill="#f87171" fontSize="7" textAnchor="middle" fontFamily="sans-serif">Trapdoor URL</text>
+                  </g>
+
+                  {/* Fork in Road: Red path downwards (Ignored), Cyan path upwards (Taken) */}
+                  <path d="M 130 65 Q 230 65 260 110 L 400 110" fill="none" stroke="#f43f5e" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5" />
+                  <text x="330" y="105" fill="#f43f5e" fontSize="7.5" fontWeight="bold" fontFamily="monospace">✖ TRAPDOOR BYPASS</text>
+
+                  <path d="M 130 65 Q 230 65 260 30 L 450 30" fill="none" stroke="#10b981" strokeWidth="2.2" strokeDasharray="6 3" className="animate-cyber-flow" />
+                  <circle r="4" fill="#34d399">
+                    <animateMotion dur="2s" repeatCount="indefinite" path="M 130 65 Q 230 65 260 30 L 450 30" />
+                  </circle>
+
+                  <g transform="translate(450, 15)">
+                    <rect width="110" height="45" rx="6" fill="#020617" stroke="#10b981" strokeWidth="1.2" />
+                    <text x="55" y="18" fill="#10b981" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">OFFICIAL PORTAL</text>
+                    <text x="55" y="32" fill="#cbd5e1" fontSize="7" textAnchor="middle" fontFamily="monospace">🔒 Clean Bookmark</text>
+                  </g>
+                </>
+              )}
+
+              {/* Step 4: Credential Theft vs MFA Forcefield */}
+              {activeStepData.step === 4 && (
+                <>
+                  <g transform="translate(40, 35)">
+                    <rect width="90" height="60" rx="8" fill="#1e1014" stroke="#f43f5e" strokeWidth="1.2" />
+                    <text x="45" y="24" fill="#f43f5e" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">STOLEN PASS</text>
+                    <text x="45" y="40" fill="#f87171" fontSize="7" textAnchor="middle" fontFamily="sans-serif">Replay Attack</text>
+                  </g>
+
+                  {/* Red attack arrow towards center */}
+                  <line x1="130" y1="65" x2="260" y2="65" stroke="#f43f5e" strokeWidth="2" strokeDasharray="4 3" className="animate-cyber-flow" />
+                  <circle r="4" fill="#f43f5e">
+                    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 130 65 L 260 65" />
+                  </circle>
+
+                  {/* Huge MFA Shield Forcefield Gate */}
+                  <g transform="translate(290, 65)">
+                    <circle r="36" fill="#064e3b" fillOpacity="0.5" stroke="#10b981" strokeWidth="2.5" className="animate-pulse" />
+                    <circle r="42" stroke="#34d399" strokeWidth="0.8" strokeDasharray="4 3" className="animate-spin origin-center" style={{ animationDuration: '8s' }} />
+                    <text x="0" y="-6" fill="#10b981" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">MFA GATE</text>
+                    <text x="0" y="8" fill="#34d399" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">CHALLENGE</text>
+                    <text x="0" y="19" fill="#e2e8f0" fontSize="6.5" textAnchor="middle" fontFamily="monospace">BLOCKED ✖</text>
+                  </g>
+
+                  {/* Defender Mobile Phone Authenticator */}
+                  <g transform="translate(450, 30)">
+                    <rect width="90" height="70" rx="8" fill="#020617" stroke="#00f0ff" strokeWidth="1.2" />
+                    <text x="45" y="22" fill="#00f0ff" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">DEFENDER PHONE</text>
+                    <text x="45" y="38" fill="#cbd5e1" fontSize="7" textAnchor="middle" fontFamily="sans-serif">Push: &quot;Deny login?&quot;</text>
+                    <rect x="25" y="46" width="40" height="15" rx="3" fill="#881337" stroke="#f43f5e" strokeWidth="0.8" />
+                    <text x="45" y="57" fill="#fda4af" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="monospace">DENIED ✓</text>
+                  </g>
+                </>
+              )}
+
+              {/* Step 5: Compromise vs Complete Protection */}
+              {activeStepData.step === 5 && (
+                <>
+                  <g transform="translate(40, 35)">
+                    <rect width="100" height="60" rx="8" fill="#1e1014" stroke="#475569" strokeWidth="1" opacity="0.6" />
+                    <text x="50" y="24" fill="#94a3b8" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">ATTACKER</text>
+                    <text x="50" y="40" fill="#f43f5e" fontSize="7.5" fontWeight="bold" textAnchor="middle" fontFamily="monospace">DEFEATED ✖</text>
+                    <text x="50" y="52" fill="#64748b" fontSize="6.5" textAnchor="middle" fontFamily="sans-serif">Session Severed</text>
+                  </g>
+
+                  {/* Broken Wire */}
+                  <line x1="140" y1="65" x2="220" y2="65" stroke="#475569" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" />
+                  <text x="235" y="68" fill="#f43f5e" fontSize="9" fontWeight="bold" fontFamily="monospace">✖</text>
+
+                  {/* Radiant Defender Fortress */}
+                  <g transform="translate(390, 20)">
+                    <rect width="170" height="90" rx="12" fill="#064e3b" fillOpacity="0.4" stroke="#10b981" strokeWidth="2" className="animate-pulse" />
+                    <circle cx="85" cy="35" r="22" fill="#020617" stroke="#10b981" strokeWidth="1.5" />
+                    <text x="85" y="32" fill="#10b981" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">ACCOUNT</text>
+                    <text x="85" y="43" fill="#34d399" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">INTACT</text>
+                    <text x="85" y="68" fill="#e2e8f0" fontSize="8.5" fontWeight="bold" textAnchor="middle" fontFamily="monospace">
+                      🛡️ ASSETS 100% PROTECTED
+                    </text>
+                    <text x="85" y="80" fill="#6ee7b7" fontSize="7" textAnchor="middle" fontFamily="sans-serif">
+                      Zero Unauthorized Breach
+                    </text>
+                  </g>
+                </>
+              )}
+            </svg>
+          </div>
+
           {/* WHAT IS HAPPENING? Section */}
           <div className="space-y-2">
             <div className="text-xs font-mono uppercase font-bold text-cyan-400 flex items-center gap-2">

@@ -101,15 +101,31 @@ export const SocialEngineeringVisual: React.FC = () => {
 
             {/* Desktop Graphical Diagram (Radial layout) */}
             <div className="relative w-full aspect-[4/3] max-w-md mx-auto hidden sm:block">
-              {/* Connecting Vector Lines */}
+              {/* Connecting Vector Lines with Live Stream & Moving Packets */}
               <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
                 {/* Lines from 4 nodes to center (50, 50) */}
-                <line x1="22" y1="24" x2="50" y2="50" stroke="#f43f5e" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                <line x1="78" y1="24" x2="50" y2="50" stroke="#10b981" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                <line x1="22" y1="76" x2="50" y2="50" stroke="#f59e0b" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                <line x1="78" y1="76" x2="50" y2="50" stroke="#00f0ff" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                {/* Center Core Circle */}
-                <circle cx="50" cy="50" r="16" fill="#0f172a" stroke="#00f0ff" strokeWidth="1.2" opacity="0.8" />
+                <line x1="22" y1="24" x2="50" y2="50" stroke="#f43f5e" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+                <line x1="78" y1="24" x2="50" y2="50" stroke="#10b981" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+                <line x1="22" y1="76" x2="50" y2="50" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+                <line x1="78" y1="76" x2="50" y2="50" stroke="#00f0ff" strokeWidth="1.2" strokeDasharray="4 2" className="animate-cyber-flow" opacity="0.8" />
+
+                {/* Live Impulse Packets */}
+                <circle r="1.5" fill="#f43f5e" opacity="0.95">
+                  <animateMotion dur="2.0s" repeatCount="indefinite" path="M 22 24 L 50 50" />
+                </circle>
+                <circle r="1.5" fill="#10b981" opacity="0.95">
+                  <animateMotion dur="2.2s" repeatCount="indefinite" path="M 78 24 L 50 50" />
+                </circle>
+                <circle r="1.5" fill="#f59e0b" opacity="0.95">
+                  <animateMotion dur="1.9s" repeatCount="indefinite" path="M 22 76 L 50 50" />
+                </circle>
+                <circle r="1.5" fill="#00f0ff" opacity="0.95">
+                  <animateMotion dur="2.1s" repeatCount="indefinite" path="M 78 76 L 50 50" />
+                </circle>
+
+                {/* Rotating Core Aura */}
+                <circle cx="50" cy="50" r="16" fill="#0f172a" stroke="#00f0ff" strokeWidth="1.2" opacity="0.9" />
+                <circle cx="50" cy="50" r="19" fill="none" stroke="#00f0ff" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.4" className="animate-spin" style={{ animationDuration: '12s', transformOrigin: '50px 50px' }} />
               </svg>
 
               {/* Central Core: SOCIAL ENGINEERING */}

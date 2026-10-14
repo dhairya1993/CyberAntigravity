@@ -50,34 +50,58 @@ export const ScamTypesThreatMap: React.FC = () => {
         <circle cx="200" cy="160" r="130" stroke="#1e293b" strokeWidth="1" strokeDasharray="4 4" opacity="0.4" />
         <circle cx="200" cy="160" r="95" stroke="#334155" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
         <circle cx="200" cy="160" r="60" stroke="#06b6d4" strokeWidth="0.8" opacity="0.3" />
+        <circle cx="200" cy="160" r="48" stroke="#f43f5e" strokeWidth="1" strokeDasharray="4 4" opacity="0.4" className="animate-spin" style={{ animationDuration: '18s', transformOrigin: '200px 160px' }} />
 
         {/* 2. CONNECTING NETWORK LINES (Center cx=200, cy=160 to 6 nodes) */}
         {/* Line 1 -> Phishing (200, 45) */}
-        <line x1="200" y1="160" x2="200" y2="45" stroke="#06b6d4" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.75" />
+        <line x1="200" y1="160" x2="200" y2="45" stroke="#06b6d4" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
         {/* Line 2 -> Banking (315, 95) */}
-        <line x1="200" y1="160" x2="315" y2="95" stroke="#f43f5e" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.75" />
+        <line x1="200" y1="160" x2="315" y2="95" stroke="#f43f5e" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
         {/* Line 3 -> Investment (315, 225) */}
-        <line x1="200" y1="160" x2="315" y2="225" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.75" />
+        <line x1="200" y1="160" x2="315" y2="225" stroke="#10b981" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
         {/* Line 4 -> Job (200, 275) */}
-        <line x1="200" y1="160" x2="200" y2="275" stroke="#a855f7" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.75" />
+        <line x1="200" y1="160" x2="200" y2="275" stroke="#a855f7" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
         {/* Line 5 -> Delivery (85, 225) */}
-        <line x1="200" y1="160" x2="85" y2="225" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.75" />
+        <line x1="200" y1="160" x2="85" y2="225" stroke="#f97316" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
         {/* Line 6 -> Social Media (85, 95) */}
-        <line x1="200" y1="160" x2="85" y2="95" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.75" />
+        <line x1="200" y1="160" x2="85" y2="95" stroke="#38bdf8" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.85" />
 
-        {/* Small Data Packet Flow Indicators along vectors */}
-        <circle cx="200" cy="95" r="2" fill="#06b6d4" />
-        <circle cx="265" cy="123" r="2" fill="#f43f5e" />
-        <circle cx="265" cy="197" r="2" fill="#10b981" />
-        <circle cx="200" cy="225" r="2" fill="#a855f7" />
-        <circle cx="135" cy="197" r="2" fill="#f97316" />
-        <circle cx="135" cy="123" r="2" fill="#38bdf8" />
+        {/* Continuous Traveling Threat Packets (Outward from Scam Hub) */}
+        <circle r="3" fill="#06b6d4" opacity="0.95">
+          <animateMotion dur="2.0s" repeatCount="indefinite" path="M 200 160 L 200 45" />
+        </circle>
+        <circle r="3" fill="#f43f5e" opacity="0.95">
+          <animateMotion dur="2.4s" repeatCount="indefinite" path="M 200 160 L 315 95" />
+        </circle>
+        <circle r="3" fill="#10b981" opacity="0.95">
+          <animateMotion dur="2.2s" repeatCount="indefinite" path="M 200 160 L 315 225" />
+        </circle>
+        <circle r="3" fill="#a855f7" opacity="0.95">
+          <animateMotion dur="2.5s" repeatCount="indefinite" path="M 200 160 L 200 275" />
+        </circle>
+        <circle r="3" fill="#f97316" opacity="0.95">
+          <animateMotion dur="2.1s" repeatCount="indefinite" path="M 200 160 L 85 225" />
+        </circle>
+        <circle r="3" fill="#38bdf8" opacity="0.95">
+          <animateMotion dur="2.3s" repeatCount="indefinite" path="M 200 160 L 85 95" />
+        </circle>
+
+        {/* Inward Echo Packets (Nodes -> Hub) */}
+        <circle r="1.8" fill="#ffffff" opacity="0.8">
+          <animateMotion dur="3.0s" repeatCount="indefinite" path="M 200 45 L 200 160" />
+        </circle>
+        <circle r="1.8" fill="#ffffff" opacity="0.8">
+          <animateMotion dur="3.2s" repeatCount="indefinite" path="M 315 95 L 200 160" />
+        </circle>
+        <circle r="1.8" fill="#ffffff" opacity="0.8">
+          <animateMotion dur="3.1s" repeatCount="indefinite" path="M 85 95 L 200 160" />
+        </circle>
 
         {/* 3. CENTER NODE: "SCAM" */}
         <g transform="translate(200, 160)">
           {/* Animated Sonar Halo */}
-          <circle cx="0" cy="0" r="42" fill="none" stroke="#f43f5e" strokeWidth="1" opacity="0.4" strokeDasharray="6 4" />
-          <circle cx="0" cy="0" r="34" fill="url(#centerCoreGrad)" stroke="url(#centerRingGrad)" strokeWidth="2.5" filter="url(#threatCenterGlow)" />
+          <circle cx="0" cy="0" r="42" fill="none" stroke="#f43f5e" strokeWidth="1" opacity="0.5" strokeDasharray="6 4" className="animate-spin" style={{ animationDuration: '14s' }} />
+          <circle cx="0" cy="0" r="34" fill="url(#centerCoreGrad)" stroke="url(#centerRingGrad)" strokeWidth="2.5" filter="url(#threatCenterGlow)" className="animate-pulse" />
           
           {/* Center Text */}
           <text x="0" y="-4" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle" fontFamily="monospace" letterSpacing="2">

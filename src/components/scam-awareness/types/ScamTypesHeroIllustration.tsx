@@ -38,28 +38,42 @@ export const ScamTypesHeroIllustration: React.FC = () => {
           </linearGradient>
         </defs>
 
-        {/* 1. THREAT NETWORK NODES & INTERCONNECT LINES */}
-        <g opacity="0.6">
-          <line x1="30" y1="40" x2="80" y2="70" stroke="#06b6d4" strokeWidth="1" strokeDasharray="3 3" />
-          <line x1="280" y1="50" x2="220" y2="90" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3 3" />
-          <line x1="40" y1="200" x2="90" y2="170" stroke="#ef4444" strokeWidth="1" strokeDasharray="3 3" />
-          <line x1="290" y1="190" x2="230" y2="160" stroke="#06b6d4" strokeWidth="1" strokeDasharray="3 3" />
+        {/* 1. THREAT NETWORK NODES & INTERCONNECT LINES WITH LIVE FLOW */}
+        <g opacity="0.8">
+          <line x1="30" y1="40" x2="80" y2="70" stroke="#06b6d4" strokeWidth="1.5" strokeDasharray="5 3" className="animate-cyber-flow" />
+          <line x1="280" y1="50" x2="220" y2="90" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="5 3" className="animate-cyber-flow" />
+          <line x1="40" y1="200" x2="90" y2="170" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="5 3" className="animate-cyber-flow" />
+          <line x1="290" y1="190" x2="230" y2="160" stroke="#06b6d4" strokeWidth="1.5" strokeDasharray="5 3" className="animate-cyber-flow" />
+
+          {/* Traveling threat packets */}
+          <circle r="2.5" fill="#38bdf8">
+            <animateMotion dur="2s" repeatCount="indefinite" path="M 30 40 L 80 70" />
+          </circle>
+          <circle r="2.5" fill="#fbbf24">
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M 280 50 L 220 90" />
+          </circle>
+          <circle r="2.5" fill="#f87171">
+            <animateMotion dur="1.8s" repeatCount="indefinite" path="M 40 200 L 90 170" />
+          </circle>
+          <circle r="2.5" fill="#38bdf8">
+            <animateMotion dur="2.2s" repeatCount="indefinite" path="M 290 190 L 230 160" />
+          </circle>
 
           {/* Node 1: Top-Left Threat Sensor */}
-          <circle cx="30" cy="40" r="4" fill="#082f49" stroke="#06b6d4" strokeWidth="1.5" />
-          <circle cx="30" cy="40" r="1.5" fill="#38bdf8" />
+          <circle cx="30" cy="40" r="5" fill="#082f49" stroke="#06b6d4" strokeWidth="1.5" />
+          <circle cx="30" cy="40" r="2" fill="#38bdf8" className="animate-ping" style={{ transformOrigin: '30px 40px', animationDuration: '3s' }} />
 
           {/* Node 2: Top-Right Threat Sensor */}
-          <circle cx="280" cy="50" r="4" fill="#451a03" stroke="#f59e0b" strokeWidth="1.5" />
-          <circle cx="280" cy="50" r="1.5" fill="#fbbf24" />
+          <circle cx="280" cy="50" r="5" fill="#451a03" stroke="#f59e0b" strokeWidth="1.5" />
+          <circle cx="280" cy="50" r="2" fill="#fbbf24" className="animate-ping" style={{ transformOrigin: '280px 50px', animationDuration: '3.5s' }} />
 
           {/* Node 3: Bottom-Left Phishing Beacon */}
-          <circle cx="40" cy="200" r="4" fill="#450a0a" stroke="#ef4444" strokeWidth="1.5" />
-          <circle cx="40" cy="200" r="1.5" fill="#f87171" />
+          <circle cx="40" cy="200" r="5" fill="#450a0a" stroke="#ef4444" strokeWidth="1.5" />
+          <circle cx="40" cy="200" r="2" fill="#f87171" className="animate-ping" style={{ transformOrigin: '40px 200px', animationDuration: '2.5s' }} />
 
           {/* Node 4: Bottom-Right Secure Terminal */}
-          <circle cx="290" cy="190" r="4" fill="#082f49" stroke="#06b6d4" strokeWidth="1.5" />
-          <circle cx="290" cy="190" r="1.5" fill="#38bdf8" />
+          <circle cx="290" cy="190" r="5" fill="#082f49" stroke="#06b6d4" strokeWidth="1.5" />
+          <circle cx="290" cy="190" r="2" fill="#38bdf8" />
         </g>
 
         {/* 2. SMARTPHONE DEVICE */}
@@ -91,7 +105,7 @@ export const ScamTypesHeroIllustration: React.FC = () => {
 
           {/* Top Status Header */}
           <rect x="12" y="24" width="96" height="16" rx="4" fill="#0f172a" />
-          <circle cx="20" cy="32" r="3.5" fill="#ef4444" />
+          <circle cx="20" cy="32" r="3.5" fill="#ef4444" className="animate-pulse" />
           <text x="28" y="35" fill="#e2e8f0" fontSize="6.5" fontWeight="bold" fontFamily="sans-serif">
             Unknown Sender
           </text>
@@ -109,7 +123,7 @@ export const ScamTypesHeroIllustration: React.FC = () => {
               rx="6"
               fill="#181324"
               stroke="#f43f5e"
-              strokeWidth="1"
+              strokeWidth="1.2"
               strokeDasharray="4 2"
             />
             {/* Header Flag */}
@@ -123,26 +137,39 @@ export const ScamTypesHeroIllustration: React.FC = () => {
             <line x1="6" y1="27" x2="80" y2="27" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" />
             <line x1="6" y1="34" x2="62" y2="34" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" />
 
-            {/* Phishing Hook Link Indicator Container */}
-            <rect x="6" y="42" width="84" height="16" rx="3" fill="#2d121c" stroke="#f43f5e" strokeWidth="0.8" />
-            <text x="10" y="52" fill="#fb7185" fontSize="5" fontWeight="bold" fontFamily="monospace">
-              http://verify-login.xyz
-            </text>
+            {/* Phishing Hook Link Indicator Container with live pulse */}
+            <g className="animate-link-pulse">
+              <rect x="6" y="42" width="84" height="16" rx="3" fill="#2d121c" stroke="#f43f5e" strokeWidth="1" />
+              <text x="10" y="52" fill="#fb7185" fontSize="5" fontWeight="bold" fontFamily="monospace">
+                http://verify-login.xyz
+              </text>
+            </g>
 
             {/* Threat Urgency Tag */}
             <rect x="6" y="63" width="70" height="11" rx="2" fill="#38101a" />
             <text x="9" y="71" fill="#fca5a5" fontSize="4.5" fontWeight="bold" fontFamily="sans-serif">
               * Action Required in 1 Hr *
             </text>
+
+            {/* Animated Laser Scanning Beam Sweeping Over Phishing Message */}
+            <line x1="0" y1="0" x2="96" y2="0" stroke="#00f0ff" strokeWidth="1.5" opacity="0.8" strokeDasharray="3 2">
+              <animateTransform
+                attributeName="transform"
+                type="translate"
+                values="0 15; 0 75; 0 15"
+                dur="3s"
+                repeatCount="indefinite"
+              />
+            </line>
           </g>
 
           {/* Home bar */}
           <rect x="42" y="176" width="36" height="3" rx="1.5" fill="#475569" />
         </g>
 
-        {/* 3. WARNING TRIANGLE INDICATOR (Top Right of Phone) */}
-        <g transform="translate(165, 32)">
-          <rect x="0" y="0" width="76" height="24" rx="6" fill="#18181b" stroke="#f59e0b" strokeWidth="1.5" />
+        {/* 3. WARNING TRIANGLE INDICATOR (Top Right of Phone) with pulse */}
+        <g transform="translate(165, 32)" className="animate-bounce" style={{ animationDuration: '4s' }}>
+          <rect x="0" y="0" width="76" height="24" rx="6" fill="#18181b" stroke="#f59e0b" strokeWidth="1.5" filter="drop-shadow(0 0 6px rgba(245,158,11,0.4))" />
           <polygon points="10,18 16,7 22,18" fill="#f59e0b" />
           <text x="16" y="16" fill="#000" fontSize="7.5" fontWeight="bold" textAnchor="middle">!</text>
           <text x="28" y="15.5" fill="#fef08a" fontSize="7" fontWeight="bold" fontFamily="sans-serif">
@@ -152,7 +179,7 @@ export const ScamTypesHeroIllustration: React.FC = () => {
 
         {/* 4. PHISHING HOOK / LINK INDICATOR NODE (Left of Phone) */}
         <g transform="translate(18, 98)">
-          <rect x="0" y="0" width="72" height="26" rx="6" fill="#18181b" stroke="#ef4444" strokeWidth="1.5" />
+          <rect x="0" y="0" width="72" height="26" rx="6" fill="#18181b" stroke="#ef4444" strokeWidth="1.5" filter="drop-shadow(0 0 6px rgba(239,68,68,0.4))" />
           {/* Stylized Phishing Hook Icon */}
           <path
             d="M14 6V14C14 17 11 19 8 19C5 19 4 17 4 15"
@@ -166,14 +193,24 @@ export const ScamTypesHeroIllustration: React.FC = () => {
           </text>
         </g>
 
-        {/* 5. PROTECTIVE SECURITY SHIELD (Lower Right) */}
+        {/* Live Attack Trajectory Stream from Hook to Message */}
+        <line x1="90" y1="110" x2="115" y2="105" stroke="#f43f5e" strokeWidth="1.5" strokeDasharray="4 2" className="animate-cyber-flow" />
+        <circle r="2" fill="#f43f5e">
+          <animateMotion dur="1.6s" repeatCount="indefinite" path="M 90 110 L 115 105" />
+        </circle>
+
+        {/* 5. PROTECTIVE SECURITY SHIELD (Lower Right) with Cyber Pulse */}
         <g transform="translate(205, 115)">
+          {/* Outer Protective Pulse Halo */}
+          <circle cx="32" cy="35" r="28" fill="none" stroke="#00f0ff" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" className="animate-spin" style={{ animationDuration: '15s', transformOrigin: '32px 35px' }} />
+          
           <path
             d="M32 6L54 14V34C54 48 44 58 32 64C20 58 10 48 10 34V14L32 6Z"
             fill="url(#typesShieldGrad)"
             stroke="#38bdf8"
             strokeWidth="2"
             filter="url(#typesShieldGlow)"
+            className="animate-cyber-pulse"
           />
           <path
             d="M32 12L48 18V33C48 44 40 52 32 57C24 52 16 44 16 33V18L32 12Z"

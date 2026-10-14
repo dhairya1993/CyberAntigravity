@@ -190,35 +190,48 @@ export const HeroDefenseEcosystemVisual: React.FC = () => {
             r="24"
             fill="none"
             stroke={currentTheme.stroke}
-            strokeWidth="0.5"
-            strokeDasharray="2 2"
-            opacity="0.4"
+            strokeWidth="0.6"
+            strokeDasharray="3 3"
+            opacity="0.5"
+            className="animate-spin"
+            style={{ animationDuration: '18s', transformOrigin: '50px 50px' }}
           />
 
-          {/* Connected Network Vectors linking Center to all 5 nodes */}
+          {/* Connected Network Vectors linking Center to all 5 nodes with live streams */}
           {NODES.map((node) => (
-            <line
-              key={node.id}
-              x1="50"
-              y1="50"
-              x2={node.x}
-              y2={node.y}
-              stroke={currentTheme.stroke}
-              strokeWidth={selectedNodeId === node.id ? '1.2' : '0.6'}
-              strokeDasharray={activeMode === 'protected' ? 'none' : '2 2'}
-              opacity={selectedNodeId === node.id ? 0.9 : 0.4}
-              filter="url(#vectorGlow)"
-            />
+            <g key={node.id}>
+              <line
+                x1="50"
+                y1="50"
+                x2={node.x}
+                y2={node.y}
+                stroke={currentTheme.stroke}
+                strokeWidth={selectedNodeId === node.id ? '1.4' : '0.8'}
+                strokeDasharray="4 2"
+                className="animate-cyber-flow"
+                opacity={selectedNodeId === node.id ? 0.95 : 0.6}
+                filter="url(#vectorGlow)"
+              />
+              {/* Traveling Packet along vector */}
+              <circle r={selectedNodeId === node.id ? 1.8 : 1.2} fill={currentTheme.stroke} opacity={0.9}>
+                <animateMotion
+                  dur={selectedNodeId === node.id ? '1.8s' : '3s'}
+                  repeatCount="indefinite"
+                  path={`M 50 50 L ${node.x} ${node.y}`}
+                />
+              </circle>
+            </g>
           ))}
 
           {/* Sequential Hierarchy Pipeline Vectors: User -> Device -> Network -> Account -> Data */}
           <path
             d="M 50 12 L 18 42 L 82 42 L 30 84 L 70 84"
             fill="none"
-            stroke="#334155"
-            strokeWidth="0.5"
-            strokeDasharray="1 2"
-            opacity="0.5"
+            stroke={currentTheme.stroke}
+            strokeWidth="0.6"
+            strokeDasharray="3 2"
+            className="animate-cyber-flow"
+            opacity="0.4"
           />
         </svg>
 

@@ -59,11 +59,39 @@ export default function UrlExplainerPage() {
     ],
   };
 
+  const webAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'CyberAntigravity URL Structure Explainer & Phishing Link Inspector',
+    url: 'https://cyberantigravity.com/tools/url-explainer',
+    applicationCategory: 'SecurityApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    description:
+      'Dissect web URLs into protocol, subdomain, registered domain, port, path, query parameters, and fragments. Identifies spoofed domains, punycode attacks, and suspicious phishing redirects.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    featureList: [
+      'Interactive visual breakdown of URL components',
+      'Punycode and homograph attack detection',
+      'Suspicious Top-Level Domain (TLD) warnings',
+      'Tracking parameter and credential leak scanner',
+      'Client-side safe dissection without visiting the target URL',
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
       />
       <Navbar />
       <main className="flex-1">

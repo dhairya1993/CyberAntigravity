@@ -28,6 +28,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
         {/* Visual Topic Card Banner */}
         <div className="w-full h-20 mb-4 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center justify-between px-4 relative overflow-hidden group-hover:border-cyan-500/40 transition-colors">
           <div className="absolute inset-0 cyber-grid-bg opacity-20 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity animate-pulse pointer-events-none" />
           <div className="flex items-center gap-3 relative z-10">
             <div className="p-2.5 rounded-lg bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 group-hover:scale-110 transition-transform">
               <BlogCategoryIcon slug={article.slug} className="w-5 h-5" />
@@ -41,8 +42,9 @@ export const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
               </span>
             </div>
           </div>
-          <span className="text-[10px] font-mono text-slate-500 uppercase px-2 py-0.5 rounded bg-slate-900 border border-slate-800 hidden sm:inline">
-            Interactive
+          <span className="text-[10px] font-mono text-cyan-300 uppercase px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-800/60 hidden sm:inline-flex items-center gap-1.5 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+            Interactive Guide
           </span>
         </div>
 

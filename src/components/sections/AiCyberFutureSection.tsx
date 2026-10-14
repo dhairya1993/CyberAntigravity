@@ -35,6 +35,22 @@ export const AiCyberFutureSection: React.FC = () => {
           {/* Subtle Cyber Grid */}
           <div className="absolute inset-0 cyber-grid-bg opacity-30 pointer-events-none" />
 
+          {/* Live Connecting SVG Circuit Stream */}
+          <div className="hidden lg:block absolute top-[90px] left-[6%] right-[6%] h-8 pointer-events-none select-none z-0">
+            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 24">
+              <line x1="0" y1="12" x2="900" y2="12" stroke="#00f0ff" strokeWidth="2" strokeDasharray="6 4" className="animate-cyber-flow" opacity="0.6" />
+              <circle r="4" fill="#a855f7">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 0 12 L 900 12" />
+              </circle>
+              <circle r="3.5" fill="#00f0ff">
+                <animateMotion dur="2.4s" repeatCount="indefinite" path="M 0 12 L 900 12" />
+              </circle>
+              <circle r="3" fill="#10b981">
+                <animateMotion dur="2s" repeatCount="indefinite" path="M 0 12 L 900 12" />
+              </circle>
+            </svg>
+          </div>
+
           {/* Graphical Circuit Equation */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 gap-4 items-center">
             {/* Component 1: AI */}

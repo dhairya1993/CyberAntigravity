@@ -9,7 +9,6 @@ import {
   Layers,
   CheckCircle2,
   AlertTriangle,
-  ArrowRight,
   Database
 } from 'lucide-react';
 

@@ -7,19 +7,13 @@ import {
   Lock,
   Key,
   Globe,
-  Wifi,
   Mail,
   Smartphone,
   Cpu,
   Fingerprint,
   FileCheck,
   Radio,
-  Server,
-  Database,
-  Terminal,
   Activity,
-  Layers,
-  Sparkles,
   Info
 } from 'lucide-react';
 
@@ -29,7 +23,7 @@ interface ArticleHeroVisualProps {
   title?: string;
 }
 
-export const ArticleHeroVisual: React.FC<ArticleHeroVisualProps> = ({ slug, category, title }) => {
+export const ArticleHeroVisual: React.FC<ArticleHeroVisualProps> = ({ slug, category }) => {
   const [activeNode, setActiveNode] = useState<string>('filter');
 
   // Select contextual visual based on slug / category

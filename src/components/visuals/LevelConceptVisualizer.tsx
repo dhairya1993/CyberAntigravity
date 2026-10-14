@@ -2,25 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  Shield,
   ShieldCheck,
   ShieldAlert,
-  Lock,
-  Unlock,
-  Eye,
-  EyeOff,
-  Server,
   Smartphone,
-  Globe,
-  Radio,
-  Terminal,
-  Cpu,
-  Sparkles,
   CheckCircle2,
   AlertTriangle,
-  RotateCw,
-  Zap,
-  Fingerprint,
 } from 'lucide-react';
 
 interface LevelConceptVisualizerProps {
@@ -46,9 +32,6 @@ export const LevelConceptVisualizer: React.FC<LevelConceptVisualizerProps> = ({ 
 
   // Level 6: Phishing URL Inspector
   const [inspectedUrlType, setInspectedUrlType] = useState<'legit' | 'phish'>('phish');
-
-  // Level 9: Zero Trust Policy
-  const [ztCheckState, setZtCheckState] = useState<'analyzing' | 'approved'>('approved');
 
   // Simulated TOTP clock countdown
   useEffect(() => {

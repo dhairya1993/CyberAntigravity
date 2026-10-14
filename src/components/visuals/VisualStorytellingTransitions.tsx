@@ -98,7 +98,7 @@ export const VisualStorytellingTransitions: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 relative z-10">
-            {current.steps.map((st, idx) => {
+            {current.steps.map((st) => {
               const Icon = st.icon;
               return (
                 <div key={st.label} className="relative flex flex-col items-center text-center space-y-2 p-3 rounded-xl border border-slate-800/80 bg-slate-900/80 backdrop-blur-sm shadow-md hover:border-slate-700 transition-all">

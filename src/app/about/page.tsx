@@ -20,19 +20,20 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Button } from '@/components/ui/Button';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'About CyberAntigravity — Mission, Ethics & Trust Mandate',
   description:
     'Learn why CyberAntigravity was founded: democratizing defensive cybersecurity education, scam awareness, and ethical digital literacy for everyone worldwide.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/about',
+    canonical: '/about',
   },
   openGraph: {
     title: 'About CyberAntigravity — Mission, Ethics & Trust Mandate',
     description:
       'Learn why CyberAntigravity was founded: democratizing defensive cybersecurity education, scam awareness, and ethical digital literacy for everyone worldwide.',
-    url: 'https://cyberantigravity.com/about',
+    url: '/about',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
@@ -55,13 +56,13 @@ export default function AboutPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'About',
-        item: 'https://cyberantigravity.com/about',
+        item: `${SITE_URL}/about`,
       },
     ],
   };
@@ -70,14 +71,14 @@ export default function AboutPage() {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: 'About CyberAntigravity',
-    url: 'https://cyberantigravity.com/about',
+    url: `${SITE_URL}/about`,
     description:
       'Global cybersecurity education and online safety platform empowering individuals with proactive digital defense, scam awareness, and ethical security literacy.',
     publisher: {
       '@type': 'Organization',
       name: 'CyberAntigravity',
-      url: 'https://cyberantigravity.com',
-      logo: 'https://cyberantigravity.com/brand/cyberantigravity-logo.png',
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.svg`,
     },
   };
 

@@ -10,19 +10,20 @@ import { ScamTypesExplorer } from '@/components/scam-awareness/types/ScamTypesEx
 import { ScamWarningPatterns } from '@/components/scam-awareness/types/ScamWarningPatterns';
 import { ScamLearningPathTimeline } from '@/components/scam-awareness/types/ScamLearningPathTimeline';
 import { ScamTypesCTA } from '@/components/scam-awareness/types/ScamTypesCTA';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Scam Types Explorer — Know the Scam. Spot the Pattern. | CyberAntigravity',
   description:
     'Explore the most common online scam categories, understand their warning signs, and learn how to respond safely. Search and filter by threat type to learn warning signs.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness/types',
+    canonical: '/scam-awareness/types',
   },
   openGraph: {
     title: 'Scam Types Explorer — Know the Scam. Spot the Pattern. | CyberAntigravity',
     description:
       'Explore the most common online scam categories, understand their warning signs, and learn how to respond safely.',
-    url: 'https://cyberantigravity.com/scam-awareness/types',
+    url: '/scam-awareness/types',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -39,19 +40,19 @@ export default function ScamTypesPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Scam Awareness',
-        item: 'https://cyberantigravity.com/scam-awareness',
+        item: `${SITE_URL}/scam-awareness`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Scam Types',
-        item: 'https://cyberantigravity.com/scam-awareness/types',
+        item: `${SITE_URL}/scam-awareness/types`,
       },
     ],
   };

@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ToolShell } from '@/components/tools/ToolShell';
 import { CyberHygieneTool } from '@/components/tools/CyberHygieneTool';
 import { ALL_TOOLS } from '@/data/toolsHubData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 const tool = ALL_TOOLS.find((t) => t.slug === 'cyber-hygiene')!;
 
@@ -13,13 +14,13 @@ export const metadata: Metadata = {
   description:
     'Interactive client-side security checklist covering MFA, unique passwords, backups, and app permissions. Track your defense posture locally.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/tools/cyber-hygiene',
+    canonical: '/tools/cyber-hygiene',
   },
   openGraph: {
     title: 'Cyber Hygiene Checklist | CyberAntigravity',
     description:
       'Audit your personal and organizational security posture with an interactive 9-point hygiene checklist.',
-    url: 'https://cyberantigravity.com/tools/cyber-hygiene',
+    url: `${SITE_URL}/tools/cyber-hygiene`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -41,19 +42,19 @@ export default function CyberHygienePage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Tools',
-        item: 'https://cyberantigravity.com/tools',
+        item: `${SITE_URL}/tools`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Cyber Hygiene Checklist',
-        item: 'https://cyberantigravity.com/tools/cyber-hygiene',
+        item: `${SITE_URL}/tools/cyber-hygiene`,
       },
     ],
   };
@@ -62,7 +63,7 @@ export default function CyberHygienePage() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'CyberAntigravity Interactive Cyber Hygiene Assessment & Checklist',
-    url: 'https://cyberantigravity.com/tools/cyber-hygiene',
+    url: `${SITE_URL}/tools/cyber-hygiene`,
     applicationCategory: 'SecurityApplication',
     operatingSystem: 'Any',
     browserRequirements: 'Requires JavaScript. Requires HTML5.',

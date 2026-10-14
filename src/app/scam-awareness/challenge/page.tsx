@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'Test your scam-detection skills through progressively harder scenarios and evaluate your defensive reflexes.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness/challenge',
+    canonical: '/scam-awareness/challenge',
   },
 };
 

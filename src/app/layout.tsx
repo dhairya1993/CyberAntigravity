@@ -4,6 +4,7 @@ import { GamificationToast } from "@/components/gamification/GamificationToast";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, SITE_TAGLINE } from "@/lib/siteConfig";
 
 export const viewport: Viewport = {
   themeColor: "#07090e",
@@ -12,13 +13,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cyberantigravity.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "CyberAntigravity | Rise Above Cyber Threats",
     template: "%s | CyberAntigravity",
   },
-  description:
-    "CyberAntigravity is a premier global cybersecurity education and online safety platform empowering individuals, families, and organizations with proactive digital defense, scam awareness, and ethical security literacy.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "Cybersecurity",
     "Cyber Safety",
@@ -33,19 +33,19 @@ export const metadata: Metadata = {
     "OWASP Web Security",
   ],
   authors: [{ name: "CyberAntigravity Editorial & Security Research Team" }],
-  creator: "CyberAntigravity",
-  publisher: "CyberAntigravity",
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   category: "technology",
   classification: "Cybersecurity Education, Digital Safety & Online Scam Awareness",
   alternates: {
-    canonical: "https://cyberantigravity.com",
+    canonical: "/",
   },
   openGraph: {
     title: "CyberAntigravity | Rise Above Cyber Threats",
     description:
       "Global cybersecurity education and online safety platform. Actionable guides on cyber safety, scam and fraud awareness, password entropy, and ethical security literacy.",
-    url: "https://cyberantigravity.com",
-    siteName: "CyberAntigravity",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "en_US",
     images: [
       {
@@ -103,13 +103,12 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "EducationalOrganization",
-        "@id": "https://cyberantigravity.com/#organization",
-        name: "CyberAntigravity",
-        url: "https://cyberantigravity.com",
-        logo: "https://cyberantigravity.com/brand/cyberantigravity-logo.png",
-        slogan: "Rise Above Cyber Threats.",
-        description:
-          "Global cybersecurity education and online safety platform providing actionable digital defense, scam awareness, and ethical security training.",
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: `${SITE_URL}/brand/cyberantigravity-logo.png`,
+        slogan: SITE_TAGLINE,
+        description: SITE_DESCRIPTION,
         sameAs: [
           "https://twitter.com/cyberantigravity",
           "https://github.com/dhairya1993/CyberAntigravity",
@@ -132,19 +131,19 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://cyberantigravity.com/#website",
-        url: "https://cyberantigravity.com",
-        name: "CyberAntigravity",
-        description: "Rise Above Cyber Threats — Global Cybersecurity Education Platform.",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_NAME,
+        description: `${SITE_NAME} — ${SITE_TAGLINE}`,
         publisher: {
-          "@id": "https://cyberantigravity.com/#organization",
+          "@id": `${SITE_URL}/#organization`,
         },
         inLanguage: "en-US",
         potentialAction: {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://cyberantigravity.com/blog?q={search_term_string}"
+            urlTemplate: `${SITE_URL}/blog?q={search_term_string}`
           },
           "query-input": "required name=search_term_string"
         }

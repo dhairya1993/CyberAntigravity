@@ -10,19 +10,20 @@ import { SafePracticeNotice } from '@/components/learn/SafePracticeNotice';
 import { FutureLabsTeaser } from '@/components/learn/FutureLabsTeaser';
 import { LearningCrossLinks } from '@/components/learn/LearningCrossLinks';
 import { LearningRoadmapVisual } from '@/components/visuals/LearningRoadmapVisual';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Learn Cybersecurity Online: Beginner to Advanced | CyberAntigravity',
   description:
     'Learn cybersecurity fundamentals, digital safety, networking, web security, ethical hacking, SOC concepts, digital forensics and AI security with CyberAntigravity.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/learn',
+    canonical: '/learn',
   },
   openGraph: {
     title: 'Learn Cybersecurity Online: Beginner to Advanced | CyberAntigravity',
     description:
       'Learn cybersecurity fundamentals, digital safety, networking, web security, ethical hacking, SOC concepts, digital forensics and AI security with CyberAntigravity.',
-    url: 'https://cyberantigravity.com/learn',
+    url: '/learn',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
@@ -45,13 +46,13 @@ export default function LearnPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Learning Hub',
-        item: 'https://cyberantigravity.com/learn',
+        item: `${SITE_URL}/learn`,
       },
     ],
   };

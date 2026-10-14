@@ -6,19 +6,20 @@ import { BlogHero } from '@/components/blog/BlogHero';
 import { FeaturedArticle } from '@/components/blog/FeaturedArticle';
 import { BlogDirectory } from '@/components/blog/BlogDirectory';
 import { BLOG_ARTICLES } from '@/data/blogArticles';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Cybersecurity Knowledge Hub & Practical Guides | CyberAntigravity',
   description:
     'Practical cybersecurity guides, scam awareness explainers, privacy tips, and defensive security knowledge for everyday digital life.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/blog',
+    canonical: '/blog',
   },
   openGraph: {
     title: 'Cybersecurity Knowledge Hub & Practical Guides | CyberAntigravity',
     description:
       'Practical cybersecurity guides, scam awareness explainers, privacy tips, and defensive security knowledge for everyday digital life.',
-    url: 'https://cyberantigravity.com/blog',
+    url: `${SITE_URL}/blog`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
@@ -44,13 +45,13 @@ export default function BlogHubPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog & Research Hub',
-        item: 'https://cyberantigravity.com/blog',
+        item: `${SITE_URL}/blog`,
       },
     ],
   };

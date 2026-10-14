@@ -1,12 +1,13 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/'],
+      disallow: ['/api/', '/progress', '/forgot-password'],
     },
-    sitemap: 'https://cyberantigravity.com/sitemap.xml',
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

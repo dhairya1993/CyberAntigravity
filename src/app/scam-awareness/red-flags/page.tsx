@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'Learn how to identify suspicious messages, deceptive domains, artificial urgency, and social-engineering red flags before clicking.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness/red-flags',
+    canonical: '/scam-awareness/red-flags',
   },
 };
 

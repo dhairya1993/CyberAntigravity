@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${scam.title} Scam Guide — Warning Signs, Response & Example | CyberAntigravity`,
     description: scam.shortDescription,
     alternates: {
-      canonical: `https://cyberantigravity.com/scam-awareness/types/${scam.slug}`,
+      canonical: `/scam-awareness/types/${scam.slug}`,
     },
   };
 }

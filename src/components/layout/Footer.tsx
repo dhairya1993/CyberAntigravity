@@ -151,7 +151,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            &copy; {new Date().getFullYear()} CyberAntigravity (cyberantigravity.com). All rights reserved.
+            &copy; {new Date().getFullYear()} CyberAntigravity. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
             <span className="inline-flex items-center gap-1.5 text-slate-400">

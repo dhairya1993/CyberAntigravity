@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     'Interactive cybersecurity simulation lab. Inspect simulated deceptive messages, spot psychological red flags, analyze spoofed domains, and test defensive decision-making in a safe educational sandbox.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness/types/phishing',
+    canonical: '/scam-awareness/types/phishing',
   },
   openGraph: {
     title: 'Phishing Interactive Learning Lab | CyberAntigravity',
     description:
       'Practice spotting deceptive messages and fake banking alerts in a safe client-side cybersecurity lab.',
-    url: 'https://cyberantigravity.com/scam-awareness/types/phishing',
+    url: '/scam-awareness/types/phishing',
     type: 'website',
   },
 };

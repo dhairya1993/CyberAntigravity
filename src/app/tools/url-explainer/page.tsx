@@ -6,6 +6,7 @@ import { ToolShell } from '@/components/tools/ToolShell';
 import { UrlExplainerTool } from '@/components/tools/UrlExplainerTool';
 import { UrlExplainerVisual } from '@/components/visuals/CyberToolVisuals';
 import { ALL_TOOLS } from '@/data/toolsHubData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 const tool = ALL_TOOLS.find((t) => t.slug === 'url-explainer')!;
 
@@ -14,13 +15,13 @@ export const metadata: Metadata = {
   description:
     'Dissect web addresses into protocol, subdomains, registrable domain, path, and query parameters. Educational tool explaining URL architecture.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/tools/url-explainer',
+    canonical: '/tools/url-explainer',
   },
   openGraph: {
     title: 'URL Structure Explainer | CyberAntigravity',
     description:
       'Dissect web addresses into protocol, subdomains, registrable domain, path, and query parameters.',
-    url: 'https://cyberantigravity.com/tools/url-explainer',
+    url: `${SITE_URL}/tools/url-explainer`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -42,19 +43,19 @@ export default function UrlExplainerPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Tools',
-        item: 'https://cyberantigravity.com/tools',
+        item: `${SITE_URL}/tools`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'URL Structure Explainer',
-        item: 'https://cyberantigravity.com/tools/url-explainer',
+        item: `${SITE_URL}/tools/url-explainer`,
       },
     ],
   };
@@ -63,7 +64,7 @@ export default function UrlExplainerPage() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'CyberAntigravity URL Structure Explainer & Phishing Link Inspector',
-    url: 'https://cyberantigravity.com/tools/url-explainer',
+    url: `${SITE_URL}/tools/url-explainer`,
     applicationCategory: 'SecurityApplication',
     operatingSystem: 'Any',
     browserRequirements: 'Requires JavaScript. Requires HTML5.',

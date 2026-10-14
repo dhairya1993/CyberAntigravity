@@ -21,6 +21,7 @@ import { ArrowRight } from 'lucide-react';
 import { CyberSafetyFAQ } from '@/components/cyber-safety/CyberSafetyFAQ';
 import { CYBER_SAFETY_FAQS } from '@/data/cyberSafetyHubData';
 import { CyberSafetyCrossLinks } from '@/components/cyber-safety/CyberSafetyCrossLinks';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: {
@@ -29,13 +30,13 @@ export const metadata: Metadata = {
   description:
     'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/cyber-safety',
+    canonical: '/cyber-safety',
   },
   openGraph: {
     title: 'Cyber Safety Guide — Learn Safer Digital Habits | CyberAntigravity',
     description:
       'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
-    url: 'https://cyberantigravity.com/cyber-safety',
+    url: '/cyber-safety',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -59,13 +60,13 @@ export default function CyberSafetyPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cyber Safety Hub',
-        item: 'https://cyberantigravity.com/cyber-safety',
+        item: `${SITE_URL}/cyber-safety`,
       },
     ],
   };
@@ -74,15 +75,15 @@ export default function CyberSafetyPage() {
   const webPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': 'https://cyberantigravity.com/cyber-safety#webpage',
-    url: 'https://cyberantigravity.com/cyber-safety',
+    '@id': `${SITE_URL}/cyber-safety#webpage`,
+    url: `${SITE_URL}/cyber-safety`,
     name: 'Cyber Safety Guide — Learn Safer Digital Habits | CyberAntigravity',
     description:
       'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
     publisher: {
       '@type': 'Organization',
       name: 'CyberAntigravity',
-      url: 'https://cyberantigravity.com',
+      url: SITE_URL,
     },
     inLanguage: 'en-US',
   };

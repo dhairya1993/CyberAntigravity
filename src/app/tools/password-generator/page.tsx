@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ToolShell } from '@/components/tools/ToolShell';
 import { PasswordGeneratorTool } from '@/components/tools/PasswordGeneratorTool';
 import { ALL_TOOLS } from '@/data/toolsHubData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 const tool = ALL_TOOLS.find((t) => t.slug === 'password-generator')!;
 
@@ -13,13 +14,13 @@ export const metadata: Metadata = {
   description:
     'Generate cryptographically random passwords and multi-word passphrases using the browser Web Crypto API. 100% client-side, zero server transmission.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/tools/password-generator',
+    canonical: '/tools/password-generator',
   },
   openGraph: {
     title: 'Secure Password & Passphrase Generator | CyberAntigravity',
     description:
       'Generate cryptographically random passwords and passphrases locally in your browser.',
-    url: 'https://cyberantigravity.com/tools/password-generator',
+    url: `${SITE_URL}/tools/password-generator`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -41,19 +42,19 @@ export default function PasswordGeneratorPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Tools',
-        item: 'https://cyberantigravity.com/tools',
+        item: `${SITE_URL}/tools`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Password Generator',
-        item: 'https://cyberantigravity.com/tools/password-generator',
+        item: `${SITE_URL}/tools/password-generator`,
       },
     ],
   };
@@ -62,7 +63,7 @@ export default function PasswordGeneratorPage() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'CyberAntigravity Secure Password & Passphrase Generator',
-    url: 'https://cyberantigravity.com/tools/password-generator',
+    url: `${SITE_URL}/tools/password-generator`,
     applicationCategory: 'SecurityApplication',
     operatingSystem: 'Any',
     browserRequirements: 'Requires JavaScript. Requires HTML5.',

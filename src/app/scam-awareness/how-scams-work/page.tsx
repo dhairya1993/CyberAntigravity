@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     'Understand the psychology behind urgency, fear, authority, greed, curiosity, and trust in modern social-engineering schemes.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness/how-scams-work',
+    canonical: '/scam-awareness/how-scams-work',
   },
 };
 

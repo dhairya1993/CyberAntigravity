@@ -3,19 +3,20 @@ import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { StudentProgressDashboard } from '@/components/gamification/StudentProgressDashboard';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Student Progress & Achievements: Cybersecurity Gamification | CyberAntigravity',
   description:
     'Track your cybersecurity learning journey: earn XP, level up across 9 skill ranks, maintain daily learning streaks, and unlock defensive achievement badges.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/learn/progress',
+    canonical: '/learn/progress',
   },
   openGraph: {
     title: 'Student Progress & Achievements | CyberAntigravity',
     description:
       'Track your cybersecurity learning journey: earn XP, level up across 9 skill ranks, maintain daily learning streaks, and unlock defensive achievement badges.',
-    url: 'https://cyberantigravity.com/learn/progress',
+    url: '/learn/progress',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
@@ -38,19 +39,19 @@ export default function LearnProgressPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Learning Hub',
-        item: 'https://cyberantigravity.com/learn',
+        item: `${SITE_URL}/learn`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Student Progress & Gamification',
-        item: 'https://cyberantigravity.com/learn/progress',
+        item: `${SITE_URL}/learn/progress`,
       },
     ],
   };

@@ -11,6 +11,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { SCAM_WARNING_CHECKLIST_ITEMS } from '@/data/scamAwarenessData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const ScamChecklist: React.FC = () => {
   const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
@@ -41,7 +42,7 @@ export const ScamChecklist: React.FC = () => {
         return `[${isChecked ? 'X' : ' '}] ${item.text}`;
       }),
       '',
-      'Source: https://cyberantigravity.com/scam-awareness',
+      `Source: ${SITE_URL}/scam-awareness`,
     ].join('\n');
 
     const performFallback = () => {

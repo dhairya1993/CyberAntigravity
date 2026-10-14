@@ -5,6 +5,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ArticleLayout } from '@/components/blog/ArticleLayout';
 import { BLOG_ARTICLES } from '@/data/blogArticles';
+import { SITE_URL } from '@/lib/siteConfig';
 
 interface PageProps {
   params: Promise<{
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${article.title} | CyberAntigravity`,
     description: article.description || article.excerpt,
     alternates: {
-      canonical: `https://cyberantigravity.com/blog/${article.slug}`,
+      canonical: `/blog/${article.slug}`,
     },
     robots: {
       index: isPublished,
@@ -48,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: article.title,
       description: article.description || article.excerpt,
-      url: `https://cyberantigravity.com/blog/${article.slug}`,
+      url: `${SITE_URL}/blog/${article.slug}`,
       siteName: 'CyberAntigravity',
       locale: 'en_US',
       type: 'article',
@@ -85,20 +86,20 @@ export default async function BlogPostPage({ params }: PageProps) {
     author: {
       '@type': 'Organization',
       name: 'CyberAntigravity Guide',
-      url: 'https://cyberantigravity.com',
+      url: SITE_URL,
     },
     publisher: {
       '@type': 'Organization',
       name: 'CyberAntigravity',
-      url: 'https://cyberantigravity.com',
+      url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://cyberantigravity.com/icon.svg',
+        url: `${SITE_URL}/icon.svg`,
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://cyberantigravity.com/blog/${article.slug}`,
+      '@id': `${SITE_URL}/blog/${article.slug}`,
     },
   };
 
@@ -111,19 +112,19 @@ export default async function BlogPostPage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog & Research',
-        item: 'https://cyberantigravity.com/blog',
+        item: `${SITE_URL}/blog`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: article.title,
-        item: `https://cyberantigravity.com/blog/${article.slug}`,
+        item: `${SITE_URL}/blog/${article.slug}`,
       },
     ],
   };

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Follow a practical incident response guide if you suspect you have been targeted: immediate containment, bank alerts, credential resets, and official reporting.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness/response',
+    canonical: '/scam-awareness/response',
   },
 };
 

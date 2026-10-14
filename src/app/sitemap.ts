@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
 import { BLOG_ARTICLES } from '@/data/blogArticles';
 import { SCAM_EXPLORER_CATEGORIES } from '@/data/scamTypesExplorerData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://cyberantigravity.com';
+  const baseUrl = SITE_URL;
 
   const blogRoutes: MetadataRoute.Sitemap = BLOG_ARTICLES.filter(
     (a) => a.status === 'published'

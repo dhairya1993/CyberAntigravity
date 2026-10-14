@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { CyberIqArenaView } from '@/components/cyber-iq/CyberIqArenaView';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Cyber IQ Quiz Arena — Interactive Defensive Security Challenges | CyberAntigravity',
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
     'student cybersecurity learning',
   ],
   alternates: {
-    canonical: 'https://cyberantigravity.com/cyber-iq',
+    canonical: '/cyber-iq',
   },
   openGraph: {
     title: 'Cyber IQ Quiz Arena — CyberAntigravity',
     description:
       'Practice defensive instincts with 70+ interactive scenarios. 100% private, client-side execution with local progression and zero cloud telemetry.',
-    url: 'https://cyberantigravity.com/cyber-iq',
+    url: '/cyber-iq',
     siteName: 'CyberAntigravity',
     type: 'website',
   },
@@ -49,7 +50,7 @@ export default function CyberIqPage() {
     provider: {
       '@type': 'Organization',
       name: 'CyberAntigravity',
-      url: 'https://cyberantigravity.com',
+      url: SITE_URL,
     },
   };
 

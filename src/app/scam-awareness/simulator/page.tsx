@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'Practice making safe decisions through realistic but fictional scam scenarios in a browser-based defensive security laboratory.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness/simulator',
+    canonical: '/scam-awareness/simulator',
   },
 };
 

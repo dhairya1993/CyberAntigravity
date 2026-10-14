@@ -6,6 +6,7 @@ import { ToolShell } from '@/components/tools/ToolShell';
 import { PasswordReuseTool } from '@/components/tools/PasswordReuseTool';
 import { PasswordReuseVisual } from '@/components/visuals/CyberToolVisuals';
 import { ALL_TOOLS } from '@/data/toolsHubData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 const tool = ALL_TOOLS.find((t) => t.slug === 'password-reuse')!;
 
@@ -14,13 +15,13 @@ export const metadata: Metadata = {
   description:
     'Assess your credential reuse habits through an educational self-check. Understand credential-stuffing vulnerability without sharing passwords.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/tools/password-reuse',
+    canonical: '/tools/password-reuse',
   },
   openGraph: {
     title: 'Password Reuse Risk Checker | CyberAntigravity',
     description:
       'Assess your credential reuse habits through an educational self-check without sharing passwords.',
-    url: 'https://cyberantigravity.com/tools/password-reuse',
+    url: `${SITE_URL}/tools/password-reuse`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -42,19 +43,19 @@ export default function PasswordReusePage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Tools',
-        item: 'https://cyberantigravity.com/tools',
+        item: `${SITE_URL}/tools`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Password Reuse Risk Checker',
-        item: 'https://cyberantigravity.com/tools/password-reuse',
+        item: `${SITE_URL}/tools/password-reuse`,
       },
     ],
   };
@@ -63,7 +64,7 @@ export default function PasswordReusePage() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'CyberAntigravity Password Reuse & Credential Stuffing Risk Simulator',
-    url: 'https://cyberantigravity.com/tools/password-reuse',
+    url: `${SITE_URL}/tools/password-reuse`,
     applicationCategory: 'SecurityApplication',
     operatingSystem: 'Any',
     browserRequirements: 'Requires JavaScript. Requires HTML5.',

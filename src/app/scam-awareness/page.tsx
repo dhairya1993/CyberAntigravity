@@ -10,6 +10,7 @@ import { ScamHubLearningPath } from '@/components/scam-awareness/hub/ScamHubLear
 import { ScamHubFeaturedScenario } from '@/components/scam-awareness/hub/ScamHubFeaturedScenario';
 import { ScamHubLearningJourney } from '@/components/scam-awareness/hub/ScamHubLearningJourney';
 import { ScamHubSafetyNotice } from '@/components/scam-awareness/hub/ScamHubSafetyNotice';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: {
@@ -18,13 +19,13 @@ export const metadata: Metadata = {
   description:
     'Learn how modern scams manipulate trust, urgency, and emotion — then practice identifying them through interactive scenarios. Choose your learning path with CyberAntigravity.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/scam-awareness',
+    canonical: '/scam-awareness',
   },
   openGraph: {
     title: 'Scam Awareness Learning Hub — Spot the Scam. Protect Yourself. | CyberAntigravity',
     description:
       'Learn how modern scams manipulate trust, urgency, and emotion — then practice identifying them through interactive scenarios.',
-    url: 'https://cyberantigravity.com/scam-awareness',
+    url: '/scam-awareness',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
@@ -48,13 +49,13 @@ export default function ScamAwarenessPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Scam Awareness',
-        item: 'https://cyberantigravity.com/scam-awareness',
+        item: `${SITE_URL}/scam-awareness`,
       },
     ],
   };
@@ -63,15 +64,15 @@ export default function ScamAwarenessPage() {
   const webPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': 'https://cyberantigravity.com/scam-awareness#webpage',
-    url: 'https://cyberantigravity.com/scam-awareness',
+    '@id': `${SITE_URL}/scam-awareness#webpage`,
+    url: `${SITE_URL}/scam-awareness`,
     name: 'Scam Awareness Learning Hub — Spot the Scam. Protect Yourself.',
     description:
       'Learn how modern scams manipulate trust, urgency, and emotion — then practice identifying them through interactive scenarios.',
     publisher: {
       '@type': 'Organization',
       name: 'CyberAntigravity',
-      url: 'https://cyberantigravity.com',
+      url: SITE_URL,
     },
     inLanguage: 'en-US',
   };

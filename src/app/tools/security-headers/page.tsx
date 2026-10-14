@@ -6,6 +6,7 @@ import { ToolShell } from '@/components/tools/ToolShell';
 import { SecurityHeadersTool } from '@/components/tools/SecurityHeadersTool';
 import { SecurityHeadersVisual } from '@/components/visuals/CyberToolVisuals';
 import { ALL_TOOLS } from '@/data/toolsHubData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 const tool = ALL_TOOLS.find((t) => t.slug === 'security-headers')!;
 
@@ -14,13 +15,13 @@ export const metadata: Metadata = {
   description:
     'Interactive educational explainer for HTTP response headers: Content-Security-Policy (CSP), Strict-Transport-Security (HSTS), and Permissions-Policy.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/tools/security-headers',
+    canonical: '/tools/security-headers',
   },
   openGraph: {
     title: 'Security Headers Educator | CyberAntigravity',
     description:
       'Learn how HTTP security headers protect web applications against cross-site scripting and framing attacks.',
-    url: 'https://cyberantigravity.com/tools/security-headers',
+    url: `${SITE_URL}/tools/security-headers`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -42,19 +43,19 @@ export default function SecurityHeadersPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Tools',
-        item: 'https://cyberantigravity.com/tools',
+        item: `${SITE_URL}/tools`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Security Headers Educator',
-        item: 'https://cyberantigravity.com/tools/security-headers',
+        item: `${SITE_URL}/tools/security-headers`,
       },
     ],
   };
@@ -63,7 +64,7 @@ export default function SecurityHeadersPage() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'CyberAntigravity Security Headers Educator & Inspector',
-    url: 'https://cyberantigravity.com/tools/security-headers',
+    url: `${SITE_URL}/tools/security-headers`,
     applicationCategory: 'SecurityApplication',
     operatingSystem: 'Any',
     browserRequirements: 'Requires JavaScript. Requires HTML5.',

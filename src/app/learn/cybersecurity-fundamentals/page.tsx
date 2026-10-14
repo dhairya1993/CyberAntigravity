@@ -4,19 +4,20 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { TopicPageLayout } from '@/components/learn/TopicPageLayout';
 import { CYBERSECURITY_FUNDAMENTALS_TOPIC } from '@/data/learningHubData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Cybersecurity Fundamentals: Core Principles & CIA Triad | CyberAntigravity',
   description:
     'Learn foundational cybersecurity concepts: the CIA Triad, Authentication vs. Authorization (AAA), threat categories, and the Principle of Least Privilege.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/learn/cybersecurity-fundamentals',
+    canonical: '/learn/cybersecurity-fundamentals',
   },
   openGraph: {
     title: 'Cybersecurity Fundamentals: Core Principles & CIA Triad | CyberAntigravity',
     description:
       'Learn foundational cybersecurity concepts: the CIA Triad, Authentication vs. Authorization (AAA), threat categories, and the Principle of Least Privilege.',
-    url: 'https://cyberantigravity.com/learn/cybersecurity-fundamentals',
+    url: '/learn/cybersecurity-fundamentals',
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
@@ -39,19 +40,19 @@ export default function CybersecurityFundamentalsPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Learning Hub',
-        item: 'https://cyberantigravity.com/learn',
+        item: `${SITE_URL}/learn`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Cybersecurity Fundamentals',
-        item: 'https://cyberantigravity.com/learn/cybersecurity-fundamentals',
+        item: `${SITE_URL}/learn/cybersecurity-fundamentals`,
       },
     ],
   };

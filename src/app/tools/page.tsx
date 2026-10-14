@@ -9,19 +9,20 @@ import { PasswordStrengthTool } from '@/components/tools/PasswordStrengthTool';
 import { UrlExplainerTool } from '@/components/tools/UrlExplainerTool';
 import Link from 'next/link';
 import { ArrowRight, Shield, Lock } from 'lucide-react';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Free Cybersecurity Tools for Safer Digital Habits | CyberAntigravity',
   description:
     'Explore free browser-based cybersecurity tools for password hygiene, URL structure, security headers, cyber hygiene and online safety.',
   alternates: {
-    canonical: 'https://cyberantigravity.com/tools',
+    canonical: '/tools',
   },
   openGraph: {
     title: 'Free Cybersecurity Tools for Safer Digital Habits | CyberAntigravity',
     description:
       'Explore free browser-based cybersecurity tools for password hygiene, URL structure, security headers, cyber hygiene and online safety.',
-    url: 'https://cyberantigravity.com/tools',
+    url: `${SITE_URL}/tools`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
@@ -44,13 +45,13 @@ export default function ToolsHubPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://cyberantigravity.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cybersecurity Tools Hub',
-        item: 'https://cyberantigravity.com/tools',
+        item: `${SITE_URL}/tools`,
       },
     ],
   };
@@ -67,37 +68,37 @@ export default function ToolsHubPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Password Generator & Passphrase Creator',
-        url: 'https://cyberantigravity.com/tools/password-generator',
+        url: `${SITE_URL}/tools/password-generator`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Password Strength & Crack Time Calculator',
-        url: 'https://cyberantigravity.com/tools/password-strength',
+        url: `${SITE_URL}/tools/password-strength`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'URL Structure Explainer & Phishing Link Inspector',
-        url: 'https://cyberantigravity.com/tools/url-explainer',
+        url: `${SITE_URL}/tools/url-explainer`,
       },
       {
         '@type': 'ListItem',
         position: 4,
         name: 'Password Reuse & Credential Stuffing Risk Simulator',
-        url: 'https://cyberantigravity.com/tools/password-reuse',
+        url: `${SITE_URL}/tools/password-reuse`,
       },
       {
         '@type': 'ListItem',
         position: 5,
         name: 'HTTP Security Headers Inspector & Educator',
-        url: 'https://cyberantigravity.com/tools/security-headers',
+        url: `${SITE_URL}/tools/security-headers`,
       },
       {
         '@type': 'ListItem',
         position: 6,
         name: 'Interactive Cyber Hygiene Checklist & Posture Audit',
-        url: 'https://cyberantigravity.com/tools/cyber-hygiene',
+        url: `${SITE_URL}/tools/cyber-hygiene`,
       },
     ],
   };

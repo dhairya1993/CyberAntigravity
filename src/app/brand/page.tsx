@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { Download, Shield, Sparkles, CheckCircle2 } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -20,6 +21,8 @@ export default function BrandPage() {
       tag: 'Primary Identity',
       bg: 'bg-slate-950/90 border-slate-800',
       aspect: 'h-16',
+      width: 886,
+      height: 168,
     },
     {
       title: 'Compact Logo',
@@ -28,6 +31,8 @@ export default function BrandPage() {
       tag: 'Stacked Layout',
       bg: 'bg-slate-950/90 border-slate-800',
       aspect: 'h-24',
+      width: 480,
+      height: 140,
     },
     {
       title: 'Symbol Only (App Icon)',
@@ -37,6 +42,8 @@ export default function BrandPage() {
       tag: 'Brand Mark',
       bg: 'bg-slate-950/90 border-slate-800',
       aspect: 'h-20',
+      width: 512,
+      height: 512,
     },
     {
       title: 'White Version',
@@ -45,6 +52,8 @@ export default function BrandPage() {
       tag: 'Monochrome Dark',
       bg: 'bg-slate-950/90 border-slate-800',
       aspect: 'h-20',
+      width: 480,
+      height: 140,
     },
     {
       title: 'Black Version',
@@ -54,6 +63,8 @@ export default function BrandPage() {
       bg: 'bg-slate-100 border-slate-300 text-slate-900',
       aspect: 'h-20',
       lightCard: true,
+      width: 480,
+      height: 140,
     },
     {
       title: 'Favicon & App Icon (16–512px)',
@@ -62,6 +73,8 @@ export default function BrandPage() {
       tag: 'Tile Icon',
       bg: 'bg-slate-950/90 border-slate-800',
       aspect: 'h-20',
+      width: 512,
+      height: 512,
     },
   ];
 
@@ -104,9 +117,11 @@ export default function BrandPage() {
             </a>
           </div>
           <div className="rounded-xl overflow-hidden bg-black flex items-center justify-center p-2 sm:p-6 border border-slate-800">
-            <img
+            <Image
               src="/brand/cyberantigravity-banner.png"
               alt="CyberAntigravity Master Brand Banner"
+              width={1200}
+              height={630}
               className="w-full max-w-4xl h-auto object-contain drop-shadow-[0_0_24px_rgba(0,240,255,0.25)]"
             />
           </div>
@@ -155,9 +170,11 @@ export default function BrandPage() {
 
                   {/* Asset Display */}
                   <div className="my-6 flex items-center justify-center min-h-[120px]">
-                    <img
+                    <Image
                       src={asset.src}
                       alt={asset.title}
+                      width={asset.width}
+                      height={asset.height}
                       className={`object-contain max-w-full ${asset.aspect} ${
                         asset.lightCard
                           ? ''

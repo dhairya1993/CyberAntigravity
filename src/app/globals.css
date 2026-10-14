@@ -92,7 +92,7 @@
   }
 }
 
-/* Pulse animation for radar status badge */
+/* Pulse animation for radar status badge - GPU composited */
 @keyframes cyber-pulse {
   0%, 100% {
     opacity: 1;
@@ -105,71 +105,73 @@
 }
 
 .animate-cyber-pulse {
+  will-change: transform, opacity;
   animation: cyber-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Subtle Animated Flow for SVG Network Lines */
+/* GPU Composited Flow for SVG Network Lines */
 @keyframes cyber-flow {
-  from {
-    stroke-dashoffset: 24;
+  0%, 100% {
+    opacity: 0.45;
   }
-  to {
-    stroke-dashoffset: 0;
+  50% {
+    opacity: 1;
   }
 }
 
 .animate-cyber-flow {
-  stroke-dasharray: 6 4;
-  animation: cyber-flow 1.8s linear infinite;
+  will-change: opacity;
+  animation: cyber-flow 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Subtle Link Pulse Animation */
+/* Subtle Link Pulse Animation - Composited transform and opacity */
 @keyframes link-pulse {
   0%, 100% {
-    opacity: 0.9;
-    filter: drop-shadow(0 0 2px rgba(244, 63, 94, 0.4));
+    opacity: 0.75;
+    transform: scale(1);
   }
   50% {
     opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.9));
+    transform: scale(1.03);
   }
 }
 
 .animate-link-pulse {
+  will-change: transform, opacity;
   animation: link-pulse 2.2s ease-in-out infinite;
 }
 
-/* Subtle Lock Pulse Animation */
+/* Subtle Lock Pulse Animation - Composited transform and opacity */
 @keyframes lock-pulse {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.4));
+    opacity: 0.85;
   }
   50% {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.85));
+    opacity: 1;
   }
 }
 
 .animate-lock-pulse {
+  will-change: transform, opacity;
   transform-origin: center;
   animation: lock-pulse 2.6s ease-in-out infinite;
 }
 
-/* Malware Code Approaching & Blocked by Shield Animation */
+/* Malware Code Approaching & Blocked by Shield Animation - Composited transform and opacity */
 @keyframes malware-block {
   0% {
     transform: translateX(0);
     opacity: 0.3;
   }
-  40% {
+  45% {
     transform: translateX(45px);
     opacity: 1;
   }
   55% {
-    transform: translateX(52px);
+    transform: translateX(50px);
     opacity: 1;
-    filter: drop-shadow(0 0 6px #00f0ff);
   }
   75% {
     transform: translateX(46px);
@@ -182,10 +184,11 @@
 }
 
 .animate-malware-block {
+  will-change: transform, opacity;
   animation: malware-block 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-/* Radar Sweep Animation */
+/* Radar Sweep Animation - Composited transform */
 @keyframes radar-sweep {
   from {
     transform: rotate(0deg);
@@ -196,6 +199,7 @@
 }
 
 .animate-radar-sweep {
+  will-change: transform;
   transform-origin: center;
   animation: radar-sweep 6s linear infinite;
 }

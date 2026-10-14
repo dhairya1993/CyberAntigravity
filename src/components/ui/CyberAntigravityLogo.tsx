@@ -1,6 +1,5 @@
-'use client';
-
 import React from 'react';
+import Image from 'next/image';
 
 export interface CyberAntigravityLogoProps {
   variant?: 'full' | 'compact' | 'symbol' | 'monochrome';
@@ -25,14 +24,22 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
   // Determine which asset source to load based on variant and theme
   let src = '/brand/cyberantigravity-logo.png';
   let alt = 'CyberAntigravity — Rise Above Cyber Threats';
+  let intrinsicWidth = 886;
+  let intrinsicHeight = 168;
 
   if (variant === 'symbol') {
     src = '/brand/cyberantigravity-symbol.png';
     alt = 'CyberAntigravity Shield Emblem';
+    intrinsicWidth = 512;
+    intrinsicHeight = 512;
   } else if (variant === 'compact') {
     src = '/brand/cyberantigravity-logo-compact.png';
     alt = 'CyberAntigravity Compact Logo';
+    intrinsicWidth = 480;
+    intrinsicHeight = 140;
   } else if (variant === 'monochrome') {
+    intrinsicWidth = 480;
+    intrinsicHeight = 140;
     if (isLight) {
       src = '/brand/cyberantigravity-logo-dark.png';
       alt = 'CyberAntigravity Logo - Dark Monochrome';
@@ -82,11 +89,14 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
       role="img"
       aria-label={alt}
     >
-      <img
+      <Image
         src={src}
         alt={alt}
-        loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
+        width={intrinsicWidth}
+        height={intrinsicHeight}
+        priority={priority}
+        quality={85}
+        sizes="(max-width: 640px) 180px, (max-width: 1024px) 240px, 320px"
         className={`object-contain transition-transform duration-200 group-hover:scale-[1.02] ${sizeClass} ${glowStyle}`}
       />
     </div>

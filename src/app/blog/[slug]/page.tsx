@@ -53,6 +53,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: 'CyberAntigravity',
       locale: 'en_US',
       type: 'article',
+      images: [
+        {
+          url: `${SITE_URL}/blog/${article.slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${article.title} — CyberAntigravity Guide`,
+          type: 'image/png',
+        },
+      ],
       ...(article.publishedAt ? { publishedTime: article.publishedAt } : {}),
       ...(article.updatedAt ? { modifiedTime: article.updatedAt } : article.publishedAt ? { modifiedTime: article.publishedAt } : {}),
       authors: ['CyberAntigravity Guide'],
@@ -63,6 +72,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: article.title,
       description: article.description || article.excerpt,
       creator: '@cyberantigravity',
+      images: [
+        {
+          url: `${SITE_URL}/blog/${article.slug}/twitter-image`,
+          width: 1200,
+          height: 630,
+          alt: `${article.title} — CyberAntigravity Guide`,
+        },
+      ],
     },
   };
 }

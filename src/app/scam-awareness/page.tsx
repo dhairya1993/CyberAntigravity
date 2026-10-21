@@ -25,10 +25,19 @@ export const metadata: Metadata = {
     title: 'Scam Awareness Learning Hub — Spot the Scam. Protect Yourself. | CyberAntigravity',
     description:
       'Learn how modern scams manipulate trust, urgency, and emotion — then practice identifying them through interactive scenarios.',
-    url: '/scam-awareness',
+    url: `${SITE_URL}/scam-awareness`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/scam-awareness/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Scam Awareness Learning Hub — Spot the Scam. Protect Yourself. | CyberAntigravity',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -36,6 +45,14 @@ export const metadata: Metadata = {
     description:
       'Learn how modern scams manipulate trust, urgency, and emotion — then practice identifying them through interactive scenarios.',
     creator: '@cyberantigravity',
+    images: [
+      {
+        url: `${SITE_URL}/scam-awareness/twitter-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Scam Awareness Learning Hub — Spot the Scam. Protect Yourself. | CyberAntigravity',
+      },
+    ],
   },
 };
 

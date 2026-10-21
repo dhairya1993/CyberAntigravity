@@ -19,6 +19,7 @@ import {
   SCAM_EXPLORER_CATEGORIES,
   ScamCategoryDetail,
 } from '@/data/scamTypesExplorerData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -39,14 +40,54 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!scam) {
     return {
       title: 'Scam Type Not Found | CyberAntigravity',
+      description: 'The requested scam awareness guide could not be located in our education matrix.',
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
+  const pageTitle = `${scam.title} Scam Guide — Warning Signs, Response & Example | CyberAntigravity`;
+  const ogTitle = `${scam.title} Scam Defense Guide | CyberAntigravity`;
+  const description = scam.shortDescription || scam.description;
+
   return {
-    title: `${scam.title} Scam Guide — Warning Signs, Response & Example | CyberAntigravity`,
-    description: scam.shortDescription,
+    title: pageTitle,
+    description: description,
     alternates: {
       canonical: `/scam-awareness/types/${scam.slug}`,
+    },
+    openGraph: {
+      title: ogTitle,
+      description: description,
+      url: `${SITE_URL}/scam-awareness/types/${scam.slug}`,
+      siteName: 'CyberAntigravity',
+      locale: 'en_US',
+      type: 'article',
+      images: [
+        {
+          url: `${SITE_URL}/scam-awareness/types/${scam.slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${scam.title} Scam Defense Guide — CyberAntigravity`,
+          type: 'image/png',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description: description,
+      creator: '@cyberantigravity',
+      images: [
+        {
+          url: `${SITE_URL}/scam-awareness/types/${scam.slug}/twitter-image`,
+          width: 1200,
+          height: 630,
+          alt: `${scam.title} Scam Defense Guide — CyberAntigravity`,
+        },
+      ],
     },
   };
 }

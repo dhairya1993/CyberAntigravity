@@ -23,10 +23,34 @@ export const metadata: Metadata = {
     title: 'Scam Types Explorer — Know the Scam. Spot the Pattern. | CyberAntigravity',
     description:
       'Explore the most common online scam categories, understand their warning signs, and learn how to respond safely.',
-    url: '/scam-awareness/types',
+    url: `${SITE_URL}/scam-awareness/types`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'article',
+    images: [
+      {
+        url: `${SITE_URL}/scam-awareness/types/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Scam Types Explorer — Know the Scam. Spot the Pattern. | CyberAntigravity',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Scam Types Explorer — Know the Scam. Spot the Pattern. | CyberAntigravity',
+    description:
+      'Explore the most common online scam categories, understand their warning signs, and learn how to respond safely.',
+    creator: '@cyberantigravity',
+    images: [
+      {
+        url: `${SITE_URL}/scam-awareness/types/twitter-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Scam Types Explorer — Know the Scam. Spot the Pattern. | CyberAntigravity',
+      },
+    ],
   },
 };
 

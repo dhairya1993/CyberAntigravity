@@ -23,6 +23,15 @@ export const metadata: Metadata = {
     siteName: 'CyberAntigravity',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/blog/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Cybersecurity Knowledge Hub & Practical Guides — CyberAntigravity',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -30,6 +39,14 @@ export const metadata: Metadata = {
     description:
       'Practical cybersecurity guides, scam awareness explainers, privacy tips, and defensive security knowledge for everyday digital life.',
     creator: '@cyberantigravity',
+    images: [
+      {
+        url: `${SITE_URL}/blog/twitter-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Cybersecurity Knowledge Hub & Practical Guides — CyberAntigravity',
+      },
+    ],
   },
 };
 

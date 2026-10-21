@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Brand Assets & Logo Guidelines | CyberAntigravity',
   description:
     'Official brand assets, logo packages, and visual identity guidelines for CyberAntigravity. Download primary logos, shield emblems, icons, and monochrome marks.',
+  alternates: {
+    canonical: '/brand',
+  },
 };
 
 export default function BrandPage() {

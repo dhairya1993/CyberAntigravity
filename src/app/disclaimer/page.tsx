@@ -1,13 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Security Disclaimer | CyberAntigravity',
   description: 'Educational disclaimer regarding cybersecurity guidance and tool simulations.',
+  alternates: {
+    canonical: '/disclaimer',
+  },
 };
 
 export default function DisclaimerPage() {

@@ -1,13 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { ArrowLeft, FileText } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Terms of Service | CyberAntigravity',
   description: 'Terms of Service and defensive education code of conduct for CyberAntigravity.',
+  alternates: {
+    canonical: '/terms',
+  },
 };
 
 export default function TermsPage() {

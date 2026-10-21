@@ -1,13 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { ArrowLeft, Lock } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Privacy Policy | CyberAntigravity',
   description: 'Learn about our transparent privacy policy and defensive education mandate.',
+  alternates: {
+    canonical: '/privacy',
+  },
 };
 
 export default function PrivacyPage() {

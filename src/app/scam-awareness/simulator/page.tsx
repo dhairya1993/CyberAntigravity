@@ -7,19 +7,96 @@ import { Footer } from '@/components/layout/Footer';
 import { TrustDisclaimer } from '@/components/scam-awareness/TrustDisclaimer';
 import { ScamDetectionLab } from '@/components/scam-awareness/ScamDetectionLab';
 import { StudentModeSection } from '@/components/scam-awareness/StudentModeSection';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Scam Simulator — Interactive Threat Detection Sandbox | CyberAntigravity',
+  title: 'Scam Simulator — Interactive Threat Detection Sandbox',
   description:
     'Practice making safe decisions through realistic but fictional scam scenarios in a browser-based defensive security laboratory.',
   alternates: {
     canonical: '/scam-awareness/simulator',
   },
+  openGraph: {
+    title: 'Scam Simulator — Interactive Threat Detection Sandbox | CyberAntigravity',
+    description:
+      'Practice making safe decisions through realistic but fictional scam scenarios in a browser-based defensive security laboratory.',
+    url: `${SITE_URL}/scam-awareness/simulator`,
+    siteName: 'CyberAntigravity',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Scam Simulator — Interactive Threat Detection Sandbox | CyberAntigravity',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Scam Simulator — Interactive Threat Detection Sandbox | CyberAntigravity',
+    description:
+      'Practice making safe decisions through realistic but fictional scam scenarios in a browser-based defensive security laboratory.',
+    creator: '@cyberantigravity',
+    images: [`${SITE_URL}/og-image.png`],
+  },
 };
 
 export default function ScamSimulatorPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Scam Awareness',
+        item: `${SITE_URL}/scam-awareness`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Scam Simulator',
+        item: `${SITE_URL}/scam-awareness/simulator`,
+      },
+    ],
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/scam-awareness/simulator#webpage`,
+    url: `${SITE_URL}/scam-awareness/simulator`,
+    name: 'Scam Simulator — Interactive Threat Detection Sandbox',
+    description:
+      'Practice making safe decisions through realistic but fictional scam scenarios in a browser-based defensive security laboratory.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'CyberAntigravity',
+      url: SITE_URL,
+    },
+    inLanguage: 'en-US',
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-teal-500/30 selection:text-white">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <Navbar />
 
       <main id="main-content" className="flex-1">

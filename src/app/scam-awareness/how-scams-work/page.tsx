@@ -10,19 +10,96 @@ import { SocialEngineeringVisual } from '@/components/scam-awareness/SocialEngin
 import { ScamFlow } from '@/components/scam-awareness/ScamFlow';
 import { ScamAnatomy } from '@/components/scam-awareness/ScamAnatomy';
 import { ScamAnatomyDiagram } from '@/components/visuals/ScamAnatomyDiagram';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'How Scams Work — The Psychology of Social Engineering | CyberAntigravity',
+  title: 'How Scams Work — The Psychology of Social Engineering',
   description:
     'Understand the psychology behind urgency, fear, authority, greed, curiosity, and trust in modern social-engineering schemes.',
   alternates: {
     canonical: '/scam-awareness/how-scams-work',
   },
+  openGraph: {
+    title: 'How Scams Work — The Psychology of Social Engineering | CyberAntigravity',
+    description:
+      'Understand the psychology behind urgency, fear, authority, greed, curiosity, and trust in modern social-engineering schemes.',
+    url: `${SITE_URL}/scam-awareness/how-scams-work`,
+    siteName: 'CyberAntigravity',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'How Scams Work — The Psychology of Social Engineering | CyberAntigravity',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How Scams Work — The Psychology of Social Engineering | CyberAntigravity',
+    description:
+      'Understand the psychology behind urgency, fear, authority, greed, curiosity, and trust in modern social-engineering schemes.',
+    creator: '@cyberantigravity',
+    images: [`${SITE_URL}/og-image.png`],
+  },
 };
 
 export default function HowScamsWorkPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Scam Awareness',
+        item: `${SITE_URL}/scam-awareness`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'How Scams Work',
+        item: `${SITE_URL}/scam-awareness/how-scams-work`,
+      },
+    ],
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/scam-awareness/how-scams-work#webpage`,
+    url: `${SITE_URL}/scam-awareness/how-scams-work`,
+    name: 'How Scams Work — The Psychology of Social Engineering',
+    description:
+      'Understand the psychology behind urgency, fear, authority, greed, curiosity, and trust in modern social-engineering schemes.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'CyberAntigravity',
+      url: SITE_URL,
+    },
+    inLanguage: 'en-US',
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-purple-500/30 selection:text-white">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <Navbar />
 
       <main id="main-content" className="flex-1">

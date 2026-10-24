@@ -158,10 +158,10 @@ export default function RootLayout({
     >
       <head>
         {/* Google tag (gtag.js) */}
-        {/* eslint-disable-next-line @next/next/next-script-for-ga */}
+
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-C24569XYGB"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-C24569XYGB'}`}
         />
         <script
           dangerouslySetInnerHTML={{
@@ -170,7 +170,7 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', 'G-C24569XYGB');
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-C24569XYGB'}');
             `,
           }}
         />
@@ -179,7 +179,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#07090e] text-slate-100 antialiased">
+      <body id="top" className="min-h-full flex flex-col bg-[#07090e] text-slate-100 antialiased">
         <GoogleAnalytics />
         <AuthProvider>
           {children}

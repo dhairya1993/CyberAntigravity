@@ -3,7 +3,7 @@ import { CyberIqArenaView } from '@/components/cyber-iq/CyberIqArenaView';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Cyber IQ Quiz Arena — Interactive Defensive Security Challenges | CyberAntigravity',
+  title: 'Cyber IQ Quiz Arena — Interactive Defensive Security Challenges',
   description:
     'Test and strengthen your defensive cybersecurity judgment with interactive scenarios across 7 core arenas: Fundamentals, Phishing Detection, Password Security, Online Scams, Privacy, Networking, and Ethical Hacking. Earn XP and unlock badges anonymously.',
   keywords: [

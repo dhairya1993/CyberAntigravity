@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Trophy,
   Target,
@@ -66,13 +67,13 @@ export const CyberIqDashboard: React.FC<CyberIqDashboardProps> = ({
             <div className="text-xs text-slate-400">View 9-level roadmap progression, 7-day activity streaks, and achievement badges.</div>
           </div>
         </div>
-        <a
+        <Link
           href="/learn/progress"
           className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 hover:text-white border border-slate-700 hover:border-cyan-500/50 font-mono text-xs font-bold transition-all inline-flex items-center justify-center gap-1.5 shrink-0"
         >
           <span>Open Student Dashboard</span>
           <ArrowRight className="w-3.5 h-3.5" />
-        </a>
+        </Link>
       </div>
 
       {/* =========================================================================

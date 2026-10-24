@@ -12,7 +12,7 @@ import { ArrowRight, Shield, Lock } from 'lucide-react';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Free Cybersecurity Tools for Safer Digital Habits | CyberAntigravity',
+  title: 'Free Cybersecurity Tools for Safer Digital Habits',
   description:
     'Explore free browser-based cybersecurity tools for password hygiene, URL structure, security headers, cyber hygiene and online safety.',
   alternates: {

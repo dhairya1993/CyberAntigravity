@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Trophy,
   Sparkles,
@@ -295,13 +296,13 @@ export const CyberIqResultsView: React.FC<CyberIqResultsViewProps> = ({
         </button>
 
         {/* Button 4: Student Progress Dashboard */}
-        <a
+        <Link
           href="/learn/progress"
           className="p-4 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-amber-500/50 text-amber-300 font-bold text-sm transition-all hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer cyber-focus-ring text-center"
         >
           <Award className="w-4 h-4 text-amber-400" />
           <span>My Progress</span>
-        </a>
+        </Link>
       </div>
 
       {/* Defensive Tip Callout */}

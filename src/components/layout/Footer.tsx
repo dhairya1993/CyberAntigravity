@@ -120,11 +120,11 @@ export const Footer: React.FC = () => {
                 </li>
               ))}
               <li className="pt-2 border-t border-slate-800/80">
-                <Link href="/#about" className="text-slate-300 hover:text-cyan-400 transition-colors">
+                <Link href="/about" className="text-slate-300 hover:text-cyan-400 transition-colors">
                   About Platform
                 </Link>
               </li>
-              {FOOTER_SECTIONS.legal.map((item) => (
+              {FOOTER_SECTIONS.legal.filter((item) => item.href !== '/about').map((item) => (
                 <li key={item.title}>
                   <Link href={item.href} className="text-slate-400 hover:text-cyan-400 transition-colors">
                     {item.title}
@@ -157,7 +157,7 @@ export const Footer: React.FC = () => {
             <span className="inline-flex items-center gap-1.5 text-slate-400">
               Made with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> for global online safety
             </span>
-            <a href="#" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
+            <a href="#top" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
               Back to top <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>

@@ -74,12 +74,12 @@ export const Navbar: React.FC = () => {
               Cyber Safety Guide: Learn how to recognize and avoid modern phishing attacks.
             </span>
           </div>
-          <a
+          <Link
             href="/cyber-safety"
             className="hidden sm:inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-bold transition-colors shrink-0 text-xs sm:text-sm"
           >
             Explore Safety Guide <ChevronRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
 

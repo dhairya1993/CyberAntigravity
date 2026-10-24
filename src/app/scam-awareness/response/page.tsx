@@ -8,19 +8,96 @@ import { TrustDisclaimer } from '@/components/scam-awareness/TrustDisclaimer';
 import { ScamEmergencyFlow } from '@/components/scam-awareness/ScamEmergencyFlow';
 import { ScamResponseSteps } from '@/components/scam-awareness/ScamResponseSteps';
 import { ScamChecklist } from '@/components/scam-awareness/ScamChecklist';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'What To Do If Scammed — Incident Response Guide | CyberAntigravity',
+  title: 'What To Do If Scammed — Incident Response Guide',
   description:
     'Follow a practical incident response guide if you suspect you have been targeted: immediate containment, bank alerts, credential resets, and official reporting.',
   alternates: {
     canonical: '/scam-awareness/response',
   },
+  openGraph: {
+    title: 'What To Do If Scammed — Incident Response Guide | CyberAntigravity',
+    description:
+      'Follow a practical incident response guide if you suspect you have been targeted: immediate containment, bank alerts, credential resets, and official reporting.',
+    url: `${SITE_URL}/scam-awareness/response`,
+    siteName: 'CyberAntigravity',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'What To Do If Scammed — Incident Response Guide | CyberAntigravity',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'What To Do If Scammed — Incident Response Guide | CyberAntigravity',
+    description:
+      'Follow a practical incident response guide if you suspect you have been targeted: immediate containment, bank alerts, credential resets, and official reporting.',
+    creator: '@cyberantigravity',
+    images: [`${SITE_URL}/og-image.png`],
+  },
 };
 
 export default function ScamResponsePage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Scam Awareness',
+        item: `${SITE_URL}/scam-awareness`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Response Guide',
+        item: `${SITE_URL}/scam-awareness/response`,
+      },
+    ],
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/scam-awareness/response#webpage`,
+    url: `${SITE_URL}/scam-awareness/response`,
+    name: 'What To Do If Scammed — Incident Response Guide',
+    description:
+      'Follow a practical incident response guide if you suspect you have been targeted: immediate containment, bank alerts, credential resets, and official reporting.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'CyberAntigravity',
+      url: SITE_URL,
+    },
+    inLanguage: 'en-US',
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-emerald-500/30 selection:text-white">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <Navbar />
 
       <main id="main-content" className="flex-1">

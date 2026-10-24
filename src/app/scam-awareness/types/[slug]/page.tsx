@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const pageTitle = `${scam.title} Scam Guide — Warning Signs, Response & Example | CyberAntigravity`;
+  const pageTitle = `${scam.title} Scam Guide — Warning Signs, Response & Example`;
   const ogTitle = `${scam.title} Scam Defense Guide | CyberAntigravity`;
   const description = scam.shortDescription || scam.description;
 
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${SITE_URL}/scam-awareness/types/${scam.slug}`,
       siteName: 'CyberAntigravity',
       locale: 'en_US',
-      type: 'article',
+      type: 'website',
       images: [
         {
           url: `${SITE_URL}/scam-awareness/types/${scam.slug}/opengraph-image`,
@@ -102,8 +102,64 @@ export default async function ScamTypeDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Scam Awareness',
+        item: `${SITE_URL}/scam-awareness`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Scam Types',
+        item: `${SITE_URL}/scam-awareness/types`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: scam.title,
+        item: `${SITE_URL}/scam-awareness/types/${scam.slug}`,
+      },
+    ],
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/scam-awareness/types/${scam.slug}#webpage`,
+    url: `${SITE_URL}/scam-awareness/types/${scam.slug}`,
+    name: `${scam.title} Scam Guide — Warning Signs, Response & Example`,
+    description: scam.shortDescription || scam.description,
+    publisher: {
+      '@type': 'Organization',
+      name: 'CyberAntigravity',
+      url: SITE_URL,
+    },
+    inLanguage: 'en-US',
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <Navbar />
 
       <main id="main-content" className="flex-1">

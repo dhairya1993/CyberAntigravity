@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'glow';
@@ -7,6 +8,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconPosition?: 'left' | 'right';
   asLink?: boolean;
   href?: string;
+  target?: string;
+  rel?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -18,6 +21,8 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   asLink = false,
   href,
+  target,
+  rel,
   ...props
 }) => {
   const baseStyles =
@@ -45,12 +50,47 @@ export const Button: React.FC<ButtonProps> = ({
   const combinedClasses = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
 
   if (asLink && href) {
+    const isExternal =
+      href.startsWith('http://') ||
+      href.startsWith('https://') ||
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:');
+
+    const linkTarget = target || (isExternal ? '_blank' : undefined);
+    const linkRel = rel || (linkTarget === '_blank' ? 'noopener noreferrer' : undefined);
+
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          className={combinedClasses}
+          target={linkTarget}
+          rel={linkRel}
+          aria-label={props['aria-label']}
+          title={props.title}
+          onClick={props.onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
+        >
+          {icon && iconPosition === 'left' && <span className="inline-flex shrink-0">{icon}</span>}
+          <span>{children}</span>
+          {icon && iconPosition === 'right' && <span className="inline-flex shrink-0">{icon}</span>}
+        </a>
+      );
+    }
+
     return (
-      <a href={href} className={combinedClasses}>
+      <Link
+        href={href}
+        className={combinedClasses}
+        target={target}
+        rel={rel}
+        aria-label={props['aria-label']}
+        title={props.title}
+        onClick={props.onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
+      >
         {icon && iconPosition === 'left' && <span className="inline-flex shrink-0">{icon}</span>}
         <span>{children}</span>
         {icon && iconPosition === 'right' && <span className="inline-flex shrink-0">{icon}</span>}
-      </a>
+      </Link>
     );
   }
 

@@ -7,19 +7,96 @@ import { Footer } from '@/components/layout/Footer';
 import { TrustDisclaimer } from '@/components/scam-awareness/TrustDisclaimer';
 import { RedFlagAnalyzer } from '@/components/scam-awareness/RedFlagAnalyzer';
 import { CommonRedFlagsChecklist } from '@/components/scam-awareness/CommonRedFlagsChecklist';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Spot Scam Red Flags — Interactive Warning Signs Guide | CyberAntigravity',
+  title: 'Spot Scam Red Flags — Interactive Warning Signs Guide',
   description:
     'Learn how to identify suspicious messages, deceptive domains, artificial urgency, and social-engineering red flags before clicking.',
   alternates: {
     canonical: '/scam-awareness/red-flags',
   },
+  openGraph: {
+    title: 'Spot Scam Red Flags — Interactive Warning Signs Guide | CyberAntigravity',
+    description:
+      'Learn how to identify suspicious messages, deceptive domains, artificial urgency, and social-engineering red flags before clicking.',
+    url: `${SITE_URL}/scam-awareness/red-flags`,
+    siteName: 'CyberAntigravity',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Spot Scam Red Flags — Interactive Warning Signs Guide | CyberAntigravity',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Spot Scam Red Flags — Interactive Warning Signs Guide | CyberAntigravity',
+    description:
+      'Learn how to identify suspicious messages, deceptive domains, artificial urgency, and social-engineering red flags before clicking.',
+    creator: '@cyberantigravity',
+    images: [`${SITE_URL}/og-image.png`],
+  },
 };
 
 export default function ScamRedFlagsPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Scam Awareness',
+        item: `${SITE_URL}/scam-awareness`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Spot the Red Flags',
+        item: `${SITE_URL}/scam-awareness/red-flags`,
+      },
+    ],
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/scam-awareness/red-flags#webpage`,
+    url: `${SITE_URL}/scam-awareness/red-flags`,
+    name: 'Spot Scam Red Flags — Interactive Warning Signs Guide',
+    description:
+      'Learn how to identify suspicious messages, deceptive domains, artificial urgency, and social-engineering red flags before clicking.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'CyberAntigravity',
+      url: SITE_URL,
+    },
+    inLanguage: 'en-US',
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-amber-500/30 selection:text-white">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <Navbar />
 
       <main id="main-content" className="flex-1">

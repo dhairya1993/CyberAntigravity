@@ -8,11 +8,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogRoutes: MetadataRoute.Sitemap = BLOG_ARTICLES.filter(
     (a) => a.status === 'published'
-  ).map((article) => ({
-    url: `${baseUrl}/blog/${article.slug}`,
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  }));
+  ).map((article) => {
+    const rawDate = article.updatedAt || article.publishedAt;
+    return {
+      url: `${baseUrl}/blog/${article.slug}`,
+      ...(rawDate ? { lastModified: new Date(rawDate) } : {}),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    };
+  });
 
   const scamCategoryRoutes: MetadataRoute.Sitemap = SCAM_EXPLORER_CATEGORIES.filter(
     (cat) => cat.slug !== 'phishing'

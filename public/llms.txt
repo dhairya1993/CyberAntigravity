@@ -1,24 +1,34 @@
 # CyberAntigravity
 
-> CyberAntigravity is a premier, 100% free cybersecurity education and digital safety platform empowering individuals, students, developers, and organizations with proactive defense literacy, threat visualization, and browser-based security utilities.
+> CyberAntigravity is an independent, 100% free cybersecurity education and digital safety platform empowering individuals, students, developers, and organizations with proactive defense literacy, threat visualization, and browser-based security utilities.
 
 ## Mission & Principles
-- **Free & Open Access**: Cybersecurity education belongs to everyone. No paywalls, no required sign-ups.
-- **Privacy by Design**: All interactive tools run client-side via the browser Web Crypto API. Zero server transmission of sensitive inputs or credentials.
-- **Visual Storytelling**: Complex threat vectors (phishing, ransomware, credential stuffing, SQL injection, MITM) are demystified through interactive animated diagrams.
+- **Free & Open Access**: Cybersecurity education belongs to everyone. No paywalls, no mandatory tracking, and no monetized user vulnerabilities.
+- **Privacy by Design**: All interactive tools run client-side via browser APIs (e.g., Web Crypto CSPRNG). Zero server transmission of sensitive inputs or credentials.
+- **Visual Storytelling**: Complex threat vectors (phishing, credential stuffing, social engineering, attack surfaces) are demystified through interactive animated diagrams and scenarios.
 
-## Key Sections & Interactive Modules
-- [Home (Interactive Cyber Defense Command Center)](https://cyberantigravity.com/): Threat gallery, attack simulator, Cyber IQ challenges, and student learning roadmaps.
-- [Cybersecurity Tools Hub](https://cyberantigravity.com/tools): Complete directory of free browser-based digital defense tools.
-  - [Password Generator](https://cyberantigravity.com/tools/password-generator): Cryptographically random password and multi-word passphrase generator using Web Crypto CSPRNG.
-  - [Password Strength Calculator](https://cyberantigravity.com/tools/password-strength): Real-time entropy bit-rating and GPU cluster crack time calculator.
-  - [URL Structure Explainer](https://cyberantigravity.com/tools/url-explainer): Dissects URLs into protocol, host, domain, and query parameters to detect phishing links.
-  - [Password Reuse Risk Checker](https://cyberantigravity.com/tools/password-reuse): Models credential stuffing blast radius across personal and work accounts.
-  - [Security Headers Inspector](https://cyberantigravity.com/tools/security-headers): Explains CSP, HSTS, X-Frame-Options, and web defense headers.
-  - [Cyber Hygiene Assessment](https://cyberantigravity.com/tools/cyber-hygiene): Multi-category digital posture audit with step-by-step hardening advice.
-- [Cybersecurity Guides & Research](https://cyberantigravity.com/blog): In-depth educational articles covering passkeys, phishing defense, zero trust, network security, and social engineering.
+## Core Educational Pillars & Interactive Modules
+- [Home (Cyber Defense Command Center)](https://cyberantigravity.vercel.app/): Interactive ecosystem overview, threat landscapes, visual storytelling, and quick start paths.
+- [Cyber Safety Hub](https://cyberantigravity.vercel.app/cyber-safety): Comprehensive everyday digital hygiene guide covering passwords, MFA, smartphone protection, endpoint hardening, red flags, and emergency response workflows.
+- [Scam Awareness Learning Hub](https://cyberantigravity.vercel.app/scam-awareness): Deep-dives into social engineering deception, scam psychology, red flag spotters, and response strategies.
+  - [Scam Types Directory](https://cyberantigravity.vercel.app/scam-awareness/types): Category catalog covering phishing, investment fraud, tech support scams, imposter fraud, and identity theft.
+  - [Phishing Interactive Lab](https://cyberantigravity.vercel.app/scam-awareness/types/phishing): Hands-on email header, sender domain, and deceptive link inspection sandbox.
+  - [Scam IQ Challenge](https://cyberantigravity.vercel.app/scam-awareness/challenge): Interactive scenario evaluations testing real-time fraud detection judgment.
+- [Cyber IQ Quiz Arena](https://cyberantigravity.vercel.app/cyber-iq): Interactive knowledge assessment across core security categories with difficulty tiers, instant explanations, and local scoring.
+- [Cybersecurity Learning Hub](https://cyberantigravity.vercel.app/learn): 9-level progressive learning roadmap covering computing fundamentals, network protocols, web defense, and ethical security literacy.
+  - [Student Progress Dashboard](https://cyberantigravity.vercel.app/learn/progress): Local, privacy-first tracker for completed quizzes, skill ranks, and achievement badges.
+  - [Cybersecurity Fundamentals Guide](https://cyberantigravity.vercel.app/learn/cybersecurity-fundamentals): Foundational guide establishing core concepts of defense and trust architecture.
+- [Cybersecurity Tools Hub](https://cyberantigravity.vercel.app/tools): Complete directory of free browser-based digital defense utilities.
+  - [Password Generator](https://cyberantigravity.vercel.app/tools/password-generator): Cryptographically random password and multi-word passphrase generator using Web Crypto CSPRNG.
+  - [Password Strength Calculator](https://cyberantigravity.vercel.app/tools/password-strength): Real-time entropy bit-rating and GPU cluster crack time calculator.
+  - [URL Structure Explainer](https://cyberantigravity.vercel.app/tools/url-explainer): Dissects URLs into protocol, host, domain, and query parameters to inspect suspicious links safely.
+  - [Password Reuse Risk Checker](https://cyberantigravity.vercel.app/tools/password-reuse): Models credential stuffing blast radius across personal and work services.
+  - [Security Headers Inspector](https://cyberantigravity.vercel.app/tools/security-headers): Educational visualizer explaining CSP, HSTS, X-Frame-Options, and security response headers.
+  - [Cyber Hygiene Assessment](https://cyberantigravity.vercel.app/tools/cyber-hygiene): Multi-category digital posture audit with actionable defensive recommendations.
+- [Cybersecurity Guides & Knowledge Hub](https://cyberantigravity.vercel.app/blog): In-depth research articles covering passkeys, phishing defense, zero trust, network security, and social engineering.
+- [About CyberAntigravity](https://cyberantigravity.vercel.app/about): Platform mission, educational mandate, team principles, and researcher disclosure policies.
 
 ## Target Audience
-- Students exploring cybersecurity careers.
-- Internet users wanting to protect their family and accounts against digital fraud and scams.
-- Web developers seeking best practices for security headers, authentication, and secure password storage.
+- Students and beginners exploring cybersecurity fundamentals and defensive mindsets.
+- Internet users seeking to protect personal accounts, families, and digital identities against scams.
+- Developers and IT learners seeking practical guides for security headers, authentication, and secure password hygiene.

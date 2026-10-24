@@ -13,7 +13,7 @@ import { ScamTypesCTA } from '@/components/scam-awareness/types/ScamTypesCTA';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Scam Types Explorer — Know the Scam. Spot the Pattern. | CyberAntigravity',
+  title: 'Scam Types Explorer — Know the Scam. Spot the Pattern.',
   description:
     'Explore the most common online scam categories, understand their warning signs, and learn how to respond safely. Search and filter by threat type to learn warning signs.',
   alternates: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/scam-awareness/types`,
     siteName: 'CyberAntigravity',
     locale: 'en_US',
-    type: 'article',
+    type: 'website',
     images: [
       {
         url: `${SITE_URL}/scam-awareness/types/opengraph-image`,
@@ -81,12 +81,33 @@ export default function ScamTypesPage() {
     ],
   };
 
+  // WebPage Schema
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/scam-awareness/types#webpage`,
+    url: `${SITE_URL}/scam-awareness/types`,
+    name: 'Scam Types Explorer — Know the Scam. Spot the Pattern.',
+    description:
+      'Explore the most common online scam categories, understand their warning signs, and learn how to respond safely.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'CyberAntigravity',
+      url: SITE_URL,
+    },
+    inLanguage: 'en-US',
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-white">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
 
       {/* Global Navigation */}
@@ -111,11 +132,11 @@ export default function ScamTypesPage() {
               <Link href="/" className="hover:text-cyan-400 transition-colors">
                 Home
               </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-600" aria-hidden={true} />
+              <ChevronRight className="w-3.5 h-3.5 text-slate-600" aria-hidden="true" />
               <Link href="/scam-awareness" className="hover:text-cyan-400 transition-colors">
                 Scam Awareness
               </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-600" aria-hidden={true} />
+              <ChevronRight className="w-3.5 h-3.5 text-slate-600" aria-hidden="true" />
               <span className="text-cyan-400 font-medium" aria-current="page">
                 Scam Types
               </span>

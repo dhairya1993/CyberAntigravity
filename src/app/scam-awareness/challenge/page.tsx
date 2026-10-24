@@ -7,19 +7,96 @@ import { Footer } from '@/components/layout/Footer';
 import { TrustDisclaimer } from '@/components/scam-awareness/TrustDisclaimer';
 import { ScamChallenge } from '@/components/scam-awareness/ScamChallenge';
 import { ScamQuiz } from '@/components/scam-awareness/ScamQuiz';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Scam Challenge — Test Your Scam Detection IQ | CyberAntigravity',
+  title: 'Scam Challenge — Test Your Scam Detection IQ',
   description:
     'Test your scam-detection skills through progressively harder scenarios and evaluate your defensive reflexes.',
   alternates: {
     canonical: '/scam-awareness/challenge',
   },
+  openGraph: {
+    title: 'Scam Challenge — Test Your Scam Detection IQ | CyberAntigravity',
+    description:
+      'Test your scam-detection skills through progressively harder scenarios and evaluate your defensive reflexes.',
+    url: `${SITE_URL}/scam-awareness/challenge`,
+    siteName: 'CyberAntigravity',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Scam Challenge — Test Your Scam Detection IQ | CyberAntigravity',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Scam Challenge — Test Your Scam Detection IQ | CyberAntigravity',
+    description:
+      'Test your scam-detection skills through progressively harder scenarios and evaluate your defensive reflexes.',
+    creator: '@cyberantigravity',
+    images: [`${SITE_URL}/og-image.png`],
+  },
 };
 
 export default function ScamChallengePage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Scam Awareness',
+        item: `${SITE_URL}/scam-awareness`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Scam Challenge',
+        item: `${SITE_URL}/scam-awareness/challenge`,
+      },
+    ],
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/scam-awareness/challenge#webpage`,
+    url: `${SITE_URL}/scam-awareness/challenge`,
+    name: 'Scam Challenge — Test Your Scam Detection IQ',
+    description:
+      'Test your scam-detection skills through progressively harder scenarios and evaluate your defensive reflexes.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'CyberAntigravity',
+      url: SITE_URL,
+    },
+    inLanguage: 'en-US',
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#07090e] text-slate-100 selection:bg-orange-500/30 selection:text-white">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <Navbar />
 
       <main id="main-content" className="flex-1">

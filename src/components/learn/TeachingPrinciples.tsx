@@ -7,7 +7,7 @@ import { ShieldCheck, ArrowRight } from 'lucide-react';
 
 export const TeachingPrinciples: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 border-b border-slate-800/80 bg-slate-950/40 relative">
+    <section id="principles" className="py-16 md:py-24 border-b border-slate-800/80 bg-slate-950/40 relative scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badgeText="Methodology"

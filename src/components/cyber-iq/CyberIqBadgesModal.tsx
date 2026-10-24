@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import {
   X,
   Award,
@@ -161,14 +162,14 @@ export const CyberIqBadgesModal: React.FC<CyberIqBadgesModalProps> = ({
 
         {/* Modal Footer */}
         <div className="p-4 border-t border-slate-800/80 bg-slate-950/80 flex items-center justify-between text-xs font-mono text-slate-400">
-          <a
+          <Link
             href="/learn/progress"
             onClick={onClose}
             className="text-cyan-400 hover:text-cyan-300 font-bold transition-colors flex items-center gap-1"
           >
             <span>Full Student Progress Dashboard</span>
             <ChevronRight className="w-3.5 h-3.5" />
-          </a>
+          </Link>
           <button
             type="button"
             onClick={onClose}

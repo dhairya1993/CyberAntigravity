@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
               className="group inline-flex transition-opacity hover:opacity-95"
               aria-label="CyberAntigravity Home"
             >
-              <CyberAntigravityLogo variant="full" size="lg" showTagline={true} />
+              <CyberAntigravityLogo variant="full" size="lg" showTagline={true} priority={false} />
             </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">

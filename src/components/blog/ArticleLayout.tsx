@@ -28,7 +28,7 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mt-8 items-start">
         {/* Main Content Column */}
-        <main className="lg:col-span-8 space-y-8 min-w-0">
+        <div className="lg:col-span-8 space-y-8 min-w-0">
           {/* Key Takeaways */}
           <ArticleKeyTakeaways takeaways={article.keyTakeaways} />
 
@@ -40,7 +40,7 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
 
           {/* Prev / Next Article Navigation */}
           <ArticleNavigation currentSlug={article.slug} />
-        </main>
+        </div>
 
         {/* Sidebar Column */}
         <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">

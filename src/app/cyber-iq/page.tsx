@@ -65,9 +65,9 @@ export default function CyberIqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="cyber-container py-10 md:py-16">
+      <main id="main-content" className="cyber-container py-10 md:py-16">
         <CyberIqArenaView />
-      </div>
+      </main>
     </div>
   );
 }

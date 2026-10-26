@@ -10,7 +10,7 @@ import { SITE_URL } from '@/lib/siteConfig';
 const tool = ALL_TOOLS.find((t) => t.slug === 'cyber-hygiene')!;
 
 export const metadata: Metadata = {
-  title: 'Cyber Hygiene Checklist: 9-Point Security Audit | CyberAntigravity',
+  title: 'Cyber Hygiene Checklist: 9-Point Security Audit',
   description:
     'Interactive client-side security checklist covering MFA, unique passwords, backups, and app permissions. Track your defense posture locally.',
   alternates: {

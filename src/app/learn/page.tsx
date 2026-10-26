@@ -13,7 +13,7 @@ import { LearningRoadmapVisual } from '@/components/visuals/LearningRoadmapVisua
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Learn Cybersecurity Online: Beginner to Advanced | CyberAntigravity',
+  title: 'Learn Cybersecurity Online: Beginner to Advanced',
   description:
     'Learn cybersecurity fundamentals, digital safety, networking, web security, ethical hacking, SOC concepts, digital forensics and AI security with CyberAntigravity.',
   alternates: {

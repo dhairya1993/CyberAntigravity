@@ -23,14 +23,14 @@ import { Button } from '@/components/ui/Button';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'About CyberAntigravity — Mission, Ethics & Trust Mandate',
+  title: 'About Us — Mission, Ethics & Defensive Trust Mandate',
   description:
     'Learn why CyberAntigravity was founded: democratizing defensive cybersecurity education, scam awareness, and ethical digital literacy for everyone worldwide.',
   alternates: {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About CyberAntigravity — Mission, Ethics & Trust Mandate',
+    title: 'About Us — Mission, Ethics & Defensive Trust Mandate',
     description:
       'Learn why CyberAntigravity was founded: democratizing defensive cybersecurity education, scam awareness, and ethical digital literacy for everyone worldwide.',
     url: '/about',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About CyberAntigravity — Mission, Ethics & Trust Mandate',
+    title: 'About Us — Mission, Ethics & Defensive Trust Mandate',
     description:
       'Democratizing defensive cybersecurity education, scam awareness, and ethical digital literacy.',
     creator: '@cyberantigravity',

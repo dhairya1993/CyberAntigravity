@@ -7,8 +7,8 @@ import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | CyberAntigravity',
-  description: 'Terms of Service and defensive education code of conduct for CyberAntigravity.',
+  title: 'Terms of Service',
+  description: 'Terms of service, acceptable use guidelines, and defensive education code of conduct for the CyberAntigravity cybersecurity platform.',
   alternates: {
     canonical: '/terms',
   },

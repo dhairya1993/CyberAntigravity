@@ -10,7 +10,7 @@ import { SITE_URL } from '@/lib/siteConfig';
 const tool = ALL_TOOLS.find((t) => t.slug === 'password-generator')!;
 
 export const metadata: Metadata = {
-  title: 'Secure Password & Passphrase Generator: Web Crypto Powered | CyberAntigravity',
+  title: 'Secure Password & Passphrase Generator: Web Crypto Powered',
   description:
     'Generate cryptographically random passwords and multi-word passphrases using the browser Web Crypto API. 100% client-side, zero server transmission.',
   alternates: {

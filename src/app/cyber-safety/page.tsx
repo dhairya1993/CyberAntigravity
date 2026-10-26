@@ -24,9 +24,7 @@ import { CyberSafetyCrossLinks } from '@/components/cyber-safety/CyberSafetyCros
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: {
-    absolute: 'Cyber Safety Guide — Learn Safer Digital Habits | CyberAntigravity',
-  },
+  title: 'Cyber Safety Guide — Learn Safer Digital Habits',
   description:
     'Learn practical cyber safety habits, recognize online threats, protect accounts and devices, and make safer decisions online with CyberAntigravity.',
   alternates: {

@@ -7,8 +7,8 @@ import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Security Disclaimer | CyberAntigravity',
-  description: 'Educational disclaimer regarding cybersecurity guidance and tool simulations.',
+  title: 'Security Disclaimer',
+  description: 'Official educational disclaimer regarding cybersecurity educational content, client-side security tools, and simulation models on CyberAntigravity.',
   alternates: {
     canonical: '/disclaimer',
   },

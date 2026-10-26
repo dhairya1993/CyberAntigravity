@@ -7,8 +7,8 @@ import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Responsible Disclosure | CyberAntigravity',
-  description: 'Responsible vulnerability disclosure policy and security contact information.',
+  title: 'Responsible Vulnerability Disclosure',
+  description: 'Responsible vulnerability disclosure policy and guidelines for security researchers reporting findings on CyberAntigravity infrastructure.',
   alternates: {
     canonical: '/disclosure',
   },

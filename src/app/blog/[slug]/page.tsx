@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!article) {
     return {
-      title: 'Article Not Found | CyberAntigravity',
+      title: 'Article Not Found',
       description: 'The requested cybersecurity guide could not be located in our research library.',
       robots: {
         index: false,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isPublished = article.status === 'published';
 
   return {
-    title: `${article.title} | CyberAntigravity`,
+    title: article.title,
     description: article.description || article.excerpt,
     alternates: {
       canonical: `/blog/${article.slug}`,

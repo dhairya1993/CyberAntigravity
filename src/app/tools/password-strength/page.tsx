@@ -10,7 +10,7 @@ import { SITE_URL } from '@/lib/siteConfig';
 const tool = ALL_TOOLS.find((t) => t.slug === 'password-strength')!;
 
 export const metadata: Metadata = {
-  title: 'Password Strength Educator: Client-Side Complexity Analyzer | CyberAntigravity',
+  title: 'Password Strength Educator: Client-Side Complexity Analyzer',
   description:
     'Evaluate password complexity, character diversity, and vulnerability to common dictionary and sequential patterns locally in your browser.',
   alternates: {

@@ -21,7 +21,9 @@ import { FinalCtaSection } from '@/components/sections/FinalCtaSection';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'CyberAntigravity — Free Cybersecurity Learning Platform & Scam Awareness Hub',
+  title: {
+    absolute: 'CyberAntigravity — Free Cybersecurity Learning Platform & Scam Awareness Hub',
+  },
   description:
     'Master practical digital defense, recognize online scams, test password strength, and simulate real-world cyber attacks with CyberAntigravity. Free, interactive cybersecurity education for everyone.',
   alternates: {

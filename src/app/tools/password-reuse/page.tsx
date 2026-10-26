@@ -11,7 +11,7 @@ import { SITE_URL } from '@/lib/siteConfig';
 const tool = ALL_TOOLS.find((t) => t.slug === 'password-reuse')!;
 
 export const metadata: Metadata = {
-  title: 'Password Reuse Risk Checker: Behavioral Exposure Audit | CyberAntigravity',
+  title: 'Password Reuse Risk Checker: Behavioral Exposure Audit',
   description:
     'Assess your credential reuse habits through an educational self-check. Understand credential-stuffing vulnerability without sharing passwords.',
   alternates: {

@@ -6,7 +6,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Brand Assets & Logo Guidelines | CyberAntigravity',
+  title: 'Brand Assets & Logo Guidelines',
   description:
     'Official brand assets, logo packages, and visual identity guidelines for CyberAntigravity. Download primary logos, shield emblems, icons, and monochrome marks.',
   alternates: {

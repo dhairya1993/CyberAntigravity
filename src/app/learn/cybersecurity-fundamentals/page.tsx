@@ -7,7 +7,7 @@ import { CYBERSECURITY_FUNDAMENTALS_TOPIC } from '@/data/learningHubData';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Cybersecurity Fundamentals: Core Principles & CIA Triad | CyberAntigravity',
+  title: 'Cybersecurity Fundamentals: Core Principles & CIA Triad',
   description:
     'Learn foundational cybersecurity concepts: the CIA Triad, Authentication vs. Authorization (AAA), threat categories, and the Principle of Least Privilege.',
   alternates: {

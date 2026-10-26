@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!scam) {
     return {
-      title: 'Scam Type Not Found | CyberAntigravity',
+      title: 'Scam Type Not Found',
       description: 'The requested scam awareness guide could not be located in our education matrix.',
       robots: {
         index: false,

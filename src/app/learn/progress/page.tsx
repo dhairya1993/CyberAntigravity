@@ -6,7 +6,7 @@ import { StudentProgressDashboard } from '@/components/gamification/StudentProgr
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Student Progress & Achievements: Cybersecurity Gamification | CyberAntigravity',
+  title: 'Student Progress & Achievements: Cybersecurity Gamification',
   description:
     'Track your cybersecurity learning journey: earn XP, level up across 9 skill ranks, maintain daily learning streaks, and unlock defensive achievement badges.',
   alternates: {

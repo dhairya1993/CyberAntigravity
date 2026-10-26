@@ -9,14 +9,14 @@ import { BLOG_ARTICLES } from '@/data/blogArticles';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Cybersecurity Knowledge Hub & Practical Guides | CyberAntigravity',
+  title: 'Cybersecurity Knowledge Hub & Practical Guides',
   description:
     'Practical cybersecurity guides, scam awareness explainers, privacy tips, and defensive security knowledge for everyday digital life.',
   alternates: {
     canonical: '/blog',
   },
   openGraph: {
-    title: 'Cybersecurity Knowledge Hub & Practical Guides | CyberAntigravity',
+    title: 'Cybersecurity Knowledge Hub & Practical Guides',
     description:
       'Practical cybersecurity guides, scam awareness explainers, privacy tips, and defensive security knowledge for everyday digital life.',
     url: `${SITE_URL}/blog`,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cybersecurity Knowledge Hub & Practical Guides | CyberAntigravity',
+    title: 'Cybersecurity Knowledge Hub & Practical Guides',
     description:
       'Practical cybersecurity guides, scam awareness explainers, privacy tips, and defensive security knowledge for everyday digital life.',
     creator: '@cyberantigravity',

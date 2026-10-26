@@ -11,7 +11,7 @@ import { SITE_URL } from '@/lib/siteConfig';
 const tool = ALL_TOOLS.find((t) => t.slug === 'security-headers')!;
 
 export const metadata: Metadata = {
-  title: 'Security Headers Educator: CSP, HSTS & Permissions Policy | CyberAntigravity',
+  title: 'Security Headers Educator: CSP, HSTS & Permissions Policy',
   description:
     'Interactive educational explainer for HTTP response headers: Content-Security-Policy (CSP), Strict-Transport-Security (HSTS), and Permissions-Policy.',
   alternates: {

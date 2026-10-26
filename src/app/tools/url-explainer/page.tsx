@@ -11,7 +11,7 @@ import { SITE_URL } from '@/lib/siteConfig';
 const tool = ALL_TOOLS.find((t) => t.slug === 'url-explainer')!;
 
 export const metadata: Metadata = {
-  title: 'URL Structure Explainer: Deconstruct Web Addresses | CyberAntigravity',
+  title: 'URL Structure Explainer: Deconstruct Web Addresses',
   description:
     'Dissect web addresses into protocol, subdomains, registrable domain, path, and query parameters. Educational tool explaining URL architecture.',
   alternates: {

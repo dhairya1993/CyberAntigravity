@@ -13,9 +13,7 @@ import { ScamHubSafetyNotice } from '@/components/scam-awareness/hub/ScamHubSafe
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: {
-    absolute: 'Scam Awareness Learning Hub — Spot the Scam. Protect Yourself. | CyberAntigravity',
-  },
+  title: 'Scam Awareness Learning Hub — Spot the Scam. Protect Yourself.',
   description:
     'Learn how modern scams manipulate trust, urgency, and emotion — then practice identifying them through interactive scenarios. Choose your learning path with CyberAntigravity.',
   alternates: {

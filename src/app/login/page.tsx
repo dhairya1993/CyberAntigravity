@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { AuthViewPage } from '@/components/auth/AuthViewPage';
 
 export const metadata: Metadata = {
-  title: 'Student Login | CyberAntigravity',
-  description: 'Sign in to CyberAntigravity to access verified XP, rank progression, and learning streaks.',
+  title: 'Student Login',
+  description: 'Sign in to CyberAntigravity to access verified XP, rank progression, interactive cyber security challenges, and learning streaks.',
   alternates: {
     canonical: '/login',
   },

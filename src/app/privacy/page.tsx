@@ -7,8 +7,8 @@ import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | CyberAntigravity',
-  description: 'Learn about our transparent privacy policy and defensive education mandate.',
+  title: 'Privacy Policy',
+  description: 'Learn about our transparent privacy policy, client-side zero-telemetry tool execution, and data protection practices on CyberAntigravity.',
   alternates: {
     canonical: '/privacy',
   },

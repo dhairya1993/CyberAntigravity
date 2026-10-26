@@ -6,7 +6,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: '404 — Page Not Found | CyberAntigravity',
+  title: '404 — Page Not Found',
   description: 'The requested cybersecurity guide or defensive resource could not be found.',
   robots: {
     index: false,

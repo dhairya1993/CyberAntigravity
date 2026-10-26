@@ -243,7 +243,7 @@ export const LearningRoadmapVisual: React.FC = () => {
                     )}
                     <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-mono text-slate-500 font-bold uppercase">
+                  <span className="text-[10px] font-mono text-slate-400 font-bold uppercase">
                     Lvl 0{lvl.level}
                   </span>
                   <span className={`text-[11px] font-bold leading-tight line-clamp-1 mt-0.5 ${isSelected ? 'text-white' : 'text-slate-300'}`}>

@@ -109,14 +109,14 @@ export const PhishingVisual: React.FC = () => {
                 <AlertTriangle className="w-3.5 h-3.5" />
                 SIMULATED MALICIOUS EMAIL (EDUCATIONAL PREVIEW)
               </span>
-              <span className="text-[11px] text-slate-500">Inbox Preview</span>
+              <span className="text-[11px] text-slate-400">Inbox Preview</span>
             </div>
 
             {/* Email Metadata Fields */}
             <div className="p-4 space-y-2 border-b border-slate-800/80 text-xs bg-slate-900/30">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-500 font-mono">From:</span>
+                  <span className="text-slate-400 font-mono">From:</span>
                   <span className="text-slate-200 font-semibold">Security Alert</span>
                   <span className="text-rose-400 font-mono text-[11px] underline decoration-rose-500/50">
                     &lt;support@paypa1-security-notice.net&gt;
@@ -133,7 +133,7 @@ export const PhishingVisual: React.FC = () => {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-500 font-mono">Subject:</span>
+                  <span className="text-slate-400 font-mono">Subject:</span>
                   <span className="text-rose-300 font-bold">
                     [URGENT] Immediate Verification Needed: Account Restricted in 24h
                   </span>
@@ -168,7 +168,7 @@ export const PhishingVisual: React.FC = () => {
                     Flag 3
                   </span>
                 </button>
-                <div className="mt-1.5 text-[10px] text-slate-500 font-mono">
+                <div className="mt-1.5 text-[10px] text-slate-400 font-mono">
                   Hovering displays: <span className="text-rose-400">https://login.auth-verify-portal.top/signin</span>
                 </div>
               </div>
@@ -249,7 +249,7 @@ export const PhishingVisual: React.FC = () => {
                   }`}
                 >
                   <span className="font-semibold truncate">{flag.title}</span>
-                  <span className="text-[10px] font-mono text-slate-500 shrink-0 ml-1">{flag.marker}</span>
+                  <span className="text-[10px] font-mono text-slate-400 shrink-0 ml-1">{flag.marker}</span>
                 </button>
               ))}
             </div>

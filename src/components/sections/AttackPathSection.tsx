@@ -1,10 +1,14 @@
 import React from 'react';
 import { ShieldAlert } from 'lucide-react';
-import { AttackDefensePath } from '@/components/visuals/AttackDefensePath';
+import dynamic from 'next/dynamic';
+
+const AttackDefensePath = dynamic(
+  () => import('@/components/visuals/AttackDefensePath').then((m) => m.AttackDefensePath)
+);
 
 export const AttackPathSection: React.FC = () => {
   return (
-    <section id="attack-simulator" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/70 scroll-mt-20">
+    <section id="attack-simulator" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/70 scroll-mt-20 cyber-section-defer">
       <div className="cyber-container space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">

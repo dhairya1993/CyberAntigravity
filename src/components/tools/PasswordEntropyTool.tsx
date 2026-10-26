@@ -196,31 +196,31 @@ export const PasswordEntropyTool: React.FC = () => {
       {/* Character Requirements Checkers */}
       <div className="mt-6 flex flex-wrap gap-3">
         <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border ${
-          analysis.hasLower ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-500'
+          analysis.hasLower ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-400'
         }`}>
           {analysis.hasLower ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <XCircle className="w-3.5 h-3.5" />}
           Lowercase (a-z)
         </span>
         <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border ${
-          analysis.hasUpper ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-500'
+          analysis.hasUpper ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-400'
         }`}>
           {analysis.hasUpper ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <XCircle className="w-3.5 h-3.5" />}
           Uppercase (A-Z)
         </span>
         <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border ${
-          analysis.hasDigit ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-500'
+          analysis.hasDigit ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-400'
         }`}>
           {analysis.hasDigit ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <XCircle className="w-3.5 h-3.5" />}
           Numbers (0-9)
         </span>
         <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border ${
-          analysis.hasSpecial ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-500'
+          analysis.hasSpecial ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-400'
         }`}>
           {analysis.hasSpecial ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <XCircle className="w-3.5 h-3.5" />}
           Symbols (!@#$%)
         </span>
         <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border ${
-          analysis.length >= 14 ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-500'
+          analysis.length >= 14 ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-400'
         }`}>
           {analysis.length >= 14 ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <XCircle className="w-3.5 h-3.5" />}
           Length &ge; 14 chars

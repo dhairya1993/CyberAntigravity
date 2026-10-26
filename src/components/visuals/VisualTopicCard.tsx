@@ -168,7 +168,7 @@ export const VisualTopicCard: React.FC<{ topic: VisualTopic }> = ({ topic }) => 
 
         {/* Content */}
         <div className="space-y-1.5 text-left">
-          <span className="text-[10px] font-mono uppercase text-slate-500 font-bold block">
+          <span className="text-[10px] font-mono uppercase text-slate-400 font-bold block">
             {topic.category}
           </span>
           <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">

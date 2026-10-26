@@ -109,7 +109,7 @@ export const BlogDirectory: React.FC<BlogDirectoryProps> = ({ articles }) => {
 
           {/* Horizontal Category Filter Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none pt-2">
-            <span className="text-xs font-mono text-slate-500 uppercase tracking-wider flex items-center gap-1 shrink-0 pl-1">
+            <span className="text-xs font-mono text-slate-400 uppercase tracking-wider flex items-center gap-1 shrink-0 pl-1">
               <Filter className="w-3.5 h-3.5 text-cyan-400" />
               <span>Category:</span>
             </span>
@@ -171,7 +171,7 @@ export const BlogDirectory: React.FC<BlogDirectoryProps> = ({ articles }) => {
           </div>
         ) : (
           <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-12 text-center space-y-4">
-            <BookOpen className="w-10 h-10 text-slate-500 mx-auto" />
+            <BookOpen className="w-10 h-10 text-slate-400 mx-auto" />
             <h3 className="text-lg font-bold text-white">No guides found for this search.</h3>
             <p className="text-sm text-slate-400 max-w-md mx-auto">
               We couldn&apos;t find any guides matching &quot;{searchQuery}&quot;. Try adjusting your keywords or selecting &quot;All&quot;.

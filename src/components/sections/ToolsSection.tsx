@@ -139,7 +139,7 @@ export const ToolsSection: React.FC = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 font-mono">
+                  <span className="text-slate-400 font-mono">
                     {tool.status === 'Interactive Preview' ? 'Live Browser Mode' : 'Phase 2 Architecture'}
                   </span>
                   {tool.isInteractive && (

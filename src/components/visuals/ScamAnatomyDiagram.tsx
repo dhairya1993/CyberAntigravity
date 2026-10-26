@@ -299,7 +299,7 @@ export const ScamAnatomyDiagram: React.FC = () => {
                   )}
                   <Icon className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-mono font-bold text-slate-500 uppercase">
+                <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">
                   Stage 0{stage.step}
                 </span>
                 <span className={`text-xs font-bold leading-tight mt-0.5 ${isCurrent ? 'text-white' : 'text-slate-300'}`}>
@@ -405,7 +405,7 @@ export const ScamAnatomyDiagram: React.FC = () => {
           {/* Real-world progression */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
             <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-              <span className="text-[10px] font-mono text-slate-500 uppercase font-bold block mb-1">
+              <span className="text-[10px] font-mono text-slate-400 uppercase font-bold block mb-1">
                 1. Scammer Contact
               </span>
               <p className="text-slate-300">{selectedArchetype.stageBreakdown.scammer}</p>

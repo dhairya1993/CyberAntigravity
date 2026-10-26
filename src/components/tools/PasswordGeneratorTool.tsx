@@ -246,7 +246,7 @@ export const PasswordGeneratorTool: React.FC = () => {
                 }}
                 className="w-full h-2 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-cyan-500 border border-slate-800"
               />
-              <div className="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+              <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
                 <span>8 chars</span>
                 <span>16 chars (recommended)</span>
                 <span>32 chars</span>
@@ -332,7 +332,7 @@ export const PasswordGeneratorTool: React.FC = () => {
                 }}
                 className="w-full h-2 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-cyan-500 border border-slate-800"
               />
-              <div className="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+              <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
                 <span>3 words</span>
                 <span>4 words (common)</span>
                 <span>6 words</span>

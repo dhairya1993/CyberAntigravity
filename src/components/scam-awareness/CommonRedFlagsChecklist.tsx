@@ -255,7 +255,7 @@ export function CommonRedFlagsChecklist() {
                     </div>
                   </div>
 
-                  <span className={`text-xs font-mono flex-shrink-0 ${isActive ? 'text-cyan-400' : 'text-slate-500'}`}>
+                  <span className={`text-xs font-mono flex-shrink-0 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`}>
                     {isActive ? 'Inspecting' : 'Details →'}
                   </span>
                 </div>

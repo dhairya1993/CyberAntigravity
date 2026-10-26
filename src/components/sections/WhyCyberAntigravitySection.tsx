@@ -141,7 +141,7 @@ const PILLARS: Pillar[] = [
 
 export const WhyCyberAntigravitySection: React.FC = () => {
   return (
-    <section id="principles" className="py-20 md:py-28 relative scroll-mt-20 overflow-hidden">
+    <section id="principles" className="py-20 md:py-28 relative scroll-mt-20 overflow-hidden cyber-section-defer">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-cyan-950/20 via-purple-950/15 to-transparent blur-3xl pointer-events-none -z-10" />
 

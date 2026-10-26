@@ -58,7 +58,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
             {article.publishedAt && (
               <>
                 <span className="flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-slate-500" />
+                  <Calendar className="w-3.5 h-3.5 text-slate-400" />
                   <span>{article.publishedAt}</span>
                 </span>
                 <span>•</span>
@@ -91,7 +91,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
                 key={tag}
                 className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-400"
               >
-                <Tag className="w-2.5 h-2.5 text-slate-500" />
+                <Tag className="w-2.5 h-2.5 text-slate-400" />
                 <span>{tag}</span>
               </span>
             ))}
@@ -109,7 +109,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
             <span className="text-slate-200 font-medium font-mono text-[11px] block">
               {authorLabel}
             </span>
-            <span className="text-[10px] text-slate-500 font-mono">
+            <span className="text-[10px] text-slate-400 font-mono">
               Level: {article.difficulty}
             </span>
           </div>

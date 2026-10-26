@@ -43,7 +43,7 @@ export const MissionSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 relative scroll-mt-20 bg-slate-950/60">
+    <section id="about" className="py-20 md:py-28 relative scroll-mt-20 bg-slate-950/60 cyber-section-defer">
       <div className="cyber-container">
         <SectionHeader
           badgeText="Our Mission & Trust Mandate"
@@ -58,7 +58,7 @@ export const MissionSection: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white">Built for Defensive Education</h4>
+            <h3 className="text-base font-bold text-white">Built for Defensive Education</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               We focus strictly on defensive techniques, digital hygiene, and ethical principles. We do not provide weaponized exploits or offensive attack tooling.
             </p>
@@ -68,7 +68,7 @@ export const MissionSection: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400">
               <Lock className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white">No Commercial Ad Trackers</h4>
+            <h3 className="text-base font-bold text-white">No Commercial Ad Trackers</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               This website is built for public education. We do not run third-party advertising trackers, sell personal data, or monetize visitor information.
             </p>
@@ -78,7 +78,7 @@ export const MissionSection: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-purple-950 border border-purple-800 flex items-center justify-center text-purple-400">
               <Heart className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white">Clarity Over Fear</h4>
+            <h3 className="text-base font-bold text-white">Clarity Over Fear</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               No fear-mongering or sensationalist marketing. We replace anxiety with actionable habits, verification protocols, and self-confidence.
             </p>
@@ -88,7 +88,7 @@ export const MissionSection: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-amber-950 border border-amber-800 flex items-center justify-center text-amber-400">
               <Globe className="w-5 h-5" />
             </div>
-            <h4 className="text-base font-bold text-white">Global Educational Access</h4>
+            <h3 className="text-base font-bold text-white">Global Educational Access</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Engineered with accessible semantic web standards so that cybersecurity literacy is understandable and accessible worldwide.
             </p>
@@ -143,11 +143,15 @@ export const MissionSection: React.FC = () => {
             <form onSubmit={handleSubmit} className="mt-8 max-w-md mx-auto space-y-3">
               <div className="flex flex-col sm:flex-row gap-2">
                 <input
+                  id="threat-dispatch-email"
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address..."
-                  className="flex-1 bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-sm cyber-focus-ring"
+                  aria-label="Email address for threat advisory updates"
+                  autoComplete="email"
+                  className="flex-1 bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-400 text-sm cyber-focus-ring"
                 />
                 <Button
                   type="submit"
@@ -168,7 +172,7 @@ export const MissionSection: React.FC = () => {
                 </div>
               )}
 
-              <p className="text-[11px] text-slate-500 mt-2">
+              <p className="text-[11px] text-slate-400 mt-2">
                 Zero spam. Zero third-party sharing. Encrypted delivery. Unsubscribe with one click anytime.
               </p>
             </form>

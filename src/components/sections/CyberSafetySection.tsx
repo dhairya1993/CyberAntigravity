@@ -95,7 +95,7 @@ export const CyberSafetySection: React.FC = () => {
                 </p>
 
                 <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                  <span className={`font-semibold ${isSelected ? 'text-cyan-400' : 'text-slate-500'}`}>
+                  <span className={`font-semibold ${isSelected ? 'text-cyan-400' : 'text-slate-400'}`}>
                     {isSelected ? 'Currently Viewing' : 'Click to View Guide'}
                   </span>
                   <ArrowRight className={`w-3.5 h-3.5 ${isSelected ? 'text-cyan-400' : 'text-slate-600'}`} />

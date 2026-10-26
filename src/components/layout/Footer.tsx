@@ -44,9 +44,9 @@ export const Footer: React.FC = () => {
 
           {/* Links Column: Cyber Safety */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
               Cyber Safety
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.safety.map((item) => (
                 <li key={item.title}>
@@ -60,9 +60,9 @@ export const Footer: React.FC = () => {
 
           {/* Links Column: Scam Awareness */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
               Scam Awareness
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.scams.map((item) => (
                 <li key={item.title}>
@@ -76,9 +76,9 @@ export const Footer: React.FC = () => {
 
           {/* Links Column: Learn */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
               Learn
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.education.map((item) => (
                 <li key={item.title}>
@@ -92,9 +92,9 @@ export const Footer: React.FC = () => {
 
           {/* Links Column: Blog & Knowledge */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
               Blog & Guides
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.blog.map((item) => (
                 <li key={item.title}>
@@ -108,9 +108,9 @@ export const Footer: React.FC = () => {
 
           {/* Links Column: Tools & Legal */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
               Tools & Legal
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {FOOTER_SECTIONS.tools.map((item) => (
                 <li key={item.title}>
@@ -149,7 +149,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
             &copy; {new Date().getFullYear()} CyberAntigravity. All rights reserved.
           </div>

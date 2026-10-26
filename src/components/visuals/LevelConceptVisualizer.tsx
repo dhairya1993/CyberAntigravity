@@ -613,7 +613,7 @@ export const LevelConceptVisualizer: React.FC<LevelConceptVisualizerProps> = ({ 
           <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs sm:text-sm space-y-2">
             {inspectedUrlType === 'legit' ? (
               <div className="text-emerald-400 flex items-center gap-1.5 flex-wrap">
-                <span className="text-slate-500">https://</span>
+                <span className="text-slate-400">https://</span>
                 <span className="bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40 font-bold text-white">
                   mybank.com
                 </span>
@@ -621,7 +621,7 @@ export const LevelConceptVisualizer: React.FC<LevelConceptVisualizerProps> = ({ 
               </div>
             ) : (
               <div className="text-rose-400 flex items-center gap-1.5 flex-wrap">
-                <span className="text-slate-500">http://</span>
+                <span className="text-slate-400">http://</span>
                 <span className="bg-rose-950/80 px-2 py-0.5 rounded border border-rose-500/50 font-bold text-white animate-pulse">
                   my-baank-secure-login.xyz
                 </span>
@@ -667,10 +667,10 @@ export const LevelConceptVisualizer: React.FC<LevelConceptVisualizerProps> = ({ 
               <span className="text-cyan-400 animate-pulse">● LOGGING ACTIVE</span>
             </div>
             <div className="text-slate-400">
-              <span className="text-slate-500">[19:42:01]</span> <span className="text-cyan-400">INFO</span> auth.service: 200 OK user=dhairya
+              <span className="text-slate-400">[19:42:01]</span> <span className="text-cyan-400">INFO</span> auth.service: 200 OK user=dhairya
             </div>
             <div className="text-slate-400">
-              <span className="text-slate-500">[19:42:05]</span> <span className="text-cyan-400">INFO</span> api.gateway: TLS handshake completed
+              <span className="text-slate-400">[19:42:05]</span> <span className="text-cyan-400">INFO</span> api.gateway: TLS handshake completed
             </div>
             <div className="text-rose-400 bg-rose-950/40 p-1.5 rounded border border-rose-900/60 font-bold">
               <span className="text-rose-500">[19:42:08]</span> <span className="text-rose-400">ALERT</span> Brute-force burst detected from IP 198.51.100.4 (45 failed attempts / 3s)

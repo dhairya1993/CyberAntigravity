@@ -49,7 +49,7 @@ export const ScamSpotterPreviewSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-900/40">
+    <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-900/40 cyber-section-defer">
       <div className="cyber-container space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">

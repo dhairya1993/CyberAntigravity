@@ -84,7 +84,7 @@ export const SafetyTopicsSection: React.FC = () => {
 
           {/* Category Chips Scroll */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-1 no-scrollbar text-xs">
-            <span className="text-slate-500 font-semibold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+            <span className="text-slate-400 font-semibold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
               <Filter className="w-3 h-3 text-cyan-400" /> Category:
             </span>
             {CATEGORY_FILTERS.map((cat) => {

@@ -289,7 +289,7 @@ export const ScamTypeExplorer: React.FC = () => {
                     {isExpanded ? (
                       <ChevronUp className="w-3.5 h-3.5 text-cyan-400" />
                     ) : (
-                      <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
                     )}
                   </button>
                 </div>

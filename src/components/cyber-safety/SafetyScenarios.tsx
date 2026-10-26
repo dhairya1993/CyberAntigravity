@@ -254,7 +254,7 @@ export const SafetyScenarios: React.FC = () => {
 
             {/* Context Box */}
             <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800/90 text-xs sm:text-sm text-slate-300 leading-relaxed font-mono">
-              <span className="text-[10px] text-slate-500 uppercase tracking-widest block mb-1 font-bold">
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest block mb-1 font-bold">
                 Incoming Event:
               </span>
               <p className="italic text-slate-200">{activeScenario.context}</p>

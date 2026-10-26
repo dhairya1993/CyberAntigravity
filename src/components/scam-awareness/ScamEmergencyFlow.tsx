@@ -180,7 +180,7 @@ export function ScamEmergencyFlow() {
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                    <span className={isCurrent ? step.textColor : 'text-slate-500'}>
+                    <span className={isCurrent ? step.textColor : 'text-slate-400'}>
                       {isCurrent ? 'Viewing details' : 'Click to inspect'}
                     </span>
                     <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isCurrent ? 'translate-x-0.5 text-cyan-400' : 'text-slate-600'}`} />

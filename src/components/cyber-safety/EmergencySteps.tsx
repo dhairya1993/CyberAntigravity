@@ -242,7 +242,7 @@ export const EmergencySteps: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    <Circle className="w-4 h-4 text-slate-500" />
+                    <Circle className="w-4 h-4 text-slate-400" />
                     <span>Mark as Done</span>
                   </>
                 )}

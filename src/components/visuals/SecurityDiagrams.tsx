@@ -412,7 +412,7 @@ export const PasswordSecurityDiagram: React.FC = () => {
         ))}
       </div>
 
-      <div className="pt-2 text-center text-xs text-slate-500 font-mono">
+      <div className="pt-2 text-center text-xs text-slate-400 font-mono">
         Fictional educational examples. Never use these illustrative passwords for real accounts.
       </div>
     </div>

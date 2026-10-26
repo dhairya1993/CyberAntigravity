@@ -242,7 +242,7 @@ export const Navbar: React.FC = () => {
                   className="px-4 py-3 text-base font-medium text-slate-200 hover:text-cyan-400 hover:bg-slate-900 rounded-xl transition-colors flex items-center justify-between"
                 >
                   <span>{item.title}</span>
-                  <ChevronRight className="w-4 h-4 text-slate-500" />
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
                 </Link>
               ))}
             </nav>
@@ -304,7 +304,7 @@ export const Navbar: React.FC = () => {
               >
                 Explore Cyber Safety
               </Button>
-              <div className="flex items-center justify-center gap-2 text-xs text-slate-500 mt-2">
+              <div className="flex items-center justify-center gap-2 text-xs text-slate-400 mt-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>Built for defensive security education • Open knowledge</span>
               </div>

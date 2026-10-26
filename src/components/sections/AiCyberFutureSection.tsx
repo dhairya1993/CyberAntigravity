@@ -11,7 +11,7 @@ import {
 
 export const AiCyberFutureSection: React.FC = () => {
   return (
-    <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/70 overflow-hidden">
+    <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/70 overflow-hidden cyber-section-defer">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-gradient-to-r from-purple-950/20 via-cyan-950/20 to-transparent blur-3xl pointer-events-none -z-10" />
 
@@ -59,7 +59,7 @@ export const AiCyberFutureSection: React.FC = () => {
                 <Bot className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-mono font-bold text-white uppercase">AI Intelligence</h4>
+                <h3 className="text-sm font-mono font-bold text-white uppercase">AI Intelligence</h3>
                 <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                   Heuristic anomaly detection & pattern modeling
                 </p>
@@ -72,7 +72,7 @@ export const AiCyberFutureSection: React.FC = () => {
                 <Radio className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-mono font-bold text-white uppercase">Threat Feeds</h4>
+                <h3 className="text-sm font-mono font-bold text-white uppercase">Threat Feeds</h3>
                 <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                   Global telemetry on fresh malicious domains & kits
                 </p>
@@ -85,7 +85,7 @@ export const AiCyberFutureSection: React.FC = () => {
                 <Zap className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-mono font-bold text-white uppercase">Automation</h4>
+                <h3 className="text-sm font-mono font-bold text-white uppercase">Automation</h3>
                 <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                   Zero-delay containment & origin quarantine
                 </p>
@@ -98,7 +98,7 @@ export const AiCyberFutureSection: React.FC = () => {
                 <Brain className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-mono font-bold text-white uppercase">Human Awareness</h4>
+                <h3 className="text-sm font-mono font-bold text-white uppercase">Human Awareness</h3>
                 <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                   Skeptical pause, critical scrutiny & verified decisions
                 </p>
@@ -114,9 +114,9 @@ export const AiCyberFutureSection: React.FC = () => {
                 <span className="text-[10px] font-mono text-cyan-400 uppercase font-bold tracking-widest block">
                   THE FORMULA
                 </span>
-                <h4 className="text-sm font-mono font-black text-white uppercase mt-0.5">
+                <h3 className="text-sm font-mono font-black text-white uppercase mt-0.5">
                   Future Cyber Defense
-                </h4>
+                </h3>
               </div>
             </div>
           </div>

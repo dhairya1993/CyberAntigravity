@@ -273,7 +273,7 @@ export const LatestGuidesSection: React.FC = () => {
   const articles = BLOG_ARTICLES.slice(0, 6);
 
   return (
-    <section id="guides" className="py-20 md:py-28 relative scroll-mt-20">
+    <section id="guides" className="py-20 md:py-28 relative scroll-mt-20 cyber-section-defer">
       <div className="cyber-container">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -320,7 +320,7 @@ export const LatestGuidesSection: React.FC = () => {
                 <div className="space-y-2.5">
                   <div className="flex items-center gap-3 text-xs text-slate-400">
                     <span className="flex items-center gap-1 font-mono">
-                      <Clock className="w-3.5 h-3.5 text-slate-500" />
+                      <Clock className="w-3.5 h-3.5 text-slate-400" />
                       {article.readingTime || '5 min read'}
                     </span>
                     <span className="text-slate-600">•</span>
@@ -342,7 +342,7 @@ export const LatestGuidesSection: React.FC = () => {
 
                 {/* Card Footer CTA */}
                 <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 font-mono">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono">
                     <Shield className="w-3.5 h-3.5 text-cyan-400" />
                     <span>Defensive Guide</span>
                   </div>

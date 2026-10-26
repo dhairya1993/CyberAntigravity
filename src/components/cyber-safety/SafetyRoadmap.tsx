@@ -153,7 +153,7 @@ export const SafetyRoadmap: React.FC = () => {
                       </a>
                     )
                   ) : (
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
                       <Lock className="w-3.5 h-3.5" />
                       <span>Phase 2 Track • In Development</span>
                     </div>

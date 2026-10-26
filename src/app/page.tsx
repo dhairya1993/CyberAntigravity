@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { HeroSection } from '@/components/sections/HeroSection';
 import dynamic from 'next/dynamic';
-import { AttackPathSection } from '@/components/sections/AttackPathSection';
+// AttackPathSection dynamically imported below
 import { DigitalDefenseSection } from '@/components/sections/DigitalDefenseSection';
 import { CyberLabPreviewSection } from '@/components/sections/CyberLabPreviewSection';
 import { StudentExperienceSection } from '@/components/sections/StudentExperienceSection';
@@ -11,6 +11,9 @@ import { SecurityToolsPreviewSection } from '@/components/sections/SecurityTools
 import { WhyCyberAntigravitySection } from '@/components/sections/WhyCyberAntigravitySection';
 
 // Code-split below-the-fold interactive components with SSR preserved for SEO
+const AttackPathSection = dynamic(
+  () => import('@/components/sections/AttackPathSection').then((m) => m.AttackPathSection)
+);
 const ThreatLandscapeSection = dynamic(
   () => import('@/components/sections/ThreatLandscapeSection').then((m) => m.ThreatLandscapeSection)
 );

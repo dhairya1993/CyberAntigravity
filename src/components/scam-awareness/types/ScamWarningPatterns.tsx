@@ -268,7 +268,7 @@ export const ScamWarningPatterns: React.FC = () => {
                   >
                     {getNodeIcon(node.iconName)}
                   </div>
-                  <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">
                     VECTOR 0{idx + 1}
                   </span>
                 </div>

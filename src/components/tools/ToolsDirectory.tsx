@@ -123,7 +123,7 @@ export const ToolsDirectory: React.FC = () => {
           </div>
         ) : (
           <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-12 text-center space-y-4">
-            <Wrench className="w-10 h-10 text-slate-500 mx-auto" />
+            <Wrench className="w-10 h-10 text-slate-400 mx-auto" />
             <h3 className="text-lg font-bold text-white">No Matching Security Tools Found</h3>
             <p className="text-sm text-slate-400 max-w-md mx-auto">
               We couldn&apos;t find any utilities matching &quot;{searchQuery}&quot;. Try adjusting your keywords or selecting &quot;All Tools&quot;.

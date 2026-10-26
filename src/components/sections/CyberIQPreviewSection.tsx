@@ -210,7 +210,7 @@ export const CyberIQPreviewSection: React.FC = () => {
   };
 
   return (
-    <section id="cyber-iq" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/70 scroll-mt-20 overflow-hidden">
+    <section id="cyber-iq" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/70 scroll-mt-20 overflow-hidden cyber-section-defer">
       {/* Background radial accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-cyan-950/20 via-purple-950/15 to-transparent blur-3xl pointer-events-none -z-10" />
 
@@ -257,12 +257,12 @@ export const CyberIQPreviewSection: React.FC = () => {
                       Level {item.level}
                     </span>
                     {idx < SKILL_METER_LEVELS.length - 1 && (
-                      <span className="text-xs font-mono text-slate-500 hidden sm:inline">→</span>
+                      <span className="text-xs font-mono text-slate-400 hidden sm:inline">→</span>
                     )}
                   </div>
-                  <h4 className="text-xs sm:text-sm font-bold font-mono tracking-tight mt-1">
+                  <h3 className="text-xs sm:text-sm font-bold font-mono tracking-tight mt-1">
                     {item.name}
-                  </h4>
+                  </h3>
                 </div>
                 <p className="text-[11px] text-slate-300 leading-snug">
                   {item.desc}

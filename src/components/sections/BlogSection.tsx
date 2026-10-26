@@ -60,7 +60,7 @@ export const BlogSection: React.FC = () => {
                     </div>
                     <div>
                       <span className="text-slate-200 font-medium block">CyberAntigravity Guide</span>
-                      <span className="text-slate-500 text-[11px]">Defensive Education</span>
+                      <span className="text-slate-400 text-[11px]">Defensive Education</span>
                     </div>
                   </div>
 

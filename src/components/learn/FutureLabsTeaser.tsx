@@ -97,7 +97,7 @@ export const FutureLabsTeaser: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500 font-mono">
+              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-mono">
                 <span>Phase 2 Architecture</span>
                 <span className="flex items-center gap-1">
                   <Lock className="w-3 h-3" /> Sandbox Isolated

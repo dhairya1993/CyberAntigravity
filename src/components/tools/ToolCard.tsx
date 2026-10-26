@@ -144,7 +144,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           </Link>
         ) : (
           <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/60 text-slate-400 text-xs font-mono">
-            <Lock className="w-3 h-3 text-slate-500" />
+            <Lock className="w-3 h-3 text-slate-400" />
             <span>Coming Soon</span>
           </span>
         )}

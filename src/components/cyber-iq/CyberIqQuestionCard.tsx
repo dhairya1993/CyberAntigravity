@@ -162,7 +162,7 @@ export const CyberIqQuestionCard: React.FC<CyberIqQuestionCardProps> = ({
                 'bg-rose-950/60 border-rose-500/80 text-rose-100 shadow-lg shadow-rose-950/30 ring-1 ring-rose-500';
               pillStyles = 'bg-rose-500 text-white border-rose-400 font-bold';
             } else if (isMuted) {
-              buttonStyles = 'bg-slate-950/40 border-slate-900 text-slate-500 opacity-60';
+              buttonStyles = 'bg-slate-950/40 border-slate-900 text-slate-400 opacity-60';
               pillStyles = 'bg-slate-900 text-slate-600 border-slate-800';
             }
 

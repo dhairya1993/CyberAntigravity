@@ -45,7 +45,7 @@ export const ScamAwarenessFAQ: React.FC = () => {
                   {isOpen ? (
                     <ChevronUp className="w-5 h-5 text-cyan-400 shrink-0" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-slate-500 shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
                   )}
                 </button>
                 {isOpen && (

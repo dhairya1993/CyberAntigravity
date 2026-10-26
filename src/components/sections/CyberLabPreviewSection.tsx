@@ -15,7 +15,7 @@ import {
 
 export const CyberLabPreviewSection: React.FC = () => {
   return (
-    <section id="cyber-lab" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/80 overflow-hidden scroll-mt-20">
+    <section id="cyber-lab" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/80 overflow-hidden scroll-mt-20 cyber-section-defer">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[400px] bg-gradient-to-r from-cyan-950/25 via-blue-950/20 to-transparent blur-3xl pointer-events-none -z-10" />
 
@@ -68,7 +68,7 @@ export const CyberLabPreviewSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-slate-800/80">
             {/* LEFT: Terminal Console with harmless educational commands */}
             <div className="lg:col-span-7 p-5 sm:p-7 font-mono text-xs space-y-4 bg-slate-950/95">
-              <div className="flex items-center justify-between text-slate-500 border-b border-slate-800/80 pb-2.5 text-[11px]">
+              <div className="flex items-center justify-between text-slate-400 border-b border-slate-800/80 pb-2.5 text-[11px]">
                 <span className="flex items-center gap-1.5 text-cyan-400 font-bold">
                   <Terminal className="w-4 h-4" />
                   DEFENSIVE_TERMINAL // v2.4-SAFE

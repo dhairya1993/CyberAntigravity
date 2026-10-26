@@ -147,7 +147,7 @@ export const PhishingProgressTracker: React.FC<PhishingProgressTrackerProps> = (
                         ? 'text-emerald-400'
                         : status === 'current'
                         ? 'text-cyan-400'
-                        : 'text-slate-500'
+                        : 'text-slate-400'
                     }`}
                     aria-hidden={true}
                   />

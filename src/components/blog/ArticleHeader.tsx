@@ -51,7 +51,7 @@ export const ArticleHeader: React.FC<ArticleHeaderProps> = ({ article }) => {
           </div>
           <div>
             <span className="text-slate-200 font-semibold block">{authorLabel}</span>
-            <span className="text-[11px] text-slate-500">Defensive Education</span>
+            <span className="text-[11px] text-slate-400">Defensive Education</span>
           </div>
         </div>
 
@@ -63,7 +63,7 @@ export const ArticleHeader: React.FC<ArticleHeaderProps> = ({ article }) => {
                 <span>Published: {article.publishedAt}</span>
               </span>
               {article.updatedAt && (
-                <span className="text-slate-500 hidden sm:inline">
+                <span className="text-slate-400 hidden sm:inline">
                   (Updated: {article.updatedAt})
                 </span>
               )}
@@ -88,7 +88,7 @@ export const ArticleHeader: React.FC<ArticleHeaderProps> = ({ article }) => {
       {/* Tags */}
       {article.tags && article.tags.length > 0 && (
         <div className="flex items-center gap-2 flex-wrap pt-1">
-          <span className="text-xs font-mono text-slate-500">Tags:</span>
+          <span className="text-xs font-mono text-slate-400">Tags:</span>
           {article.tags.map((tag) => (
             <span
               key={tag}

@@ -59,10 +59,10 @@ export const RedFlagAnalyzer: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-white font-semibold block">{RED_FLAG_SCENARIO.senderDisplay}</span>
-                    <span className="text-[10px] text-slate-500">{RED_FLAG_SCENARIO.channel}</span>
+                    <span className="text-[10px] text-slate-400">{RED_FLAG_SCENARIO.channel}</span>
                   </div>
                 </div>
-                <span className="text-[11px] font-mono text-slate-500">{RED_FLAG_SCENARIO.timestamp}</span>
+                <span className="text-[11px] font-mono text-slate-400">{RED_FLAG_SCENARIO.timestamp}</span>
               </div>
 
               {/* Message Bubble with Interactive Highlights */}
@@ -144,7 +144,7 @@ export const RedFlagAnalyzer: React.FC = () => {
                     <CheckCircle2 className="w-3.5 h-3.5" /> All Red Flags Discovered!
                   </span>
                 ) : (
-                  <span className="text-slate-500 text-[11px]">Click phrases above or buttons below</span>
+                  <span className="text-slate-400 text-[11px]">Click phrases above or buttons below</span>
                 )}
               </div>
             </div>

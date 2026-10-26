@@ -253,7 +253,7 @@ export const SafetyChecklist: React.FC = () => {
                       className={`p-1.5 rounded-lg border transition-all cyber-focus-ring ${
                         isChecked
                           ? 'bg-emerald-500 text-slate-950 border-emerald-400 hover:bg-emerald-400'
-                          : 'bg-slate-950 text-slate-500 border-slate-800 hover:text-cyan-400 hover:border-slate-700'
+                          : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-cyan-400 hover:border-slate-700'
                       }`}
                     >
                       {isChecked ? (
@@ -317,7 +317,7 @@ export const SafetyChecklist: React.FC = () => {
                     {isExpanded ? (
                       <ChevronUp className="w-3.5 h-3.5 text-cyan-400" />
                     ) : (
-                      <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400" />
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-400" />
                     )}
                   </div>
                 </div>

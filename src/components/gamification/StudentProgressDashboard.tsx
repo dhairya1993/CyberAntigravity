@@ -326,7 +326,7 @@ export const StudentProgressDashboard: React.FC = () => {
         </div>
 
         {/* Content Skeleton */}
-        <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 h-64 flex items-center justify-center text-slate-500 font-mono text-xs">
+        <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 h-64 flex items-center justify-center text-slate-400 font-mono text-xs">
           Loading authenticated progress from secure database...
         </div>
       </div>

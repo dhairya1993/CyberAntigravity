@@ -37,7 +37,7 @@ export const RelatedArticles: React.FC<RelatedArticlesProps> = ({ relatedSlugs, 
           >
             <div className="flex items-center justify-between text-[10px] font-mono text-cyan-400">
               <span>{article.category}</span>
-              <span className="flex items-center gap-1 text-slate-500">
+              <span className="flex items-center gap-1 text-slate-400">
                 <Clock className="w-3 h-3 text-cyan-400" />
                 <span>{article.readingTime}</span>
               </span>

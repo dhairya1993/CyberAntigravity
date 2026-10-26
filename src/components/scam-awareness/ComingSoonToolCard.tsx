@@ -62,7 +62,7 @@ export const ComingSoonToolCard: React.FC<ComingSoonToolCardProps> = ({
       </div>
 
       <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
-        <span className="text-xs text-slate-500 font-mono">Status: {roadmapStatus}</span>
+        <span className="text-xs text-slate-400 font-mono">Status: {roadmapStatus}</span>
         <span
           className={`text-xs font-semibold cursor-default ${
             isPurple ? 'text-purple-400/80' : 'text-cyan-400/80'

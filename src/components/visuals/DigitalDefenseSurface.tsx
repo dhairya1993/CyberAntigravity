@@ -284,7 +284,7 @@ export const DigitalDefenseSurface: React.FC = () => {
               <span className={`text-xs font-bold leading-tight ${isActive ? 'text-white' : 'text-slate-300'}`}>
                 {item.name.split(' ')[0]}
               </span>
-              <span className="text-[10px] text-slate-500 font-mono mt-0.5">
+              <span className="text-[10px] text-slate-400 font-mono mt-0.5">
                 {item.category.split(' ')[0]}
               </span>
             </button>

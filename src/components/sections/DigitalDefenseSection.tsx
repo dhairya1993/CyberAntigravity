@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/Button';
 
 export const DigitalDefenseSection: React.FC = () => {
   return (
-    <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/60">
+    <section className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/60 cyber-section-defer">
       <div className="cyber-container space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">

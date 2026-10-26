@@ -192,11 +192,11 @@ export const AuthViewPage: React.FC<AuthViewPageProps> = ({ initialMode }) => {
           <form onSubmit={handleSubmit} className="space-y-4">
             {mode === 'register' && (
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                <label htmlFor="auth-page-display-name" className="block text-xs font-medium text-slate-300 mb-1.5">
                   Display Name or Handle
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                     <User className="w-4 h-4" />
                   </div>
                   <input
@@ -213,11 +213,11 @@ export const AuthViewPage: React.FC<AuthViewPageProps> = ({ initialMode }) => {
 
             {(mode === 'login' || mode === 'register' || mode === 'forgot') && (
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                <label htmlFor="auth-page-email" className="block text-xs font-medium text-slate-300 mb-1.5">
                   Email Address
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                     <Mail className="w-4 h-4" />
                   </div>
                   <input
@@ -235,7 +235,7 @@ export const AuthViewPage: React.FC<AuthViewPageProps> = ({ initialMode }) => {
             {(mode === 'login' || mode === 'register') && (
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-medium text-slate-300">Password</label>
+                  <label htmlFor="auth-page-password" className="text-xs font-medium text-slate-300">Password</label>
                   {mode === 'login' && (
                     <button
                       type="button"
@@ -250,7 +250,7 @@ export const AuthViewPage: React.FC<AuthViewPageProps> = ({ initialMode }) => {
                   )}
                 </div>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                     <Lock className="w-4 h-4" />
                   </div>
                   <input
@@ -265,7 +265,7 @@ export const AuthViewPage: React.FC<AuthViewPageProps> = ({ initialMode }) => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-500 hover:text-slate-300"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-300"
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -341,7 +341,7 @@ export const AuthViewPage: React.FC<AuthViewPageProps> = ({ initialMode }) => {
                 ← Back to Sign In
               </button>
             ) : (
-              <span className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+              <span className="flex items-center gap-1.5 text-slate-400 text-[11px]">
                 <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
                 Verified progress across all devices
               </span>

@@ -123,7 +123,7 @@ export const ScamCategoryExplorer: React.FC = () => {
           {/* Group Filter Pills */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-1 no-scrollbar text-xs">
             <span className="text-slate-400 font-medium flex items-center gap-1 shrink-0 mr-1">
-              <Filter className="w-3.5 h-3.5 text-slate-500" /> Filter:
+              <Filter className="w-3.5 h-3.5 text-slate-400" /> Filter:
             </span>
             {CATEGORY_GROUPS.map((group) => {
               const active = selectedGroup === group;

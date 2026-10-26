@@ -243,7 +243,7 @@ export const AttackDefensePath: React.FC = () => {
                           ? 'bg-rose-500 text-slate-950 border-rose-400 shadow-md shadow-rose-500/40'
                           : isPast
                           ? 'bg-rose-950 text-rose-400 border-rose-800'
-                          : 'bg-slate-950 text-slate-500 border-slate-800'
+                          : 'bg-slate-950 text-slate-400 border-slate-800'
                       }`}
                     >
                       {isActive && (
@@ -256,7 +256,7 @@ export const AttackDefensePath: React.FC = () => {
                         <span className={isActive ? 'text-white' : isPast ? 'text-rose-300' : 'text-slate-300'}>
                           {s.threatTitle}
                         </span>
-                        <span className="text-[10px] font-normal text-slate-500">
+                        <span className="text-[10px] font-normal text-slate-400">
                           (Step 0{s.step})
                         </span>
                       </div>
@@ -329,7 +329,7 @@ export const AttackDefensePath: React.FC = () => {
                           ? 'bg-cyan-400 text-slate-950 border-cyan-300 shadow-md shadow-cyan-400/40'
                           : isPast
                           ? 'bg-cyan-950 text-cyan-300 border-cyan-800'
-                          : 'bg-slate-950 text-slate-500 border-slate-800'
+                          : 'bg-slate-950 text-slate-400 border-slate-800'
                       }`}
                     >
                       {isActive && (
@@ -342,7 +342,7 @@ export const AttackDefensePath: React.FC = () => {
                         <span className={isActive ? 'text-white' : isPast ? 'text-cyan-300' : 'text-slate-300'}>
                           {s.defenseTitle}
                         </span>
-                        <span className="text-[10px] font-normal text-slate-500">
+                        <span className="text-[10px] font-normal text-slate-400">
                           (Step 0{s.step})
                         </span>
                       </div>
@@ -375,7 +375,7 @@ export const AttackDefensePath: React.FC = () => {
                 Step 0{activeStepData.step} Analysis
               </span>
               <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
-                {activeStepData.defenseTitle} <span className="text-slate-500 font-normal">vs.</span> {activeStepData.threatTitle}
+                {activeStepData.defenseTitle} <span className="text-slate-400 font-normal">vs.</span> {activeStepData.threatTitle}
               </h4>
             </div>
 

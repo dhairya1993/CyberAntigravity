@@ -102,7 +102,7 @@ const ROADMAP_STAGES: RoadmapStage[] = [
 
 export const LearningRoadmapPreviewSection: React.FC = () => {
   return (
-    <section id="roadmap" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/60 scroll-mt-20">
+    <section id="roadmap" className="py-20 md:py-28 relative border-t border-slate-800/80 bg-slate-950/60 scroll-mt-20 cyber-section-defer">
       <div className="cyber-container space-y-14">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -168,7 +168,7 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
                           className={`w-10 h-10 rounded-xl flex items-center justify-center font-mono font-bold text-xs border ${
                             isAvailable
                               ? 'bg-cyan-500/10 border-cyan-400 text-cyan-300 shadow-md shadow-cyan-400/20'
-                              : 'bg-slate-900 border-slate-800 text-slate-500'
+                              : 'bg-slate-900 border-slate-800 text-slate-400'
                           }`}
                         >
                           <Icon className="w-4.5 h-4.5" />
@@ -259,7 +259,7 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
                   className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center font-mono font-bold text-xs border -ml-4 z-10 ${
                     isAvailable
                       ? 'bg-slate-950 border-cyan-400 text-cyan-300 shadow-lg shadow-cyan-400/40'
-                      : 'bg-slate-950 border-slate-700 text-slate-500'
+                      : 'bg-slate-950 border-slate-700 text-slate-400'
                   }`}
                 >
                   {stage.number}
@@ -275,7 +275,7 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Icon className={`w-4 h-4 ${isAvailable ? 'text-cyan-400' : 'text-slate-500'}`} />
+                      <Icon className={`w-4 h-4 ${isAvailable ? 'text-cyan-400' : 'text-slate-400'}`} />
                       <h3 className="text-sm font-bold text-white">{stage.title}</h3>
                     </div>
                     <span

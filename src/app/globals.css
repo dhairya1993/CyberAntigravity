@@ -105,7 +105,6 @@
 }
 
 .animate-cyber-pulse {
-  will-change: transform, opacity;
   animation: cyber-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -120,7 +119,6 @@
 }
 
 .animate-cyber-flow {
-  will-change: opacity;
   animation: cyber-flow 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -137,7 +135,6 @@
 }
 
 .animate-link-pulse {
-  will-change: transform, opacity;
   animation: link-pulse 2.2s ease-in-out infinite;
 }
 
@@ -154,7 +151,6 @@
 }
 
 .animate-lock-pulse {
-  will-change: transform, opacity;
   transform-origin: center;
   animation: lock-pulse 2.6s ease-in-out infinite;
 }
@@ -184,7 +180,6 @@
 }
 
 .animate-malware-block {
-  will-change: transform, opacity;
   animation: malware-block 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -199,7 +194,6 @@
 }
 
 .animate-radar-sweep {
-  will-change: transform;
   transform-origin: center;
   animation: radar-sweep 6s linear infinite;
 }
@@ -216,3 +210,9 @@
   }
 }
 
+
+/* Modern content-visibility for offscreen sections to eliminate initial main-thread blocking */
+.cyber-section-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}

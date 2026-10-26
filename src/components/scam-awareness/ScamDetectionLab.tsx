@@ -182,10 +182,10 @@ export const ScamDetectionLab: React.FC = () => {
                         +1 (555) 019-8432
                       </button>
                     </span>
-                    <span className="text-[10px] text-slate-500 font-mono">SMS Notification • Fictional Route</span>
+                    <span className="text-[10px] text-slate-400 font-mono">SMS Notification • Fictional Route</span>
                   </div>
                 </div>
-                <span className="text-[11px] font-mono text-slate-500">10:42 AM</span>
+                <span className="text-[11px] font-mono text-slate-400">10:42 AM</span>
               </div>
 
               {/* Message Bubble with Interactive Highlights */}
@@ -335,7 +335,7 @@ export const ScamDetectionLab: React.FC = () => {
                 />
               </div>
 
-              <p className="text-[10px] text-slate-500 text-center mt-2.5 font-mono">
+              <p className="text-[10px] text-slate-400 text-center mt-2.5 font-mono">
                 This is an educational score only. Do not imply real-world fraud detection accuracy.
               </p>
             </div>

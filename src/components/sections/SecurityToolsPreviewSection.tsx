@@ -282,7 +282,7 @@ const TOOLS: ToolCard[] = [
 
 export const SecurityToolsPreviewSection: React.FC = () => {
   return (
-    <section id="practical-tools" className="py-20 md:py-28 relative scroll-mt-20 bg-slate-950/60 border-y border-slate-800/60">
+    <section id="practical-tools" className="py-20 md:py-28 relative scroll-mt-20 bg-slate-950/60 border-y border-slate-800/60 cyber-section-defer">
       <div className="cyber-container">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">

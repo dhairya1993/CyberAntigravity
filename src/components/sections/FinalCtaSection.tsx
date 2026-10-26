@@ -5,7 +5,7 @@ import { CyberAntigravityLogo } from '@/components/ui/CyberAntigravityLogo';
 
 export const FinalCtaSection: React.FC = () => {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden border-t border-slate-800/80 bg-gradient-to-b from-slate-950/40 via-slate-950 to-[#07090e]">
+    <section className="py-20 md:py-28 relative overflow-hidden border-t border-slate-800/80 bg-gradient-to-b from-slate-950/40 via-slate-950 to-[#07090e] cyber-section-defer">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-cyan-600/15 via-blue-600/10 to-purple-600/10 blur-3xl rounded-full pointer-events-none -z-10" />
 

@@ -184,7 +184,7 @@ export const CyberHygieneTool: React.FC = () => {
               <span className="text-xs font-mono uppercase text-cyan-400 font-bold tracking-wider">
                 Self-Audit
               </span>
-              <span className="text-slate-500 font-mono text-xs">•</span>
+              <span className="text-slate-400 font-mono text-xs">•</span>
               <span className="text-xs text-slate-400 font-mono">Checklist Progress</span>
             </div>
             <h3 className="text-2xl font-bold text-white tracking-tight">
@@ -273,7 +273,7 @@ export const CyberHygieneTool: React.FC = () => {
 
                 <div className="space-y-1 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-slate-500">#{index + 1}</span>
+                    <span className="text-xs font-mono text-slate-400">#{index + 1}</span>
                     <h4
                       className={`text-sm sm:text-base font-bold transition-colors ${
                         isChecked ? 'text-white' : 'text-slate-200'
@@ -286,7 +286,7 @@ export const CyberHygieneTool: React.FC = () => {
                     {item.description}
                   </p>
                   <p className="text-[11px] text-cyan-400/90 pt-1 font-mono">
-                    <span className="text-slate-500">Action:</span> {item.recommendedAction}
+                    <span className="text-slate-400">Action:</span> {item.recommendedAction}
                   </p>
                 </div>
               </div>

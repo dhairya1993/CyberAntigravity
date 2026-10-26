@@ -193,7 +193,7 @@ export const ScamQuiz: React.FC = () => {
                       buttonStyles =
                         'border-rose-500/80 bg-rose-950/40 text-rose-200 shadow-md shadow-rose-950/40';
                     } else {
-                      buttonStyles = 'border-slate-900 bg-slate-950/40 text-slate-500 opacity-60';
+                      buttonStyles = 'border-slate-900 bg-slate-950/40 text-slate-400 opacity-60';
                     }
                   }
 

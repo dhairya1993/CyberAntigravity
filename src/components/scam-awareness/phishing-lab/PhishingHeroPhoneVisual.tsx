@@ -166,7 +166,7 @@ export const PhishingHeroPhoneVisual: React.FC<PhishingHeroPhoneVisualProps> = (
                 className={`text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-md border transition-all duration-200 cursor-pointer cyber-focus-ring ${
                   activeElementId === 'timestamp'
                     ? 'border-cyan-400 bg-cyan-950/70 text-cyan-300'
-                    : 'text-slate-500 bg-slate-900/90 border-slate-800 hover:border-cyan-400 hover:text-slate-200'
+                    : 'text-slate-400 bg-slate-900/90 border-slate-800 hover:border-cyan-400 hover:text-slate-200'
                 }`}
               >
                 Today 09:38 AM • SMS

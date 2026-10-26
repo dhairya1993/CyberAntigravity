@@ -157,8 +157,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search phishing, passkeys, scams, tools, or guides..."
+            aria-label="Search guides, tools, and cybersecurity topics"
             autoFocus
-            className="w-full bg-transparent px-3 text-slate-100 placeholder-slate-500 focus:outline-none text-sm sm:text-base font-normal"
+            className="w-full bg-transparent px-3 text-slate-100 placeholder-slate-400 focus:outline-none text-sm sm:text-base font-normal"
           />
           {query && (
             <button
@@ -215,7 +216,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                     Track your total XP, 9-level roadmap progress, 7-day activity streaks, and unlocked badges.
                   </p>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
               </Link>
             </div>
           )}
@@ -234,7 +235,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
             <div className="py-8 text-center text-slate-400 space-y-2">
               <Search className="w-8 h-8 text-cyan-500/50 mx-auto" />
               <p className="text-sm font-medium text-slate-300">Search the CyberAntigravity Knowledge Ecosystem</p>
-              <p className="text-xs text-slate-500 max-w-sm mx-auto">
+              <p className="text-xs text-slate-400 max-w-sm mx-auto">
                 Explore guides on cyber safety, scam threat maps, interactive browser tools, and fundamentals.
               </p>
             </div>
@@ -260,7 +261,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       </p>
                       <p className="text-xs text-slate-400 line-clamp-1">{item.shortDesc}</p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
                   </Link>
                 ))}
               </div>
@@ -287,7 +288,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       </p>
                       <p className="text-xs text-slate-400 line-clamp-1">{item.shortDescription}</p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors shrink-0 ml-2" />
                   </Link>
                 ))}
               </div>
@@ -314,7 +315,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       </p>
                       <p className="text-xs text-slate-400 line-clamp-1">{item.shortDescription}</p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-400 transition-colors shrink-0 ml-2" />
                   </Link>
                 ))}
               </div>
@@ -341,7 +342,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       </p>
                       <p className="text-xs text-slate-400 line-clamp-1">{item.excerpt}</p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors shrink-0 ml-2" />
                   </Link>
                 ))}
               </div>
@@ -366,7 +367,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <p className="text-sm font-medium group-hover:text-teal-300 transition-colors">{item.title}</p>
                       <p className="text-xs text-slate-400 line-clamp-1">{item.summary}</p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-teal-400 transition-colors shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-teal-400 transition-colors shrink-0 ml-2" />
                   </Link>
                 ))}
               </div>
@@ -391,7 +392,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <p className="text-sm font-medium group-hover:text-purple-300 transition-colors">{item.title}</p>
                       <p className="text-xs text-slate-400 line-clamp-1">{item.description}</p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-purple-400 transition-colors shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-purple-400 transition-colors shrink-0 ml-2" />
                   </Link>
                 ))}
               </div>

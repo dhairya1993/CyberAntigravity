@@ -155,7 +155,7 @@ export const ScamChecklist: React.FC = () => {
                   {isChecked ? (
                     <CheckSquare className="w-5 h-5 text-cyan-400 shrink-0" />
                   ) : (
-                    <Square className="w-5 h-5 text-slate-500 group-hover:text-slate-400 shrink-0" />
+                    <Square className="w-5 h-5 text-slate-400 group-hover:text-slate-400 shrink-0" />
                   )}
                   <span className="text-xs sm:text-sm font-medium leading-relaxed select-none">
                     {item.text}
@@ -176,7 +176,7 @@ export const ScamChecklist: React.FC = () => {
                 onClick={handleReset}
                 className="inline-flex items-center gap-1 text-slate-400 hover:text-white transition-colors"
               >
-                <RotateCcw className="w-3 h-3 text-slate-500" />
+                <RotateCcw className="w-3 h-3 text-slate-400" />
                 <span>Clear All Checks</span>
               </button>
             )}

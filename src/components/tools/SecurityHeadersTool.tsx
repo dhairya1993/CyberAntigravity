@@ -160,7 +160,7 @@ export const SecurityHeadersTool: React.FC = () => {
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-cyan-950 border border-cyan-500/30 text-cyan-400 uppercase">
                 {selected.shortName}
               </span>
-              <span className="text-xs text-slate-500 font-mono">Response Header</span>
+              <span className="text-xs text-slate-400 font-mono">Response Header</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-white font-mono tracking-tight">
               {selected.name}

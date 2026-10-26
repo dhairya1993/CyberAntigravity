@@ -105,7 +105,7 @@ export const RedFlagCard: React.FC<RedFlagCardProps> = ({ flag }) => {
           {isExpanded ? (
             <ChevronUp className="w-3.5 h-3.5 text-amber-400" />
           ) : (
-            <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
+            <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-400" />
           )}
         </div>
       </div>

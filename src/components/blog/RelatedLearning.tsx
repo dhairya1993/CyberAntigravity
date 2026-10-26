@@ -34,7 +34,7 @@ export const RelatedLearning: React.FC<RelatedLearningProps> = ({ relatedLearnin
                 {item.title}
               </span>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+            <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all shrink-0" />
           </Link>
         ))}
       </div>

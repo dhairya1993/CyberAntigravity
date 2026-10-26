@@ -323,7 +323,7 @@ export const LatestGuidesSection: React.FC = () => {
                       <Clock className="w-3.5 h-3.5 text-slate-400" />
                       {article.readingTime || '5 min read'}
                     </span>
-                    <span className="text-slate-600">•</span>
+                    <span className="text-slate-400" aria-hidden="true">•</span>
                     <span className="px-2 py-0.5 rounded bg-slate-800 text-[11px] font-medium text-slate-300">
                       {article.difficulty}
                     </span>

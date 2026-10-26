@@ -16,7 +16,7 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
   theme = 'dark',
   size = 'md',
   glow = true,
-  priority = true,
+  priority = false,
   className = '',
 }) => {
   const isLight = theme === 'light';
@@ -86,8 +86,6 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
   return (
     <div
       className={`relative inline-flex items-center select-none transition-all duration-200 ${className}`}
-      role="img"
-      aria-label={alt}
     >
       <Image
         src={src}
@@ -95,6 +93,7 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
         width={intrinsicWidth}
         height={intrinsicHeight}
         priority={priority}
+        fetchPriority={priority ? "high" : "auto"}
         quality={75}
         sizes="(max-width: 640px) 160px, (max-width: 1024px) 220px, 280px"
         className={`object-contain transition-transform duration-200 group-hover:scale-[1.02] ${sizeClass} ${glowStyle}`}

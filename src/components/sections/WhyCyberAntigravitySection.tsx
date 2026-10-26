@@ -170,7 +170,7 @@ export const WhyCyberAntigravitySection: React.FC = () => {
               <div className="space-y-4">
                 {/* Header with Number and Icon */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-2xl font-black text-slate-700 group-hover:text-cyan-500/60 transition-colors">
+                  <span className="font-mono text-2xl font-black text-slate-400 group-hover:text-cyan-400 transition-colors">
                     {pillar.number}
                   </span>
                   <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 group-hover:border-slate-700 transition-colors">

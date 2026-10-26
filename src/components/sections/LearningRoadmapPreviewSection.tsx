@@ -157,7 +157,7 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
                   className={`group relative rounded-2xl border p-5 flex flex-col justify-between transition-all duration-300 ${
                     isAvailable
                       ? 'bg-slate-900/80 border-cyan-500/30 hover:border-cyan-400 hover:bg-slate-900 shadow-lg shadow-cyan-950/20 hover:-translate-y-1'
-                      : 'bg-slate-950/50 border-slate-800/80 opacity-75 hover:opacity-95'
+                      : 'bg-slate-950/70 border-slate-800/80 hover:border-slate-700'
                   }`}
                 >
                   <div className="space-y-4">
@@ -182,7 +182,7 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
                         className={`text-[9px] font-mono uppercase font-bold px-2 py-0.5 rounded border ${
                           isAvailable
                             ? 'bg-emerald-950/80 text-emerald-300 border-emerald-800'
-                            : 'bg-slate-900 text-slate-400 border-slate-800'
+                            : 'bg-slate-900 text-slate-300 border-slate-700'
                         }`}
                       >
                         {isAvailable ? 'Available' : 'Upcoming'}
@@ -212,7 +212,7 @@ export const LearningRoadmapPreviewSection: React.FC = () => {
                           ? 'text-cyan-400'
                           : stage.difficulty === 'Intermediate'
                           ? 'text-amber-400'
-                          : 'text-purple-400'
+                          : 'text-purple-300'
                       }`}
                     >
                       {stage.difficulty}

@@ -104,7 +104,7 @@ export const Navbar: React.FC = () => {
               className="group cyber-focus-ring rounded-lg p-1 transition-opacity hover:opacity-95"
               aria-label="CyberAntigravity Home"
             >
-              <CyberAntigravityLogo variant="full" size="md" />
+              <CyberAntigravityLogo variant="full" size="md" priority={true} />
             </Link>
 
             {/* Desktop Navigation Links */}
@@ -126,7 +126,7 @@ export const Navbar: React.FC = () => {
                 type="button"
                 onClick={() => setIsSearchOpen(true)}
                 className="flex items-center gap-2 px-3 py-2 text-xs text-slate-400 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-lg transition-colors cyber-focus-ring"
-                aria-label="Open search dialog"
+                aria-label="Search guides, tools, and cybersecurity topics"
               >
                 <Search className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Search...</span>

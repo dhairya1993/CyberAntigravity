@@ -66,7 +66,6 @@ export const HeroSection: React.FC = () => {
                   alt="CyberAntigravity Shield"
                   width={32}
                   height={32}
-                  priority
                   quality={75}
                   sizes="32px"
                   className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]"

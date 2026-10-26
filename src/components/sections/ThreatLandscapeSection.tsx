@@ -196,10 +196,7 @@ export const ThreatLandscapeSection: React.FC = () => {
                     : `border-slate-800 hover:-translate-y-1.5 hover:shadow-2xl ${card.accentBorder}`
                 }`}
                 onClick={() => toggleExpand(card.id)}
-                role="button"
-                aria-expanded={isExpanded}
-                aria-label={`${card.title} threat briefing card`}
-                tabIndex={0}
+
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -247,7 +244,7 @@ export const ThreatLandscapeSection: React.FC = () => {
                     <button
                       type="button"
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition-all cyber-focus-ring rounded py-1"
-                      aria-label={`${isExpanded ? 'Collapse' : 'Understand'} ${card.title} threat panel`}
+                      aria-label={isExpanded ? `Close Briefing for ${card.title}` : `Understand This Threat — ${card.title}`}
                     >
                       <span>{isExpanded ? 'Close Briefing' : 'Understand This Threat →'}</span>
                       {isExpanded ? (

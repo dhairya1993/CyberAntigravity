@@ -234,7 +234,7 @@ export const AttackDefensePath: React.FC = () => {
                       ? 'bg-rose-950/30 border-rose-900/50 text-rose-200 opacity-90'
                       : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-rose-900/80'
                   }`}
-                  aria-label={`Inspect Threat Step ${s.step}: ${s.threatTitle}`}
+                  aria-label={`${s.threatTitle} (Step ${s.step})`}
                 >
                   <div className="flex items-center gap-3">
                     <div
@@ -320,7 +320,7 @@ export const AttackDefensePath: React.FC = () => {
                       ? 'bg-cyan-950/30 border-cyan-900/50 text-cyan-200 opacity-90'
                       : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-cyan-900/80'
                   }`}
-                  aria-label={`Inspect Defense Step ${s.step}: ${s.defenseTitle}`}
+                  aria-label={`${s.defenseTitle} (Step ${s.step})`}
                 >
                   <div className="flex items-center gap-3">
                     <div
@@ -374,9 +374,9 @@ export const AttackDefensePath: React.FC = () => {
               <span className="text-xs font-mono uppercase font-bold px-2.5 py-1 rounded bg-cyan-950 text-cyan-300 border border-cyan-800">
                 Step 0{activeStepData.step} Analysis
               </span>
-              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+              <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
                 {activeStepData.defenseTitle} <span className="text-slate-400 font-normal">vs.</span> {activeStepData.threatTitle}
-              </h4>
+              </h3>
             </div>
 
             {activeStepData.isDefenseSuccessful && (

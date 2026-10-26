@@ -234,7 +234,7 @@ export const AttackDefensePath: React.FC = () => {
                       ? 'bg-rose-950/30 border-rose-900/50 text-rose-200 opacity-90'
                       : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-rose-900/80'
                   }`}
-                  aria-label={`${s.threatTitle} (Step ${s.step})`}
+                  aria-label={`${s.threatTitle} (Step 0${s.step})`}
                 >
                   <div className="flex items-center gap-3">
                     <div
@@ -320,7 +320,7 @@ export const AttackDefensePath: React.FC = () => {
                       ? 'bg-cyan-950/30 border-cyan-900/50 text-cyan-200 opacity-90'
                       : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-cyan-900/80'
                   }`}
-                  aria-label={`${s.defenseTitle} (Step ${s.step})`}
+                  aria-label={`${s.defenseTitle} (Step 0${s.step})`}
                 >
                   <div className="flex items-center gap-3">
                     <div

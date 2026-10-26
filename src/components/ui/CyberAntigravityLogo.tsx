@@ -95,7 +95,7 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
         priority={priority}
         fetchPriority={priority ? "high" : "auto"}
         quality={75}
-        sizes="(max-width: 640px) 160px, (max-width: 1024px) 220px, 280px"
+        sizes="(max-width: 640px) 150px, (max-width: 1024px) 210px, 260px"
         className={`object-contain transition-transform duration-200 group-hover:scale-[1.02] ${sizeClass} ${glowStyle}`}
       />
     </div>

@@ -1,8 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { GamificationToast } from "@/components/gamification/GamificationToast";
+import dynamic from "next/dynamic";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { AuthModal } from "@/components/auth/AuthModal";
+
+const GamificationToast = dynamic(
+  () => import("@/components/gamification/GamificationToast").then((m) => m.GamificationToast)
+);
+
+const AuthModal = dynamic(
+  () => import("@/components/auth/AuthModal").then((m) => m.AuthModal)
+);
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, SITE_TAGLINE } from "@/lib/siteConfig";
 
@@ -157,6 +164,9 @@ export default function RootLayout({
       className="h-full antialiased dark"
     >
       <head>
+        {/* Google tag (gtag.js) preconnect */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         {/* Google tag (gtag.js) */}
 
         <script

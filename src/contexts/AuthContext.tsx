@@ -53,24 +53,39 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     let isMounted = true;
-    fetch('/api/auth/me', { cache: 'no-store' })
-      .then((res) => (res.ok ? res.json() : { user: null }))
-      .then((data) => {
-        if (isMounted) {
-          setUser(data.user || null);
-          setIsLoading(false);
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
-          setUser(null);
-          setIsLoading(false);
-        }
-      });
-
-    return () => {
-      isMounted = false;
+    const checkSession = () => {
+      fetch('/api/auth/me', { cache: 'no-store' })
+        .then((res) => (res.ok ? res.json() : { user: null }))
+        .then((data) => {
+          if (isMounted) {
+            setUser(data.user || null);
+            setIsLoading(false);
+          }
+        })
+        .catch(() => {
+          if (isMounted) {
+            setUser(null);
+            setIsLoading(false);
+          }
+        });
     };
+
+    // Defer initial session check to idle time to avoid delaying FCP/LCP
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      const handle = (window as Window & { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback(checkSession, { timeout: 2000 });
+      return () => {
+        isMounted = false;
+        if ('cancelIdleCallback' in window) {
+          (window as Window & { cancelIdleCallback: (h: number) => void }).cancelIdleCallback(handle);
+        }
+      };
+    } else {
+      const timer = setTimeout(checkSession, 800);
+      return () => {
+        isMounted = false;
+        clearTimeout(timer);
+      };
+    }
   }, []);
 
   const login = async (email: string, password: string) => {

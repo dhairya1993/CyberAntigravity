@@ -32,7 +32,13 @@
     "unrs-resolver": true
   },
   "browserslist": [
-    "defaults and fully supports es6-module",
+    "chrome >= 109",
+    "edge >= 109",
+    "firefox >= 109",
+    "safari >= 15.6",
+    "ios_saf >= 15.6",
+    "> 0.5%",
+    "not op_mini all",
     "last 2 Chrome versions",
     "last 2 Firefox versions",
     "last 2 Safari versions",

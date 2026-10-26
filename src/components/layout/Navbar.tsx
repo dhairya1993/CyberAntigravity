@@ -6,7 +6,12 @@ import { Search, Menu, X, ArrowRight, ShieldCheck, ChevronRight, User, LogOut, A
 import { MAIN_NAV_ITEMS } from '@/data/navigation';
 import { Button } from '@/components/ui/Button';
 import { CyberAntigravityLogo } from '@/components/ui/CyberAntigravityLogo';
-import { SearchModal } from './SearchModal';
+import dynamic from 'next/dynamic';
+
+const SearchModal = dynamic(
+  () => import('./SearchModal').then((mod) => mod.SearchModal),
+  { ssr: false }
+);
 import { useAuth } from '@/contexts/AuthContext';
 
 export const Navbar: React.FC = () => {
@@ -30,7 +35,7 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -309,7 +314,7 @@ export const Navbar: React.FC = () => {
       </header>
 
       {/* Global Search Modal */}
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {isSearchOpen && <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />}
     </>
   );
 };

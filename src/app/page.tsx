@@ -2,18 +2,33 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { ThreatLandscapeSection } from '@/components/sections/ThreatLandscapeSection';
-import { VisualStorytellingTransitions } from '@/components/visuals/VisualStorytellingTransitions';
+import dynamic from 'next/dynamic';
 import { AttackPathSection } from '@/components/sections/AttackPathSection';
-import { CyberIQPreviewSection } from '@/components/sections/CyberIQPreviewSection';
 import { DigitalDefenseSection } from '@/components/sections/DigitalDefenseSection';
 import { CyberLabPreviewSection } from '@/components/sections/CyberLabPreviewSection';
-import { LearningRoadmapPreviewSection } from '@/components/sections/LearningRoadmapPreviewSection';
-import { ScamSpotterPreviewSection } from '@/components/sections/ScamSpotterPreviewSection';
 import { StudentExperienceSection } from '@/components/sections/StudentExperienceSection';
 import { SecurityToolsPreviewSection } from '@/components/sections/SecurityToolsPreviewSection';
 import { WhyCyberAntigravitySection } from '@/components/sections/WhyCyberAntigravitySection';
-import { MissionSection } from '@/components/sections/MissionSection';
+
+// Code-split below-the-fold interactive components with SSR preserved for SEO
+const ThreatLandscapeSection = dynamic(
+  () => import('@/components/sections/ThreatLandscapeSection').then((m) => m.ThreatLandscapeSection)
+);
+const VisualStorytellingTransitions = dynamic(
+  () => import('@/components/visuals/VisualStorytellingTransitions').then((m) => m.VisualStorytellingTransitions)
+);
+const CyberIQPreviewSection = dynamic(
+  () => import('@/components/sections/CyberIQPreviewSection').then((m) => m.CyberIQPreviewSection)
+);
+const LearningRoadmapPreviewSection = dynamic(
+  () => import('@/components/sections/LearningRoadmapPreviewSection').then((m) => m.LearningRoadmapPreviewSection)
+);
+const ScamSpotterPreviewSection = dynamic(
+  () => import('@/components/sections/ScamSpotterPreviewSection').then((m) => m.ScamSpotterPreviewSection)
+);
+const MissionSection = dynamic(
+  () => import('@/components/sections/MissionSection').then((m) => m.MissionSection)
+);
 import { LatestGuidesSection } from '@/components/sections/LatestGuidesSection';
 import { AiCyberFutureSection } from '@/components/sections/AiCyberFutureSection';
 import { TrustNoticeSection } from '@/components/sections/TrustNoticeSection';

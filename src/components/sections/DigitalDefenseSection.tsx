@@ -1,8 +1,12 @@
-'use client';
+// Server Component - layout and static headers rendered on server
 
 import React from 'react';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
-import { DigitalDefenseMap } from '@/components/visuals/DigitalDefenseMap';
+import dynamic from 'next/dynamic';
+
+const DigitalDefenseMap = dynamic(
+  () => import('@/components/visuals/DigitalDefenseMap').then((m) => m.DigitalDefenseMap)
+);
 import { Button } from '@/components/ui/Button';
 
 export const DigitalDefenseSection: React.FC = () => {

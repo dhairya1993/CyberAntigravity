@@ -80,7 +80,7 @@ export const CyberAntigravityLogo: React.FC<CyberAntigravityLogoProps> = ({
 
   const glowStyle =
     glow && variant !== 'monochrome'
-      ? 'drop-shadow-[0_0_12px_rgba(0,240,255,0.28)] hover:drop-shadow-[0_0_18px_rgba(0,240,255,0.45)]'
+      ? 'hover:drop-shadow-[0_0_16px_rgba(0,240,255,0.4)]'
       : '';
 
   return (

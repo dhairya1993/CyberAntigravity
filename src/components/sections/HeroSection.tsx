@@ -11,18 +11,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import dynamic from 'next/dynamic';
-
-const CyberDefenseCommandCenter = dynamic(
-  () => import('@/components/visuals/CyberDefenseCommandCenter').then((m) => m.CyberDefenseCommandCenter),
-  {
-    loading: () => (
-      <div className="w-full max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto rounded-3xl bg-slate-950/80 border border-slate-800/80 aspect-[500/330] flex items-center justify-center">
-        <div className="text-xs font-mono text-cyan-400/60 animate-pulse">Initializing Cyber Defense Command Center...</div>
-      </div>
-    ),
-  }
-);
+import { CyberDefenseCommandCenter } from '@/components/visuals/CyberDefenseCommandCenter';
 
 export const HeroSection: React.FC = () => {
   return (
@@ -68,7 +57,7 @@ export const HeroSection: React.FC = () => {
                   height={32}
                   quality={75}
                   sizes="32px"
-                  className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]"
+                  className="w-full h-full object-contain "
                 />
               </div>
               <Badge variant="cyan" dot size="md">
@@ -140,7 +129,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Column: Cyber Defense Command Center Interactive Centerpiece */}
-          <div className="lg:col-span-6 xl:col-span-6 relative">
+          <div className="lg:col-span-6 xl:col-span-6 relative [content-visibility:auto] [contain-intrinsic-size:auto_650px]">
             <CyberDefenseCommandCenter />
           </div>
         </div>

@@ -94,7 +94,7 @@ export const DailyCyberChallenge: React.FC = () => {
             <Calendar className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
             <span>{dateFormatted}</span>
           </span>
-          <span className="text-[11px] font-mono text-slate-500 hidden sm:inline">
+          <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
             • Day #{dayNumber}
           </span>
         </div>

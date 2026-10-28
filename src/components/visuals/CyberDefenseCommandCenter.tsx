@@ -514,7 +514,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
               onMouseEnter={() => setHoveredNode('ingress')}
               onMouseLeave={() => setHoveredNode(null)}
               className="flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-900/95 border border-slate-600/90 text-xs sm:text-[13px] font-mono font-bold text-slate-200 shadow-md hover:border-cyan-400 hover:text-white transition-all cursor-pointer whitespace-nowrap"
-              aria-label="Internet Ingress — Network Node"
+              aria-label="Internet Ingress"
             >
               <Globe className="w-4 h-4 text-cyan-400" />
               <span>INTERNET INGRESS</span>
@@ -537,7 +537,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-rose-950 border-rose-400 text-white shadow-xl shadow-rose-950/80 scale-105'
                   : 'bg-slate-900/95 border-rose-500/50 text-rose-200 hover:border-rose-400 hover:text-white'
               }`}
-              aria-label="Phishing — Threat Node"
+              aria-label="Phishing"
             >
               <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-400 animate-pulse" />
               <span>PHISHING</span>
@@ -559,7 +559,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-amber-950 border-amber-400 text-white shadow-xl shadow-amber-950/80 scale-105'
                   : 'bg-slate-900/95 border-amber-500/50 text-amber-200 hover:border-amber-400 hover:text-white'
               }`}
-              aria-label="Scams — Threat Node"
+              aria-label="Scams"
             >
               <ShieldAlert className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 animate-pulse" />
               <span>SCAMS</span>
@@ -581,7 +581,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-rose-950 border-rose-400 text-white shadow-xl shadow-rose-950/80 scale-105'
                   : 'bg-slate-900/95 border-rose-500/50 text-rose-200 hover:border-rose-400 hover:text-white'
               }`}
-              aria-label="Malware — Threat Node"
+              aria-label="Malware"
             >
               <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-400 animate-pulse" />
               <span>MALWARE</span>
@@ -603,7 +603,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-amber-950 border-amber-400 text-white scale-105 shadow-amber-900/60'
                   : 'bg-slate-900/95 border-amber-500/60 text-amber-300 hover:border-amber-400 hover:text-white'
               }`}
-              aria-label="Threat Radar — Analysis Node"
+              aria-label="Threat Radar"
             >
               <Radio className="w-3.5 h-3.5 text-amber-400 animate-spin" />
               <span>THREAT RADAR</span>
@@ -625,7 +625,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-cyan-950 border-cyan-400 text-white shadow-2xl shadow-cyan-500/40 scale-105'
                   : 'bg-slate-900/95 border-cyan-500/60 text-cyan-200 hover:border-cyan-300 hover:text-white'
               }`}
-              aria-label="DEFENSE ACTIVE CYBER DEFENSE — Core Defense Node"
+              aria-label="DEFENSE ACTIVE CYBER DEFENSE"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-cyan-300 group-hover:scale-110 transition-transform" />
@@ -653,7 +653,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-cyan-950 border-cyan-400 text-white shadow-xl shadow-cyan-950/80 scale-105'
                   : 'bg-slate-900/95 border-cyan-500/50 text-cyan-200 hover:border-cyan-400 hover:text-white'
               }`}
-              aria-label="MFA — Multi-Factor Authentication Node"
+              aria-label="MFA"
             >
               <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
               <span>MFA</span>
@@ -675,7 +675,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-cyan-950 border-cyan-400 text-white shadow-xl shadow-cyan-950/80 scale-105'
                   : 'bg-slate-900/95 border-cyan-500/50 text-cyan-200 hover:border-cyan-400 hover:text-white'
               }`}
-              aria-label="Passwords — Password Security Node"
+              aria-label="Passwords"
             >
               <Key className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
               <span>PASSWORDS</span>
@@ -697,7 +697,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-emerald-950 border-emerald-400 text-white shadow-xl shadow-emerald-950/80 scale-105'
                   : 'bg-slate-900/95 border-emerald-500/50 text-emerald-200 hover:border-emerald-400 hover:text-white'
               }`}
-              aria-label="Awareness — Security Awareness Node"
+              aria-label="Awareness"
             >
               <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
               <span>AWARENESS</span>
@@ -715,7 +715,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
               onMouseEnter={() => setHoveredNode('protected')}
               onMouseLeave={() => setHoveredNode(null)}
               className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/95 border border-emerald-500/70 text-xs sm:text-[13px] font-mono uppercase font-bold text-emerald-300 shadow-lg hover:border-emerald-400 hover:text-white transition-all cursor-pointer whitespace-nowrap"
-              aria-label="Protected User & Assets — Endpoint Node"
+              aria-label="Protected User & Assets"
             >
               <CheckCircle className="w-4 h-4 text-emerald-400" />
               <span>PROTECTED USER & ASSETS</span>

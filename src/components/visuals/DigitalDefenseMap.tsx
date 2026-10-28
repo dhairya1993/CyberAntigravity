@@ -279,7 +279,7 @@ export const DigitalDefenseMap: React.FC = () => {
                     : 'bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-900'
                 }`}
                 aria-pressed={isActive}
-                aria-label={`${layer.name} (${layer.tag}) — Defense Layer`}
+                
               >
                 {/* Active Beam Glow strip */}
                 {isActive && (

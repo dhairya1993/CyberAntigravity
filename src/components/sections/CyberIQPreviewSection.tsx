@@ -300,7 +300,7 @@ export const CyberIQPreviewSection: React.FC = () => {
                     onClick={handleResetCurrent}
                     type="button"
                     className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors flex items-center gap-1 text-xs cursor-pointer cyber-focus-ring"
-                    aria-label="Try scenario again"
+                    aria-label="Reset scenario"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span className="hidden sm:inline">Reset</span>

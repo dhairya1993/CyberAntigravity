@@ -28,6 +28,8 @@ export function calculateArticleReadingTime(content: BlogPost['content'], excerp
 const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   {
     id: 'what-is-phishing',
+    publishedAt: '2026-06-15T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'what-is-phishing',
     title: 'What Is Phishing? How to Recognize the Warning Signs',
     description:
@@ -186,6 +188,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'strong-passwords',
+    publishedAt: '2026-06-20T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'strong-passwords',
     title: 'How to Create Stronger Passwords Without Making Them Hard to Remember',
     description:
@@ -287,6 +291,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'multi-factor-authentication',
+    publishedAt: '2026-07-01T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'multi-factor-authentication',
     title: 'What Is Multi-Factor Authentication (MFA) and Why Does It Matter?',
     description:
@@ -400,6 +406,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'fake-website-warning-signs',
+    publishedAt: '2026-07-10T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'fake-website-warning-signs',
     title: 'How to Spot a Fake Website Before Entering Your Information',
     description:
@@ -506,6 +514,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'social-engineering',
+    publishedAt: '2026-07-22T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'social-engineering',
     title: 'Social Engineering Explained: Why Scams Manipulate People',
     description:
@@ -619,6 +629,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'https-explained',
+    publishedAt: '2026-08-05T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'https-explained',
     title: 'HTTPS Explained: What the Padlock Actually Means',
     description:
@@ -720,6 +732,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'cia-triad',
+    publishedAt: '2026-08-18T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'cia-triad',
     title: 'What Is the CIA Triad in Cybersecurity?',
     description:
@@ -848,6 +862,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'cyber-hygiene',
+    publishedAt: '2026-08-25T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'cyber-hygiene',
     title: 'How to Build a Basic Cyber Hygiene Routine',
     description:
@@ -956,6 +972,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'common-online-scams',
+    publishedAt: '2026-09-02T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'common-online-scams',
     title: 'Common Online Scams and the Red Flags to Watch For',
     description:
@@ -1056,14 +1074,16 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'ai-scams',
+    publishedAt: '2026-09-12T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'ai-scams',
     title: 'AI Scams: How Artificial Intelligence Is Changing Online Fraud',
     description:
-      'Examine the rise of generative AI spear-phishing, audio voice cloning scams, deepfake video verification bypasses, and defensive countermeasures.',
+      'An in-depth guide to AI-driven cyber fraud: automated spear-phishing pipelines, neural voice cloning emergency scams, real-time deepfake video verification bypasses, and actionable defensive protocols.',
     excerpt:
-      'Generative AI eliminates spelling mistakes and enables realistic voice cloning. Learn how modern adversaries use AI tools and how to protect yourself and your family.',
+      'Generative AI eliminates spelling mistakes, automates spear-phishing reconnaissance, and clones familiar voices from 3-second audio clips. Learn the mechanics of modern AI fraud and how to defend your identity, family, and organization.',
     category: 'AI Security',
-    tags: ['AI Security', 'Deepfakes', 'Voice Cloning', 'Social Engineering', 'Emerging Threats'],
+    tags: ['AI Security', 'Deepfakes', 'Voice Cloning', 'Social Engineering', 'Emerging Threats', 'Defensive Protocols'],
     difficulty: 'Intermediate',
     author: {
       name: 'CyberAntigravity Guide',
@@ -1074,78 +1094,144 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
     status: 'published',
     access: 'free',
     keyTakeaways: [
-      'Large Language Models (LLMs) allow cybercriminals to generate grammatically flawless, culturally localized spear-phishing messages at machine scale.',
-      'Voice cloning tools require as little as 3 seconds of reference audio (from social media videos) to synthesize realistic family voice calls.',
-      'Establish a private, memorable verbal "Safe Word" with family members to verify authentic distress calls.',
-      'Never rely exclusively on incoming voice or video streams for high-value financial transfers.',
+      'Large Language Models (LLMs) allow adversaries to generate grammatically flawless, contextually localized spear-phishing messages at machine scale.',
+      'Neural audio models require as little as 3 seconds of reference audio (harvested from social media clips or voicemails) to synthesize convincing emotional voice clones.',
+      'Real-time deepfake video reenactment can bypass automated remote identity checks and simulate corporate executives in web conferences.',
+      'Establish a non-digital family "Safe Word" and enforce out-of-band dual-custody verification for high-value financial transfers.',
+      'FIDO2 / WebAuthn passkeys provide cryptographic immunity against AI credential phishing by mathematically binding logins to the address bar domain.',
     ],
     content: {
       introduction:
-        'The rapid democratization of generative artificial intelligence and neural audio synthesis has dramatically lowered the barrier to entry for cybercriminals. Traditional visual and linguistic indicators of fraud—such as clumsy grammar, awkward syntax, and robotic speech—are disappearing as adversaries incorporate generative models into automated attack toolkits.',
+        'The rapid democratization of generative artificial intelligence and neural audio synthesis has triggered a fundamental paradigm shift in cybercrime. For decades, security awareness training instructed users to detect scams by searching for obvious surface flaws: poor grammar, awkward syntax, low-resolution logos, and robotic phone cadence. Today, readily accessible generative models eliminate these telltale signals entirely. Attackers now deploy automated LLM agents capable of ingesting public OSINT, drafting tailored corporate correspondence in native professional dialects, and cloning the vocal timbre and inflection of trusted colleagues in seconds. Defending against modern fraud requires shifting focus away from visual polish toward immutable procedural verification and cryptographic controls.',
       sections: [
         {
           id: 'generative-phishing',
-          title: '1. Hyper-Personalized AI Phishing at Scale',
+          title: '1. Hyper-Personalized AI Spear-Phishing at Scale',
           content:
-            'Previously, attackers had to choose between mass-produced generic spam or labor-intensive manual spear-phishing. With LLM automation, threat actors feed stolen LinkedIn profiles, corporate directories, and social media posts into automated pipelines to craft individualized lures with zero grammatical flaws.',
+            'Traditionally, cybercriminals faced an operational compromise between volume and specificity. Generic phishing broadcasts reached millions but yielded low engagement due to impersonal phrasing, while manual spear-phishing achieved high conversion rates but required hours of laborious human research. Generative AI dismantles this barrier by automating individualized lure creation across entire employee directories.',
+          subsections: [
+            {
+              id: 'context-scraping',
+              title: 'Automated Profile Scraping & Persona Mimicry',
+              content:
+                'Threat actors connect LLMs to automated scrapers that monitor LinkedIn updates, GitHub repositories, company press releases, and executive speaking schedules. The model synthesizes these disparate data points to craft authentic pretexts referencing current company initiatives, specific department colleagues, and exact project codenames with zero human intervention.',
+            },
+            {
+              id: 'linguistic-polishing',
+              title: 'Flawless Localization & Dialect Adaptation',
+              content:
+                'Foreign cyber syndicates who previously struggled with cultural idioms and nuanced business etiquette now output indistinguishable executive communications in English, German, Japanese, and dozens of other languages. The model dynamically adopts the greeting style, emotional tone, and sentence structure appropriate for the target organization.',
+            },
+          ],
         },
         {
           id: 'voice-cloning',
-          title: '2. Deepfake Voice Cloning (Vishing)',
+          title: '2. Neural Audio Synthesis & Emergency Vishing Scams',
           content:
-            'Modern neural audio models can generate synthetic speech matching a target\'s vocal timbre, cadence, and accent with frightening accuracy from short audio clips extracted from Instagram, TikTok, or YouTube.',
+            'Neural audio synthesis models have progressed from robotic text-to-speech converters to few-shot voice replicators. Modern diffusion and autoregressive architectures evaluate the fundamental frequency, acoustic timbre, emotional breathing pauses, and subtle cadence of a human voice using minimal training data.',
           subsections: [
             {
-              id: 'emergency-scam',
-              title: 'The "Emergency Bail" Family Scam',
+              id: 'reference-harvesting',
+              title: '3-Second Audio Harvesting from Social Media',
               content:
-                'Parents or grandparents receive a frantic phone call: the cloned voice of their child crying, claiming they were in a car accident or arrested and need urgent bail money transferred immediately.',
+                'Adversaries harvest reference audio from publicly accessible Instagram reels, TikTok videos, YouTube podcasts, conference presentations, or corporate voicemail greetings. In many instances, as little as three to five seconds of clean audio is sufficient to generate an acoustic profile capable of reading arbitrary text aloud in that person\'s voice.',
+            },
+            {
+              id: 'emergency-scam',
+              title: 'The "Emergency Bail & Kidnapping" Pretext',
+              content:
+                'In consumer fraud campaigns, attackers target elderly parents or grandparents during evening or early morning hours when cognitive defenses are lowered. The victim answers a phone call and hears the panicked, weeping voice of their child or grandchild claiming they were involved in an urgent car crash, arrested in a foreign jurisdiction, or detained, and need immediate bail funds sent via wire transfer or cryptocurrency.',
             },
           ],
           callout: {
             type: 'tip',
-            title: 'The Family Code Word Defense',
+            title: 'The Family Safe Word Protocol',
             text:
-              'Agree on a private family verification word or phrase with your loved ones. If you ever receive a frantic call claiming an emergency, ask for the code word. An AI voice clone or social engineer cannot produce it.',
+              'Agree on a private, non-digital family verification phrase with your immediate loved ones in person. If you ever receive an urgent phone call claiming a crisis or demanding emergency funds, ask for the safe word. A synthetic voice clone or phone scammer cannot produce a secret stored strictly in human memory.',
           },
         },
         {
           id: 'deepfake-video',
-          title: '3. Real-Time Deepfake Video & Biometric Bypasses',
+          title: '3. Real-Time Deepfake Video & Biometric Verification Bypasses',
           content:
-            'Adversaries have begun deploying real-time facial reenactment software during corporate video calls (impersonating Chief Financial Officers) to convince finance departments to authorize multimillion-dollar wire transfers.',
+            'Synthetic video fraud has migrated from pre-recorded manipulated clips to real-time interactive face-swapping during live video calls. Threat actors use virtual camera drivers in meeting platforms like Zoom, Microsoft Teams, and Google Meet to map facial landmarks onto 3D models in real time.',
+          subsections: [
+            {
+              id: 'corporate-wire-fraud',
+              title: 'Multi-Avatar Virtual Meeting Wire Fraud',
+              content:
+                'In documented multi-million dollar corporate fraud incidents, employees have participated in video conference calls where every participant on screen except the victim—including the Chief Financial Officer and external legal counsel—was an AI-driven synthetic avatar. Believing the meeting was legitimate due to live visual and auditory confirmation, the employee executed significant unauthorized capital transfers.',
+            },
+            {
+              id: 'liveness-bypass',
+              title: 'Bypassing Automated Identity Verification (KYC)',
+              content:
+                'Adversaries deploy real-time facial reenactment to defeat automated "liveness detection" checks implemented by fintech applications and cryptocurrency exchanges, synthesizing eye blinks, head turns, and smiling gestures to open fraudulent accounts using stolen identity documents.',
+            },
+          ],
         },
         {
-          id: 'defensive-protocols',
-          title: 'Countermeasures Against AI Fraud',
+          id: 'defensive-matrix',
+          title: '4. The AI Fraud Defense Matrix: Actionable Verification Protocols',
           content:
-            'Defending against AI-augmented threats requires shifting focus from surface appearances to rigorous verification protocols:',
+            'Because human visual and auditory intuition can no longer reliably separate synthetic media from genuine reality, cybersecurity hygiene must transition to strict procedural verification frameworks and cryptographic proofs.',
           table: {
-            headers: ['AI Threat Vector', 'Attacker Capability', 'Effective Defensive Protocol'],
+            headers: ['AI Threat Vector', 'Attacker Capability', 'Mandatory Defensive Control'],
             rows: [
-              ['Flawless AI Phishing Email', 'Perfect grammar, realistic organizational context', 'Independently navigate to verified portal; do not use embedded links.'],
-              ['Cloned Distress Voice Call', 'Replicates loved one voice and emotional panic', 'Hang up and dial the loved one directly on their known phone number; use family safe word.'],
-              ['Deepfake Executive Video Call', 'Real-time face-swap avatar on conference calls', 'Require out-of-band cryptographic signature or dual-custody authorization for transfers.'],
+              ['Flawless AI Phishing Email', 'Perfect grammar, references real colleagues, authentic corporate tone', 'Never click embedded links; navigate independently via verified bookmarks or direct URL input.'],
+              ['Cloned Family Voice Call', 'Synthesizes loved one voice in distress, demands immediate cash', 'Demand the offline family safe word. Hang up and dial their verified personal phone number directly.'],
+              ['Deepfake Executive Video Call', 'Real-time face-swap avatar on conference calls instructing urgent wire', 'Enforce mandatory dual-custody authorization and out-of-band cryptographic confirmation for all payments.'],
+              ['AI Support Bot Impersonation', 'Automated chatbot mimicking bank support to harvest one-time passwords', 'Banks never ask for incoming OTPs; close the session and contact official customer support.'],
             ],
           },
+        },
+        {
+          id: 'technical-safeguards',
+          title: '5. Institutional & Personal Technical Safeguards',
+          content:
+            'Combining procedural verification with technical guardrails provides depth of defense that neutralizes the attacker\'s psychological leverage:',
+          subsections: [
+            {
+              id: 'passkeys-defense',
+              title: 'Deploy Phishing-Resistant FIDO2 Passkeys',
+              content:
+                'Even if an employee is convinced by an AI-crafted pretext, WebAuthn passkeys cannot be phished. The cryptographic key exchange is tied mathematically to the verified domain in the browser address bar, meaning a fake lookalike portal cannot harvest or relay credentials.',
+            },
+            {
+              id: 'dual-custody',
+              title: 'Dual-Custody Wire Authorization',
+              content:
+                'No single individual—regardless of corporate rank or executive pressure—should possess the authority to disburse funds above designated limits without secondary cryptographic approval from an independent authorized officer.',
+            },
+          ],
         },
       ],
       faqs: [
         {
-          question: 'Can automated software reliably detect every deepfake audio or video?',
+          question: 'Can automated software reliably detect every deepfake audio or video in real time?',
           answer:
-            'Not reliably in real time. The cat-and-mouse game between generative synthesis and biometric detection is ongoing. Procedural defenses (such as callbacks on trusted channels and verification words) are far more reliable than relying solely on automated detection algorithms.',
+            'Not reliably. While automated forensic detectors exist, generative diffusion architectures evolve continuously. Furthermore, commercial video conferencing compression, lighting variations, and network latency introduce natural artifacts that mask synthetic anomalies. Procedural verification (such as callbacks on trusted channels and safe words) is far more dependable than relying exclusively on automated algorithmic detection.',
         },
         {
           question: 'How can I prevent my own voice from being cloned?',
           answer:
-            'While you cannot control all public recordings, you can reduce exposure by setting personal social media video profiles to private and being mindful of sharing extensive audio files publicly.',
+            'While eliminating all recorded audio is difficult in modern digital life, you can substantially reduce risk by setting personal social media accounts to private, avoiding posting videos with isolated clean vocal audio, and warning family members never to act on urgent financial requests without verifying via your secret safe word.',
+        },
+        {
+          question: 'What should I do if I suspect an incoming call from a loved one is an AI voice clone?',
+          answer:
+            'Remain calm and avoid reacting with immediate emotion. Ask for your established family safe word or inquire about a private, un-searchable personal memory (e.g., "What was the name of our childhood street?"). If the caller hesitates, avoids the question, or repeats demands for urgency, immediately hang up and dial the loved one directly on their saved phone number.',
+        },
+        {
+          question: 'Why are passkeys considered effective against AI-driven phishing attacks?',
+          answer:
+            'Because passkeys use asymmetric public-key cryptography bound to the verified DNS domain in the browser address bar. Even if an AI creates a visually flawless replica of your banking or workplace login portal, your browser checks the domain origin and refuses to release the cryptographic signature to an unauthorized domain.',
         },
       ],
       conclusion:
-        'Artificial intelligence makes digital imposters look and sound more convincing than ever before. But no matter how advanced the technology becomes, out-of-band verification and human skepticism remain the ultimate safeguards against digital manipulation.',
+        'Artificial intelligence has forever altered the threat landscape by making deceptive impersonation cheap, scalable, and indistinguishable from authentic reality. As visual and auditory cues lose their reliability, safety depends on abandoning implicit trust. By deploying strict out-of-band verification procedures, family code words, dual-custody controls, and cryptographic passkeys, you can effectively neutralize the deception of even the most sophisticated AI-augmented attacks.',
     },
-    relatedTools: ['url-explainer', 'cyber-hygiene', 'url-explainer'],
+    relatedTools: ['url-explainer', 'cyber-hygiene', 'security-headers'],
     relatedLearning: [
       {
         title: 'Emerging Threats & AI Security',
@@ -1156,14 +1242,16 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'passkeys-vs-passwords-2026',
+    publishedAt: '2026-09-20T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'passkeys-vs-passwords-guide',
     title: 'The Shift to Passkeys: How Cryptographic WebAuthn Solves Phishing at Scale',
     description:
       'Explore why asymmetric public-key cryptography built into modern hardware devices eliminates credential reuse and neutralizes adversary-in-the-middle reverse proxies.',
     excerpt:
-      'Passkeys replace shared secrets with asymmetric keypairs bound to specific web domains. Learn why this architectural shift neutralizes traditional credential theft.',
+      'Passkeys replace shared secrets with asymmetric keypairs bound to specific web domains. Learn why this architectural shift neutralizes traditional credential theft and simplifies login.',
     category: 'Passwords & Accounts',
-    tags: ['Passkeys', 'WebAuthn', 'FIDO2', 'Cryptography', 'Authentication'],
+    tags: ['Passkeys', 'WebAuthn', 'FIDO2', 'Cryptography', 'Authentication', 'Credential Security'],
     difficulty: 'Intermediate',
     author: {
       name: 'CyberAntigravity Guide',
@@ -1174,51 +1262,88 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
     status: 'published',
     access: 'free',
     keyTakeaways: [
-      'Passkeys use public-key cryptography: the private key remains secure on your device, and only the public key is sent to the server.',
-      'WebAuthn credentials are mathematically bound to the domain in the browser address bar, making them immune to proxy phishing sites.',
+      'Passkeys use asymmetric public-key cryptography: the private key remains secure on your device, and only the public key is sent to the server.',
+      'WebAuthn credentials are mathematically bound to the domain in the browser address bar, making them immune to proxy phishing and typosquatting sites.',
       'Passkeys eliminate shared secrets: a database breach at a service provider leaks only harmless public keys.',
-      'Cloud ecosystem synchronization (Apple iCloud Keychain, Google Password Manager) solves multi-device passkey backup.',
+      'Cloud ecosystem synchronization (Apple iCloud Keychain, Google Password Manager) solves multi-device passkey backup with end-to-end encryption.',
     ],
     content: {
       introduction:
-        'For over fifty years, the password has been the dominant authentication mechanism of computing. However, passwords possess a fatal structural flaw: they are shared secrets. Passkeys, built on the FIDO Alliance and W3C WebAuthn standards, eliminate shared secrets entirely by introducing asymmetric public-key cryptography to consumer authentication.',
+        'For over fifty years, the password has been the dominant authentication mechanism of computing. However, passwords possess a fatal structural flaw: they are shared secrets. Every time you log in, you transmit a secret to a remote server. If that server is compromised, your password is leaked; if you are tricked into entering it on a fake lookalike portal, your account is hijacked. Passkeys, built on the FIDO Alliance and W3C WebAuthn standards, eliminate shared secrets entirely by introducing asymmetric public-key cryptography to consumer authentication.',
       sections: [
         {
           id: 'how-passkeys-work',
-          title: 'How Passkeys Work Under the Hood',
+          title: 'How Passkeys Work: The Cryptographic Ceremony',
           content:
-            'When you create a passkey on an account, your device generates a unique cryptographic keypair inside its secure enclave:',
+            'When you register a passkey on an account, your device generates a unique cryptographic keypair inside its secure enclave (Apple Secure Enclave, Android Titan M, or Windows TPM):',
           subsections: [
             {
               id: 'private-key',
-              title: 'The Private Key',
+              title: '1. The Private Key (Hardware-Bound & Local)',
               content:
-                'Stays locked inside your hardware device (smartphone, laptop TPM, or security key) and is never shared across the network. Unlocking it requires your local biometric (Face ID, Touch ID) or device PIN.',
+                'The private key stays locked inside your hardware device and is never shared across the network. Accessing it requires local authentication using your device biometrics (Touch ID, Face ID, Windows Hello) or a device PIN. Even malware on your computer cannot export the raw cryptographic private key.',
             },
             {
               id: 'public-key',
-              title: 'The Public Key',
+              title: '2. The Public Key (Server-Stored)',
               content:
-                'Sent to the website server. When you log in, the server sends a random cryptographic challenge. Your device signs it with the private key, and the server verifies it with the public key.',
+                'The public key is registered with the website server. When you sign in, the server generates a random cryptographic challenge nonce. Your device signs this challenge with the private key, and the server verifies the mathematical signature using the stored public key.',
             },
           ],
         },
         {
           id: 'phishing-immunity',
-          title: 'Why Passkeys Are Immune to Phishing',
+          title: 'Why Passkeys Are Fundamentally Immune to Phishing',
           content:
-            'During authentication, the browser automatically verifies the origin domain. If an attacker lures you to "paypal-login-secure.net", your browser checks the domain against the passkey record (which is bound to "paypal.com"). The browser refuses to sign the challenge, rendering the phishing site completely useless.',
+            'The revolutionary security property of passkeys is Origin Binding. During authentication, your browser automatically queries the operating system authenticator with the exact origin URL currently loaded in the address bar.',
+          subsections: [
+            {
+              id: 'aitm-failure',
+              title: 'Neutralizing Adversary-in-the-Middle (AitM) Reverse Proxies',
+              content:
+                'In modern phishing attacks using tools like Evilginx, victims are lured to deceptive domains (such as "accounts-google-verify.com"). With traditional passwords and SMS codes, the proxy captures both and logs into the real account. With passkeys, the browser sees the domain is "accounts-google-verify.com" rather than "accounts.google.com". The browser refuses to sign the authentication challenge, completely neutralizing the attack.',
+            },
+          ],
+          callout: {
+            type: 'tip',
+            title: 'No More Password Complexity Stress',
+            text:
+              'Because passkeys use 256-bit elliptic curve cryptography (equivalent to billions of characters of random text), brute-force attacks and credential stuffing are mathematically impossible.',
+          },
+        },
+        {
+          id: 'sync-vs-hardware',
+          title: 'Synced Passkeys vs Hardware Security Keys',
+          content:
+            'Passkeys are implemented in two primary formats based on user security requirements:',
+          table: {
+            headers: ['Passkey Type', 'Storage Mechanism', 'Backup & Recovery', 'Ideal Use Case'],
+            rows: [
+              ['Synced Passkey', 'Cloud Keychain (Apple, Google, 1Password, Bitwarden)', 'Automatic encrypted sync across all user devices', 'Everyday consumer accounts, email, banking, social media.'],
+              ['Hardware Security Key (FIDO2)', 'Physical hardware dongle (YubiKey, Titan)', 'Requires enrolling backup physical key', 'High-risk accounts, sysadmins, enterprise financial signers.'],
+            ],
+          },
         },
       ],
       faqs: [
         {
           question: 'What happens if I lose my phone with my passkeys on it?',
           answer:
-            'Modern passkeys are synced end-to-end encrypted across your cloud account (Apple, Google, or your password manager). When you set up a new replacement phone, your passkeys restore automatically.',
+            'Modern passkeys are synced with end-to-end encryption across your trusted ecosystem account (Apple iCloud Keychain, Google Password Manager, or third-party password manager). When you set up a replacement device and verify your identity, your passkeys restore automatically.',
+        },
+        {
+          question: 'Can a website breach leak my passkey?',
+          answer:
+            'No. The website only stores your public key, which is mathematically useless without the private key stored inside your personal device. Even if hackers breach a service provider database, they acquire no credentials that can be reused.',
+        },
+        {
+          question: 'Do passkeys share my biometric data (fingerprint or face) with websites?',
+          answer:
+            'Never. Biometric verification occurs strictly locally on your own hardware device to unlock the private key. Websites only receive the cryptographic signature, never your fingerprint, face scan, or PIN.',
         },
       ],
       conclusion:
-        'Passkeys represent the most significant leap forward in user authentication in decades. By moving away from shared secrets and toward domain-bound cryptography, passkeys systematically neutralize major incentives driving automated credential theft.',
+        'Passkeys represent the most significant leap forward in user authentication in decades. By moving away from shared secrets and toward domain-bound cryptography, passkeys systematically neutralize the root causes of automated credential theft and phishing.',
     },
     relatedTools: ['password-strength', 'password-generator', 'cyber-hygiene'],
     relatedLearning: [
@@ -1231,14 +1356,16 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'anatomy-of-deepfake-ceo-scam',
+    publishedAt: '2026-10-02T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'anatomy-of-deepfake-ceo-scam',
     title: 'Anatomy of a Deepfake Executive Impersonation: How AI Voice & Video Clones Target Organizations',
     description:
-      'An investigative breakdown of how modern threat actors combine synthetic voice cloning with compromised calendar invites to trick corporate finance into authorizing fraudulent wires.',
+      'An investigative breakdown of modern corporate fraud: how threat actors combine Business Email Compromise (BEC), synthetic video avatars, and cloned executive audio to execute multimillion-dollar wire fraud.',
     excerpt:
-      'An investigative case study exploring how advanced threat actors utilized multi-modal deepfakes and business email compromise to orchestrate massive corporate fraud.',
+      'Explore how advanced threat actors weaponized multi-modal generative deepfakes, virtual conference meeting injection, and internal mailbox reconnaissance to orchestrate historic wire fraud campaigns.',
     category: 'Digital Forensics',
-    tags: ['Forensics', 'Deepfakes', 'Business Email Compromise', 'Case Study', 'Corporate Security'],
+    tags: ['Forensics', 'Deepfakes', 'Business Email Compromise', 'Case Study', 'Corporate Security', 'Incident Response'],
     difficulty: 'Advanced',
     author: {
       name: 'CyberAntigravity Guide',
@@ -1249,38 +1376,70 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
     status: 'published',
     access: 'free',
     keyTakeaways: [
-      'Multi-modal synthetic media (combining cloned voice and video) dramatically increases pretext credibility.',
-      'Attackers leverage prior reconnaissance from compromised corporate mailboxes to mirror authentic scheduling and terminology.',
-      'Technical security controls must be backed by non-negotiable out-of-band wire authorization protocols.',
+      'Multi-modal synthetic media (combining synchronized cloned video avatars and neural voice) bypasses human sensory fraud skepticism during remote video calls.',
+      'Attackers leverage months of silent mailbox reconnaissance to align pretexts with authentic corporate acquisitions, calendar schedules, and accounting terminology.',
+      'Relying on video confirmation alone is no longer an acceptable control for authorizing capital disbursements.',
+      'Mandatory out-of-band verification via known phone numbers and hardware cryptographic token dual-authorization neutralizes deepfake BEC.',
     ],
     content: {
       introduction:
-        'In notable corporate fraud incidents documented by security researchers, adversaries have leveraged synthesized voices and video likenesses during remote calls to trick personnel into authorizing fraudulent wire transfers.',
+        'In one of the most audacious cyber heists in modern history, a multinational engineering firm\'s Hong Kong branch lost $25 million after an employee was deceived during a video conference call where every single participant—including the Chief Financial Officer, colleagues, and external legal advisors—was an artificial intelligence-generated deepfake. This incident marked an inflection point: synthetic media has transitioned from theoretical research into weaponized criminal tradecraft. Analyzing the attack lifecycle reveals why human visual confirmation has collapsed as a security control.',
       sections: [
         {
           id: 'reconnaissance',
-          title: 'Phase 1: Deep Reconnaissance & Mailbox Compromise',
+          title: 'Phase 1: Silent Mailbox Reconnaissance & Social OSINT',
           content:
-            'The campaign did not start with video. Adversaries first compromised a mid-level manager’s mailbox using infostealer malware, silently monitoring internal communications for months to learn acquisition timelines, vendor names, and executive scheduling patterns.',
+            'The campaign did not begin with deepfake video. Months before the video call, adversaries gained access to a middle-manager\'s corporate mailbox via infostealer malware. The threat actors operated silently, setting forwarding rules and exfiltrating months of email correspondence to analyze organizational hierarchies, secret acquisition plans, vendor relationship codenames, and executive communication cadences.',
+        },
+        {
+          id: 'synthesis',
+          title: 'Phase 2: Neural Voice & Video Model Training',
+          content:
+            'Using publicly available video archives—including YouTube keynote speeches, quarterly earnings webcasts, and media interviews—the attackers synthesized real-time interactive face-swap avatars and acoustic voice clones matching senior leadership in both appearance and vocal timbre.',
         },
         {
           id: 'execution',
-          title: 'Phase 2: The Multi-Avatar Video Call',
+          title: 'Phase 3: The Multi-Avatar Video Conference Call',
           content:
-            'The employee was invited to an official Teams meeting. The attackers synthesized the voices and likenesses of senior leadership using publicly available conference keynote recordings and quarterly earnings calls.',
+            'The targeted employee initially expressed suspicion about an email requesting a confidential transfer. In response, the "CFO" invited the employee to an urgent video conference. On the call, the employee saw and heard familiar executives discussing the confidential acquisition. The attackers orchestrated conversation by queuing scripted deepfake responses and pretending to have audio connection issues whenever complex impromptu questions arose, concluding by instructing the victim to execute split wire transfers.',
+          callout: {
+            type: 'warning',
+            title: 'The Video Confirmation Fallacy',
+            text:
+              'For decades, corporate finance policies instructed staff: "If an email looks suspicious, verify via video call." In the era of real-time generative video reenactment, video calls without cryptographic verification are completely vulnerable to impersonation.',
+          },
+        },
+        {
+          id: 'countermeasures',
+          title: 'Institutional Defensive Countermeasures',
+          content:
+            'Defending organizations against synthetic executive impersonation requires strict structural controls that cannot be circumvented by visual persuasion:',
+          table: {
+            headers: ['Attack Vector', 'Synthetic Mechanism', 'Immutable Institutional Defense'],
+            rows: [
+              ['Deepfake Video Call', 'Real-time face-swap avatar in web meeting', 'Enforce mandatory multi-person out-of-band callback on pre-registered physical phones.'],
+              ['Cloned Voice Authorization', 'Neural voice clone mimicking executive urgency', 'Enforce physical hardware token approval (FIDO2) on internal financial portals.'],
+              ['Spear-Phishing Pretext', 'References authentic confidential projects', 'Never approve wire transfers based solely on unilateral executive messages.'],
+            ],
+          },
         },
       ],
       faqs: [
         {
           question: 'How can organizations prevent similar deepfake executive fraud?',
           answer:
-            'Implement mandatory multi-person out-of-band authorization for any wire transfer exceeding defined limits, requiring dual authorization using physical tokens regardless of executive requests.',
+            'Implement mandatory multi-person dual-custody authorization for all wire transfers exceeding established thresholds. Require secondary approvers to confirm details using physical FIDO2 security keys and offline phone calls to pre-registered internal directory numbers, regardless of executive urgency or video presence.',
+        },
+        {
+          question: 'Are there visual clues to spot deepfakes in video meetings?',
+          answer:
+            'Clues can include unnatural blinking rates, facial boundary blurring during rapid head movement, distorted earlobes or teeth, inconsistent lighting across facial planes, and unnatural synchronization between lip movements and speech. However, because video compression and network latency frequently mask these artifacts, procedural verification must always take precedence over visual scrutiny.',
         },
       ],
       conclusion:
-        'As synthetic media achieves photorealistic quality, corporate governance must treat all digital communications as unverified until confirmed through independent, cryptographically signed or in-person channels.',
+        'As generative synthetic media achieves photorealistic quality, organizations must adopt a zero-trust communications doctrine: treat all remote digital communications as unverified until cryptographically authenticated through independent channels.',
     },
-    relatedTools: ['cyber-hygiene', 'url-explainer'],
+    relatedTools: ['cyber-hygiene', 'url-explainer', 'security-headers'],
     relatedLearning: [
       {
         title: 'Emerging Threats & AI Security',
@@ -1291,6 +1450,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'practical-browser-hardening',
+    publishedAt: '2026-10-10T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'practical-browser-hardening',
     title: 'Practical Browser Hardening: DNS-over-HTTPS, Fingerprint Defense, and Extension Audits',
     description:
@@ -1298,7 +1459,7 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
     excerpt:
       'Your browser is a central gateway to the internet and an important attack surface. Harden your browser configurations to maximize privacy and minimize malware risks.',
     category: 'Privacy',
-    tags: ['Browser Hardening', 'Privacy', 'DNS-over-HTTPS', 'Extensions', 'Fingerprinting'],
+    tags: ['Browser Hardening', 'Privacy', 'DNS-over-HTTPS', 'Extensions', 'Fingerprinting', 'Network Defense'],
     difficulty: 'Intermediate',
     author: {
       name: 'CyberAntigravity Guide',
@@ -1309,25 +1470,60 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
     status: 'published',
     access: 'free',
     keyTakeaways: [
-      'DNS-over-HTTPS (DoH) prevents local network eavesdroppers from cataloging the domain names you visit.',
-      'Third-party extensions present significant supply-chain risks; minimize installed add-ons to essential tools.',
-      'Isolate sensitive banking workflows in clean, extension-free browser profiles.',
+      'DNS-over-HTTPS (DoH) encrypts domain name resolution, preventing local network eavesdroppers and ISPs from tracking websites you visit.',
+      'Third-party extensions execute code with expansive permissions; minimize add-ons and audit installed tools quarterly.',
+      'Isolate sensitive financial workflows into clean, dedicated browser profiles without third-party extensions.',
+      'Disable third-party cookies and enable strict tracking protection to neutralize cross-site advertising graph trackers.',
     ],
     content: {
       introduction:
-        'Web browsers execute thousands of lines of untrusted JavaScript code every minute you surf the web. Without proper hardening, browser telemetry, tracking scripts, and malicious extensions can track your activity and expose your sessions.',
+        'Modern web browsers are among the most complex software applications ever engineered, executing millions of lines of untrusted third-party code every day. By default, most browsers prioritize advertising analytics and convenience over privacy and security. Hardening your browser configuration closes covert telemetry channels, blocks drive-by tracking scripts, and protects your authenticated session tokens from malicious extension tampering.',
       sections: [
         {
           id: 'dns-security',
-          title: 'Configuring Encrypted DNS (DoH)',
+          title: '1. Encrypting Domain Queries with DNS-over-HTTPS (DoH)',
           content:
-            'Enable DNS-over-HTTPS in your browser security settings (pointing to Cloudflare, Quad9, or NextDNS) to encrypt hostname lookups and protect your browsing history from local Wi-Fi monitoring.',
+            'Traditional DNS queries travel in cleartext over UDP port 53. Anyone on your local Wi-Fi network, your router administrator, and your Internet Service Provider can log every website domain you contact, even if the connection itself uses HTTPS.',
+          subsections: [
+            {
+              id: 'how-doh-works',
+              title: 'How DoH Encrypts DNS Resolution',
+              content:
+                'DNS-over-HTTPS wraps domain lookup requests inside standard encrypted HTTPS traffic over port 443. This prevents network eavesdroppers from cataloging your online destinations or injecting malicious spoofed DNS responses.',
+            },
+            {
+              id: 'doh-configuration',
+              title: 'Recommended Privacy-Focused Resolvers',
+              content:
+                'In your browser settings (Privacy & Security -> Secure DNS), select a trusted non-logging resolver such as Quad9 (which filters known malware domains) or Cloudflare (1.1.1.1).',
+            },
+          ],
         },
         {
           id: 'extension-defense',
-          title: 'Extension Hygiene & Supply Chain Defense',
+          title: '2. Extension Hygiene & Supply Chain Vulnerabilities',
           content:
-            'Browser extensions can read form inputs, cookies, and website contents. Avoid installing extensions from unknown developers, and audit your installed extensions every quarter.',
+            'Browser extensions represent one of the most exploited consumer attack surfaces. Extensions often request broad permissions, such as "Read and change all your data on all websites," granting them unrestricted access to passwords, form inputs, session cookies, and financial details.',
+          subsections: [
+            {
+              id: 'extension-takeover',
+              title: 'The Extension Acquisition Threat Vector',
+              content:
+                'Threat actors frequently purchase abandoned, popular browser extensions from original hobbyist developers. Once the transaction completes, the new owners push a stealthy background update containing malicious tracking code or infostealer scripts to thousands of existing installations.',
+            },
+            {
+              id: 'extension-rules',
+              title: 'Three Golden Rules of Extension Hygiene',
+              content:
+                '1. Limit installed extensions to no more than 3-4 thoroughly vetted tools (e.g. uBlock Origin and a reputable password manager). 2. Restrict site access permissions from "On all sites" to "On click". 3. Audit and uninstall dormant extensions every three months.',
+            },
+          ],
+        },
+        {
+          id: 'profile-isolation',
+          title: '3. Browser Profile Compartmentalization',
+          content:
+            'Never conduct online banking, tax filing, or corporate administration inside the same browser profile you use for casual web surfing and social media. Create distinct browser profiles: a "Vault" profile with zero non-essential extensions for banking and confidential tasks, and a "General" profile for daily browsing.',
         },
       ],
       faqs: [
@@ -1336,9 +1532,14 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
           answer:
             'No. Private browsing merely prevents your local computer from saving history, cookies, and cache files after closing the window. It does not hide your IP address, browser fingerprint, or traffic from your ISP, employer, or the websites you visit.',
         },
+        {
+          question: 'What is browser fingerprinting and how can I defend against it?',
+          answer:
+            'Browser fingerprinting combines your screen resolution, graphics card renderer (WebGL), installed fonts, browser version, and audio buffer characteristics to identify your device without cookies. Using privacy-respecting browsers (such as Firefox with Enhanced Tracking Protection or Brave) provides built-in fingerprint randomization.',
+        },
       ],
       conclusion:
-        'Spending ten minutes auditing your browser settings, enabling encrypted DNS, and pruning unnecessary extensions delivers an immediate, substantial upgrade to your everyday digital privacy.',
+        'Spending ten minutes auditing your browser settings, enabling encrypted DNS, and pruning unnecessary extensions delivers an immediate, substantial upgrade to your everyday digital privacy and defensive security.',
     },
     relatedTools: ['security-headers', 'url-explainer', 'cyber-hygiene'],
     relatedLearning: [
@@ -1351,6 +1552,8 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
   },
   {
     id: 'modern-phishing-evasion-tactics',
+    publishedAt: '2026-10-18T00:00:00Z',
+    updatedAt: '2026-10-26T00:00:00Z',
     slug: 'modern-phishing-evasion-tactics',
     title: 'How Modern Phishing Kits Evade Automated Scanners Using Captchas & Cloaking',
     description:
@@ -1358,7 +1561,7 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
     excerpt:
       'Threat kits now employ sophisticated cloaking techniques to prevent automated security crawlers from identifying malicious landing pages.',
     category: 'SOC & Security Operations',
-    tags: ['Phishing Kits', 'Cloaking', 'Threat Intelligence', 'SOC Analysis', 'Evasion'],
+    tags: ['Phishing Kits', 'Cloaking', 'Threat Intelligence', 'SOC Analysis', 'Evasion', 'Adversary Tactics'],
     difficulty: 'Advanced',
     author: {
       name: 'CyberAntigravity Guide',
@@ -1369,36 +1572,76 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
     status: 'published',
     access: 'free',
     keyTakeaways: [
-      'Phishing kits use IP geofencing to show benign pages to security vendor crawlers while serving phishing payloads only to target victims.',
-      'CAPTCHA challenges are deployed to prevent automated threat scanning engines from inspecting credential input forms.',
-      'Defensive response requires behavioral telemetry and domain-bound authentication protocols rather than static URL reputation alone.',
+      'Modern Phishing-as-a-Service (PhaaS) kits deploy IP geofencing to show benign pages to security vendors while serving payloads only to target victims.',
+      'CAPTCHA challenges are placed in front of phishing lures specifically to block automated security crawler inspection.',
+      'Adversary-in-the-Middle (AitM) reverse proxies bypass traditional multi-factor authentication (MFA) codes in real time.',
+      'Defensive response requires behavioral telemetry, domain-bound passkeys, and active threat feed integration rather than static URL reputation alone.',
     ],
     content: {
       introduction:
-        'Phishing has transitioned from basic static HTML templates to dynamic, evasive web applications. Modern phishing-as-a-service (PhaaS) platforms integrate real-time reverse proxies and defensive cloaking to evade security scanners.',
+        'Phishing has transitioned from crude, static HTML templates hosted on hacked web servers into highly dynamic, evasive web applications. Modern phishing-as-a-service (PhaaS) platforms—such as EvilProxy, Tycoon, and Caffeine—integrate sophisticated cloaking mechanisms engineered specifically to defeat automated security crawlers, sandbox scanners, and URL reputation blocklists.',
       sections: [
         {
           id: 'cloaking-methods',
-          title: 'IP Geofencing & User-Agent Fingerprinting',
+          title: '1. Dynamic Cloaking & IP Geofencing',
           content:
-            'When a crawler from a security vendor (e.g. VirusTotal, Google Safe Browsing, Microsoft) visits a malicious URL, the server detects the cloud ASN and renders a benign placeholder page (such as a 404 or an innocent marketing blog). Only authentic mobile or residential IP ranges are served the credential-harvesting form.',
+            'When an automated security crawler (from Google Safe Browsing, Microsoft Defender, or VirusTotal) requests a suspicious link, the threat server evaluates the request against known Autonomous System Numbers (ASNs) owned by cloud providers and security companies.',
+          subsections: [
+            {
+              id: 'asn-filtering',
+              title: 'ASN Blacklisting & Cloud Filtering',
+              content:
+                'If the inbound IP originates from an Amazon AWS, Microsoft Azure, Google Cloud, or cybersecurity vendor datacenter, the server serves a benign placeholder page—such as a 404 Not Found, a generic marketing blog, or a blank page. The phishing lure is only revealed when the request arrives from a consumer residential ISP or cellular carrier.',
+            },
+            {
+              id: 'user-agent-behavior',
+              title: 'Headless Browser & Canvas Probing',
+              content:
+                'Kits execute client-side JavaScript to inspect navigator.webdriver flags, screen color depth, WebGL extensions, and mouse movement dynamics. Automated headless browser scanners fail these checks and are redirected away before inspecting the credential theft form.',
+            },
+          ],
+        },
+        {
+          id: 'captcha-evasion',
+          title: '2. Turnstile & CAPTCHA Scanner Gating',
+          content:
+            'In an ironic subversion of security tools, threat actors now embed legitimate CAPTCHA challenges (like Cloudflare Turnstile or hCaptcha) on the initial landing page of phishing kits. Because automated security scanners cannot solve the challenge without human intervention, the scanner never sees the downstream credential harvesting form or malicious payload, preventing automated blocklisting.',
         },
         {
           id: 'aitm-proxies',
-          title: 'Adversary-in-the-Middle (AitM) Proxy Frameworks',
+          title: '3. Adversary-in-the-Middle (AitM) Session Interception',
           content:
-            'Tools like Evilginx sit between the victim and the legitimate service, proxying requests in real time. When the victim enters their password and MFA code, the proxy captures the authenticated session cookie and grants the attacker instant access.',
+            'Advanced frameworks like Evilginx act as real-time reverse proxies sitting between the victim and the legitimate service. As the victim enters their username, password, and SMS/TOTP one-time passcode, the proxy relays them to the authentic service, captures the validated session cookie, and hands it to the attacker, completely bypassing non-cryptographic MFA.',
+        },
+        {
+          id: 'defensive-response',
+          title: '4. Modern Defensive Countermeasures',
+          content:
+            'Organizations and individuals cannot rely exclusively on static URL blocklists when confronting dynamic evasions:',
+          table: {
+            headers: ['Evasion Tactic', 'How the Kit Evades Detection', 'Defensive Neutralization Strategy'],
+            rows: [
+              ['IP Datacenter Cloaking', 'Hides phishing form from security crawlers', 'Endpoint DNS logging and client-side behavioral analysis.'],
+              ['CAPTCHA Protection Gating', 'Blocks automated URL scanners', 'Domain reputation scoring and URL entropy inspection.'],
+              ['AitM Session Theft', 'Proxies MFA codes in real time', 'Deploy cryptographic FIDO2 passkeys (WebAuthn), which bind to the browser address bar.'],
+            ],
+          },
         },
       ],
       faqs: [
         {
           question: 'How do passkeys protect against Adversary-in-the-Middle reverse proxies?',
           answer:
-            'Because WebAuthn passkey challenges are mathematically bound to the browser address bar domain, the browser will not sign authentication requests for the proxy server domain, completely breaking the AitM attack loop.',
+            'Because WebAuthn passkey challenges are mathematically bound to the domain in the browser address bar. The browser verifies the domain with the operating system authenticator; if an attacker proxies the site on a lookalike domain, the browser refuses to sign the authentication request, completely breaking the AitM attack loop.',
+        },
+        {
+          question: 'Why do security filters fail to block newly registered phishing links immediately?',
+          answer:
+            'Because modern threat kits use newly registered domains (NRDs) that have no prior negative reputation. By combining fast-flux DNS, CAPTCHA gating, and cloud ASN cloaking, the phishing kit operates for hours before automated crawlers can observe the malicious payload.',
         },
       ],
       conclusion:
-        'As automated phishing evasions become more sophisticated, static blocklists and reputation feeds alone are insufficient. Organizations must deploy cryptographic, phishing-resistant authentication methods like FIDO2 passkeys.',
+        'As automated phishing evasions become more sophisticated, static blocklists and reputation feeds alone are insufficient. Organizations and users must deploy cryptographic, phishing-resistant authentication methods like FIDO2 passkeys to permanently neutralize credential-harvesting threats.',
     },
     relatedTools: ['url-explainer', 'security-headers', 'password-reuse'],
     relatedLearning: [
@@ -1408,7 +1651,7 @@ const RAW_BLOG_ARTICLES: Omit<BlogPost, 'readingTime' | 'readTime'>[] = [
       },
     ],
     relatedArticles: ['passkeys-vs-passwords-guide', 'what-is-phishing', 'fake-website-warning-signs'],
-  },
+  }
 ];
 export const BLOG_ARTICLES: BlogPost[] = RAW_BLOG_ARTICLES.map((article) => {
   const rt = calculateArticleReadingTime(article.content, article.excerpt);

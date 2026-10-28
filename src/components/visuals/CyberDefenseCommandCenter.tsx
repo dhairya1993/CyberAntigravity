@@ -625,7 +625,7 @@ export const CyberDefenseCommandCenter: React.FC = () => {
                   ? 'bg-cyan-950 border-cyan-400 text-white shadow-2xl shadow-cyan-500/40 scale-105'
                   : 'bg-slate-900/95 border-cyan-500/60 text-cyan-200 hover:border-cyan-300 hover:text-white'
               }`}
-              aria-label="Cyber Defense — Core Defense Node"
+              aria-label="DEFENSE ACTIVE CYBER DEFENSE — Core Defense Node"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-cyan-300 group-hover:scale-110 transition-transform" />

@@ -13,6 +13,19 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: '/manifest.webmanifest',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+          {
+            key: 'Content-Type',
+            value: 'application/manifest+json; charset=utf-8',
+          },
+        ],
+      },
+      {
         source: '/brand/:path*',
         headers: [
           {

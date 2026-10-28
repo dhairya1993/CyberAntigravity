@@ -59,7 +59,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
               <>
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                  <span>{article.publishedAt}</span>
+                  <time dateTime={article.publishedAt}>{article.publishedAt.slice(0, 10)}</time>
                 </span>
                 <span>•</span>
               </>

@@ -145,7 +145,7 @@ export const AttackDefensePath: React.FC = () => {
               type="button"
               onClick={handleReset}
               className="px-3.5 py-2 rounded-xl text-xs font-mono text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition-colors flex items-center gap-1.5 cursor-pointer cyber-focus-ring"
-              aria-label="Reset attack simulation"
+              aria-label="Reset simulation"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset</span>
@@ -234,7 +234,7 @@ export const AttackDefensePath: React.FC = () => {
                       ? 'bg-rose-950/30 border-rose-900/50 text-rose-200 opacity-90'
                       : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-rose-900/80'
                   }`}
-                  aria-label={`${s.threatTitle} (Step 0${s.step})`}
+                  aria-label={`${s.threatTitle} (Step 0${s.step}) - ${s.threatSubtitle}`}
                 >
                   <div className="flex items-center gap-3">
                     <div
@@ -320,7 +320,7 @@ export const AttackDefensePath: React.FC = () => {
                       ? 'bg-cyan-950/30 border-cyan-900/50 text-cyan-200 opacity-90'
                       : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-cyan-900/80'
                   }`}
-                  aria-label={`${s.defenseTitle} (Step 0${s.step})`}
+                  aria-label={`${s.defenseTitle} (Step 0${s.step}) - ${s.defenseSubtitle}`}
                 >
                   <div className="flex items-center gap-3">
                     <div

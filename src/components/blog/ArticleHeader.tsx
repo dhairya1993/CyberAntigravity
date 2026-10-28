@@ -60,11 +60,11 @@ export const ArticleHeader: React.FC<ArticleHeaderProps> = ({ article }) => {
             <>
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Published: {article.publishedAt}</span>
+                <time dateTime={article.publishedAt}>Published: {article.publishedAt.slice(0, 10)}</time>
               </span>
               {article.updatedAt && (
                 <span className="text-slate-400 hidden sm:inline">
-                  (Updated: {article.updatedAt})
+                  (Updated: <time dateTime={article.updatedAt}>{article.updatedAt.slice(0, 10)}</time>)
                 </span>
               )}
               <span>•</span>

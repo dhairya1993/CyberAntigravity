@@ -128,7 +128,7 @@ export const ScamChecklist: React.FC = () => {
                 type="button"
                 onClick={handlePrint}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-xs font-semibold text-slate-200 hover:text-white hover:bg-slate-700 transition-colors"
-                aria-label="Print or save checklist"
+                aria-label="Print checklist"
               >
                 <Printer className="w-3.5 h-3.5 text-slate-400" />
                 <span>Print</span>

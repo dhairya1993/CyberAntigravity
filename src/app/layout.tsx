@@ -86,6 +86,7 @@ export const metadata: Metadata = {
     google: Array.from(
       new Set(
         [
+          "IKaJFtnNrGSwgqBzfoq1aFJt0bOoeVA_2gxtOeQpGsg",
           "grV4bkvey-cJQmGo4N9UXwe1prrjD2tFOK2eGUcVogQ",
           process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
           "googlef3d16d8655846e9a",

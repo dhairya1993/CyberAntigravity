@@ -2,6 +2,8 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { QuickDiscoverySection } from '@/components/sections/QuickDiscoverySection';
+import { DailyChallengeSection } from '@/components/sections/DailyChallengeSection';
 import dynamic from 'next/dynamic';
 // AttackPathSection dynamically imported below
 import { DigitalDefenseSection } from '@/components/sections/DigitalDefenseSection';
@@ -150,6 +152,12 @@ export default function Home() {
       <main className="flex-1">
         {/* 1. Hero Section & Cyber Defense Command Center */}
         <HeroSection />
+
+        {/* 1.5. Interactive Platform Quick Discovery Hub */}
+        <QuickDiscoverySection />
+
+        {/* 1.8. Functional Daily Cyber Challenge */}
+        <DailyChallengeSection />
 
         {/* 2. SEE A THREAT — Section 1: Cyber Threat Gallery (6 Custom Interactive Vector Cards) */}
         <ThreatLandscapeSection />

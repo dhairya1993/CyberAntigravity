@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Lock,
   Globe2,
+  Flame,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -79,7 +80,7 @@ export const HeroSection: React.FC = () => {
             </p>
 
             {/* Call To Actions */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 flex-wrap">
               <Button
                 asLink
                 href="/learn"
@@ -94,20 +95,31 @@ export const HeroSection: React.FC = () => {
 
               <Button
                 asLink
+                href="#daily-challenge"
+                variant="secondary"
+                size="lg"
+                icon={<Flame className="w-5 h-5 text-amber-400" />}
+                className="w-full sm:w-auto border-amber-500/40 bg-amber-950/30 text-amber-200 hover:bg-amber-950/60"
+              >
+                Daily Challenge
+              </Button>
+
+              <Button
+                asLink
                 href="/cyber-safety"
                 variant="outline"
                 size="lg"
                 icon={<ShieldCheck className="w-5 h-5" />}
                 className="w-full sm:w-auto"
               >
-                Explore Cyber Safety
+                Explore Safety
               </Button>
 
               <Link
                 href="/cyber-iq"
-                className="text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1.5 px-3 py-2"
+                className="text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1.5 px-2 py-2"
               >
-                Test Your Cyber IQ →
+                Cyber IQ Arena →
               </Link>
             </div>
 

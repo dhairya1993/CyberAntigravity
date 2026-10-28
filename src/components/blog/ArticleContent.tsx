@@ -151,7 +151,7 @@ export const ArticleContent: React.FC<ArticleContentProps> = ({ article }) => {
       {/* Conclusion */}
       {content.conclusion && (
         <div className="pt-6 border-t border-slate-800 space-y-2">
-          <h3 className="text-xl font-bold text-white tracking-tight">Summary & Next Steps</h3>
+          <h2 className="text-xl font-bold text-white tracking-tight">Summary & Next Steps</h2>
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
             {content.conclusion}
           </p>

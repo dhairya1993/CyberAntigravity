@@ -43,7 +43,7 @@ export const ArticleCallout: React.FC<ArticleCalloutProps> = ({ type, title, tex
     <div className={`p-4 sm:p-5 rounded-xl border ${config.border} ${config.bg} flex items-start gap-3.5 my-6`}>
       {config.icon}
       <div className="space-y-1 text-xs sm:text-sm">
-        <h4 className={`font-bold ${config.titleColor} tracking-wide`}>{title}</h4>
+        <h3 className={`font-bold ${config.titleColor} tracking-wide`}>{title}</h3>
         <p className={`${config.text} leading-relaxed`}>{text}</p>
       </div>
     </div>

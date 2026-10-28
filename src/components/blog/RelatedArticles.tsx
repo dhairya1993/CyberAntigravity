@@ -42,9 +42,9 @@ export const RelatedArticles: React.FC<RelatedArticlesProps> = ({ relatedSlugs, 
                 <span>{article.readingTime}</span>
               </span>
             </div>
-            <h4 className="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2 leading-snug">
+            <span className="block text-xs font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2 leading-snug">
               {article.title}
-            </h4>
+            </span>
           </Link>
         ))}
       </div>

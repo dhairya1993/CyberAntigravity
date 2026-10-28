@@ -28,9 +28,9 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = ({ currentSlu
           <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1 group-hover:text-cyan-400">
             <ArrowLeft className="w-3.5 h-3.5" /> Previous Guide
           </span>
-          <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 line-clamp-1 transition-colors">
+          <span className="block text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 line-clamp-1 transition-colors">
             {prevArticle.title}
-          </h4>
+          </span>
         </Link>
       ) : (
         <div />
@@ -44,9 +44,9 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = ({ currentSlu
           <span className="text-[11px] font-mono text-slate-400 flex items-center justify-end gap-1 group-hover:text-cyan-400">
             Next Guide <ArrowRight className="w-3.5 h-3.5" />
           </span>
-          <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 line-clamp-1 transition-colors">
+          <span className="block text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 line-clamp-1 transition-colors">
             {nextArticle.title}
-          </h4>
+          </span>
         </Link>
       )}
     </div>

@@ -183,7 +183,7 @@ export const PasswordGeneratorTool: React.FC = () => {
 
         {/* Output Box */}
         <div className="p-4 sm:p-5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-          <div className="font-mono text-base sm:text-xl text-white break-all tracking-wide select-all flex-1 py-1">
+          <div className="font-mono text-base sm:text-xl text-white break-all tracking-wide select-all flex-1 py-1" suppressHydrationWarning>
             {generatedResult || 'Generating...'}
           </div>
 

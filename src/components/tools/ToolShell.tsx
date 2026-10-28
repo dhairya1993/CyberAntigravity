@@ -196,9 +196,9 @@ export const ToolShell: React.FC<ToolShellProps> = ({ tool, children }) => {
                   <span className="text-[11px] font-mono text-purple-400 uppercase">
                     Learning Track
                   </span>
-                  <h4 className="text-sm font-bold text-white mt-1">
+                  <h3 className="text-sm font-bold text-white mt-1">
                     {tool.relatedLearningLink.title}
-                  </h4>
+                  </h3>
                 </div>
                 <Link
                   href={tool.relatedLearningLink.href}
@@ -222,9 +222,9 @@ export const ToolShell: React.FC<ToolShellProps> = ({ tool, children }) => {
                   <span className="text-[11px] font-mono text-cyan-400 uppercase">
                     CyberAntigravity Guide
                   </span>
-                  <h4 className="text-sm font-bold text-white mt-1">
+                  <h3 className="text-sm font-bold text-white mt-1">
                     {tool.relatedArticleLink.title}
-                  </h4>
+                  </h3>
                 </div>
                 <Link
                   href={tool.relatedArticleLink.href}

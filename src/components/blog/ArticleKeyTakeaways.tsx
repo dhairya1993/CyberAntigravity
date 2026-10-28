@@ -12,9 +12,9 @@ export const ArticleKeyTakeaways: React.FC<ArticleKeyTakeawaysProps> = ({ takeaw
     <div className="rounded-2xl border border-cyan-500/30 bg-slate-900/90 p-5 sm:p-7 shadow-sm shadow-cyan-500/5 my-8 space-y-4">
       <div className="flex items-center gap-2">
         <ShieldCheck className="w-5 h-5 text-cyan-400" />
-        <h3 className="text-sm sm:text-base font-mono font-bold text-white uppercase tracking-wider">
+        <h2 className="text-sm sm:text-base font-mono font-bold text-white uppercase tracking-wider">
           Key Defensive Takeaways
-        </h3>
+        </h2>
       </div>
 
       <ul className="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">

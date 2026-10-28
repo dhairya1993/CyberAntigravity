@@ -83,7 +83,15 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "googlef3d16d8655846e9a",
+    google: Array.from(
+      new Set(
+        [
+          "grV4bkvey-cJQmGo4N9UXwe1prrjD2tFOK2eGUcVogQ",
+          process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+          "googlef3d16d8655846e9a",
+        ].filter(Boolean) as string[]
+      )
+    ),
     yandex: "yandex-verification-token",
   },
   icons: {

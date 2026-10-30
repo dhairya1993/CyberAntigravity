@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useSyncExternalStore } from 'react';
+import Link from 'next/link';
 import {
   ShieldCheck,
   CheckCircle2,
@@ -13,6 +14,7 @@ import {
   Terminal,
   Layers,
   Lock,
+  Award,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import {
@@ -547,9 +549,13 @@ export const SuspiciousUrlLab: React.FC = () => {
                         <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
                       </button>
                     ) : (
-                      <span className="text-xs font-mono text-cyan-300 font-bold">
-                        Completed All 6 Forensic Cases!
-                      </span>
+                      <Link
+                        href="/learn/progress#forensic-badges"
+                        className="px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-colors shadow-md shadow-emerald-500/20"
+                      >
+                        <Award className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>Claim Forensic Badge</span>
+                      </Link>
                     )}
                   </div>
                 </div>

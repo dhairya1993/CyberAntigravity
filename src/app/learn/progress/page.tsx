@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { StudentProgressDashboard } from '@/components/gamification/StudentProgressDashboard';
+import { ForensicCompletionBadges } from '@/components/gamification/ForensicCompletionBadges';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
@@ -67,7 +68,8 @@ export default function LearnProgressPage() {
       <Navbar />
 
       <main className="flex-1 py-10 sm:py-16">
-        <div className="cyber-container">
+        <div className="cyber-container space-y-12">
+          <ForensicCompletionBadges />
           <StudentProgressDashboard />
         </div>
       </main>

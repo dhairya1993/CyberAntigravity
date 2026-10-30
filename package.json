@@ -7,7 +7,7 @@
     "build": "next build && node scripts/fix-gtm-placement.mjs",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --test tests/dailyChallenge.test.mjs tests/phishingDetective.test.mjs tests/suspiciousUrlLab.test.mjs"
+    "test": "node --experimental-strip-types --test tests/dailyChallenge.test.mjs tests/phishingDetective.test.mjs tests/suspiciousUrlLab.test.mjs tests/passwordSimulator.test.mjs tests/forensicBadges.test.mjs"
   },
   "dependencies": {
     "@neon/config": "^1.8.6",

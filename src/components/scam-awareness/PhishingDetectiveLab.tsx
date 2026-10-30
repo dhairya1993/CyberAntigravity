@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useSyncExternalStore } from 'react';
+import Link from 'next/link';
 import {
   ShieldAlert,
   ShieldCheck,
@@ -533,9 +534,17 @@ export const PhishingDetectiveLab: React.FC = () => {
                       <span>Next Case</span>
                       <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
                     </button>
+                  ) : isLabFinished ? (
+                    <Link
+                      href="/learn/progress#forensic-badges"
+                      className="px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-colors shadow-md shadow-emerald-500/20"
+                    >
+                      <Award className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span>Claim Forensic Badge</span>
+                    </Link>
                   ) : (
                     <span className="text-xs font-mono text-cyan-300 font-bold">
-                      {isLabFinished ? 'All Cases Completed!' : 'Last Case in Lab'}
+                      Last Case in Lab
                     </span>
                   )}
                 </div>

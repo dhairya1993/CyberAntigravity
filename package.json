@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/fix-gtm-placement.js",
+    "build": "next build && node scripts/fix-gtm-placement.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --experimental-strip-types --test tests/dailyChallenge.test.mjs"
   },
   "dependencies": {
     "@neon/config": "^1.8.6",

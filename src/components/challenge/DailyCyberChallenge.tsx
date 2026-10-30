@@ -54,6 +54,19 @@ export const DailyCyberChallenge: React.FC = () => {
     setLocalSelection(id);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    if (isSubmitted) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      const nextIndex = (index + 1) % challenge.options.length;
+      handleSelectOption(challenge.options[nextIndex].id);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const prevIndex = (index - 1 + challenge.options.length) % challenge.options.length;
+      handleSelectOption(challenge.options[prevIndex].id);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedOptionId || isSubmitted) return;
@@ -105,7 +118,7 @@ export const DailyCyberChallenge: React.FC = () => {
           title="Daily Challenge Streak (stored locally in browser)"
           suppressHydrationWarning
         >
-          <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" aria-hidden="true" />
+          <Flame className="w-3.5 h-3.5 text-amber-400 motion-safe:animate-pulse" aria-hidden="true" />
           <span>
             {isMounted
               ? streakCount > 0
@@ -138,7 +151,7 @@ export const DailyCyberChallenge: React.FC = () => {
           <fieldset className="space-y-3" disabled={isSubmitted}>
             <legend className="sr-only">Answer Options</legend>
             <div className="grid grid-cols-1 gap-3" role="radiogroup" aria-label="Challenge answers">
-              {challenge.options.map((option) => {
+              {challenge.options.map((option, index) => {
                 const isSelected = selectedOptionId === option.id;
                 let optionStyle =
                   'border-slate-800/80 bg-slate-950/60 hover:border-slate-700 hover:bg-slate-950 text-slate-300';
@@ -161,6 +174,7 @@ export const DailyCyberChallenge: React.FC = () => {
                     key={option.id}
                     type="button"
                     onClick={() => handleSelectOption(option.id)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
                     className={`w-full p-4 rounded-xl border text-left transition-all flex items-start gap-3.5 cyber-focus-ring ${optionStyle}`}
                     role="radio"
                     aria-checked={isSelected}
@@ -225,6 +239,8 @@ export const DailyCyberChallenge: React.FC = () => {
         {/* Immediate Detailed Feedback Panel */}
         {isSubmitted && chosenOption && (
           <div
+            role="status"
+            aria-live="polite"
             className={`mt-6 p-5 sm:p-6 rounded-xl border space-y-4 animate-in fade-in duration-300 ${
               isCorrectAnswer
                 ? 'border-emerald-500/40 bg-emerald-950/20'

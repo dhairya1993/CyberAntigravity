@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
 
 function processHtmlFile(filePath) {
   let content = fs.readFileSync(filePath, 'utf8');
@@ -17,9 +17,7 @@ function processHtmlFile(filePath) {
   const scriptMatch = content.match(gtmScriptRegex);
   if (scriptMatch) {
     const fullScript = scriptMatch[0];
-    // Remove it from its current position
     content = content.replace(fullScript, '');
-    // Insert it immediately after <head>
     content = content.replace('<head>', `<head>${fullScript}`);
     changed = true;
   }

@@ -14,9 +14,9 @@ export interface DailyChallengeStorageState {
   history: Record<string, DailyChallengeSubmission>;
 }
 
-const STORAGE_KEY = 'cyberantigravity_daily_challenge_v1';
+export const STORAGE_KEY = 'cyberantigravity_daily_challenge_v1';
 
-const DEFAULT_STATE: DailyChallengeStorageState = {
+export const DEFAULT_STATE: DailyChallengeStorageState = {
   version: 1,
   currentStreak: 0,
   longestStreak: 0,
@@ -33,7 +33,7 @@ let cachedState: DailyChallengeStorageState = DEFAULT_STATE;
 /**
  * Checks whether browser localStorage is accessible without throwing.
  */
-function isLocalStorageAvailable(): boolean {
+export function isLocalStorageAvailable(): boolean {
   if (typeof window === 'undefined') return false;
   try {
     const testKey = '__storage_test__';
@@ -43,6 +43,33 @@ function isLocalStorageAvailable(): boolean {
   } catch {
     return false;
   }
+}
+
+export function sanitizeNonNegativeInt(val: unknown, fallback: number = 0): number {
+  return typeof val === 'number' && Number.isFinite(val) && val >= 0 ? Math.floor(val) : fallback;
+}
+
+export function sanitizeHistory(val: unknown): Record<string, DailyChallengeSubmission> {
+  if (!val || typeof val !== 'object' || Array.isArray(val)) return {};
+  const cleaned: Record<string, DailyChallengeSubmission> = {};
+  for (const [dateKey, sub] of Object.entries(val)) {
+    if (sub && typeof sub === 'object' && !Array.isArray(sub)) {
+      const s = sub as Partial<DailyChallengeSubmission>;
+      if (
+        typeof s.questionId === 'string' &&
+        (s.selectedOptionId === 'A' || s.selectedOptionId === 'B' || s.selectedOptionId === 'C' || s.selectedOptionId === 'D') &&
+        typeof s.isCorrect === 'boolean'
+      ) {
+        cleaned[dateKey] = {
+          questionId: s.questionId,
+          selectedOptionId: s.selectedOptionId,
+          isCorrect: s.isCorrect,
+          timestamp: typeof s.timestamp === 'number' && Number.isFinite(s.timestamp) ? s.timestamp : Date.now(),
+        };
+      }
+    }
+  }
+  return cleaned;
 }
 
 /**
@@ -58,14 +85,15 @@ export function loadDailyChallengeState(): DailyChallengeStorageState {
     if (!raw) return { ...DEFAULT_STATE };
 
     const parsed = JSON.parse(raw);
-    if (parsed && typeof parsed === 'object' && parsed.history) {
+    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+      const history = sanitizeHistory(parsed.history);
       return {
-        version: parsed.version || 1,
-        currentStreak: typeof parsed.currentStreak === 'number' ? parsed.currentStreak : 0,
-        longestStreak: typeof parsed.longestStreak === 'number' ? parsed.longestStreak : 0,
-        totalCompleted: typeof parsed.totalCompleted === 'number' ? parsed.totalCompleted : 0,
+        version: sanitizeNonNegativeInt(parsed.version, 1),
+        currentStreak: sanitizeNonNegativeInt(parsed.currentStreak, 0),
+        longestStreak: sanitizeNonNegativeInt(parsed.longestStreak, 0),
+        totalCompleted: sanitizeNonNegativeInt(parsed.totalCompleted, 0),
         lastCompletedDate: typeof parsed.lastCompletedDate === 'string' ? parsed.lastCompletedDate : null,
-        history: typeof parsed.history === 'object' ? parsed.history : {},
+        history,
       };
     }
     return { ...DEFAULT_STATE };
@@ -118,7 +146,7 @@ export function getDailyChallengeServerSnapshot(): DailyChallengeStorageState {
 /**
  * Calculates new streak given previous last completed date and today's date.
  */
-function calculateNewStreak(
+export function calculateNewStreak(
   lastDateStr: string | null,
   todayStr: string,
   currentStreak: number
@@ -168,7 +196,7 @@ export function recordChallengeSubmission(
 
   const newStreak = isCorrect
     ? calculateNewStreak(state.lastCompletedDate, dateStr, state.currentStreak)
-    : state.currentStreak;
+    : 0;
 
   const newLongest = Math.max(state.longestStreak, newStreak);
 

@@ -331,14 +331,15 @@ export function getDailyChallengeForDate(date: Date = new Date()): {
   dateString: string;
   dayNumber: number;
 } {
-  const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(date.getUTCDate()).padStart(2, '0');
+  const validDate = date instanceof Date && !isNaN(date.getTime()) ? date : new Date();
+  const year = validDate.getUTCFullYear();
+  const month = String(validDate.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(validDate.getUTCDate()).padStart(2, '0');
   const dateString = `${year}-${month}-${day}`;
 
   // Epoch anchor: 2026-01-01
   const anchorTime = Date.UTC(2026, 0, 1);
-  const currentTime = Date.UTC(year, date.getUTCMonth(), date.getUTCDate());
+  const currentTime = Date.UTC(year, validDate.getUTCMonth(), validDate.getUTCDate());
   const diffDays = Math.max(0, Math.floor((currentTime - anchorTime) / (1000 * 60 * 60 * 24)));
 
   const questionIndex = diffDays % DAILY_CHALLENGES.length;

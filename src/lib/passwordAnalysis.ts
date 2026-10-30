@@ -230,7 +230,8 @@ export function formatCrackDuration(totalGuesses: bigint, guessesPerSec: number)
  * Pure client-side password security analysis.
  */
 export function analyzePassword(password: string): PasswordAnalysisResult {
-  const length = password.length;
+  const charArray = Array.from(password);
+  const length = charArray.length;
   if (length === 0) {
     return {
       length: 0,
@@ -267,6 +268,7 @@ export function analyzePassword(password: string): PasswordAnalysisResult {
   const hasDigits = /[0-9]/.test(password);
   const hasSymbols = /[^a-zA-Z0-9\s]/.test(password);
   const hasWhitespace = /\s/.test(password);
+  const hasUnicode = /[^\x00-\x7F]/.test(password);
 
   let poolSize = 0;
   if (hasLower) poolSize += 26;
@@ -274,12 +276,16 @@ export function analyzePassword(password: string): PasswordAnalysisResult {
   if (hasDigits) poolSize += 10;
   if (hasSymbols) poolSize += 33;
   if (hasWhitespace) poolSize += 1;
+  if (hasUnicode) poolSize += 64;
 
   // Shannon Entropy in bits = length * log2(poolSize)
   const entropyBits = poolSize > 0 ? Math.round(length * (Math.log(poolSize) / Math.log(2))) : 0;
 
-  // Vulnerability heuristics
-  const hasRepeated = /(.)\1{2,}/.test(password);
+  // Unique character diversity
+  const uniqueChars = new Set(charArray).size;
+
+  // Vulnerability heuristics (Unicode flag enabled)
+  const hasRepeated = /(.)\1{2,}/u.test(password) || (length >= 4 && uniqueChars <= 2);
   const lowerPwd = password.toLowerCase();
   const hasSequential = SEQUENTIAL_SEQUENCES.some((seq) => lowerPwd.includes(seq));
 
@@ -348,8 +354,13 @@ export function analyzePassword(password: string): PasswordAnalysisResult {
     reasons.push('Contains sequential or keyboard walk patterns (e.g. 123, qwerty); heavily prioritized in attack masks.');
   }
   if (hasRepeated) {
-    score -= 10;
-    reasons.push('Contains repetitive character strings (e.g. "aaa", "111") which collapses effective entropy.');
+    if (uniqueChars <= 2 && length >= 4) {
+      score -= 35;
+      reasons.push('High character repetition (<= 2 unique characters); trivial to crack via pattern masks regardless of length.');
+    } else {
+      score -= 15;
+      reasons.push('Contains repetitive character strings (e.g. "aaa", "111") which collapses effective entropy.');
+    }
   }
 
   const finalScore = Math.max(5, Math.min(score, 100));
@@ -387,6 +398,14 @@ export function analyzePassword(password: string): PasswordAnalysisResult {
     progressPercent = 15;
   }
 
+  // Enforce very_weak tier cap if unique characters are critically low (<=2) and length >= 4
+  if (uniqueChars <= 2 && length >= 4) {
+    tier = 'very_weak';
+    tierLabel = 'Very Weak';
+    tierColor = 'text-red-400 border-red-500/30 bg-red-950/20';
+    progressPercent = 15;
+  }
+
   // Combinations calculation using BigInt: poolSize^length
   // Reduced if common dictionary / sequential patterns exist
   const effectivePool = BigInt(Math.max(2, poolSize));
@@ -397,6 +416,13 @@ export function analyzePassword(password: string): PasswordAnalysisResult {
   }
   if (hasSequential || hasL33tSubstitutions) {
     effectiveLength = effectiveLength > TWO_BIG ? effectiveLength - TWO_BIG : ONE_BIG;
+  }
+  if (hasRepeated) {
+    if (uniqueChars <= 2) {
+      effectiveLength = ONE_BIG;
+    } else {
+      effectiveLength = effectiveLength > FOUR_BIG ? effectiveLength - FOUR_BIG : ONE_BIG;
+    }
   }
 
   // Safe BigInt exponentiation

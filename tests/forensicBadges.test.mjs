@@ -144,10 +144,37 @@ describe('Forensic Badges — Calculation & Vector Generation Validation', () =>
     // Disclaimer & branding
     assert.ok(svg.includes('CYBERANTIGRAVITY // OPEN DEFENSE INITIATIVE'));
     assert.ok(svg.includes('NOT AN ACCREDITED CERTIFICATION'));
+    assert.ok(svg.includes('UNLOCKED (SIMULATION)'));
     assert.ok(svg.includes(badge.verificationCode));
 
     // Zero PII
     assert.ok(!svg.includes('@gmail.com'));
     assert.ok(!svg.includes('password'));
+  });
+
+  test('SVG Generator escapes single quotes and strips non-printable control characters', () => {
+    const badges = calculateForensicBadges({
+      phishingCompletedCount: 5,
+      urlCompletedCount: 6,
+      dailyChallengeCount: 3,
+      lastActiveDate: '2026-10-30',
+    });
+    const malicious = "Analyst's \x00\x08Payload";
+    const svg = generateBadgeSvg(badges[0], malicious);
+    assert.ok(!svg.includes("\x00"));
+    assert.ok(!svg.includes("\x08"));
+    assert.ok(svg.includes("&#39;") || !svg.includes("'s Payload"));
+  });
+
+  test('Malformed earnedDate does not break SVG markup', () => {
+    const badges = calculateForensicBadges({
+      phishingCompletedCount: 5,
+      urlCompletedCount: 6,
+      dailyChallengeCount: 3,
+      lastActiveDate: '</text><script>alert(1)</script>',
+    });
+    const svg = generateBadgeSvg(badges[0], 'Tester');
+    assert.ok(!svg.includes('<script>'));
+    assert.ok(svg.includes('&lt;script&gt;'));
   });
 });

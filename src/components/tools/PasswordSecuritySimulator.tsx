@@ -101,10 +101,10 @@ export const PasswordSecuritySimulator: React.FC = () => {
         {/* Section Title & Generation Button */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+            <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
               <KeyRound className="w-5 h-5 text-cyan-400" aria-hidden="true" />
               <span>Interactive Strength & Attack Simulator</span>
-            </h3>
+            </h2>
             <p className="text-xs text-slate-400 mt-1">
               Test how length, character combinations, and patterns impact hypothetical guessing times.
             </p>
@@ -175,7 +175,7 @@ export const PasswordSecuritySimulator: React.FC = () => {
 
           {/* Safe Demonstration Presets */}
           <div className="pt-1 flex flex-wrap items-center gap-2 text-xs">
-            <span className="font-mono text-slate-500 text-[11px]">Safe Fictional Demos:</span>
+            <span className="font-mono text-slate-400 text-[11px]">Safe Fictional Demos:</span>
             {PRESET_DEMOS.map((demo, idx) => (
               <button
                 key={idx}
@@ -206,12 +206,12 @@ export const PasswordSecuritySimulator: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
-              <span className={analysis.hasLower ? 'text-emerald-400 font-bold' : 'text-slate-600'}>a-z</span>
-              <span className={analysis.hasUpper ? 'text-emerald-400 font-bold' : 'text-slate-600'}>A-Z</span>
-              <span className={analysis.hasDigits ? 'text-emerald-400 font-bold' : 'text-slate-600'}>0-9</span>
-              <span className={analysis.hasSymbols ? 'text-emerald-400 font-bold' : 'text-slate-600'}>!@#</span>
-              <span className={analysis.hasWhitespace ? 'text-emerald-400 font-bold' : 'text-slate-600'}>space</span>
+            <div className="flex items-center gap-4 text-xs font-mono">
+              <span className={analysis.hasLower ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasLower ? 'Lowercase included' : 'No lowercase'}>a-z</span>
+              <span className={analysis.hasUpper ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasUpper ? 'Uppercase included' : 'No uppercase'}>A-Z</span>
+              <span className={analysis.hasDigits ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasDigits ? 'Digits included' : 'No digits'}>0-9</span>
+              <span className={analysis.hasSymbols ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasSymbols ? 'Symbols included' : 'No symbols'}>!@#</span>
+              <span className={analysis.hasWhitespace ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasWhitespace ? 'Spaces included' : 'No spaces'}>space</span>
             </div>
           </div>
 
@@ -310,7 +310,7 @@ export const PasswordSecuritySimulator: React.FC = () => {
           </div>
 
           {/* Illustrative Disclaimer */}
-          <p className="text-[11px] text-slate-500 italic leading-relaxed">
+          <p className="text-[11px] text-slate-400 italic leading-relaxed">
             * Note: Crack time estimates are illustrative models assuming random uniform guessing. In reality, cybercriminals prioritize common dictionary lists, breached credential dumps, and custom wordlist mutation rules. No password is fundamentally unbreakable.
           </p>
         </div>

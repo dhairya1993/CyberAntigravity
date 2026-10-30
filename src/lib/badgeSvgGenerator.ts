@@ -7,7 +7,15 @@
 import type { ForensicBadge } from './badgeCalculator';
 
 export function generateBadgeSvg(badge: ForensicBadge, recipientName: string = 'Cyber Defender'): string {
-  const dateStr = badge.earnedDate || new Date().toISOString().split('T')[0];
+  const safeDate = (badge.earnedDate || new Date().toISOString().split('T')[0])
+    .trim()
+    .slice(0, 20)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 
   const primaryColor =
     badge.accentColor === 'rose'
@@ -31,10 +39,12 @@ export function generateBadgeSvg(badge: ForensicBadge, recipientName: string = '
   const safeRecipient = recipientName
     .trim()
     .slice(0, 32)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 
   const safeTitle = badge.title
     .replace(/&/g, '&amp;')
@@ -73,7 +83,7 @@ export function generateBadgeSvg(badge: ForensicBadge, recipientName: string = '
 
   <!-- Top Brand Header -->
   <text x="50" y="65" fill="#64748b" font-size="12" font-weight="700" letter-spacing="3">CYBERANTIGRAVITY // OPEN DEFENSE INITIATIVE</text>
-  <text x="750" y="65" fill="${primaryColor}" font-size="11" font-weight="700" text-anchor="end" letter-spacing="2">${badge.verificationCode}</text>
+  <text x="750" y="65" fill="${primaryColor}" font-size="11" font-weight="700" text-anchor="end" letter-spacing="2">REF: ${badge.verificationCode}</text>
 
   <!-- Center Shield Iconography -->
   <g transform="translate(400, 155)" filter="url(#glow)">
@@ -100,9 +110,9 @@ export function generateBadgeSvg(badge: ForensicBadge, recipientName: string = '
   <text x="400" y="412" fill="#94a3b8" font-size="11" text-anchor="middle">Verified client-side via CyberAntigravity Interactive Laboratory.</text>
 
   <!-- Bottom Footer Metadata -->
-  <text x="50" y="475" fill="#64748b" font-size="11">DATE: <tspan fill="#e2e8f0" font-weight="700">${dateStr}</tspan></text>
-  <text x="400" y="475" fill="#475569" font-size="9" text-anchor="middle">MOTIVATIONAL EDUCATIONAL BADGE • NOT AN ACCREDITED CERTIFICATION</text>
-  <text x="750" y="475" fill="#64748b" font-size="11" text-anchor="end">STATUS: <tspan fill="#10b981" font-weight="700">VERIFIED</tspan></text>
+  <text x="50" y="475" fill="#64748b" font-size="11">DATE: <tspan fill="#e2e8f0" font-weight="700">${safeDate}</tspan></text>
+  <text x="400" y="475" fill="#94a3b8" font-size="9" text-anchor="middle">MOTIVATIONAL EDUCATIONAL BADGE • NOT AN ACCREDITED CERTIFICATION</text>
+  <text x="750" y="475" fill="#64748b" font-size="11" text-anchor="end">STATUS: <tspan fill="#10b981" font-weight="700">UNLOCKED (SIMULATION)</tspan></text>
 </svg>`;
 }
 

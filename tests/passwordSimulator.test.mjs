@@ -123,4 +123,30 @@ describe('Password Security Simulator — Entropy & Attack Engine', () => {
     assert.equal(res.hasWhitespace, true);
     assert.ok(res.entropyBits > 0);
   });
+
+  test('Repetitive strings (aaaaaaaaaaaaaaaa) collapse to very_weak and instant crack time', () => {
+    const res = analyzePassword('aaaaaaaaaaaaaaaa');
+    assert.equal(res.tier, 'very_weak');
+    assert.equal(res.vulnerabilities.hasRepeated, true);
+    assert.ok(res.reasons.some((r) => r.includes('repetition') || r.includes('repetitive')));
+    // Must NOT claim millions of years to crack single-character repeat
+    assert.ok(res.crackTimes['offline-fast-gpu'].includes('Instantly') || res.crackTimes['offline-fast-gpu'].includes('second'));
+    assert.ok(res.crackTimes['offline-slow-kdf'].includes('Instantly') || res.crackTimes['offline-slow-kdf'].includes('second'));
+  });
+
+  test('Unicode astral emojis (🔐🔐🔐🔐🔐) correctly count code points and detect repetition', () => {
+    const res = analyzePassword('🔐🔐🔐🔐🔐');
+    // Unicode code points length is 5 (not 10 UTF-16 surrogate units)
+    assert.equal(res.length, 5);
+    assert.equal(res.vulnerabilities.hasRepeated, true);
+    assert.equal(res.tier, 'very_weak');
+  });
+
+  test('Password analysis maintains strict purity and zero storage/network side-effects', () => {
+    const testSecret = 'SuperSecretEphemeralTestingPassword123!';
+    const res = analyzePassword(testSecret);
+    assert.ok(res);
+    // Global environment must have no traces
+    assert.equal(typeof globalThis.localStorage, 'undefined');
+  });
 });

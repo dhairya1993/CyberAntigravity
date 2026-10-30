@@ -30,6 +30,16 @@ const PHISHING_STORAGE_KEY = 'cyberantigravity_phishing_lab_v1';
 const URL_STORAGE_KEY = 'cyberantigravity_url_lab_v1';
 const CHALLENGE_STORAGE_KEY = 'cyberantigravity_daily_challenge_v1';
 
+const VALID_PHISHING_IDS = new Set(['case-01', 'case-02', 'case-03', 'case-04', 'case-05']);
+const VALID_URL_IDS = new Set([
+  'url-case-01',
+  'url-case-02',
+  'url-case-03',
+  'url-case-04',
+  'url-case-05',
+  'url-case-06',
+]);
+
 export interface StorageSnapshot {
   phishingCompletedCount: number;
   urlCompletedCount: number;
@@ -61,7 +71,8 @@ export function getStorageSnapshot(): StorageSnapshot {
     if (raw) {
       const parsed = JSON.parse(raw);
       if (parsed && typeof parsed === 'object' && parsed.completedCases && typeof parsed.completedCases === 'object') {
-        phishingCompletedCount = Object.keys(parsed.completedCases).length;
+        const validCompleted = Object.keys(parsed.completedCases).filter((id) => VALID_PHISHING_IDS.has(id));
+        phishingCompletedCount = validCompleted.length;
       }
     }
   } catch {
@@ -74,7 +85,8 @@ export function getStorageSnapshot(): StorageSnapshot {
     if (raw) {
       const parsed = JSON.parse(raw);
       if (parsed && typeof parsed === 'object' && parsed.completedCases && typeof parsed.completedCases === 'object') {
-        urlCompletedCount = Object.keys(parsed.completedCases).length;
+        const validCompleted = Object.keys(parsed.completedCases).filter((id) => VALID_URL_IDS.has(id));
+        urlCompletedCount = validCompleted.length;
       }
     }
   } catch {
@@ -87,12 +99,14 @@ export function getStorageSnapshot(): StorageSnapshot {
     if (raw) {
       const parsed = JSON.parse(raw);
       if (parsed && typeof parsed === 'object') {
-        if (typeof parsed.totalCompleted === 'number' && Number.isFinite(parsed.totalCompleted)) {
-          dailyChallengeCount = Math.max(0, parsed.totalCompleted);
-        } else if (parsed.history && typeof parsed.history === 'object') {
-          dailyChallengeCount = Object.keys(parsed.history).length;
+        if (parsed.history && typeof parsed.history === 'object' && !Array.isArray(parsed.history)) {
+          // Count unique valid UTC calendar date records in history
+          const validDateKeys = Object.keys(parsed.history).filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d));
+          dailyChallengeCount = validDateKeys.length;
+        } else if (typeof parsed.totalCompleted === 'number' && Number.isFinite(parsed.totalCompleted)) {
+          dailyChallengeCount = Math.max(0, Math.floor(parsed.totalCompleted));
         }
-        if (typeof parsed.lastCompletedDate === 'string' && parsed.lastCompletedDate) {
+        if (typeof parsed.lastCompletedDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(parsed.lastCompletedDate)) {
           lastActiveDate = parsed.lastCompletedDate;
         }
       }

@@ -295,6 +295,7 @@ export function ForensicCompletionBadges() {
                     <button
                       type="button"
                       onClick={() => handleDownloadSvg(badge)}
+                      aria-label={`Download ${badge.title} vector badge as SVG`}
                       className="flex-1 inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs sm:text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400 shadow-md shadow-cyan-950/50"
                     >
                       <FileCode className="w-4 h-4 shrink-0" />
@@ -303,6 +304,7 @@ export function ForensicCompletionBadges() {
                     <button
                       type="button"
                       onClick={() => handleDownloadPng(badge)}
+                      aria-label={`Export ${badge.title} badge as high-resolution PNG`}
                       className="flex-1 inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm border border-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-slate-400"
                     >
                       <ImageIcon className="w-4 h-4 shrink-0 text-cyan-400" />

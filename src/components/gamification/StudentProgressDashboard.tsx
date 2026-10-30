@@ -239,9 +239,9 @@ export const StudentProgressDashboard: React.FC = () => {
             <span>AUTHENTICATED STUDENT DASHBOARD</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
             Track Your Defense Mastery &amp; Badges
-          </h1>
+          </h2>
 
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
             Visitors are welcome to freely explore all learning guides, cybersecurity tools, and Cyber IQ challenges without signing up.
@@ -272,17 +272,17 @@ export const StudentProgressDashboard: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 text-left">
             <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
               <Cloud className="w-5 h-5 text-cyan-400" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">Cross-Device Sync</h4>
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider">Cross-Device Sync</h3>
               <p className="text-xs text-slate-400">Your score history, badges, and level rank follow you across every computer and mobile device.</p>
             </div>
             <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
               <Sparkles className="w-5 h-5 text-amber-400" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">Server-Verified XP</h4>
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider">Server-Verified XP</h3>
               <p className="text-xs text-slate-400">Server-validated scores prevent manipulation and certify real defensive comprehension.</p>
             </div>
             <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
               <Award className="w-5 h-5 text-emerald-400" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">Verifiable Badges</h4>
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider">Verifiable Badges</h3>
               <p className="text-xs text-slate-400">Earn recognition for phishing detection, password entropy, and streak consistency.</p>
             </div>
           </div>
@@ -486,9 +486,9 @@ export const StudentProgressDashboard: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
               {user.displayName}&apos;s Command Center
-            </h1>
+            </h2>
 
             <p className="text-xs sm:text-sm text-slate-400 font-mono">
               Signed in as: {user.email}

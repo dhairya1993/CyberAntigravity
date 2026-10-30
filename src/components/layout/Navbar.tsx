@@ -126,7 +126,7 @@ export const Navbar: React.FC = () => {
                 type="button"
                 onClick={() => setIsSearchOpen(true)}
                 className="flex items-center gap-2 px-3 py-2 text-xs text-slate-400 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-lg transition-colors cyber-focus-ring"
-                aria-label="Search"
+                
               >
                 <Search className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
                 <span>Search</span>

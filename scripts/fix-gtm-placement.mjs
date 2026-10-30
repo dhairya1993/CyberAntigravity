@@ -44,4 +44,5 @@ function walkDir(dir) {
 
 console.log('Running post-build GTM placement optimization...');
 walkDir(path.join(process.cwd(), '.next/server/app'));
+walkDir(path.join(process.cwd(), '.vercel/output'));
 console.log('Post-build GTM placement optimization complete.');

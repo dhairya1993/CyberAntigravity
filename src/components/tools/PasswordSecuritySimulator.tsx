@@ -207,11 +207,11 @@ export const PasswordSecuritySimulator: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-4 text-xs font-mono">
-              <span className={analysis.hasLower ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasLower ? 'Lowercase included' : 'No lowercase'}>a-z</span>
-              <span className={analysis.hasUpper ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasUpper ? 'Uppercase included' : 'No uppercase'}>A-Z</span>
-              <span className={analysis.hasDigits ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasDigits ? 'Digits included' : 'No digits'}>0-9</span>
-              <span className={analysis.hasSymbols ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasSymbols ? 'Symbols included' : 'No symbols'}>!@#</span>
-              <span className={analysis.hasWhitespace ? 'text-emerald-400 font-bold' : 'text-slate-400 line-through opacity-70'} title={analysis.hasWhitespace ? 'Spaces included' : 'No spaces'}>space</span>
+              <span className={analysis.hasLower ? 'text-emerald-400 font-bold' : 'text-slate-300 line-through'} title={analysis.hasLower ? 'Lowercase included' : 'No lowercase'}>a-z</span>
+              <span className={analysis.hasUpper ? 'text-emerald-400 font-bold' : 'text-slate-300 line-through'} title={analysis.hasUpper ? 'Uppercase included' : 'No uppercase'}>A-Z</span>
+              <span className={analysis.hasDigits ? 'text-emerald-400 font-bold' : 'text-slate-300 line-through'} title={analysis.hasDigits ? 'Digits included' : 'No digits'}>0-9</span>
+              <span className={analysis.hasSymbols ? 'text-emerald-400 font-bold' : 'text-slate-300 line-through'} title={analysis.hasSymbols ? 'Symbols included' : 'No symbols'}>!@#</span>
+              <span className={analysis.hasWhitespace ? 'text-emerald-400 font-bold' : 'text-slate-300 line-through'} title={analysis.hasWhitespace ? 'Spaces included' : 'No spaces'}>space</span>
             </div>
           </div>
 

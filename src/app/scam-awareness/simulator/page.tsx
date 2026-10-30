@@ -5,6 +5,7 @@ import { ChevronRight, ArrowLeft, FlaskConical } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { TrustDisclaimer } from '@/components/scam-awareness/TrustDisclaimer';
+import { PhishingDetectiveLab } from '@/components/scam-awareness/PhishingDetectiveLab';
 import { ScamDetectionLab } from '@/components/scam-awareness/ScamDetectionLab';
 import { StudentModeSection } from '@/components/scam-awareness/StudentModeSection';
 import { SITE_URL } from '@/lib/siteConfig';
@@ -150,7 +151,10 @@ export default function ScamSimulatorPage() {
         {/* 1. Student Practice Mode (Read → Inspect → Decide → Feedback) */}
         <StudentModeSection />
 
-        {/* 2. Full Interactive Scam Detection Lab */}
+        {/* 2. Primary Interactive Phishing Detective Lab */}
+        <PhishingDetectiveLab />
+
+        {/* 3. SMS & Social Engineering Red Flag Sandbox */}
         <ScamDetectionLab />
       </main>
 

@@ -51,8 +51,9 @@ class MockLocalStorage {
 }
 
 describe('Daily Cyber Challenge — Logic & Bank Validation', () => {
-  test('Question bank contains exactly 7 unique, fully-formed challenges', () => {
-    assert.equal(DAILY_CHALLENGES.length, 7, 'Expected 7 challenges in the rotation pool');
+  test('Question bank contains at least 30 unique, fully-formed challenges (35 validated)', () => {
+    assert.ok(DAILY_CHALLENGES.length >= 30, `Expected at least 30 challenges, found ${DAILY_CHALLENGES.length}`);
+    assert.equal(DAILY_CHALLENGES.length, 35, 'Expected 35 challenges in the expanded rotation pool');
 
     const seenIds = new Set();
     for (const challenge of DAILY_CHALLENGES) {
